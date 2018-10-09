@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="289" id="KGk-i7-Jjw" customClass="AmountOfWeightToLose" customModule="Diet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="289"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="288.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сколько килограмм Вы хотите сбросить?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiH-ed-kEr">
+                        <rect key="frame" x="16" y="11" width="288" height="46"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ответьте на пару вопросов и мы сформируем вашу персональную диету" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R24-7B-WkI">
+                        <rect key="frame" x="16" y="65" width="288" height="57"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="R24-7B-WkI" secondAttribute="height" multiplier="96:19" id="29n-s2-J58"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KTN-C1-tgk">
+                        <rect key="frame" x="0.0" y="130" width="320" height="158.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UAO-C3-Xu5">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="R24-7B-WkI" firstAttribute="top" secondItem="BiH-ed-kEr" secondAttribute="bottom" constant="8" id="2UD-Ek-ueg"/>
+                    <constraint firstAttribute="bottom" secondItem="KTN-C1-tgk" secondAttribute="bottom" id="HY7-4e-jHV"/>
+                    <constraint firstItem="BiH-ed-kEr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="UyZ-cD-EOd"/>
+                    <constraint firstItem="R24-7B-WkI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="a6X-Ol-KJC"/>
+                    <constraint firstItem="KTN-C1-tgk" firstAttribute="top" secondItem="R24-7B-WkI" secondAttribute="bottom" constant="8" id="d6T-7d-hoC"/>
+                    <constraint firstAttribute="trailing" secondItem="KTN-C1-tgk" secondAttribute="trailing" id="fBY-nr-Nvg"/>
+                    <constraint firstItem="R24-7B-WkI" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="j72-C1-eUj"/>
+                    <constraint firstItem="KTN-C1-tgk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nt9-wW-mqo"/>
+                    <constraint firstItem="BiH-ed-kEr" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ttl-uX-bUs"/>
+                    <constraint firstItem="BiH-ed-kEr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="yrn-9W-5xr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="collectionView" destination="KTN-C1-tgk" id="Nxw-gJ-Lmd"/>
+            </connections>
+            <point key="canvasLocation" x="126.40000000000001" y="186.65667166416793"/>
+        </tableViewCell>
+    </objects>
+</document>
