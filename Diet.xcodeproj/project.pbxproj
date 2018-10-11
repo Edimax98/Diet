@@ -20,6 +20,9 @@
 		A58CC55C216D0C9500B20CE9 /* WeightToLoseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58CC55A216D0C9500B20CE9 /* WeightToLoseCell.xib */; };
 		A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC55D216D100500B20CE9 /* HumanСharacteristic.swift */; };
 		A58CC560216D100500B20CE9 /* HumanСharacteristic.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58CC55E216D100500B20CE9 /* HumanСharacteristic.xib */; };
+		A5E0C330216F95170045975E /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C32F216F95170045975E /* StringExtentions.swift */; };
+		A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C332216F9B560045975E /* CharacteristicCell.swift */; };
+		A5E0C335216F9B560045975E /* CharacteristicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E0C333216F9B560045975E /* CharacteristicCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		A58CC55A216D0C9500B20CE9 /* WeightToLoseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightToLoseCell.xib; sourceTree = "<group>"; };
 		A58CC55D216D100500B20CE9 /* HumanСharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HumanСharacteristic.swift"; sourceTree = "<group>"; };
 		A58CC55E216D100500B20CE9 /* HumanСharacteristic.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "HumanСharacteristic.xib"; sourceTree = "<group>"; };
+		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
+		A5E0C332216F9B560045975E /* CharacteristicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicCell.swift; sourceTree = "<group>"; };
+		A5E0C333216F9B560045975E /* CharacteristicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacteristicCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
 			isa = PBXGroup;
 			children = (
+				A5E0C331216F951E0045975E /* Extensions */,
 				A58CC547216CF65200B20CE9 /* Info.plist */,
 				A58CC54D216CF69400B20CE9 /* Application */,
 				A58CC54F216CF6F100B20CE9 /* MainView */,
@@ -108,16 +115,50 @@
 		A58CC554216CFC8C00B20CE9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A58CC550216CF96700B20CE9 /* UpperCell.swift */,
-				A58CC551216CF96700B20CE9 /* UpperCell.xib */,
+				A5E0C338216F9B7B0045975E /* UpperCell */,
+				A5E0C337216F9B6F0045975E /* GoalsCell */,
+				A5E0C336216F9B5B0045975E /* HumanCharacteristic */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A5E0C331216F951E0045975E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5E0C32F216F95170045975E /* StringExtentions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5E0C336216F9B5B0045975E /* HumanCharacteristic */ = {
+			isa = PBXGroup;
+			children = (
+				A58CC55D216D100500B20CE9 /* HumanСharacteristic.swift */,
+				A58CC55E216D100500B20CE9 /* HumanСharacteristic.xib */,
+				A5E0C332216F9B560045975E /* CharacteristicCell.swift */,
+				A5E0C333216F9B560045975E /* CharacteristicCell.xib */,
+			);
+			path = HumanCharacteristic;
+			sourceTree = "<group>";
+		};
+		A5E0C337216F9B6F0045975E /* GoalsCell */ = {
+			isa = PBXGroup;
+			children = (
 				A58CC555216D097900B20CE9 /* AmountOfWeightToLose.swift */,
 				A58CC556216D097900B20CE9 /* AmountOfWeightToLose.xib */,
 				A58CC559216D0C9500B20CE9 /* WeightToLoseCell.swift */,
 				A58CC55A216D0C9500B20CE9 /* WeightToLoseCell.xib */,
-				A58CC55D216D100500B20CE9 /* HumanСharacteristic.swift */,
-				A58CC55E216D100500B20CE9 /* HumanСharacteristic.xib */,
 			);
-			path = Cells;
+			path = GoalsCell;
+			sourceTree = "<group>";
+		};
+		A5E0C338216F9B7B0045975E /* UpperCell */ = {
+			isa = PBXGroup;
+			children = (
+				A58CC550216CF96700B20CE9 /* UpperCell.swift */,
+				A58CC551216CF96700B20CE9 /* UpperCell.xib */,
+			);
+			path = UpperCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E0C335216F9B560045975E /* CharacteristicCell.xib in Resources */,
 				A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */,
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
 				A58CC553216CF96700B20CE9 /* UpperCell.xib in Resources */,
@@ -197,7 +239,9 @@
 			files = (
 				A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */,
 				A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */,
+				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
 				A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */,
+				A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */,
 				A58CC552216CF96700B20CE9 /* UpperCell.swift in Sources */,
 				A58CC55B216D0C9500B20CE9 /* WeightToLoseCell.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,

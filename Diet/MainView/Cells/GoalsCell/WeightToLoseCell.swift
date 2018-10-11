@@ -12,7 +12,10 @@ class WeightToLoseCell: UICollectionViewCell {
     
     static var identifier = "WeightToLoseCell"
 
+    @IBOutlet weak var kgLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        kgLabel.text = "килограмм".localized
     }
 }
