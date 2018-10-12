@@ -23,6 +23,12 @@
 		A5E0C330216F95170045975E /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C32F216F95170045975E /* StringExtentions.swift */; };
 		A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C332216F9B560045975E /* CharacteristicCell.swift */; };
 		A5E0C335216F9B560045975E /* CharacteristicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E0C333216F9B560045975E /* CharacteristicCell.xib */; };
+		A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83842170F6E70088F8FE /* MainPageInteractor.swift */; };
+		A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83872170F7370088F8FE /* NetworkService.swift */; };
+		A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */; };
+		A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */; };
+		A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838D2170F8830088F8FE /* Recipe.swift */; };
+		A5EA83932170FA260088F8FE /* MainPageInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83922170FA260088F8FE /* MainPageInteractorOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +50,12 @@
 		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
 		A5E0C332216F9B560045975E /* CharacteristicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicCell.swift; sourceTree = "<group>"; };
 		A5E0C333216F9B560045975E /* CharacteristicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacteristicCell.xib; sourceTree = "<group>"; };
+		A5EA83842170F6E70088F8FE /* MainPageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageInteractor.swift; sourceTree = "<group>"; };
+		A5EA83872170F7370088F8FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingErroHandler.swift; sourceTree = "<group>"; };
+		A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkService.swift; sourceTree = "<group>"; };
+		A5EA838D2170F8830088F8FE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		A5EA83922170FA260088F8FE /* MainPageInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageInteractorOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,8 @@
 				A58CC54F216CF6F100B20CE9 /* MainView */,
 				A58CC53F216CF65100B20CE9 /* Main.storyboard */,
 				A58CC54E216CF6A500B20CE9 /* Assets */,
+				A5EA83902170F8C80088F8FE /* Services */,
+				A5EA838F2170F8C00088F8FE /* Models */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -106,6 +120,7 @@
 		A58CC54F216CF6F100B20CE9 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				A5EA83862170F7060088F8FE /* Interactor */,
 				A58CC53D216CF65100B20CE9 /* MainViewController.swift */,
 				A58CC554216CFC8C00B20CE9 /* Cells */,
 			);
@@ -159,6 +174,41 @@
 				A58CC551216CF96700B20CE9 /* UpperCell.xib */,
 			);
 			path = UpperCell;
+			sourceTree = "<group>";
+		};
+		A5EA83862170F7060088F8FE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				A5EA83842170F6E70088F8FE /* MainPageInteractor.swift */,
+				A5EA83922170FA260088F8FE /* MainPageInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		A5EA838F2170F8C00088F8FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5EA838D2170F8830088F8FE /* Recipe.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5EA83902170F8C80088F8FE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5EA83912170F8D60088F8FE /* Network */,
+				A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A5EA83912170F8D60088F8FE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A5EA83872170F7370088F8FE /* NetworkService.swift */,
+				A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,12 +287,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
 				A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */,
+				A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */,
 				A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */,
+				A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */,
 				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
 				A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */,
+				A5EA83932170FA260088F8FE /* MainPageInteractorOutput.swift in Sources */,
 				A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */,
 				A58CC552216CF96700B20CE9 /* UpperCell.swift in Sources */,
+				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
+				A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */,
 				A58CC55B216D0C9500B20CE9 /* WeightToLoseCell.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
 			);

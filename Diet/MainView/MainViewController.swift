@@ -80,3 +80,10 @@ extension MainViewController: UITableViewDelegate {
         }
     }
 }
+
+extension MainViewController: MainPageInteractorOutput {
+    
+    func sendRecipe(_ recipe: Recipe) {
+        
+    }
+}
