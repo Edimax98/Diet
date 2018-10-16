@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84724CC972B6ECE071A678C4 /* Pods_Diet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EA9E04DFA8B088562DC952 /* Pods_Diet.framework */; };
+		A57C7B0221764278008DA476 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C7B0121764278008DA476 /* Network.swift */; };
 		A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53B216CF65100B20CE9 /* AppDelegate.swift */; };
 		A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53D216CF65100B20CE9 /* MainViewController.swift */; };
 		A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC53F216CF65100B20CE9 /* Main.storyboard */; };
@@ -32,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50141B71EF97BFCDBE67B05F /* Pods-Diet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.release.xcconfig"; sourceTree = "<group>"; };
+		65EA9E04DFA8B088562DC952 /* Pods_Diet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A57C7B0121764278008DA476 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A58CC538216CF65100B20CE9 /* Diet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58CC53B216CF65100B20CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A58CC53D216CF65100B20CE9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +61,7 @@
 		A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkService.swift; sourceTree = "<group>"; };
 		A5EA838D2170F8830088F8FE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A5EA83922170FA260088F8FE /* MainPageInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageInteractorOutput.swift; sourceTree = "<group>"; };
+		B4615E85CA74F815C113661A /* Pods-Diet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +69,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84724CC972B6ECE071A678C4 /* Pods_Diet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DBFAC8E0F84E985004B7A01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B4615E85CA74F815C113661A /* Pods-Diet.debug.xcconfig */,
+				50141B71EF97BFCDBE67B05F /* Pods-Diet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		80B4B8AE01EA24BACB2ED1A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65EA9E04DFA8B088562DC952 /* Pods_Diet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A58CC52F216CF65100B20CE9 = {
 			isa = PBXGroup;
 			children = (
 				A58CC53A216CF65100B20CE9 /* Diet */,
 				A58CC539216CF65100B20CE9 /* Products */,
+				0DBFAC8E0F84E985004B7A01 /* Pods */,
+				80B4B8AE01EA24BACB2ED1A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +114,7 @@
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
 			isa = PBXGroup;
 			children = (
+				A57C7B0121764278008DA476 /* Network.swift */,
 				A5E0C331216F951E0045975E /* Extensions */,
 				A58CC547216CF65200B20CE9 /* Info.plist */,
 				A58CC54D216CF69400B20CE9 /* Application */,
@@ -218,9 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A58CC54A216CF65200B20CE9 /* Build configuration list for PBXNativeTarget "Diet" */;
 			buildPhases = (
+				87C25B181100AD4730FF025D /* [CP] Check Pods Manifest.lock */,
 				A58CC534216CF65100B20CE9 /* Sources */,
 				A58CC535216CF65100B20CE9 /* Frameworks */,
 				A58CC536216CF65100B20CE9 /* Resources */,
+				FA84824A99E42BF46F63158D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -282,6 +311,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		87C25B181100AD4730FF025D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Diet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA84824A99E42BF46F63158D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Diet/Pods-Diet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Diet/Pods-Diet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A58CC534216CF65100B20CE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -292,6 +370,7 @@
 				A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */,
 				A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */,
 				A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */,
+				A57C7B0221764278008DA476 /* Network.swift in Sources */,
 				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
 				A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */,
 				A5EA83932170FA260088F8FE /* MainPageInteractorOutput.swift in Sources */,
@@ -444,6 +523,7 @@
 		};
 		A58CC54B216CF65200B20CE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4615E85CA74F815C113661A /* Pods-Diet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -462,6 +542,7 @@
 		};
 		A58CC54C216CF65200B20CE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50141B71EF97BFCDBE67B05F /* Pods-Diet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
