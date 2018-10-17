@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		84724CC972B6ECE071A678C4 /* Pods_Diet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EA9E04DFA8B088562DC952 /* Pods_Diet.framework */; };
+		A548E9CE21776DB000FC62EE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */; };
+		A548E9D02177722D00FC62EE /* WelcomePageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */; };
+		A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */; };
+		A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D32177767900FC62EE /* NSObjectExtension.swift */; };
+		A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D52177783800FC62EE /* WelcomePageViewController.swift */; };
+		A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D7217787A100FC62EE /* DefaultActionButton.swift */; };
 		A57C7B0221764278008DA476 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C7B0121764278008DA476 /* Network.swift */; };
 		A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53B216CF65100B20CE9 /* AppDelegate.swift */; };
 		A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53D216CF65100B20CE9 /* MainViewController.swift */; };
@@ -36,6 +42,12 @@
 /* Begin PBXFileReference section */
 		50141B71EF97BFCDBE67B05F /* Pods-Diet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.release.xcconfig"; sourceTree = "<group>"; };
 		65EA9E04DFA8B088562DC952 /* Pods_Diet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomePageViewController.storyboard; sourceTree = "<group>"; };
+		A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		A548E9D32177767900FC62EE /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		A548E9D52177783800FC62EE /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
+		A548E9D7217787A100FC62EE /* DefaultActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultActionButton.swift; sourceTree = "<group>"; };
 		A57C7B0121764278008DA476 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A58CC538216CF65100B20CE9 /* Diet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58CC53B216CF65100B20CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +105,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A548E9CC21776D6D00FC62EE /* Singletones */ = {
+			isa = PBXGroup;
+			children = (
+				A57C7B0121764278008DA476 /* Network.swift */,
+			);
+			path = Singletones;
+			sourceTree = "<group>";
+		};
+		A548E9D9217787A800FC62EE /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				A548E9D7217787A100FC62EE /* DefaultActionButton.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
 		A58CC52F216CF65100B20CE9 = {
 			isa = PBXGroup;
 			children = (
@@ -114,15 +142,19 @@
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
 			isa = PBXGroup;
 			children = (
-				A57C7B0121764278008DA476 /* Network.swift */,
+				A548E9D9217787A800FC62EE /* Appearance */,
+				A548E9CC21776D6D00FC62EE /* Singletones */,
 				A5E0C331216F951E0045975E /* Extensions */,
 				A58CC547216CF65200B20CE9 /* Info.plist */,
 				A58CC54D216CF69400B20CE9 /* Application */,
 				A58CC54F216CF6F100B20CE9 /* MainView */,
 				A58CC53F216CF65100B20CE9 /* Main.storyboard */,
-				A58CC54E216CF6A500B20CE9 /* Assets */,
 				A5EA83902170F8C80088F8FE /* Services */,
 				A5EA838F2170F8C00088F8FE /* Models */,
+				A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */,
+				A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */,
+				A548E9D52177783800FC62EE /* WelcomePageViewController.swift */,
+				A58CC54E216CF6A500B20CE9 /* Assets */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -168,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				A5E0C32F216F95170045975E /* StringExtentions.swift */,
+				A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */,
+				A548E9D32177767900FC62EE /* NSObjectExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +339,7 @@
 				A58CC558216D097900B20CE9 /* AmountOfWeightToLose.xib in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
 				A58CC55C216D0C9500B20CE9 /* WeightToLoseCell.xib in Resources */,
+				A548E9D02177722D00FC62EE /* WelcomePageViewController.storyboard in Resources */,
 				A58CC560216D100500B20CE9 /* HumanСharacteristic.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,10 +401,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
+				A548E9CE21776DB000FC62EE /* WelcomeViewController.swift in Sources */,
 				A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */,
 				A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */,
+				A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */,
 				A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */,
 				A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */,
+				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
 				A57C7B0221764278008DA476 /* Network.swift in Sources */,
 				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
 				A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */,
@@ -378,8 +416,10 @@
 				A58CC552216CF96700B20CE9 /* UpperCell.swift in Sources */,
 				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
 				A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */,
+				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
 				A58CC55B216D0C9500B20CE9 /* WeightToLoseCell.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
+				A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
