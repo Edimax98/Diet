@@ -14,18 +14,20 @@ class WelcomePageViewController: UIViewController {
     @IBOutlet weak var pageTitleLable: UILabel!
     @IBOutlet weak var pageDescriptionLable: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
+        
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    class func instance() -> WelcomePageViewController {
-        
-        let storyboard = UIStoryboard(name: "WelcomePageViewController", bundle: nil)
-        return storyboard.instantiateInitialViewController() as! WelcomePageViewController
+        nextButton.layer.cornerRadius = nextButton.frame.height / 2
     }
 
-    
     @IBAction func nextButtonPressed(_ sender: Any) {
+
     }
 }
+

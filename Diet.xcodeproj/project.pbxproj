@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		84724CC972B6ECE071A678C4 /* Pods_Diet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EA9E04DFA8B088562DC952 /* Pods_Diet.framework */; };
+		A50250CC2178B84B00F674B3 /* SelectingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50250CB2178B84B00F674B3 /* SelectingViewController.storyboard */; };
+		A50250CE2178BCFC00F674B3 /* SelectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250CD2178BCFC00F674B3 /* SelectingViewController.swift */; };
+		A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250CF2178C79D00F674B3 /* TestPageViewController.swift */; };
+		A50250D32178CB7200F674B3 /* TestViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250D22178CB7200F674B3 /* TestViewData.swift */; };
+		A50250D52178E79000F674B3 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250D42178E79000F674B3 /* TriangleView.swift */; };
+		A50250D72178F4F300F674B3 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250D62178F4F300F674B3 /* ProgressBar.swift */; };
 		A548E9CE21776DB000FC62EE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */; };
 		A548E9D02177722D00FC62EE /* WelcomePageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */; };
 		A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */; };
@@ -42,6 +48,12 @@
 /* Begin PBXFileReference section */
 		50141B71EF97BFCDBE67B05F /* Pods-Diet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.release.xcconfig"; sourceTree = "<group>"; };
 		65EA9E04DFA8B088562DC952 /* Pods_Diet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A50250CB2178B84B00F674B3 /* SelectingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectingViewController.storyboard; sourceTree = "<group>"; };
+		A50250CD2178BCFC00F674B3 /* SelectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectingViewController.swift; sourceTree = "<group>"; };
+		A50250CF2178C79D00F674B3 /* TestPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPageViewController.swift; sourceTree = "<group>"; };
+		A50250D22178CB7200F674B3 /* TestViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewData.swift; sourceTree = "<group>"; };
+		A50250D42178E79000F674B3 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		A50250D62178F4F300F674B3 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomePageViewController.storyboard; sourceTree = "<group>"; };
 		A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -105,6 +117,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A50250CA2178B31400F674B3 /* WelcomePage */ = {
+			isa = PBXGroup;
+			children = (
+				A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */,
+				A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */,
+				A548E9D52177783800FC62EE /* WelcomePageViewController.swift */,
+			);
+			path = WelcomePage;
+			sourceTree = "<group>";
+		};
+		A50250D12178C84800F674B3 /* TestPage */ = {
+			isa = PBXGroup;
+			children = (
+				A50250CB2178B84B00F674B3 /* SelectingViewController.storyboard */,
+				A50250CD2178BCFC00F674B3 /* SelectingViewController.swift */,
+				A50250CF2178C79D00F674B3 /* TestPageViewController.swift */,
+			);
+			path = TestPage;
+			sourceTree = "<group>";
+		};
 		A548E9CC21776D6D00FC62EE /* Singletones */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				A548E9D7217787A100FC62EE /* DefaultActionButton.swift */,
+				A50250D42178E79000F674B3 /* TriangleView.swift */,
+				A50250D62178F4F300F674B3 /* ProgressBar.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -148,13 +182,12 @@
 				A58CC547216CF65200B20CE9 /* Info.plist */,
 				A58CC54D216CF69400B20CE9 /* Application */,
 				A58CC54F216CF6F100B20CE9 /* MainView */,
+				A50250CA2178B31400F674B3 /* WelcomePage */,
 				A58CC53F216CF65100B20CE9 /* Main.storyboard */,
 				A5EA83902170F8C80088F8FE /* Services */,
 				A5EA838F2170F8C00088F8FE /* Models */,
-				A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */,
-				A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */,
-				A548E9D52177783800FC62EE /* WelcomePageViewController.swift */,
 				A58CC54E216CF6A500B20CE9 /* Assets */,
+				A50250D12178C84800F674B3 /* TestPage */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -250,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				A5EA838D2170F8830088F8FE /* Recipe.swift */,
+				A50250D22178CB7200F674B3 /* TestViewData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A50250CC2178B84B00F674B3 /* SelectingViewController.storyboard in Resources */,
 				A5E0C335216F9B560045975E /* CharacteristicCell.xib in Resources */,
 				A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */,
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
@@ -403,8 +438,10 @@
 				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
 				A548E9CE21776DB000FC62EE /* WelcomeViewController.swift in Sources */,
 				A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */,
+				A50250D32178CB7200F674B3 /* TestViewData.swift in Sources */,
 				A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */,
 				A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */,
+				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
 				A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */,
 				A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
@@ -413,12 +450,15 @@
 				A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */,
 				A5EA83932170FA260088F8FE /* MainPageInteractorOutput.swift in Sources */,
 				A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */,
+				A50250CE2178BCFC00F674B3 /* SelectingViewController.swift in Sources */,
 				A58CC552216CF96700B20CE9 /* UpperCell.swift in Sources */,
 				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
 				A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */,
 				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
 				A58CC55B216D0C9500B20CE9 /* WeightToLoseCell.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
+				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
+				A50250D72178F4F300F674B3 /* ProgressBar.swift in Sources */,
 				A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
