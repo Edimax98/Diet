@@ -9,6 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--TestPageViewConroller-->
+        <scene sceneID="hYq-jS-dY1">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="segueToTestView" storyboardName="Main" referencedIdentifier="TestPageViewConroller" id="pdx-0Q-yEq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N5L-PV-ioZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-383" y="-778"/>
+        </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="IOK-gX-nfe">
             <objects>
@@ -95,11 +103,12 @@
                         <outlet property="pageControl" destination="aBp-7P-tdY" id="nHc-xf-IWG"/>
                         <outlet property="pageDescriptionLable" destination="kUt-m2-ymW" id="bo4-5P-CsN"/>
                         <outlet property="pageTitleLable" destination="YOf-vB-ZFh" id="AVr-Al-zRB"/>
+                        <segue destination="pdx-0Q-yEq" kind="show" identifier="segueToTestView" id="bpn-K7-gDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eJ-SX-bfG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1004" y="-554.57271364317842"/>
+            <point key="canvasLocation" x="-1129" y="-566"/>
         </scene>
     </scenes>
     <resources>

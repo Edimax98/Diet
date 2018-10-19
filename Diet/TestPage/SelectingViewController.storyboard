@@ -26,13 +26,13 @@
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bop-Fs-YtA">
-                                <rect key="frame" x="16" y="588" width="343" height="59"/>
-                                <color key="backgroundColor" red="0.27450980392156865" green="0.7409388665538158" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="16" y="588" width="343" height="60"/>
+                                <color key="backgroundColor" red="0.41258156299591064" green="0.73043006658554077" blue="0.97649747133255005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="MaL-qM-fGr"/>
+                                    <constraint firstAttribute="height" constant="60" id="MaL-qM-fGr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="21"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -64,9 +64,17 @@
                                             <constraint firstAttribute="height" constant="17" id="KPv-YQ-nlx"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj0-YJ-BQ0">
+                                        <rect key="frame" x="17" y="28" width="47" height="39"/>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="d7e-9L-UEc" eventType="touchUpInside" id="VUm-kJ-tGz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="1qS-eE-cp0" firstAttribute="top" secondItem="hj0-YJ-BQ0" secondAttribute="bottom" constant="116" id="0J0-OB-KNu"/>
                                     <constraint firstItem="1qS-eE-cp0" firstAttribute="leading" secondItem="8Lo-uH-khT" secondAttribute="leading" constant="48" id="0qA-Nl-v9M"/>
                                     <constraint firstAttribute="trailing" secondItem="oop-2x-hci" secondAttribute="trailing" constant="63" id="4AK-kR-NIh"/>
                                     <constraint firstAttribute="height" constant="293" id="FaR-6R-ZGn"/>
@@ -74,11 +82,14 @@
                                     <constraint firstAttribute="trailing" secondItem="MWL-we-nbe" secondAttribute="trailing" constant="138" id="Lfv-Hm-jFi"/>
                                     <constraint firstItem="oop-2x-hci" firstAttribute="top" secondItem="1qS-eE-cp0" secondAttribute="bottom" constant="20" id="M0Z-mV-juM"/>
                                     <constraint firstAttribute="width" constant="375" id="Nzy-Qu-pvV"/>
+                                    <constraint firstItem="hj0-YJ-BQ0" firstAttribute="top" secondItem="8Lo-uH-khT" secondAttribute="top" constant="28" id="Ua8-kq-uwc"/>
+                                    <constraint firstItem="hj0-YJ-BQ0" firstAttribute="leading" secondItem="8Lo-uH-khT" secondAttribute="leading" constant="17" id="YS6-Z5-0fa"/>
                                     <constraint firstItem="oop-2x-hci" firstAttribute="leading" secondItem="8Lo-uH-khT" secondAttribute="leading" constant="62" id="afe-vq-TbA"/>
                                     <constraint firstItem="1qS-eE-cp0" firstAttribute="top" secondItem="MWL-we-nbe" secondAttribute="bottom" constant="36" id="gGt-o1-yCB"/>
                                     <constraint firstItem="MWL-we-nbe" firstAttribute="top" secondItem="8Lo-uH-khT" secondAttribute="top" constant="47" id="gq6-KQ-8Bk"/>
                                     <constraint firstAttribute="bottom" secondItem="oop-2x-hci" secondAttribute="bottom" priority="999" constant="22.5" id="lvu-hT-OqB"/>
                                     <constraint firstAttribute="trailing" secondItem="1qS-eE-cp0" secondAttribute="trailing" constant="49" id="o9X-SS-qlP"/>
+                                    <constraint firstItem="MWL-we-nbe" firstAttribute="leading" secondItem="hj0-YJ-BQ0" secondAttribute="trailing" constant="73" id="ufv-uQ-Ukc"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfi-UI-e1F" customClass="Triangle" customModule="Diet" customModuleProvider="target">
@@ -110,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="answersPickerView" destination="8Pk-Kx-FHw" id="2yw-9m-uR1"/>
+                        <outlet property="backButton" destination="hj0-YJ-BQ0" id="rIF-RC-Hpe"/>
                         <outlet property="containerOfTitlesView" destination="8Lo-uH-khT" id="Jsf-ys-9fI"/>
                         <outlet property="iconImageView" destination="MWL-we-nbe" id="IV3-1U-cXg"/>
                         <outlet property="nextButton" destination="bop-Fs-YtA" id="RkC-Dc-cuR"/>
@@ -124,6 +136,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow" width="18" height="31"/>
         <image name="heart-beat" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
 </document>

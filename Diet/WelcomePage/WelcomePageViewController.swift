@@ -15,7 +15,7 @@ class WelcomePageViewController: UIViewController {
     @IBOutlet weak var pageDescriptionLable: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
-        
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
@@ -27,7 +27,7 @@ class WelcomePageViewController: UIViewController {
     }
 
     @IBAction func nextButtonPressed(_ sender: Any) {
-
+        self.performSegue(withIdentifier: "segueToTestView", sender: nil)
     }
 }
 

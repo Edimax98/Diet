@@ -29,6 +29,7 @@ class WelcomeViewController: UIPageViewController {
         self.view.backgroundColor = .white
         fillPages()
     }
+    
 
     private func fillPages() {
     

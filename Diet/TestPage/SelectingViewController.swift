@@ -17,6 +17,10 @@ class SelectingViewController: UIViewController {
     @IBOutlet weak var containerOfTitlesView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var triangleView: Triangle!
+    @IBOutlet weak var backButton: UIButton!
+    
+    var nextButtonPressed: (() -> Void)?
+    var backButtonPressed: (() -> Void)?
     
     var testViewData: TestViewData?
     
@@ -29,6 +33,11 @@ class SelectingViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        nextButtonPressed?()
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        backButtonPressed?()
     }
     
     fileprivate func setupView() {

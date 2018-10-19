@@ -13,6 +13,7 @@ class TestPageViewController: UIPageViewController {
     var testPages = [UIViewController]()
     var testViewData = [TestViewData]()
     
+    let genderSelectionPage = GenderSelectorViewController.controllerInStoryboard(UIStoryboard(name: "GenderSelectorViewController", bundle: nil))
     let ageSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let currentWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let goalWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
@@ -33,7 +34,7 @@ class TestPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = self
+        //dataSource = self
         self.view.backgroundColor = UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
         fillPages()
         fillViewData()
@@ -51,6 +52,7 @@ class TestPageViewController: UIPageViewController {
     
     fileprivate func fillPages() {
         
+        testPages.append(genderSelectionPage)
         testPages.append(ageSelectionPage)
         testPages.append(currentWeightSelectionPage)
         testPages.append(goalWeightSelectionPage)
@@ -60,15 +62,88 @@ class TestPageViewController: UIPageViewController {
     fileprivate func setupSelectionTestPages() {
         
         ageSelectionPage.testViewData = ageSelectionPageData
+        let _ = ageSelectionPage.view
         currentWeightSelectionPage.testViewData = currentWeightSelectionPageData
         goalWeightSelectionPage.testViewData = goalWeightSelectionPageData
         timeSelectionPage.testViewData = timeSelectionPageData
+        handleBackButtonPressing()
+        handleNextButtonPressing()
         let _ = timeSelectionPage.view
         timeSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
     }
     
+    fileprivate func handleNextButtonPressing() {
+        
+        genderSelectionPage.nextButtonPressed = {
+            self.scrollToNextViewController()
+        }
+        
+        ageSelectionPage.nextButtonPressed = {
+            self.scrollToNextViewController()
+        }
+        
+        currentWeightSelectionPage.nextButtonPressed = {
+            self.scrollToNextViewController()
+        }
+        
+        goalWeightSelectionPage.nextButtonPressed = {
+            self.scrollToNextViewController()
+        }
+        
+        timeSelectionPage.nextButtonPressed = {
+            
+        }
+    }
+    
+    fileprivate func handleBackButtonPressing() {
+
+        ageSelectionPage.backButtonPressed = {
+            self.scrollToPreviousViewController()
+        }
+        
+        currentWeightSelectionPage.backButtonPressed = {
+            self.scrollToPreviousViewController()
+        }
+        
+        goalWeightSelectionPage.backButtonPressed = {
+            self.scrollToPreviousViewController()
+        }
+        
+        timeSelectionPage.backButtonPressed = {
+            self.scrollToPreviousViewController()
+        }
+    }
+    
     fileprivate func setupGenderSelectionPage(_ page: UIViewController) {
         
+    }
+    
+    private func scrollToViewController(viewController: UIViewController,
+                                        direction: UIPageViewController.NavigationDirection = .forward) {
+        setViewControllers([viewController], direction: direction, animated: true, completion: nil)
+    }
+    
+    func scrollToViewController(index newIndex: Int) {
+        if let firstViewController = viewControllers?.first,
+            let currentIndex = testPages.firstIndex(of: firstViewController) {
+            let direction: UIPageViewController.NavigationDirection = newIndex >= currentIndex ? .forward : .reverse
+            let nextViewController = testPages[newIndex]
+            scrollToViewController(viewController: nextViewController, direction: direction)
+        }
+    }
+    
+    func scrollToNextViewController() {
+        if let visibleViewController = viewControllers?.first,
+            let nextViewController = pageViewController(self, viewControllerAfter: visibleViewController) {
+            scrollToViewController(viewController: nextViewController)
+        }
+    }
+    
+    func scrollToPreviousViewController() {
+        if let visibleViewController = viewControllers?.last,
+            let previousViewContoller = pageViewController(self, viewControllerBefore: visibleViewController) {
+            scrollToViewController(viewController: previousViewContoller, direction: .reverse)
+        }
     }
 }
 
