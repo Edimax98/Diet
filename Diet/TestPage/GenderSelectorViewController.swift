@@ -11,17 +11,25 @@ import UIKit
 class GenderSelectorViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var containerTitleView: UIView!
     @IBOutlet weak var triangleView: Triangle!
+    @IBOutlet weak var progressView: UIProgressView!
     
     var nextButtonPressed: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        progressView.progress = 0.2
+        
+        progressView.layer.cornerRadius = 9
+        progressView.clipsToBounds = true
+        progressView.layer.sublayers![1].cornerRadius = 9
+        progressView.subviews[1].clipsToBounds = true
+        
         maleButton.layer.cornerRadius = maleButton.frame.height / 2
         femaleButton.layer.cornerRadius = femaleButton.frame.height / 2
         nextButton.layer.cornerRadius = nextButton.frame.height / 2

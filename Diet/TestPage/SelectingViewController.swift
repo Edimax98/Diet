@@ -12,12 +12,12 @@ class SelectingViewController: UIViewController {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var answersPickerView: UIPickerView!
     @IBOutlet weak var containerOfTitlesView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var triangleView: Triangle!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
     
     var nextButtonPressed: (() -> Void)?
     var backButtonPressed: (() -> Void)?
@@ -28,7 +28,13 @@ class SelectingViewController: UIViewController {
         super.viewDidLoad()
         answersPickerView.delegate = self
         answersPickerView.dataSource = self
-
+        
+        progressView.progress = 0.2
+        progressView.layer.cornerRadius = 9
+        progressView.clipsToBounds = true
+        progressView.layer.sublayers![1].cornerRadius = 9
+        progressView.subviews[1].clipsToBounds = true
+    
         setupView()
     }
     
@@ -48,7 +54,6 @@ class SelectingViewController: UIViewController {
         nextButton.layer.cornerRadius = nextButton.frame.height / 2
         iconImageView.image = UIImage(named: data.iconName)
         titleLabel.text = data.title
-        progressView.layer.cornerRadius = progressView.frame.height / 2
         containerOfTitlesView.layer.shadowColor = UIColor.lightGray.cgColor
         containerOfTitlesView.layer.shadowOffset = CGSize(width: 0, height: 5)
         containerOfTitlesView.layer.shadowOpacity = 0.25

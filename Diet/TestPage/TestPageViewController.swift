@@ -34,12 +34,15 @@ class TestPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //dataSource = self
         self.view.backgroundColor = UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
         fillPages()
         fillViewData()
-        setupSelectionTestPages()
         setViewControllers([testPages.first!], direction: .forward, animated: true, completion: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupSelectionTestPages()
     }
     
     fileprivate func fillViewData() {
@@ -60,15 +63,23 @@ class TestPageViewController: UIPageViewController {
     }
     
     fileprivate func setupSelectionTestPages() {
-        
+
         ageSelectionPage.testViewData = ageSelectionPageData
-        let _ = ageSelectionPage.view
         currentWeightSelectionPage.testViewData = currentWeightSelectionPageData
         goalWeightSelectionPage.testViewData = goalWeightSelectionPageData
         timeSelectionPage.testViewData = timeSelectionPageData
+        
+        let _ = ageSelectionPage.view
+        let _ = timeSelectionPage.view
+        let _ = goalWeightSelectionPage.view
+        let _ = currentWeightSelectionPage.view
+        
+        ageSelectionPage.progressView.progress = 0.4
+        currentWeightSelectionPage.progressView.progress = 0.6
+        goalWeightSelectionPage.progressView.progress = 0.8
+        timeSelectionPage.progressView.progress = 1.0
         handleBackButtonPressing()
         handleNextButtonPressing()
-        let _ = timeSelectionPage.view
         timeSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
     }
     
@@ -91,7 +102,8 @@ class TestPageViewController: UIPageViewController {
         }
         
         timeSelectionPage.nextButtonPressed = {
-            
+            let testResultsVC = TestResultsViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+            self.present(TestResultsViewController(), animated: true, completion: nil)
         }
     }
     
