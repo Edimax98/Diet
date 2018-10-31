@@ -22,6 +22,8 @@
 		A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D32177767900FC62EE /* NSObjectExtension.swift */; };
 		A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D52177783800FC62EE /* WelcomePageViewController.swift */; };
 		A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D7217787A100FC62EE /* DefaultActionButton.swift */; };
+		A574E355218A0D0A00A87631 /* DailyRationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574E353218A0D0A00A87631 /* DailyRationCell.swift */; };
+		A574E356218A0D0A00A87631 /* DailyRationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A574E354218A0D0A00A87631 /* DailyRationCell.xib */; };
 		A57C7B0221764278008DA476 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C7B0121764278008DA476 /* Network.swift */; };
 		A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53B216CF65100B20CE9 /* AppDelegate.swift */; };
 		A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53D216CF65100B20CE9 /* MainViewController.swift */; };
@@ -67,6 +69,8 @@
 		A548E9D32177767900FC62EE /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		A548E9D52177783800FC62EE /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		A548E9D7217787A100FC62EE /* DefaultActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultActionButton.swift; sourceTree = "<group>"; };
+		A574E353218A0D0A00A87631 /* DailyRationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRationCell.swift; sourceTree = "<group>"; };
+		A574E354218A0D0A00A87631 /* DailyRationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyRationCell.xib; sourceTree = "<group>"; };
 		A57C7B0121764278008DA476 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A58CC538216CF65100B20CE9 /* Diet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58CC53B216CF65100B20CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,8 +137,6 @@
 				A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */,
 				A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */,
 				A548E9D52177783800FC62EE /* WelcomePageViewController.swift */,
-				A53C64B32188BF0600894738 /* SuggestedDietCell.swift */,
-				A53C64B42188BF0600894738 /* SuggestedDietCell.xib */,
 			);
 			path = WelcomePage;
 			sourceTree = "<group>";
@@ -169,6 +171,16 @@
 			path = Appearance;
 			sourceTree = "<group>";
 		};
+		A574E352218A0C2300A87631 /* SuggestedDiets */ = {
+			isa = PBXGroup;
+			children = (
+				A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */,
+				A53C64B32188BF0600894738 /* SuggestedDietCell.swift */,
+				A53C64B42188BF0600894738 /* SuggestedDietCell.xib */,
+			);
+			path = SuggestedDiets;
+			sourceTree = "<group>";
+		};
 		A58CC52F216CF65100B20CE9 = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +202,7 @@
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
 			isa = PBXGroup;
 			children = (
-				A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */,
+				A574E352218A0C2300A87631 /* SuggestedDiets */,
 				A548E9D9217787A800FC62EE /* Appearance */,
 				A548E9CC21776D6D00FC62EE /* Singletones */,
 				A5E0C331216F951E0045975E /* Extensions */,
@@ -204,6 +216,8 @@
 				A5EA838F2170F8C00088F8FE /* Models */,
 				A58CC54E216CF6A500B20CE9 /* Assets */,
 				A50250D12178C84800F674B3 /* TestPage */,
+				A574E353218A0D0A00A87631 /* DailyRationCell.swift */,
+				A574E354218A0D0A00A87631 /* DailyRationCell.xib */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -397,6 +411,7 @@
 				A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */,
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
 				A58CC553216CF96700B20CE9 /* UpperCell.xib in Resources */,
+				A574E356218A0D0A00A87631 /* DailyRationCell.xib in Resources */,
 				A58CC558216D097900B20CE9 /* AmountOfWeightToLose.xib in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
 				A58CC55C216D0C9500B20CE9 /* WeightToLoseCell.xib in Resources */,
@@ -481,6 +496,7 @@
 				A58CC552216CF96700B20CE9 /* UpperCell.swift in Sources */,
 				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
 				A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */,
+				A574E355218A0D0A00A87631 /* DailyRationCell.swift in Sources */,
 				A53C64B82188C25000894738 /* SuggestedDietsViewController.swift in Sources */,
 				A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */,
 				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,

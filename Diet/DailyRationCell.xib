@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DailyRationCell" customModule="Diet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="480"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="280" height="480"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8H-Rk-aPl">
+                        <rect key="frame" x="0.0" y="116" width="280" height="364"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="porridge" translatesAutoresizingMaskIntoConstraints="NO" id="iWS-xs-V9l">
+                                <rect key="frame" x="85" y="-63" width="110" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="5ZB-4X-9yc"/>
+                                    <constraint firstAttribute="height" constant="110" id="cW3-N0-eVa"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZxT-df-flz">
+                                <rect key="frame" x="15" y="7" width="40" height="40"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DbT-xX-Qjn">
+                                <rect key="frame" x="226" y="7" width="40" height="40"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lks-bO-rQ2">
+                                <rect key="frame" x="15" y="55" width="251" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="251" id="I4G-TM-fgQ"/>
+                                    <constraint firstAttribute="height" constant="49" id="etQ-Xl-fpg"/>
+                                </constraints>
+                                <string key="text">Овсяная каша с
+яблоком 150г</string>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oh1-Sw-r3s">
+                                <rect key="frame" x="20" y="285" width="240" height="57"/>
+                                <color key="backgroundColor" red="0.2177669783" green="0.96335659900000004" blue="0.57358892049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="3Kc-YB-YI5"/>
+                                    <constraint firstAttribute="height" constant="57" id="FfB-XS-58X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="21"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="imp-2O-DHk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lks-bO-rQ2" firstAttribute="top" secondItem="ZxT-df-flz" secondAttribute="bottom" constant="8" id="1XG-Gk-JSQ"/>
+                            <constraint firstAttribute="bottom" secondItem="oh1-Sw-r3s" secondAttribute="bottom" constant="22" id="2N5-Ca-Gi0"/>
+                            <constraint firstItem="iWS-xs-V9l" firstAttribute="top" secondItem="r8H-Rk-aPl" secondAttribute="top" constant="-63" id="Bzz-pj-OfN"/>
+                            <constraint firstItem="DbT-xX-Qjn" firstAttribute="top" secondItem="r8H-Rk-aPl" secondAttribute="top" constant="7" id="GKA-UN-9rM"/>
+                            <constraint firstItem="iWS-xs-V9l" firstAttribute="leading" secondItem="ZxT-df-flz" secondAttribute="trailing" constant="30" id="L8L-bb-ykr"/>
+                            <constraint firstItem="iWS-xs-V9l" firstAttribute="centerX" secondItem="r8H-Rk-aPl" secondAttribute="centerX" id="S1u-LF-usj"/>
+                            <constraint firstItem="Lks-bO-rQ2" firstAttribute="leading" secondItem="r8H-Rk-aPl" secondAttribute="leading" constant="15" id="TEd-Xc-PyP"/>
+                            <constraint firstItem="oh1-Sw-r3s" firstAttribute="centerX" secondItem="r8H-Rk-aPl" secondAttribute="centerX" id="ahm-aT-or2"/>
+                            <constraint firstItem="DbT-xX-Qjn" firstAttribute="leading" secondItem="iWS-xs-V9l" secondAttribute="trailing" constant="31" id="bPN-as-tvO"/>
+                            <constraint firstItem="Lks-bO-rQ2" firstAttribute="top" secondItem="iWS-xs-V9l" secondAttribute="bottom" constant="8" id="dfQ-DP-0Xc"/>
+                            <constraint firstAttribute="trailing" secondItem="Lks-bO-rQ2" secondAttribute="trailing" constant="14" id="fiN-XC-4Ui"/>
+                            <constraint firstAttribute="trailing" secondItem="DbT-xX-Qjn" secondAttribute="trailing" constant="14" id="mEb-5p-eDE"/>
+                            <constraint firstItem="oh1-Sw-r3s" firstAttribute="top" secondItem="Lks-bO-rQ2" secondAttribute="bottom" constant="181" id="o8p-q8-rhl"/>
+                            <constraint firstItem="ZxT-df-flz" firstAttribute="top" secondItem="r8H-Rk-aPl" secondAttribute="top" constant="7" id="rVG-5v-g4C"/>
+                            <constraint firstItem="ZxT-df-flz" firstAttribute="leading" secondItem="r8H-Rk-aPl" secondAttribute="leading" constant="15" id="trB-HL-ZEa"/>
+                            <constraint firstAttribute="bottom" secondItem="iWS-xs-V9l" secondAttribute="bottom" constant="317" id="uaS-LG-Lcm"/>
+                            <constraint firstItem="Lks-bO-rQ2" firstAttribute="top" secondItem="DbT-xX-Qjn" secondAttribute="bottom" constant="8" id="z3k-7t-3ba"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="r8H-Rk-aPl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="116" id="3NB-FM-bHG"/>
+                <constraint firstItem="r8H-Rk-aPl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RYI-lF-tTf"/>
+                <constraint firstAttribute="trailing" secondItem="r8H-Rk-aPl" secondAttribute="trailing" id="XEq-sn-z0w"/>
+                <constraint firstAttribute="bottom" secondItem="r8H-Rk-aPl" secondAttribute="bottom" id="vtn-UO-9zR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="280" height="480"/>
+            <connections>
+                <outlet property="dishNameLabel" destination="Lks-bO-rQ2" id="9gp-B2-QsH"/>
+                <outlet property="dishPictureImageView" destination="iWS-xs-V9l" id="wSm-vs-FxX"/>
+                <outlet property="nextButton" destination="oh1-Sw-r3s" id="A3n-p6-ImI"/>
+            </connections>
+            <point key="canvasLocation" x="-3.2000000000000002" y="33.283358320839582"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="porridge" width="304" height="227"/>
+    </resources>
+</document>
