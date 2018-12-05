@@ -11,6 +11,7 @@ PODS:
   - FacebookCore (0.3.2):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.35)
+  - FBAudienceNetwork (5.0.2)
   - FBSDKCoreKit (4.36.0):
     - Bolts (~> 1.7)
   - SwiftyJSON (4.1.0)
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage
   - FacebookCore
+  - FBAudienceNetwork (~> 5.0.1)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -27,6 +29,7 @@ SPEC REPOS:
     - AlamofireImage
     - Bolts
     - FacebookCore
+    - FBAudienceNetwork
     - FBSDKCoreKit
     - SwiftyJSON
 
@@ -35,9 +38,10 @@ SPEC CHECKSUMS:
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FacebookCore: fe93222bb70346730ef33b061d493e9e7a7cb1f5
+  FBAudienceNetwork: 2fd6739135cc15b3260c4d25b6cc7d414afdb2e8
   FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 0a231c404ea2cd1e20ec60d1c87e028bbf0f85ed
+PODFILE CHECKSUM: 7ea3bf26207c930702993efe41478b207477ce2c
 
 COCOAPODS: 1.5.2

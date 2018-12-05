@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import FBAudienceNetwork
+
+protocol PageSelectionHandler: class {
+    
+    func pageSelected(with index: Float, with lastIndex: Int)
+}
 
 class SelectingViewController: UIViewController {
 
@@ -18,28 +24,62 @@ class SelectingViewController: UIViewController {
     @IBOutlet weak var triangleView: Triangle!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var adBannerView: UIView!
+    @IBOutlet weak var nextButtonWidthConstraint: NSLayoutConstraint!
     
-    var nextButtonPressed: (() -> Void)?
+    var prevIndexForProgressView: Float = 0.0
+    var indexForProgressView: Float = 0.0
+    var nextButtonPressed: ((Int) -> Void)?
     var backButtonPressed: (() -> Void)?
     
     var testViewData: TestViewData?
+    var adView: FBAdView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         answersPickerView.delegate = self
         answersPickerView.dataSource = self
         
-        progressView.progress = 0.2
         progressView.layer.cornerRadius = 9
         progressView.clipsToBounds = true
         progressView.layer.sublayers![1].cornerRadius = 9
         progressView.subviews[1].clipsToBounds = true
-    
+        
+        adView = FBAdView(placementID: "317759862160517_317760728827097", adSize: kFBAdSizeHeight50Banner, rootViewController: self)
+        adView.delegate = self
+        adView.loadAd()
         setupView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        nextButton.isHidden = false
+        nextButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.nextButton.transform = CGAffineTransform.identity
+        }
+        
+        progressView.setProgress(indexForProgressView, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let buttonBounds = nextButton.bounds
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.nextButton.bounds = CGRect(x: buttonBounds.minX, y: buttonBounds.maxY, width: buttonBounds.width - buttonBounds.width, height: buttonBounds.height - buttonBounds.height)
+        }) { (flag) in
+            self.nextButton.isHidden = true
+        }
+        progressView.setProgress(prevIndexForProgressView, animated: true)
+    }
+    
     @IBAction func nextButtonPressed(_ sender: Any) {
-        nextButtonPressed?()
+        nextButtonPressed?(answersPickerView.selectedRow(inComponent: 0))
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -82,7 +122,34 @@ extension SelectingViewController: UIPickerViewDelegate {
         if let unit = data.unit {
             return "\(data.pickerData[row])" + " " + unit
         }
-        
         return "\(data.pickerData[row])"
     }
 }
+
+extension SelectingViewController: FBAdViewDelegate {
+    
+    func adViewDidLoad(_ adView: FBAdView) {
+        if adBannerView != nil {
+            adView.frame = adBannerView.bounds
+            adBannerView.addSubview(adView)
+        } else if adBannerView != nil {
+            adView.removeFromSuperview()
+            topConstraint.constant = 0.0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func adView(_ adView: FBAdView, didFailWithError error: Error) {
+        print(error)
+        self.adView.removeFromSuperview()
+        topConstraint.constant = 0.0
+        self.view.layoutIfNeeded()
+    }
+}
+
+extension SelectingViewController: PageSelectionHandler {
+    
+    func pageSelected(with index: Float, with lastIndex: Int) {
+    }
+}
+

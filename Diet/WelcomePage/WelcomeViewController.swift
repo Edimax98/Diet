@@ -30,7 +30,6 @@ class WelcomeViewController: UIPageViewController {
         fillPages()
     }
     
-
     private func fillPages() {
     
         let _ = firstPage.view

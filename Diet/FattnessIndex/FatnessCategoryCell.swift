@@ -10,9 +10,16 @@ import UIKit
 
 class FatnessCategoryCell: UICollectionViewCell {
 
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var holderView: UIView!
+    
+    static var identifier = "FatnessCategoryCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = true
     }
-
 }
+

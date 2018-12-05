@@ -7,17 +7,28 @@
 //
 
 import UIKit
+import FBAudienceNetwork
+
+protocol TestResultOutput: class {
+    
+    func testCompleted(with result: TestResult)
+}
 
 class TestPageViewController: UIPageViewController {
 
     var testPages = [UIViewController]()
     var testViewData = [TestViewData]()
-    
+    var testResult = TestResult()
+    weak var testOutput: TestResultOutput?
+    fileprivate weak var loadingAlert: UIAlertController!
+    fileprivate var fullScreenAd: FBInterstitialAd!
+    fileprivate var adLoadingTimoutTimer: Timer!
+
     let genderSelectionPage = GenderSelectorViewController.controllerInStoryboard(UIStoryboard(name: "GenderSelectorViewController", bundle: nil))
     let ageSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let currentWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let goalWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
-    let timeSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
+    let heightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     
     let ageSelectionPageData = TestViewData(title: "Select your age".localized,
                                             iconName: "heart-beat", pickerData: (10,99))
@@ -25,9 +36,11 @@ class TestPageViewController: UIPageViewController {
                                                       iconName: "weight-scale", pickerData: (50,99), unit: "kg".localized)
     let goalWeightSelectionPageData = TestViewData(title: "How much do you want to lose in weight".localized,
                                                    iconName: "diet", pickerData: (1,99), unit: "kg".localized)
-    let timeSelectionPageData = TestViewData(title: "How fast do you want to lose in weight".localized,
-                                         iconName: "timer", pickerData: (1,30), unit: "weeks".localized)
+    let heigthSelectionPageData = TestViewData(title: "Select your height".localized,
+                                         iconName: "timer", pickerData: (140,200), unit: "cm.".localized)
     
+    let resultsVc = TestResultsViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil), identifier: "TestResultsViewController")
+
     required init?(coder: NSCoder) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
@@ -38,6 +51,10 @@ class TestPageViewController: UIPageViewController {
         fillPages()
         fillViewData()
         setViewControllers([testPages.first!], direction: .forward, animated: true, completion: nil)
+        
+        resultsVc.repeatTest = {
+            self.scrollToViewController(index: 0)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +67,7 @@ class TestPageViewController: UIPageViewController {
         testViewData.append(ageSelectionPageData)
         testViewData.append(currentWeightSelectionPageData)
         testViewData.append(goalWeightSelectionPageData)
-        testViewData.append(timeSelectionPageData)
+        testViewData.append(heigthSelectionPageData)
     }
     
     fileprivate func fillPages() {
@@ -59,7 +76,7 @@ class TestPageViewController: UIPageViewController {
         testPages.append(ageSelectionPage)
         testPages.append(currentWeightSelectionPage)
         testPages.append(goalWeightSelectionPage)
-        testPages.append(timeSelectionPage)
+        testPages.append(heightSelectionPage)
     }
     
     fileprivate func setupSelectionTestPages() {
@@ -67,43 +84,65 @@ class TestPageViewController: UIPageViewController {
         ageSelectionPage.testViewData = ageSelectionPageData
         currentWeightSelectionPage.testViewData = currentWeightSelectionPageData
         goalWeightSelectionPage.testViewData = goalWeightSelectionPageData
-        timeSelectionPage.testViewData = timeSelectionPageData
+        heightSelectionPage.testViewData = heigthSelectionPageData
         
         let _ = ageSelectionPage.view
-        let _ = timeSelectionPage.view
+        let _ = heightSelectionPage.view
         let _ = goalWeightSelectionPage.view
         let _ = currentWeightSelectionPage.view
         
-        ageSelectionPage.progressView.progress = 0.4
-        currentWeightSelectionPage.progressView.progress = 0.6
-        goalWeightSelectionPage.progressView.progress = 0.8
-        timeSelectionPage.progressView.progress = 1.0
         handleBackButtonPressing()
         handleNextButtonPressing()
-        timeSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
+        heightSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
+    }
+    
+    fileprivate func loadFullScreenAd() {
+        fullScreenAd = FBInterstitialAd(placementID: "2094400630876165_2124263474556547")
+        fullScreenAd.load()
+        fullScreenAd.delegate = self
+        loadingAlert = UIAlertController.displayLoadingAlert(on: self)
+        if loadingAlert != nil {
+            present(loadingAlert, animated: true, completion: nil)
+        }
+        adLoadingTimoutTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(handleTimeout), userInfo: nil, repeats: false)
     }
     
     fileprivate func handleNextButtonPressing() {
         
-        genderSelectionPage.nextButtonPressed = {
+        genderSelectionPage.genderSelected = { gender in
+            self.testResult.gender = gender
             self.scrollToNextViewController()
         }
         
-        ageSelectionPage.nextButtonPressed = {
+        ageSelectionPage.nextButtonPressed = { index in
             self.scrollToNextViewController()
+            self.testResult.age = self.ageSelectionPageData.pickerData[index]
         }
         
-        currentWeightSelectionPage.nextButtonPressed = {
+        currentWeightSelectionPage.nextButtonPressed = { index in
             self.scrollToNextViewController()
+            self.testResult.currentWeight = self.currentWeightSelectionPageData.pickerData[index]
         }
         
-        goalWeightSelectionPage.nextButtonPressed = {
-            self.scrollToNextViewController()
+        goalWeightSelectionPage.nextButtonPressed = { index in
+            
+            if self.testResult.currentWeight <= self.goalWeightSelectionPageData.pickerData[index] {
+                let alert = UIAlertController(title: "Error", message: "You cant set goal bigger then your current weight", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.scrollToNextViewController()
+                self.testResult.goalWeight = self.goalWeightSelectionPageData.pickerData[index]
+            }
         }
         
-        timeSelectionPage.nextButtonPressed = {
-            let testResultsVC = TestResultsViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-            self.present(TestResultsViewController(), animated: true, completion: nil)
+        heightSelectionPage.nextButtonPressed = { index in
+            self.testResult.height = self.heigthSelectionPageData.pickerData[index]
+            self.testOutput = self.resultsVc
+            let _ = self.resultsVc.view
+            self.testOutput?.testCompleted(with: self.testResult)
+            self.loadFullScreenAd()
         }
     }
     
@@ -121,7 +160,7 @@ class TestPageViewController: UIPageViewController {
             self.scrollToPreviousViewController()
         }
         
-        timeSelectionPage.backButtonPressed = {
+        heightSelectionPage.backButtonPressed = {
             self.scrollToPreviousViewController()
         }
     }
@@ -157,6 +196,12 @@ class TestPageViewController: UIPageViewController {
             scrollToViewController(viewController: previousViewContoller, direction: .reverse)
         }
     }
+    
+    @objc func handleTimeout() {
+        if loadingAlert != nil {
+            self.loadingAlert.dismiss(animated: true)
+        }
+    }
 }
 
 // MARK: - UIPageViewControllerDataSource
@@ -164,13 +209,28 @@ extension TestPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
 
-        guard let viewControllerIndex = testPages.index(of: viewController ) else { return nil }
+        guard let viewControllerIndex = testPages.index(of: viewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
         guard previousIndex >= 0 else { return nil }
         guard testPages.count > previousIndex else { return nil }
-        let previousTestPage = testPages[previousIndex]
-
-        return previousTestPage
+        
+        if let previousTestPage = testPages[previousIndex] as? SelectingViewController {
+            let progress = Float(((previousIndex + 1) * 100 / testPages.count)) / 100
+            let prevProgress = Float(((previousIndex) * 100 / testPages.count)) / 100
+            //previousTestPage.progressView.progres = progress
+            //previousTestPage.prevIndexForProgressView = prevProgress
+            previousTestPage.progressView.progress = prevProgress
+            previousTestPage.indexForProgressView = progress
+            return previousTestPage
+        }
+        
+        if let previousTestPage = testPages[previousIndex] as? GenderSelectorViewController {
+            let progress = Float(((previousIndex + 1) * 100 / testPages.count)) / 100
+           // let prevProgress = Float(((previousIndex) * 100 / testPages.count)) / 100
+            previousTestPage.indexForProgressView = progress
+            return previousTestPage
+        }
+        return UIViewController()
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -179,8 +239,47 @@ extension TestPageViewController: UIPageViewControllerDataSource {
         let nextIndex = viewControllerIndex + 1
         guard nextIndex < testPages.count else { return nil }
         guard testPages.count > nextIndex else { return nil }
-        let nextTestPage = testPages[nextIndex]
+        
+        if let nextTestPage = testPages[nextIndex] as? SelectingViewController {
+            let progress = Float(((nextIndex + 1) * 100 / testPages.count)) / 100
+            let prevProgress = Float(((nextIndex) * 100 / testPages.count)) / 100
+            nextTestPage.progressView.progress = prevProgress
+            nextTestPage.indexForProgressView = progress
+            return nextTestPage
+        }
+        
+        if let nextTestPage = testPages[nextIndex] as? GenderSelectorViewController {
+            let progress = Float(((nextIndex + 1) * 100 / testPages.count)) / 100
+            nextTestPage.indexForProgressView = progress
+            return nextTestPage
+        }
+        return UIViewController()
+    }
+}
 
-        return nextTestPage
+extension TestPageViewController: FBInterstitialAdDelegate {
+    
+    func interstitialAdDidClose(_ interstitialAd: FBInterstitialAd) {
+        self.present(self.resultsVc, animated: true, completion: nil)
+    }
+    
+    func interstitialAdDidLoad(_ interstitialAd: FBInterstitialAd) {
+        
+        guard loadingAlert != nil else { adLoadingTimoutTimer.invalidate(); return }
+        loadingAlert.dismiss(animated: true) {
+            self.adLoadingTimoutTimer.invalidate()
+            interstitialAd.show(fromRootViewController: self)
+        }
+    }
+    
+    func interstitialAd(_ interstitialAd: FBInterstitialAd, didFailWithError error: Error) {
+        
+        if loadingAlert != nil {
+            loadingAlert.dismiss(animated: true) {
+                self.adLoadingTimoutTimer.invalidate()
+                print("Error  - ", error.localizedDescription)
+                self.present(self.resultsVc, animated: true, completion: nil)
+            }
+        }
     }
 }

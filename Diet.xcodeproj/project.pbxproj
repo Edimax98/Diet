@@ -13,6 +13,9 @@
 		A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250CF2178C79D00F674B3 /* TestPageViewController.swift */; };
 		A50250D32178CB7200F674B3 /* TestViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250D22178CB7200F674B3 /* TestViewData.swift */; };
 		A50250D52178E79000F674B3 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50250D42178E79000F674B3 /* TriangleView.swift */; };
+		A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53B1B4621B58A770036AD00 /* FatnessIndexViewContoller.swift */; };
+		A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53B1B4921B58ED50036AD00 /* FatnessCategoryCell.swift */; };
+		A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53B1B4A21B58ED50036AD00 /* FatnessCategoryCell.xib */; };
 		A53C64B52188BF0600894738 /* SuggestedDietCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C64B32188BF0600894738 /* SuggestedDietCell.swift */; };
 		A53C64B62188BF0600894738 /* SuggestedDietCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C64B42188BF0600894738 /* SuggestedDietCell.xib */; };
 		A53C64B82188C25000894738 /* SuggestedDietsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */; };
@@ -22,6 +25,7 @@
 		A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D32177767900FC62EE /* NSObjectExtension.swift */; };
 		A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D52177783800FC62EE /* WelcomePageViewController.swift */; };
 		A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D7217787A100FC62EE /* DefaultActionButton.swift */; };
+		A57430C4218B61C000D6FC1A /* DailyRationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57430C3218B61C000D6FC1A /* DailyRationViewController.swift */; };
 		A574E355218A0D0A00A87631 /* DailyRationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574E353218A0D0A00A87631 /* DailyRationCell.swift */; };
 		A574E356218A0D0A00A87631 /* DailyRationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A574E354218A0D0A00A87631 /* DailyRationCell.xib */; };
 		A57C7B0221764278008DA476 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C7B0121764278008DA476 /* Network.swift */; };
@@ -41,6 +45,9 @@
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
 		A5B02C66217A241200A9E3A4 /* GenderSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
+		A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */; };
+		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
+		A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */; };
 		A5E0C330216F95170045975E /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C32F216F95170045975E /* StringExtentions.swift */; };
 		A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C332216F9B560045975E /* CharacteristicCell.swift */; };
 		A5E0C335216F9B560045975E /* CharacteristicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E0C333216F9B560045975E /* CharacteristicCell.xib */; };
@@ -60,6 +67,9 @@
 		A50250CF2178C79D00F674B3 /* TestPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPageViewController.swift; sourceTree = "<group>"; };
 		A50250D22178CB7200F674B3 /* TestViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewData.swift; sourceTree = "<group>"; };
 		A50250D42178E79000F674B3 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		A53B1B4621B58A770036AD00 /* FatnessIndexViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatnessIndexViewContoller.swift; sourceTree = "<group>"; };
+		A53B1B4921B58ED50036AD00 /* FatnessCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatnessCategoryCell.swift; sourceTree = "<group>"; };
+		A53B1B4A21B58ED50036AD00 /* FatnessCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FatnessCategoryCell.xib; sourceTree = "<group>"; };
 		A53C64B32188BF0600894738 /* SuggestedDietCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedDietCell.swift; sourceTree = "<group>"; };
 		A53C64B42188BF0600894738 /* SuggestedDietCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedDietCell.xib; sourceTree = "<group>"; };
 		A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedDietsViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +79,7 @@
 		A548E9D32177767900FC62EE /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		A548E9D52177783800FC62EE /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		A548E9D7217787A100FC62EE /* DefaultActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultActionButton.swift; sourceTree = "<group>"; };
+		A57430C3218B61C000D6FC1A /* DailyRationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRationViewController.swift; sourceTree = "<group>"; };
 		A574E353218A0D0A00A87631 /* DailyRationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRationCell.swift; sourceTree = "<group>"; };
 		A574E354218A0D0A00A87631 /* DailyRationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyRationCell.xib; sourceTree = "<group>"; };
 		A57C7B0121764278008DA476 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -90,6 +101,9 @@
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
 		A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
+		A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
+		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
+		A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtentions.swift; sourceTree = "<group>"; };
 		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
 		A5E0C332216F9B560045975E /* CharacteristicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicCell.swift; sourceTree = "<group>"; };
 		A5E0C333216F9B560045975E /* CharacteristicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacteristicCell.xib; sourceTree = "<group>"; };
@@ -149,9 +163,18 @@
 				A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */,
 				A50250CD2178BCFC00F674B3 /* SelectingViewController.swift */,
 				A50250CF2178C79D00F674B3 /* TestPageViewController.swift */,
-				A58CC539216CF65100B20CE9 /* Products */,
 			);
 			path = TestPage;
+			sourceTree = "<group>";
+		};
+		A53B1B4821B58A860036AD00 /* FattnessIndex */ = {
+			isa = PBXGroup;
+			children = (
+				A53B1B4621B58A770036AD00 /* FatnessIndexViewContoller.swift */,
+				A53B1B4921B58ED50036AD00 /* FatnessCategoryCell.swift */,
+				A53B1B4A21B58ED50036AD00 /* FatnessCategoryCell.xib */,
+			);
+			path = FattnessIndex;
 			sourceTree = "<group>";
 		};
 		A548E9CC21776D6D00FC62EE /* Singletones */ = {
@@ -167,6 +190,7 @@
 			children = (
 				A548E9D7217787A100FC62EE /* DefaultActionButton.swift */,
 				A50250D42178E79000F674B3 /* TriangleView.swift */,
+				A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -185,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				A58CC53A216CF65100B20CE9 /* Diet */,
+				A58CC539216CF65100B20CE9 /* Products */,
 				0DBFAC8E0F84E985004B7A01 /* Pods */,
 				80B4B8AE01EA24BACB2ED1A0 /* Frameworks */,
 			);
@@ -196,7 +221,6 @@
 				A58CC538216CF65100B20CE9 /* Diet.app */,
 			);
 			name = Products;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
@@ -209,6 +233,7 @@
 				A58CC547216CF65200B20CE9 /* Info.plist */,
 				A58CC54D216CF69400B20CE9 /* Application */,
 				A58CC54F216CF6F100B20CE9 /* MainView */,
+				A53B1B4821B58A860036AD00 /* FattnessIndex */,
 				A50250CA2178B31400F674B3 /* WelcomePage */,
 				A58CC53F216CF65100B20CE9 /* Main.storyboard */,
 				A5A1DD23217E26360099A1BD /* TestResults */,
@@ -218,6 +243,7 @@
 				A50250D12178C84800F674B3 /* TestPage */,
 				A574E353218A0D0A00A87631 /* DailyRationCell.swift */,
 				A574E354218A0D0A00A87631 /* DailyRationCell.xib */,
+				A57430C3218B61C000D6FC1A /* DailyRationViewController.swift */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -273,6 +299,7 @@
 				A5E0C32F216F95170045975E /* StringExtentions.swift */,
 				A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */,
 				A548E9D32177767900FC62EE /* NSObjectExtension.swift */,
+				A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +349,7 @@
 			children = (
 				A5EA838D2170F8830088F8FE /* Recipe.swift */,
 				A50250D22178CB7200F674B3 /* TestViewData.swift */,
+				A5D858BD21AEE69D008A5A2D /* TestResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -416,6 +444,7 @@
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
 				A58CC55C216D0C9500B20CE9 /* WeightToLoseCell.xib in Resources */,
 				A548E9D02177722D00FC62EE /* WelcomePageViewController.storyboard in Resources */,
+				A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */,
 				A58CC560216D100500B20CE9 /* HumanСharacteristic.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +505,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */,
+				A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */,
 				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
 				A548E9CE21776DB000FC62EE /* WelcomeViewController.swift in Sources */,
 				A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */,
@@ -485,8 +516,10 @@
 				A53C64B52188BF0600894738 /* SuggestedDietCell.swift in Sources */,
 				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
 				A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */,
+				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
 				A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
+				A57430C4218B61C000D6FC1A /* DailyRationViewController.swift in Sources */,
 				A57C7B0221764278008DA476 /* Network.swift in Sources */,
 				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
 				A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */,
@@ -497,12 +530,14 @@
 				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
 				A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */,
 				A574E355218A0D0A00A87631 /* DailyRationCell.swift in Sources */,
+				A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */,
 				A53C64B82188C25000894738 /* SuggestedDietsViewController.swift in Sources */,
 				A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */,
 				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
 				A58CC55B216D0C9500B20CE9 /* WeightToLoseCell.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
 				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
+				A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */,
 				A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */,
 				A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */,
 			);
@@ -652,16 +687,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M32M9JNSSA;
+				DEVELOPMENT_TEAM = FKAK3GFPT6;
 				INFOPLIST_FILE = Diet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.Diet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sfbtech.diets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -671,16 +707,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M32M9JNSSA;
+				DEVELOPMENT_TEAM = FKAK3GFPT6;
 				INFOPLIST_FILE = Diet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.Diet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sfbtech.diets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
