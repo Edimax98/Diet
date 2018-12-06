@@ -9,4 +9,5 @@ target 'Diet' do
     pod 'AlamofireImage'
     pod 'FacebookCore'
     pod 'FBAudienceNetwork', '~> 5.0.1'
+    pod 'DropDown'
 end
