@@ -28,8 +28,9 @@ class GenderSelectorViewController: UIViewController {
     @IBOutlet weak var maleButtonSelectionIndicator: UIView!
     @IBOutlet weak var femaleButtonSelectionIndicator: UIView!
     @IBOutlet weak var adBannerView: UIView!
+    @IBOutlet weak var adBannerHeight: NSLayoutConstraint!
+
     var adView: FBAdView!
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var indexForProgressView: Float = 0.2
     
     var nextButtonPressed: (() -> Void)?
@@ -99,11 +100,11 @@ extension GenderSelectorViewController: FBAdViewDelegate {
     
     func adViewDidLoad(_ adView: FBAdView) {
         if adBannerView != nil {
-            adView.frame = adBannerView.bounds
+            adView.frame = CGRect(x: 0, y: 20, width: adBannerView.frame.width, height: adBannerView.frame.height - 20)
             adBannerView.addSubview(adView)
         } else if adBannerView != nil {
             adView.removeFromSuperview()
-            topConstraint.constant = 0.0
+            adBannerHeight.constant = 0.0
             self.view.layoutIfNeeded()
         }
     }
@@ -111,7 +112,7 @@ extension GenderSelectorViewController: FBAdViewDelegate {
     func adView(_ adView: FBAdView, didFailWithError error: Error) {
         print(error)
         self.adView.removeFromSuperview()
-        topConstraint.constant = 0.0
+        adBannerHeight.constant = 0.0
         self.view.layoutIfNeeded()
     }
 }

@@ -20,8 +20,6 @@
 		A53C64B52188BF0600894738 /* SuggestedDietCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C64B32188BF0600894738 /* SuggestedDietCell.swift */; };
 		A53C64B62188BF0600894738 /* SuggestedDietCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C64B42188BF0600894738 /* SuggestedDietCell.xib */; };
 		A53C64B82188C25000894738 /* SuggestedDietsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */; };
-		A548E9CE21776DB000FC62EE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */; };
-		A548E9D02177722D00FC62EE /* WelcomePageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */; };
 		A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */; };
 		A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D32177767900FC62EE /* NSObjectExtension.swift */; };
 		A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D52177783800FC62EE /* WelcomePageViewController.swift */; };
@@ -75,8 +73,6 @@
 		A53C64B32188BF0600894738 /* SuggestedDietCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedDietCell.swift; sourceTree = "<group>"; };
 		A53C64B42188BF0600894738 /* SuggestedDietCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedDietCell.xib; sourceTree = "<group>"; };
 		A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedDietsViewController.swift; sourceTree = "<group>"; };
-		A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomePageViewController.storyboard; sourceTree = "<group>"; };
 		A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		A548E9D32177767900FC62EE /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		A548E9D52177783800FC62EE /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
@@ -150,8 +146,6 @@
 		A50250CA2178B31400F674B3 /* WelcomePage */ = {
 			isa = PBXGroup;
 			children = (
-				A548E9CD21776DB000FC62EE /* WelcomeViewController.swift */,
-				A548E9CF2177722D00FC62EE /* WelcomePageViewController.storyboard */,
 				A548E9D52177783800FC62EE /* WelcomePageViewController.swift */,
 			);
 			path = WelcomePage;
@@ -446,7 +440,6 @@
 				A58CC558216D097900B20CE9 /* AmountOfWeightToLose.xib in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
 				A58CC55C216D0C9500B20CE9 /* WeightToLoseCell.xib in Resources */,
-				A548E9D02177722D00FC62EE /* WelcomePageViewController.storyboard in Resources */,
 				A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */,
 				A58CC560216D100500B20CE9 /* HumanСharacteristic.xib in Resources */,
 			);
@@ -487,6 +480,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -497,6 +491,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -513,7 +508,6 @@
 				A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */,
 				A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */,
 				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
-				A548E9CE21776DB000FC62EE /* WelcomeViewController.swift in Sources */,
 				A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */,
 				A50250D32178CB7200F674B3 /* TestViewData.swift in Sources */,
 				A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */,

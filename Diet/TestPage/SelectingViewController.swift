@@ -24,7 +24,9 @@ class SelectingViewController: UIViewController {
     @IBOutlet weak var triangleView: Triangle!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+  //  @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var adHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var adBannerView: UIView!
     @IBOutlet weak var nextButtonWidthConstraint: NSLayoutConstraint!
     
@@ -130,11 +132,11 @@ extension SelectingViewController: FBAdViewDelegate {
     
     func adViewDidLoad(_ adView: FBAdView) {
         if adBannerView != nil {
-            adView.frame = adBannerView.bounds
+            adView.frame = CGRect(x: 0, y: 20, width: adBannerView.frame.width, height: adBannerView.frame.height - 20)
             adBannerView.addSubview(adView)
         } else if adBannerView != nil {
             adView.removeFromSuperview()
-            topConstraint.constant = 0.0
+            adHeight.constant = 0.0
             self.view.layoutIfNeeded()
         }
     }
@@ -142,7 +144,7 @@ extension SelectingViewController: FBAdViewDelegate {
     func adView(_ adView: FBAdView, didFailWithError error: Error) {
         print(error)
         self.adView.removeFromSuperview()
-        topConstraint.constant = 0.0
+        adHeight.constant = 0.0
         self.view.layoutIfNeeded()
     }
 }

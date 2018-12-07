@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Pk-Kx-FHw">
-                                <rect key="frame" x="0.0" y="391" width="375" height="186"/>
+                                <rect key="frame" x="0.0" y="388" width="375" height="189"/>
                                 <color key="backgroundColor" red="0.96079331639999999" green="0.96077269320000003" blue="0.96077674629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="999" constant="186" id="N0q-pm-gE4"/>
@@ -42,14 +42,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NN3-Pe-t93">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="jEi-n1-tzf"/>
+                                    <constraint firstAttribute="height" constant="70" id="jEi-n1-tzf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Lo-uH-khT">
-                                <rect key="frame" x="0.0" y="60" width="375" height="293"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="279"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-beat" translatesAutoresizingMaskIntoConstraints="NO" id="MWL-we-nbe">
                                         <rect key="frame" x="137" y="47" width="100" height="100"/>
@@ -91,7 +91,7 @@
                                     <constraint firstItem="1qS-eE-cp0" firstAttribute="top" secondItem="hj0-YJ-BQ0" secondAttribute="bottom" constant="69" id="0J0-OB-KNu"/>
                                     <constraint firstItem="1qS-eE-cp0" firstAttribute="leading" secondItem="8Lo-uH-khT" secondAttribute="leading" constant="48" id="0qA-Nl-v9M"/>
                                     <constraint firstItem="9Ae-03-naM" firstAttribute="top" secondItem="1qS-eE-cp0" secondAttribute="bottom" constant="8" id="A2f-JT-1zd"/>
-                                    <constraint firstAttribute="height" constant="293" id="FaR-6R-ZGn"/>
+                                    <constraint firstAttribute="height" constant="279" id="FaR-6R-ZGn"/>
                                     <constraint firstItem="MWL-we-nbe" firstAttribute="leading" secondItem="8Lo-uH-khT" secondAttribute="leading" constant="137" id="KBH-O8-PnA"/>
                                     <constraint firstAttribute="trailing" secondItem="MWL-we-nbe" secondAttribute="trailing" constant="138" id="Lfv-Hm-jFi"/>
                                     <constraint firstAttribute="width" constant="375" id="Nzy-Qu-pvV"/>
@@ -105,7 +105,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfi-UI-e1F" customClass="Triangle" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="142" y="353" width="90" height="30"/>
+                                <rect key="frame" x="142" y="350" width="90" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2ed-mI-N4n"/>
@@ -125,17 +125,18 @@
                             <constraint firstItem="8Pk-Kx-FHw" firstAttribute="top" secondItem="8Lo-uH-khT" secondAttribute="bottom" constant="38" id="XNk-g2-Qd7"/>
                             <constraint firstItem="8Pk-Kx-FHw" firstAttribute="trailing" secondItem="yFj-jX-vUY" secondAttribute="trailing" id="cog-sN-tsq"/>
                             <constraint firstItem="Mfi-UI-e1F" firstAttribute="leading" secondItem="yFj-jX-vUY" secondAttribute="leading" constant="142" id="fIB-cb-eg7"/>
-                            <constraint firstItem="8Lo-uH-khT" firstAttribute="top" secondItem="tPJ-GU-Z2R" secondAttribute="top" constant="60" id="fiQ-R3-S72"/>
                             <constraint firstItem="8Lo-uH-khT" firstAttribute="trailing" secondItem="yFj-jX-vUY" secondAttribute="trailing" id="k3v-bG-Mq0"/>
                             <constraint firstItem="yFj-jX-vUY" firstAttribute="bottom" secondItem="bop-Fs-YtA" secondAttribute="bottom" constant="19" id="nsD-N6-PTx"/>
                             <constraint firstItem="NN3-Pe-t93" firstAttribute="leading" secondItem="yFj-jX-vUY" secondAttribute="leading" id="qKw-gx-ITf"/>
-                            <constraint firstItem="NN3-Pe-t93" firstAttribute="top" secondItem="yFj-jX-vUY" secondAttribute="top" id="xJX-lF-LuW"/>
+                            <constraint firstItem="NN3-Pe-t93" firstAttribute="top" secondItem="tPJ-GU-Z2R" secondAttribute="top" id="xJX-lF-LuW"/>
+                            <constraint firstItem="8Lo-uH-khT" firstAttribute="top" secondItem="NN3-Pe-t93" secondAttribute="bottom" constant="1" id="y9d-A1-DCk"/>
                             <constraint firstItem="yFj-jX-vUY" firstAttribute="trailing" secondItem="Mfi-UI-e1F" secondAttribute="trailing" constant="143" id="zuA-4Z-gbl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yFj-jX-vUY"/>
                     </view>
                     <connections>
                         <outlet property="adBannerView" destination="NN3-Pe-t93" id="Rpc-g0-7nK"/>
+                        <outlet property="adHeight" destination="jEi-n1-tzf" id="1zV-wa-V5q"/>
                         <outlet property="answersPickerView" destination="8Pk-Kx-FHw" id="2yw-9m-uR1"/>
                         <outlet property="backButton" destination="hj0-YJ-BQ0" id="rIF-RC-Hpe"/>
                         <outlet property="containerOfTitlesView" destination="8Lo-uH-khT" id="Jsf-ys-9fI"/>
@@ -144,7 +145,6 @@
                         <outlet property="nextButtonWidthConstraint" destination="Oss-0A-tLA" id="Bz2-pP-F41"/>
                         <outlet property="progressView" destination="9Ae-03-naM" id="wZv-M5-7Qb"/>
                         <outlet property="titleLabel" destination="1qS-eE-cp0" id="KMi-Uq-XMM"/>
-                        <outlet property="topConstraint" destination="fiQ-R3-S72" id="hT5-1a-krl"/>
                         <outlet property="triangleView" destination="Mfi-UI-e1F" id="ys4-dZ-9gq"/>
                     </connections>
                 </viewController>

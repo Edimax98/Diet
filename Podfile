@@ -10,4 +10,5 @@ target 'Diet' do
     pod 'FacebookCore'
     pod 'FBAudienceNetwork', '~> 5.0.1'
     pod 'DropDown'
+    pod 'paper-onboarding'
 end

@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bL2-zM-9k4">
-                                <rect key="frame" x="0.0" y="21" width="375" height="50"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="JER-Rb-liP"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdN-JN-glf">
                                 <rect key="frame" x="0.0" y="71" width="375" height="293"/>
                                 <subviews>
@@ -152,11 +145,18 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bL2-zM-9k4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="JER-Rb-liP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ufJ-WP-1Qf" firstAttribute="bottom" secondItem="1Cp-Q9-A5A" secondAttribute="bottom" priority="999" constant="103" id="1gs-Nj-f0h"/>
-                            <constraint firstItem="bL2-zM-9k4" firstAttribute="top" secondItem="ufJ-WP-1Qf" secondAttribute="top" constant="1" id="6vl-Pe-acV"/>
+                            <constraint firstItem="bL2-zM-9k4" firstAttribute="top" secondItem="ojb-GL-3I5" secondAttribute="top" id="6vl-Pe-acV"/>
                             <constraint firstItem="sdN-JN-glf" firstAttribute="trailing" secondItem="ufJ-WP-1Qf" secondAttribute="trailing" id="F1u-AI-rxZ"/>
                             <constraint firstItem="SoN-cZ-6I3" firstAttribute="leading" secondItem="ufJ-WP-1Qf" secondAttribute="leading" constant="142" id="Jc8-ka-L5u"/>
                             <constraint firstItem="ufJ-WP-1Qf" firstAttribute="trailing" secondItem="SoN-cZ-6I3" secondAttribute="trailing" constant="143" id="JlA-9E-Ed5"/>
@@ -167,13 +167,13 @@
                             <constraint firstItem="bL2-zM-9k4" firstAttribute="leading" secondItem="ufJ-WP-1Qf" secondAttribute="leading" id="Vi7-Nw-XWk"/>
                             <constraint firstItem="SoN-cZ-6I3" firstAttribute="top" secondItem="sdN-JN-glf" secondAttribute="bottom" constant="-1" id="ema-hA-PER"/>
                             <constraint firstItem="1Cp-Q9-A5A" firstAttribute="top" secondItem="SoN-cZ-6I3" secondAttribute="bottom" constant="43" id="mJN-sX-sFq"/>
-                            <constraint firstItem="sdN-JN-glf" firstAttribute="top" secondItem="ufJ-WP-1Qf" secondAttribute="top" constant="51" id="rcY-Us-rxc"/>
                             <constraint firstItem="sdN-JN-glf" firstAttribute="top" secondItem="bL2-zM-9k4" secondAttribute="bottom" id="ybh-iO-tta"/>
                             <constraint firstItem="SoN-cZ-6I3" firstAttribute="top" secondItem="sdN-JN-glf" secondAttribute="bottom" constant="-1" id="zSI-Mu-rWc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ufJ-WP-1Qf"/>
                     </view>
                     <connections>
+                        <outlet property="adBannerHeight" destination="JER-Rb-liP" id="ZEg-ce-Wxz"/>
                         <outlet property="adBannerView" destination="bL2-zM-9k4" id="e7i-RM-wH3"/>
                         <outlet property="containerTitleView" destination="sdN-JN-glf" id="C3G-uE-25e"/>
                         <outlet property="femaleButton" destination="St2-L0-W0I" id="PMj-YQ-89Z"/>
@@ -184,13 +184,12 @@
                         <outlet property="maleGenderView" destination="CbI-Vl-euo" id="rW7-ul-KRt"/>
                         <outlet property="progressView" destination="fLK-wU-eSo" id="noP-yN-PdN"/>
                         <outlet property="titleLabel" destination="K6D-L8-1te" id="7GK-bc-ces"/>
-                        <outlet property="topConstraint" destination="rcY-Us-rxc" id="FSm-zw-mZ1"/>
                         <outlet property="triangleView" destination="SoN-cZ-6I3" id="RYr-GQ-gq2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Exq-kH-f8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-458" y="17"/>
+            <point key="canvasLocation" x="-458.39999999999998" y="16.641679160419791"/>
         </scene>
     </scenes>
     <resources>

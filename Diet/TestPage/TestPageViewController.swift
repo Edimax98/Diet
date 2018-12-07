@@ -33,9 +33,9 @@ class TestPageViewController: UIPageViewController {
     let ageSelectionPageData = TestViewData(title: "Select your age".localized,
                                             iconName: "heart-beat", pickerData: (10,99))
     let currentWeightSelectionPageData = TestViewData(title: "Select your weight".localized,
-                                                      iconName: "weight-scale", pickerData: (50,99), unit: "kg".localized)
+                                                      iconName: "weight-scale", pickerData: (50,150), unit: "kg".localized)
     let goalWeightSelectionPageData = TestViewData(title: "How much do you want to lose in weight".localized,
-                                                   iconName: "diet", pickerData: (1,99), unit: "kg".localized)
+                                                   iconName: "diet", pickerData: (1,100), unit: "kg".localized)
     let heigthSelectionPageData = TestViewData(title: "Select your height".localized,
                                          iconName: "timer", pickerData: (140,200), unit: "cm.".localized)
     
@@ -97,7 +97,7 @@ class TestPageViewController: UIPageViewController {
     }
     
     fileprivate func loadFullScreenAd() {
-        fullScreenAd = FBInterstitialAd(placementID: "2094400630876165_2124263474556547")
+        fullScreenAd = FBInterstitialAd(placementID: "317759862160517_317760262160477")
         fullScreenAd.load()
         fullScreenAd.delegate = self
         loadingAlert = UIAlertController.displayLoadingAlert(on: self)
