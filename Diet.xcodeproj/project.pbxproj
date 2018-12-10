@@ -17,9 +17,6 @@
 		A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53B1B4621B58A770036AD00 /* FatnessIndexViewContoller.swift */; };
 		A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53B1B4921B58ED50036AD00 /* FatnessCategoryCell.swift */; };
 		A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53B1B4A21B58ED50036AD00 /* FatnessCategoryCell.xib */; };
-		A53C64B52188BF0600894738 /* SuggestedDietCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C64B32188BF0600894738 /* SuggestedDietCell.swift */; };
-		A53C64B62188BF0600894738 /* SuggestedDietCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C64B42188BF0600894738 /* SuggestedDietCell.xib */; };
-		A53C64B82188C25000894738 /* SuggestedDietsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */; };
 		A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */; };
 		A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D32177767900FC62EE /* NSObjectExtension.swift */; };
 		A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D52177783800FC62EE /* WelcomePageViewController.swift */; };
@@ -27,23 +24,17 @@
 		A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC321BAA3DB00DCD511 /* DishCell.swift */; };
 		A5662AC621BAA3DB00DCD511 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5662AC421BAA3DB00DCD511 /* DishCell.xib */; };
 		A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */; };
-		A57430C4218B61C000D6FC1A /* DailyRationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57430C3218B61C000D6FC1A /* DailyRationViewController.swift */; };
-		A574E355218A0D0A00A87631 /* DailyRationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574E353218A0D0A00A87631 /* DailyRationCell.swift */; };
-		A574E356218A0D0A00A87631 /* DailyRationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A574E354218A0D0A00A87631 /* DailyRationCell.xib */; };
 		A57C7B0221764278008DA476 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C7B0121764278008DA476 /* Network.swift */; };
 		A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53B216CF65100B20CE9 /* AppDelegate.swift */; };
-		A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53D216CF65100B20CE9 /* MainViewController.swift */; };
 		A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC53F216CF65100B20CE9 /* Main.storyboard */; };
 		A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58CC542216CF65200B20CE9 /* Assets.xcassets */; };
 		A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC544216CF65200B20CE9 /* LaunchScreen.storyboard */; };
-		A58CC552216CF96700B20CE9 /* UpperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC550216CF96700B20CE9 /* UpperCell.swift */; };
-		A58CC553216CF96700B20CE9 /* UpperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58CC551216CF96700B20CE9 /* UpperCell.xib */; };
-		A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC555216D097900B20CE9 /* AmountOfWeightToLose.swift */; };
-		A58CC558216D097900B20CE9 /* AmountOfWeightToLose.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58CC556216D097900B20CE9 /* AmountOfWeightToLose.xib */; };
-		A58CC55B216D0C9500B20CE9 /* WeightToLoseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC559216D0C9500B20CE9 /* WeightToLoseCell.swift */; };
-		A58CC55C216D0C9500B20CE9 /* WeightToLoseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58CC55A216D0C9500B20CE9 /* WeightToLoseCell.xib */; };
-		A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC55D216D100500B20CE9 /* HumanСharacteristic.swift */; };
-		A58CC560216D100500B20CE9 /* HumanСharacteristic.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58CC55E216D100500B20CE9 /* HumanСharacteristic.xib */; };
+		A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7A721BE7D2800C9035C /* UPCarouselFlowLayout.swift */; };
+		A5A0C7AA21BE96A300C9035C /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7A921BE96A300C9035C /* Subscription.swift */; };
+		A5A0C7AD21BE977B00C9035C /* SubscriptionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7AC21BE977B00C9035C /* SubscriptionNetworkService.swift */; };
+		A5A0C7AF21BE979100C9035C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7AE21BE979100C9035C /* Session.swift */; };
+		A5A0C7B121BE97BE00C9035C /* PaidSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B021BE97BE00C9035C /* PaidSubscription.swift */; };
+		A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */; };
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
 		A5B02C66217A241200A9E3A4 /* GenderSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
@@ -51,14 +42,10 @@
 		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
 		A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */; };
 		A5E0C330216F95170045975E /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C32F216F95170045975E /* StringExtentions.swift */; };
-		A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C332216F9B560045975E /* CharacteristicCell.swift */; };
-		A5E0C335216F9B560045975E /* CharacteristicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E0C333216F9B560045975E /* CharacteristicCell.xib */; };
-		A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83842170F6E70088F8FE /* MainPageInteractor.swift */; };
 		A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83872170F7370088F8FE /* NetworkService.swift */; };
 		A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */; };
 		A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */; };
 		A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838D2170F8830088F8FE /* Recipe.swift */; };
-		A5EA83932170FA260088F8FE /* MainPageInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83922170FA260088F8FE /* MainPageInteractorOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,9 +60,6 @@
 		A53B1B4621B58A770036AD00 /* FatnessIndexViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatnessIndexViewContoller.swift; sourceTree = "<group>"; };
 		A53B1B4921B58ED50036AD00 /* FatnessCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatnessCategoryCell.swift; sourceTree = "<group>"; };
 		A53B1B4A21B58ED50036AD00 /* FatnessCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FatnessCategoryCell.xib; sourceTree = "<group>"; };
-		A53C64B32188BF0600894738 /* SuggestedDietCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedDietCell.swift; sourceTree = "<group>"; };
-		A53C64B42188BF0600894738 /* SuggestedDietCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedDietCell.xib; sourceTree = "<group>"; };
-		A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedDietsViewController.swift; sourceTree = "<group>"; };
 		A548E9D12177744200FC62EE /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		A548E9D32177767900FC62EE /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		A548E9D52177783800FC62EE /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
@@ -83,25 +67,19 @@
 		A5662AC321BAA3DB00DCD511 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		A5662AC421BAA3DB00DCD511 /* DishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishCell.xib; sourceTree = "<group>"; };
 		A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		A57430C3218B61C000D6FC1A /* DailyRationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRationViewController.swift; sourceTree = "<group>"; };
-		A574E353218A0D0A00A87631 /* DailyRationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRationCell.swift; sourceTree = "<group>"; };
-		A574E354218A0D0A00A87631 /* DailyRationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyRationCell.xib; sourceTree = "<group>"; };
 		A57C7B0121764278008DA476 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A58CC538216CF65100B20CE9 /* Diet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58CC53B216CF65100B20CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A58CC53D216CF65100B20CE9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A58CC540216CF65100B20CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A58CC542216CF65200B20CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A58CC545216CF65200B20CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A58CC547216CF65200B20CE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A58CC550216CF96700B20CE9 /* UpperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperCell.swift; sourceTree = "<group>"; };
-		A58CC551216CF96700B20CE9 /* UpperCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpperCell.xib; sourceTree = "<group>"; };
-		A58CC555216D097900B20CE9 /* AmountOfWeightToLose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountOfWeightToLose.swift; sourceTree = "<group>"; };
-		A58CC556216D097900B20CE9 /* AmountOfWeightToLose.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountOfWeightToLose.xib; sourceTree = "<group>"; };
-		A58CC559216D0C9500B20CE9 /* WeightToLoseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightToLoseCell.swift; sourceTree = "<group>"; };
-		A58CC55A216D0C9500B20CE9 /* WeightToLoseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightToLoseCell.xib; sourceTree = "<group>"; };
-		A58CC55D216D100500B20CE9 /* HumanСharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HumanСharacteristic.swift"; sourceTree = "<group>"; };
-		A58CC55E216D100500B20CE9 /* HumanСharacteristic.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "HumanСharacteristic.xib"; sourceTree = "<group>"; };
+		A5A0C7A721BE7D2800C9035C /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
+		A5A0C7A921BE96A300C9035C /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		A5A0C7AC21BE977B00C9035C /* SubscriptionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionNetworkService.swift; sourceTree = "<group>"; };
+		A5A0C7AE21BE979100C9035C /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A5A0C7B021BE97BE00C9035C /* PaidSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidSubscription.swift; sourceTree = "<group>"; };
+		A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
 		A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
@@ -109,14 +87,10 @@
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
 		A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtentions.swift; sourceTree = "<group>"; };
 		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
-		A5E0C332216F9B560045975E /* CharacteristicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicCell.swift; sourceTree = "<group>"; };
-		A5E0C333216F9B560045975E /* CharacteristicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacteristicCell.xib; sourceTree = "<group>"; };
-		A5EA83842170F6E70088F8FE /* MainPageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageInteractor.swift; sourceTree = "<group>"; };
 		A5EA83872170F7370088F8FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingErroHandler.swift; sourceTree = "<group>"; };
 		A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkService.swift; sourceTree = "<group>"; };
 		A5EA838D2170F8830088F8FE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		A5EA83922170FA260088F8FE /* MainPageInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageInteractorOutput.swift; sourceTree = "<group>"; };
 		B4615E85CA74F815C113661A /* Pods-Diet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +164,7 @@
 		A548E9D9217787A800FC62EE /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
+				A5A0C7A721BE7D2800C9035C /* UPCarouselFlowLayout.swift */,
 				A548E9D7217787A100FC62EE /* DefaultActionButton.swift */,
 				A50250D42178E79000F674B3 /* TriangleView.swift */,
 				A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */,
@@ -215,16 +190,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A574E352218A0C2300A87631 /* SuggestedDiets */ = {
-			isa = PBXGroup;
-			children = (
-				A53C64B72188C25000894738 /* SuggestedDietsViewController.swift */,
-				A53C64B32188BF0600894738 /* SuggestedDietCell.swift */,
-				A53C64B42188BF0600894738 /* SuggestedDietCell.xib */,
-			);
-			path = SuggestedDiets;
-			sourceTree = "<group>";
-		};
 		A58CC52F216CF65100B20CE9 = {
 			isa = PBXGroup;
 			children = (
@@ -246,13 +211,12 @@
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
 			isa = PBXGroup;
 			children = (
-				A574E352218A0C2300A87631 /* SuggestedDiets */,
+				A5A0C7AB21BE96CD00C9035C /* Subscription */,
 				A548E9D9217787A800FC62EE /* Appearance */,
 				A548E9CC21776D6D00FC62EE /* Singletones */,
 				A5E0C331216F951E0045975E /* Extensions */,
 				A58CC547216CF65200B20CE9 /* Info.plist */,
 				A58CC54D216CF69400B20CE9 /* Application */,
-				A58CC54F216CF6F100B20CE9 /* MainView */,
 				A53B1B4821B58A860036AD00 /* FattnessIndex */,
 				A5662AC221BAA3C000DCD511 /* Diets */,
 				A50250CA2178B31400F674B3 /* WelcomePage */,
@@ -262,9 +226,6 @@
 				A5EA838F2170F8C00088F8FE /* Models */,
 				A58CC54E216CF6A500B20CE9 /* Assets */,
 				A50250D12178C84800F674B3 /* TestPage */,
-				A574E353218A0D0A00A87631 /* DailyRationCell.swift */,
-				A574E354218A0D0A00A87631 /* DailyRationCell.xib */,
-				A57430C3218B61C000D6FC1A /* DailyRationViewController.swift */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -286,24 +247,16 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		A58CC54F216CF6F100B20CE9 /* MainView */ = {
+		A5A0C7AB21BE96CD00C9035C /* Subscription */ = {
 			isa = PBXGroup;
 			children = (
-				A5EA83862170F7060088F8FE /* Interactor */,
-				A58CC53D216CF65100B20CE9 /* MainViewController.swift */,
-				A58CC554216CFC8C00B20CE9 /* Cells */,
+				A5A0C7A921BE96A300C9035C /* Subscription.swift */,
+				A5A0C7AC21BE977B00C9035C /* SubscriptionNetworkService.swift */,
+				A5A0C7AE21BE979100C9035C /* Session.swift */,
+				A5A0C7B021BE97BE00C9035C /* PaidSubscription.swift */,
+				A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */,
 			);
-			path = MainView;
-			sourceTree = "<group>";
-		};
-		A58CC554216CFC8C00B20CE9 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A5E0C338216F9B7B0045975E /* UpperCell */,
-				A5E0C337216F9B6F0045975E /* GoalsCell */,
-				A5E0C336216F9B5B0045975E /* HumanCharacteristic */,
-			);
-			path = Cells;
+			path = Subscription;
 			sourceTree = "<group>";
 		};
 		A5A1DD23217E26360099A1BD /* TestResults */ = {
@@ -324,46 +277,6 @@
 				A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		A5E0C336216F9B5B0045975E /* HumanCharacteristic */ = {
-			isa = PBXGroup;
-			children = (
-				A58CC55D216D100500B20CE9 /* HumanСharacteristic.swift */,
-				A58CC55E216D100500B20CE9 /* HumanСharacteristic.xib */,
-				A5E0C332216F9B560045975E /* CharacteristicCell.swift */,
-				A5E0C333216F9B560045975E /* CharacteristicCell.xib */,
-			);
-			path = HumanCharacteristic;
-			sourceTree = "<group>";
-		};
-		A5E0C337216F9B6F0045975E /* GoalsCell */ = {
-			isa = PBXGroup;
-			children = (
-				A58CC555216D097900B20CE9 /* AmountOfWeightToLose.swift */,
-				A58CC556216D097900B20CE9 /* AmountOfWeightToLose.xib */,
-				A58CC559216D0C9500B20CE9 /* WeightToLoseCell.swift */,
-				A58CC55A216D0C9500B20CE9 /* WeightToLoseCell.xib */,
-			);
-			path = GoalsCell;
-			sourceTree = "<group>";
-		};
-		A5E0C338216F9B7B0045975E /* UpperCell */ = {
-			isa = PBXGroup;
-			children = (
-				A58CC550216CF96700B20CE9 /* UpperCell.swift */,
-				A58CC551216CF96700B20CE9 /* UpperCell.xib */,
-			);
-			path = UpperCell;
-			sourceTree = "<group>";
-		};
-		A5EA83862170F7060088F8FE /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				A5EA83842170F6E70088F8FE /* MainPageInteractor.swift */,
-				A5EA83922170FA260088F8FE /* MainPageInteractorOutput.swift */,
-			);
-			path = Interactor;
 			sourceTree = "<group>";
 		};
 		A5EA838F2170F8C00088F8FE /* Models */ = {
@@ -455,19 +368,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50250CC2178B84B00F674B3 /* SelectingViewController.storyboard in Resources */,
-				A5E0C335216F9B560045975E /* CharacteristicCell.xib in Resources */,
 				A5B02C66217A241200A9E3A4 /* GenderSelectorViewController.storyboard in Resources */,
-				A53C64B62188BF0600894738 /* SuggestedDietCell.xib in Resources */,
 				A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */,
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
-				A58CC553216CF96700B20CE9 /* UpperCell.xib in Resources */,
-				A574E356218A0D0A00A87631 /* DailyRationCell.xib in Resources */,
-				A58CC558216D097900B20CE9 /* AmountOfWeightToLose.xib in Resources */,
 				A5662AC621BAA3DB00DCD511 /* DishCell.xib in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
-				A58CC55C216D0C9500B20CE9 /* WeightToLoseCell.xib in Resources */,
 				A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */,
-				A58CC560216D100500B20CE9 /* HumanСharacteristic.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,37 +440,31 @@
 				A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */,
 				A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */,
 				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
-				A58CC55F216D100500B20CE9 /* HumanСharacteristic.swift in Sources */,
 				A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */,
 				A50250D32178CB7200F674B3 /* TestViewData.swift in Sources */,
-				A5EA83852170F6E70088F8FE /* MainPageInteractor.swift in Sources */,
 				A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */,
+				A5A0C7AA21BE96A300C9035C /* Subscription.swift in Sources */,
+				A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */,
 				A51F6EA221B96933000CE5D0 /* DietViewController.swift in Sources */,
-				A53C64B52188BF0600894738 /* SuggestedDietCell.swift in Sources */,
 				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
-				A58CC557216D097900B20CE9 /* AmountOfWeightToLose.swift in Sources */,
 				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
 				A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
-				A57430C4218B61C000D6FC1A /* DailyRationViewController.swift in Sources */,
+				A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */,
 				A57C7B0221764278008DA476 /* Network.swift in Sources */,
 				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
-				A58CC53E216CF65100B20CE9 /* MainViewController.swift in Sources */,
-				A5EA83932170FA260088F8FE /* MainPageInteractorOutput.swift in Sources */,
-				A5E0C334216F9B560045975E /* CharacteristicCell.swift in Sources */,
 				A50250CE2178BCFC00F674B3 /* SelectingViewController.swift in Sources */,
 				A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */,
-				A58CC552216CF96700B20CE9 /* UpperCell.swift in Sources */,
 				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
+				A5A0C7AF21BE979100C9035C /* Session.swift in Sources */,
+				A5A0C7B121BE97BE00C9035C /* PaidSubscription.swift in Sources */,
 				A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */,
-				A574E355218A0D0A00A87631 /* DailyRationCell.swift in Sources */,
 				A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */,
-				A53C64B82188C25000894738 /* SuggestedDietsViewController.swift in Sources */,
 				A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */,
 				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
-				A58CC55B216D0C9500B20CE9 /* WeightToLoseCell.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
 				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
+				A5A0C7AD21BE977B00C9035C /* SubscriptionNetworkService.swift in Sources */,
 				A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */,
 				A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */,
 				A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */,

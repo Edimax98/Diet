@@ -31,6 +31,7 @@ class DietViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionViewFlowLayout()
         setupView()
         setupDropDownMenu()
     }
@@ -47,6 +48,12 @@ class DietViewController: UIViewController {
         weekDaySelectionView.layer.masksToBounds = true
         dietDescriptionView.layer.cornerRadius = viewCornerRadius
         dietDescriptionView.layer.masksToBounds = true
+    }
+    
+    fileprivate func setupCollectionViewFlowLayout() {
+        let layout = dishesCollectionView.collectionViewLayout as! UPCarouselFlowLayout
+        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.fixed(spacing: 10)
+        layout.sideItemScale = 0.9
     }
     
     override func viewDidLayoutSubviews() {
