@@ -52,7 +52,7 @@ class GenderSelectorViewController: UIViewController {
         maleGenderView.layer.cornerRadius = maleGenderView.frame.height / 2
         femaleGenderView.layer.cornerRadius = femaleGenderView.frame.height / 2
         
-        adView = FBAdView(placementID: "VID_HD_16_9_46S_APP_INSTALL#317759862160517_317760728827097", adSize: kFBAdSizeHeight50Banner, rootViewController: self)
+        adView = FBAdView(placementID: "317759862160517_317760728827097", adSize: kFBAdSizeHeight50Banner, rootViewController: self)
         adView.delegate = self
         adView.loadAd()
         

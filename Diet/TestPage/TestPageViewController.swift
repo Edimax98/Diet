@@ -97,7 +97,7 @@ class TestPageViewController: UIPageViewController {
     }
     
     fileprivate func loadFullScreenAd() {
-        fullScreenAd = FBInterstitialAd(placementID: "VID_HD_16_9_46S_APP_INSTALL#317759862160517_317760262160477")
+        fullScreenAd = FBInterstitialAd(placementID: "317759862160517_317760262160477")
         fullScreenAd.load()
         fullScreenAd.delegate = self
         loadingAlert = UIAlertController.displayLoadingAlert(on: self)
