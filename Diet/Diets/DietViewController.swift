@@ -20,10 +20,12 @@ class DietViewController: UIViewController {
     @IBOutlet weak var dishesCollectionView: UICollectionView!
     @IBOutlet weak var weekDaySelectionView: UIView!
     @IBOutlet weak var dietDescriptionView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
     
     let dropDownMenu = DropDown()
+    private var previousStatusBarHidden = false
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -40,6 +42,12 @@ class DietViewController: UIViewController {
         
         dietDescriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         dietNameLabel.text = "Diet name"
+        
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
+        dietBackImageView.contentMode = .scaleAspectFill
+        dietBackImageView.clipsToBounds = true
         
         dishesCollectionView.dataSource = self
         dishesCollectionView.register(UINib(nibName: "DishCell", bundle: nil), forCellWithReuseIdentifier: DishCell.identifier)
