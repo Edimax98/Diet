@@ -27,7 +27,6 @@ class FatnessIndexViewContoller: UIViewController {
     @IBOutlet weak var arrowView: UIView!
     @IBOutlet weak var leftArrow: UIImageView!
     @IBOutlet weak var rightArrow: UIImageView!
-    @IBOutlet weak var getDietsButton: UIButton!
     
     var fatnessIndex: Double = 0.0
     var testResults: TestResult?
@@ -40,8 +39,8 @@ class FatnessIndexViewContoller: UIViewController {
         
         fatnessCategoriesCollectionView.delegate = self
         fatnessCategoriesCollectionView.dataSource = self
-        getDietsButton.layer.cornerRadius = getDietsButton.frame.height / 2
-        getDietsButton.layer.masksToBounds = true
+//        getDietsButton.layer.cornerRadius = getDietsButton.frame.height / 2
+//        getDietsButton.layer.masksToBounds = true
         
         fatnessCategories.append(FatnessCategory(icon: "underweight", title: "Underweight".localized, backgroundColor: underWeightCategoryColor, categoryName: .underweight))
         fatnessCategories.append(FatnessCategory(icon: "normal", title: "Normal weight".localized, backgroundColor: normalWeightCategoryColor, categoryName: .normal))
@@ -102,10 +101,6 @@ class FatnessIndexViewContoller: UIViewController {
         }) { (f) in
             self.animateArrows()
         }
-    }
-    
-    @IBAction func getDietsButtonPressed(_ sender: Any) {
-        
     }
 }
 

@@ -24,7 +24,6 @@ class SelectingViewController: UIViewController {
     @IBOutlet weak var triangleView: Triangle!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
-  //  @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var adHeight: NSLayoutConstraint!
     
     @IBOutlet weak var adBannerView: UIView!
@@ -37,6 +36,11 @@ class SelectingViewController: UIViewController {
     
     var testViewData: TestViewData?
     var adView: FBAdView!
+    var shouldHideBanner = false
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,21 +51,26 @@ class SelectingViewController: UIViewController {
         progressView.clipsToBounds = true
         progressView.layer.sublayers![1].cornerRadius = 9
         progressView.subviews[1].clipsToBounds = true
-        
-        adView = FBAdView(placementID: "317759862160517_317760728827097", adSize: kFBAdSizeHeight50Banner, rootViewController: self)
-        adView.delegate = self
-        adView.loadAd()
         setupView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         nextButton.isHidden = false
         nextButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         
+        if shouldHideBanner {
+            adHeight.constant = 0.0
+            self.view.updateConstraints()
+        }
+        
         UIView.animate(withDuration: 0.3) {
             self.nextButton.transform = CGAffineTransform.identity
+        }
+
+        if let ad = SwiftyAd.shared.bannerViewAd {
+            adBannerView.addSubview(ad)
         }
         
         progressView.setProgress(indexForProgressView, animated: true)
@@ -119,6 +128,7 @@ extension SelectingViewController: UIPickerViewDataSource {
 extension SelectingViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         guard let data = testViewData else { return nil }
         
         if let unit = data.unit {
@@ -128,24 +138,9 @@ extension SelectingViewController: UIPickerViewDelegate {
     }
 }
 
-extension SelectingViewController: FBAdViewDelegate {
+extension SelectingViewController: SwiftyAdDelegate {
     
-    func adViewDidLoad(_ adView: FBAdView) {
-        if adBannerView != nil {
-            adView.frame = CGRect(x: 0, y: 20, width: adBannerView.frame.width, height: adBannerView.frame.height - 20)
-            adBannerView.addSubview(adView)
-        } else if adBannerView != nil {
-            adView.removeFromSuperview()
-            adHeight.constant = 0.0
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func adView(_ adView: FBAdView, didFailWithError error: Error) {
-        print(error)
-        self.adView.removeFromSuperview()
-        adHeight.constant = 0.0
-        self.view.layoutIfNeeded()
+    func swiftyAdDidFailedToLoad(_ swiftyAd: SwiftyAd) {
     }
 }
 

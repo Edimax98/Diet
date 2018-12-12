@@ -328,21 +328,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-vj-ZPj">
-                                <rect key="frame" x="16" y="594" width="343" height="60"/>
-                                <color key="backgroundColor" red="0.01176470588" green="0.8980392157" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="n88-yU-Tbg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
-                                <state key="normal" title="Get diets">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="agreedWithTestButtonPressed:" destination="Pb5-AJ-tzc" eventType="touchUpInside" id="y7c-ng-x9z"/>
-                                    <action selector="getDietsButtonPressed:" destination="EfX-av-hwn" eventType="touchUpInside" id="Zpn-mx-09C"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlG-3Y-jXL" customClass="AnimatedLabel" customModule="Diet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="106" width="375" height="53"/>
                                 <color key="backgroundColor" red="1" green="0.84313725490196079" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
@@ -382,19 +367,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="h9i-zx-Trz" firstAttribute="trailing" secondItem="Ij1-4L-IH1" secondAttribute="trailing" constant="16" id="1ZZ-Ql-3bp"/>
-                            <constraint firstItem="h9i-zx-Trz" firstAttribute="trailing" secondItem="LxY-vj-ZPj" secondAttribute="trailing" constant="16" id="2Nx-M0-nrS"/>
                             <constraint firstItem="Ij1-4L-IH1" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" constant="16" id="BCu-99-XOv"/>
                             <constraint firstItem="QVU-vL-wa0" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" id="I32-4t-Tkk"/>
-                            <constraint firstItem="LxY-vj-ZPj" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" constant="16" id="OHF-gQ-1Ip"/>
                             <constraint firstItem="QVU-vL-wa0" firstAttribute="top" secondItem="DlG-3Y-jXL" secondAttribute="bottom" constant="26" id="Oeu-81-COg"/>
                             <constraint firstItem="wEj-jv-gu0" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" id="Swq-Cr-jcL"/>
-                            <constraint firstItem="h9i-zx-Trz" firstAttribute="bottom" secondItem="LxY-vj-ZPj" secondAttribute="bottom" constant="13" id="V7U-nj-2LG"/>
                             <constraint firstItem="DlG-3Y-jXL" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" id="ZA2-LQ-EuP"/>
                             <constraint firstItem="DlG-3Y-jXL" firstAttribute="top" secondItem="Ij1-4L-IH1" secondAttribute="bottom" constant="22" id="Zoj-Do-xKZ"/>
                             <constraint firstItem="wEj-jv-gu0" firstAttribute="trailing" secondItem="h9i-zx-Trz" secondAttribute="trailing" id="cMn-og-f3r"/>
-                            <constraint firstItem="LxY-vj-ZPj" firstAttribute="top" secondItem="QVU-vL-wa0" secondAttribute="bottom" id="eR5-RM-hBn"/>
                             <constraint firstItem="QVU-vL-wa0" firstAttribute="trailing" secondItem="h9i-zx-Trz" secondAttribute="trailing" id="eWm-bt-zse"/>
                             <constraint firstItem="DlG-3Y-jXL" firstAttribute="trailing" secondItem="h9i-zx-Trz" secondAttribute="trailing" id="gec-sV-q6l"/>
+                            <constraint firstItem="h9i-zx-Trz" firstAttribute="bottom" secondItem="QVU-vL-wa0" secondAttribute="bottom" constant="73" id="h2H-aP-KUe"/>
                             <constraint firstItem="Ij1-4L-IH1" firstAttribute="top" secondItem="h9i-zx-Trz" secondAttribute="top" constant="13" id="ka7-yB-Kpo"/>
                             <constraint firstItem="wEj-jv-gu0" firstAttribute="top" secondItem="Ij1-4L-IH1" secondAttribute="bottom" constant="71" id="uGr-qj-DJL"/>
                         </constraints>
@@ -404,7 +386,6 @@
                         <outlet property="arrowView" destination="wEj-jv-gu0" id="3QN-tb-hwK"/>
                         <outlet property="fatnessCategoriesCollectionView" destination="QVU-vL-wa0" id="xw8-KD-x6U"/>
                         <outlet property="fatnessIndexLabel" destination="DlG-3Y-jXL" id="iwX-OP-rPG"/>
-                        <outlet property="getDietsButton" destination="LxY-vj-ZPj" id="eCm-9w-BI5"/>
                         <outlet property="leftArrow" destination="VUT-RG-ms5" id="2VB-R5-bsE"/>
                         <outlet property="rightArrow" destination="d19-gb-JUd" id="IN9-Vf-QIE"/>
                     </connections>
