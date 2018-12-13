@@ -20,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let launchManager = LaunchManager(window: window!)
-        launchManager.launch()
+        //let launchManager = LaunchManager(window: window!)
+        //launchManager.launch()
+        //window?.rootViewController =
         
         return true
     }
