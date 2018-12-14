@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //let launchManager = LaunchManager(window: window!)
         //launchManager.launch()
-        //window?.rootViewController =
+        window?.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
         
         return true
     }
