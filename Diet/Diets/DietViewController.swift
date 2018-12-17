@@ -23,6 +23,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
+    fileprivate var accessStatus = AccessStatus.denied
     
     let dropDownMenu = DropDown()
     private var previousStatusBarHidden = false
@@ -36,6 +37,18 @@ class DietViewController: UIViewController {
         setupCollectionViewFlowLayout()
         setupView()
         setupDropDownMenu()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if accessStatus == .denied {
+            weekdaysDropDownButton.isEnabled = false
+        }
+    }
+    
+    fileprivate func showContent() {
+        weekdaysDropDownButton.isEnabled = true
+        dishesCollectionView.reloadData()
     }
     
     fileprivate func setupView() {
@@ -117,6 +130,26 @@ extension DietViewController: UICollectionViewDataSource {
             print("Could not deque cell")
             return UICollectionViewCell()
         }
+        
+        if accessStatus == .denied {
+            cell.hide()
+            return cell
+        }
+        
         return cell
+    }
+}
+
+extension DietViewController: ContentAccessHandler {
+    
+    func accessIsDenied() {
+        accessStatus = .denied
+        let subscriptionOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+        present(subscriptionOfferVc, animated: true, completion: nil)
+    }
+    
+    func accessIsAvailable() {
+        accessStatus = .available
+        showContent()
     }
 }

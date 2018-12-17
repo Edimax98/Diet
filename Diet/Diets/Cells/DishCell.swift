@@ -41,7 +41,7 @@ class DishCell: UICollectionViewCell {
         setupCellShadow()
     }
     
-    func lockDish() {
+    func hide() {
         applyBlur()
         addSubview(lockImageView)
     }

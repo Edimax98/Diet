@@ -195,11 +195,20 @@
                         <outlet property="scrollView" destination="AZn-3s-enK" id="kTD-aS-DLy"/>
                         <outlet property="weekDaySelectionView" destination="FT0-6t-8ag" id="Erq-I2-25r"/>
                         <outlet property="weekdaysDropDownButton" destination="WZf-PU-prq" id="c6S-6N-c76"/>
+                        <segue destination="N7B-6q-DOV" kind="show" identifier="showSubOffer" id="mQY-Rz-Z4I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7F3-NW-0BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4241" y="212"/>
+        </scene>
+        <!--SubscriptionOffer-->
+        <scene sceneID="tPP-VI-5Xd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="N7B-6q-DOV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eRl-49-wQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4839" y="-494"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">

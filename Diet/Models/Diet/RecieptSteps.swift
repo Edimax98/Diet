@@ -8,6 +8,9 @@
 
 import Foundation
 
-struct Recipe {
+struct RecieptSteps {
     
+    var name: String
+    var description: String
+    var imagePaths: [String]
 }
