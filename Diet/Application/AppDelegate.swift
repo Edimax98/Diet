@@ -13,19 +13,19 @@ import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     var window: UIWindow?
+    var launchManager: LaunchManager?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        SKPaymentQueue.default().add(self)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
+        launchManager = LaunchManager(window: window!)
+        launchManager?.launchWithSubscriptionValidation()
         
-        let launchManager = LaunchManager(window: window!)
-//        launchManager.launch()
-        //window?.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        launchManager.launchWithSubscriptionValidation()
-        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     

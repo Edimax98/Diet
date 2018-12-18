@@ -32,17 +32,16 @@ class LaunchManager {
         
         guard SubscriptionService.shared.currentSubscription != nil else {
             handler?.accessIsDenied()
-            //NotificationCenter.default.post(name: SubscriptionService.noSubscriptionAfterAutoCheckNotification, object: self)
             return
         }
         handler?.accessIsAvailable()
     }
     
-    private func tryToUploadReciept() {
+    private func reuploadReciept() {
+        
         SubscriptionService.shared.uploadReceipt { [weak self] (success, _) in
-            
+    
             guard let unwrappedSelf = self else { return }
-            
             if success {
                 unwrappedSelf.uploadRecieptSucceeded()
             } else {
@@ -51,7 +50,13 @@ class LaunchManager {
         }
     }
 
-    func launch() {
+    func showSubscriptionOffer() {
+        
+        let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+        mainWindow.rootViewController?.present(subOfferVc, animated: true, completion: nil)
+    }
+    
+    func prepareForLaunch() {
         
         guard UserDefaults.standard.bool(forKey: "wereWelcomePagesShown") == false else {
             let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
@@ -59,14 +64,13 @@ class LaunchManager {
             mainWindow.rootViewController = dietVc
             return
         }
-        
         mainWindow.rootViewController = WelcomePageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
     }
     
     func launchWithSubscriptionValidation() {
         
         SubscriptionService.shared.loadSubscriptionOptions()
-        launch()
+        prepareForLaunch()
     
         guard SubscriptionService.shared.hasReceiptData else {
             handler?.accessIsDenied()
@@ -80,11 +84,10 @@ class LaunchManager {
             if success {
                 unwrappedSelf.uploadRecieptSucceeded()
             } else if shouldRetry {
-                unwrappedSelf.tryToUploadReciept()
+                unwrappedSelf.reuploadReciept()
             } else if !shouldRetry {
                 unwrappedSelf.handler?.accessIsDenied()
             }
         }
     }
-    
 }

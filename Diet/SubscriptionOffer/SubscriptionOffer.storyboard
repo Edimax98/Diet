@@ -55,6 +55,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="skipButtonPressed:" destination="JH8-T7-rpW" eventType="touchUpInside" id="r6m-Nz-51P"/>
+                                                    <segue destination="v4F-Mt-mrH" kind="show" identifier="showDiets" id="sMO-p1-KVI"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Get full access to diets with paid version" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSo-Td-d2I">
@@ -153,6 +154,9 @@
                                                                 <state key="normal" title="START">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="purchaseButtonPressed:" destination="JH8-T7-rpW" eventType="touchUpInside" id="5BC-Fc-1Qr"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -306,7 +310,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLP-Hc-qUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78" y="-743"/>
+            <point key="canvasLocation" x="-1" y="-801"/>
+        </scene>
+        <!--DietViewController-->
+        <scene sceneID="D6u-pW-KZK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="DietViewController" id="v4F-Mt-mrH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UK0-aW-VFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="607" y="-1149"/>
         </scene>
     </scenes>
     <resources>

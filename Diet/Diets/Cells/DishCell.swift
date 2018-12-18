@@ -21,11 +21,25 @@ class DishCell: UICollectionViewCell {
         let img = UIImageView(image: UIImage(named: "lock"))
         return img
     }()
+
+    lazy var blurEffectView: VisualEffectView = {
+        let blur = VisualEffectView()
+        blur.frame = self.bounds
+        blur.colorTintAlpha = 1
+        blur.colorTintAlpha = 0.1
+        blur.blurRadius = 5
+        blur.scale = 1
+        blur.layer.masksToBounds = true
+        blur.layer.cornerRadius = cellCornerRadius
+        return blur
+    }()
+
     
     static var identifier = "DishCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         showRecipeButton.layer.cornerRadius = showRecipeButton.frame.height / 2
         showRecipeButton.layer.masksToBounds = true
         dishImageView.layer.cornerRadius = 18
@@ -42,20 +56,19 @@ class DishCell: UICollectionViewCell {
     }
     
     func hide() {
-        applyBlur()
+        addSubview(blurEffectView)
         addSubview(lockImageView)
     }
     
-    fileprivate func applyBlur() {
-        let blurEffectView = VisualEffectView()
-        blurEffectView.frame = self.bounds
-        blurEffectView.colorTintAlpha = 1
-        blurEffectView.colorTintAlpha = 0.1
-        blurEffectView.blurRadius = 5
-        blurEffectView.scale = 1
-        blurEffectView.layer.masksToBounds = true
-        blurEffectView.layer.cornerRadius = cellCornerRadius
-        self.addSubview(blurEffectView)
+    func open() {
+        
+        if lockImageView.superview != nil {
+            lockImageView.removeFromSuperview()
+        }
+        
+        if blurEffectView.superview != nil {
+            blurEffectView.removeFromSuperview()
+        }
     }
     
     fileprivate func setupCellShadow() {

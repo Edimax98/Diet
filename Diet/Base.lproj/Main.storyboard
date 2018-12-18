@@ -551,7 +551,6 @@
                                 <connections>
                                     <action selector="agreedWithTestButtonPressed:" destination="Pb5-AJ-tzc" eventType="touchUpInside" id="y7c-ng-x9z"/>
                                     <action selector="getDietsButtonPressed:" destination="EfX-av-hwn" eventType="touchUpInside" id="Zpn-mx-09C"/>
-                                    <segue destination="i4V-AC-jU3" kind="presentation" id="CGN-dk-XxS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlG-3Y-jXL" customClass="AnimatedLabel" customModule="Diet" customModuleProvider="target">
@@ -617,11 +616,21 @@
                         <outlet property="getDietsButton" destination="LxY-vj-ZPj" id="eCm-9w-BI5"/>
                         <outlet property="leftArrow" destination="VUT-RG-ms5" id="2VB-R5-bsE"/>
                         <outlet property="rightArrow" destination="d19-gb-JUd" id="IN9-Vf-QIE"/>
+                        <segue destination="i4V-AC-jU3" kind="presentation" identifier="showDiets" id="cUo-mn-ltA"/>
+                        <segue destination="sT0-4T-J0S" kind="show" identifier="showSubOffer" id="deW-1i-4ui"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8h-Qf-Ly5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3326" y="99"/>
+        </scene>
+        <!--SubscriptionOffer-->
+        <scene sceneID="oND-Pv-tqF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="sT0-4T-J0S" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XdN-VR-vax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3930" y="-483"/>
         </scene>
     </scenes>
     <resources>

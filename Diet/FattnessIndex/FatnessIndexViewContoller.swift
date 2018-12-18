@@ -106,6 +106,11 @@ class FatnessIndexViewContoller: UIViewController {
     
     @IBAction func getDietsButtonPressed(_ sender: Any) {
         
+        if SubscriptionService.shared.currentSubscription == nil {
+            performSegue(withIdentifier: "showSubOffer", sender: self)
+        } else {
+            performSegue(withIdentifier: "showDiets", sender: self)
+        }
     }
 }
 

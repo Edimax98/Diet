@@ -135,6 +135,8 @@ extension DietViewController: UICollectionViewDataSource {
             cell.hide()
             return cell
         }
+    
+        cell.open()
         
         return cell
     }

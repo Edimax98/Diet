@@ -54,6 +54,16 @@ class SubscriptionOfferViewController: UIViewController {
         arcView.layer.shadowPath = path.cgPath
     }
     
+    private func fillLables() {
+        guard let option = SubscriptionService.shared.options?.first else { return }
+    
+        if UserDefaults.standard.bool(forKey: "isTrialExpired") {
+            self.trialLabel.text = allAccessMessage
+            self.priceLabel.text = trialExpiredMessage + option.formattedPrice + " per week"
+        }
+        self.trialTermsLabel.text = disclaimerMessage
+    }
+    
     private func setupView() {
         
         arcView.makeCornerRadius(arcView.frame.height / 2)
@@ -63,11 +73,11 @@ class SubscriptionOfferViewController: UIViewController {
         startButtonContainerView.makeCornerRadius(startButtonContainerView.frame.height / 2)
         termsAndServiceButton.makeCornerRadius(termsAndServiceButton.frame.height / 2)
         privacyPolicyButton.makeCornerRadius(privacyPolicyButton.frame.height / 2)
-        
         cardView.makeCornerRadius(32)
         cardView.dropShadow(opacity: 0.3, offSet: CGSize(width: 1, height: 1), radius: 16)
-
         arcView.dropShadow(opacity: 0.3, offSet: CGSize(width: 1, height: 1), radius: 16)
+        
+        fillLables()
     }
     
     private func addObservers() {
@@ -117,12 +127,20 @@ class SubscriptionOfferViewController: UIViewController {
         alert.addAction(backAction)
         present(alert, animated: true, completion: nil)
     }
-
+    
+    @IBAction func purchaseButtonPressed(_ sender: Any) {
+        guard let option = SubscriptionService.shared.options?.first else {
+            showErrorAlert(for: .purchaseFailed)
+            return
+        }
+        SubscriptionService.shared.purchase(subscription: option)
+    }
+    
     @IBAction func skipButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
+        SubscriptionService.shared.restorePurchases()
     }
     
     @IBAction func termsAndServiceButtonPressed(_ sender: Any) {
@@ -140,56 +158,26 @@ class SubscriptionOfferViewController: UIViewController {
     @objc func handleRestoreSuccessfull(notification: Notification) {
         
         if SubscriptionService.shared.currentSubscription != nil {
-            let alert = UIAlertController(title: "Successfull".localized, message: nil, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                self.performSegue(withIdentifier: "unwindToMain", sender: self)
-            }
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-            //status = .available
+            performSegue(withIdentifier: "showDiets", sender: self)
         } else {
             showErrorAlert(for: .noActiveSubscription)
         }
     }
     
     @objc func handlePurchaseSuccessfull(notification: Notification) {
-        
-        guard let subscription = SubscriptionService.shared.options?.first else { return }
-        
+    
         if let _ = SubscriptionService.shared.currentSubscription {
-            if !SubscriptionService.shared.isEligibleForTrial {
-                //self.trialLabel.text = allAccessMessage
-                //self.priceLabel.text = trialExpiredMessage + subscription.formattedPrice + " per week"
-            } else {
-                //self.trialLabel.text = allAccessMessage
-                //self.priceLabel.text = trialAvailableMessage + subscription.formattedPrice + " per week"
-            }
-            //status = .available
-            
-            dismiss(animated: true, completion: nil)
+            performSegue(withIdentifier: "showDiets", sender: self)
         }
     }
     
     @objc func handleOptionsLoaded(notification: Notification) {
-        
+
         guard let _ = SubscriptionService.shared.options?.first else {
             showErrorAlert(for: .internalError)
             return
         }
-        
-        //self.subscription = sub
-        
-        if UserDefaults.standard.bool(forKey: "isTrialExpired") {
-            self.trialLabel.text = allAccessMessage
-            guard let price = SubscriptionService.shared.options?.first?.formattedPrice else { return }
-            self.priceLabel.text = trialExpiredMessage + price + " per week"
-        } else {
-            self.trialLabel.text = freeTrialMessage
-            guard let price = SubscriptionService.shared.options?.first?.formattedPrice else { return }
-            self.priceLabel.text = trialAvailableMessage + price + " per week"
-        }
-        
-        self.trialTermsLabel.text = disclaimerMessage
+        fillLables()
     }
     
     @objc func handlePurchaseFailed() {
