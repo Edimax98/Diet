@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="382"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your food name here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OQ-W6-RMw">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your food name here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OQ-W6-RMw">
                         <rect key="frame" x="27.5" y="141" width="225" height="52"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="225" id="hTI-fn-pwr"/>
@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpN-7x-5GL">
-                        <rect key="frame" x="57" y="220" width="147" height="1"/>
+                        <rect key="frame" x="57" y="220" width="171" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="U7a-fl-ebG"/>
@@ -55,7 +55,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ET5-MK-fgE">
-                        <rect key="frame" x="77" y="245" width="127" height="1"/>
+                        <rect key="frame" x="77" y="245" width="151" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="yvb-kV-Gdl"/>
@@ -71,7 +71,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cj-nd-uMK">
-                        <rect key="frame" x="60" y="270" width="144" height="1"/>
+                        <rect key="frame" x="60" y="270" width="168" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="PjV-mw-vC0"/>
@@ -87,7 +87,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hi-9S-JkX">
-                        <rect key="frame" x="60" y="295" width="124" height="1"/>
+                        <rect key="frame" x="60" y="295" width="147" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="a0G-sb-KIy"/>
@@ -107,8 +107,8 @@
                             <action selector="showRecipeButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JON-IX-akV"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.4g." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-Di-D8X">
-                        <rect key="frame" x="212" y="209" width="49" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0g." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQz-Di-D8X">
+                        <rect key="frame" x="236" y="209" width="25" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="6MC-Ri-9ZP"/>
                         </constraints>
@@ -116,8 +116,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.4g." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUT-lX-PJx">
-                        <rect key="frame" x="212" y="234" width="49" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0g." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUT-lX-PJx">
+                        <rect key="frame" x="236" y="234" width="25" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="3Ec-X2-dNQ"/>
                         </constraints>
@@ -125,8 +125,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.4g." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4O-dC-mTP">
-                        <rect key="frame" x="212" y="259" width="49" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0g." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4O-dC-mTP">
+                        <rect key="frame" x="236" y="259" width="25" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="X9P-oz-PJq"/>
                         </constraints>
@@ -134,8 +134,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.4kCal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIf-wC-9y1">
-                        <rect key="frame" x="193" y="284" width="69" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0kCal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIf-wC-9y1">
+                        <rect key="frame" x="216" y="284" width="46" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="VBb-eH-ayr"/>
                         </constraints>
@@ -143,7 +143,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="salmon" translatesAutoresizingMaskIntoConstraints="NO" id="nh9-Eb-TaX">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_food" translatesAutoresizingMaskIntoConstraints="NO" id="nh9-Eb-TaX">
                         <rect key="frame" x="60" y="11" width="160" height="115"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="115" id="6v5-Nl-QyT"/>
@@ -193,8 +193,11 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="212" height="278"/>
             <connections>
+                <outlet property="caloriesAmountLabel" destination="DIf-wC-9y1" id="Xfb-jQ-uyk"/>
+                <outlet property="carbsAmountLabel" destination="TUT-lX-PJx" id="xQx-Zt-okN"/>
                 <outlet property="dishImageView" destination="nh9-Eb-TaX" id="85E-yB-cFU"/>
                 <outlet property="dishNameLabel" destination="1OQ-W6-RMw" id="wyL-C0-wf3"/>
+                <outlet property="fatsAmountLabel" destination="y4O-dC-mTP" id="K7O-pt-ObO"/>
                 <outlet property="proteinsAmountLabel" destination="yQz-Di-D8X" id="vRT-E8-1Vw"/>
                 <outlet property="showRecipeButton" destination="N3B-ml-iPd" id="eIY-yC-Prn"/>
             </connections>
@@ -202,6 +205,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="salmon" width="1200" height="800"/>
+        <image name="no_food" width="192" height="192"/>
     </resources>
 </document>

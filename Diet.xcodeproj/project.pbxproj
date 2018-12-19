@@ -51,10 +51,13 @@
 		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
 		A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */; };
 		A5E0C330216F95170045975E /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C32F216F95170045975E /* StringExtentions.swift */; };
+		A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E69C5521CA434F001649DD /* DietNetworkService.swift */; };
 		A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83872170F7370088F8FE /* NetworkService.swift */; };
 		A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */; };
 		A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */; };
 		A5EA838E2170F8830088F8FE /* RecieptSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838D2170F8830088F8FE /* RecieptSteps.swift */; };
+		A5EF446521CA60B9009B4635 /* diet.json in Resources */ = {isa = PBXBuildFile; fileRef = A5EF446421CA60B9009B4635 /* diet.json */; };
+		A5EF446721CA96D5009B4635 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF446621CA96D5009B4635 /* RecipeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,10 +108,13 @@
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
 		A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtentions.swift; sourceTree = "<group>"; };
 		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
+		A5E69C5521CA434F001649DD /* DietNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietNetworkService.swift; sourceTree = "<group>"; };
 		A5EA83872170F7370088F8FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingErroHandler.swift; sourceTree = "<group>"; };
 		A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkService.swift; sourceTree = "<group>"; };
 		A5EA838D2170F8830088F8FE /* RecieptSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptSteps.swift; sourceTree = "<group>"; };
+		A5EF446421CA60B9009B4635 /* diet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diet.json; sourceTree = "<group>"; };
+		A5EF446621CA96D5009B4635 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		B4615E85CA74F815C113661A /* Pods-Diet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +150,7 @@
 		A50250CA2178B31400F674B3 /* WelcomePage */ = {
 			isa = PBXGroup;
 			children = (
+				A5662AC421BAA3DB00DCD511 /* DishCell.xib */,
 				A548E9D52177783800FC62EE /* WelcomePageViewController.swift */,
 			);
 			path = WelcomePage;
@@ -204,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				A5662AC321BAA3DB00DCD511 /* DishCell.swift */,
-				A5662AC421BAA3DB00DCD511 /* DishCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 		A58CC52F216CF65100B20CE9 = {
 			isa = PBXGroup;
 			children = (
+				A5EF446421CA60B9009B4635 /* diet.json */,
 				A58CC53A216CF65100B20CE9 /* Diet */,
 				A58CC539216CF65100B20CE9 /* Products */,
 				0DBFAC8E0F84E985004B7A01 /* Pods */,
@@ -258,6 +265,7 @@
 				A58CC54E216CF6A500B20CE9 /* Assets */,
 				A50250D12178C84800F674B3 /* TestPage */,
 				A5A1182A21C2AA8E003843A1 /* SubscriptionOffer */,
+				A5EF446621CA96D5009B4635 /* RecipeViewController.swift */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -346,6 +354,7 @@
 			children = (
 				A5EA83872170F7370088F8FE /* NetworkService.swift */,
 				A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */,
+				A5E69C5521CA434F001649DD /* DietNetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -417,6 +426,7 @@
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
 				A5662AC621BAA3DB00DCD511 /* DishCell.xib in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
+				A5EF446521CA60B9009B4635 /* diet.json in Resources */,
 				A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,8 +525,10 @@
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
 				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
 				A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */,
+				A5EF446721CA96D5009B4635 /* RecipeViewController.swift in Sources */,
 				A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */,
 				A5A0C7AD21BE977B00C9035C /* SubscriptionNetworkService.swift in Sources */,
+				A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */,
 				A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */,
 				A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */,
 				A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */,

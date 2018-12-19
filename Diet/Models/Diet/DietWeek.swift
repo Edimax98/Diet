@@ -9,6 +9,12 @@
 import Foundation
 
 struct DietWeek {
+    
+    struct Day {
+        var name: String
+        var dishes: [Dish]
+    }
+    
     var nutritionalValue: NutritionalValue
-    var weeks: [String:[Dish]]
+    var days: [Day]
 }

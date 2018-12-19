@@ -22,9 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SKPaymentQueue.default().add(self)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        launchManager = LaunchManager(window: window!)
-        launchManager?.launchWithSubscriptionValidation()
         
+        launchManager = LaunchManager(window: window!)
+        //launchManager?.launchWithSubscriptionValidation()
+        launchManager?.prepareForLaunch()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }

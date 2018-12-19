@@ -8,6 +8,8 @@
 
 import UIKit
 import DropDown
+import Alamofire
+import AlamofireImage
 
 class DietViewController: UIViewController {
     
@@ -23,20 +25,39 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    fileprivate var accessStatus = AccessStatus.denied
+    fileprivate var accessStatus = AccessStatus.available
     
+    weak var recipeSender: RecipeReciver?
     let dropDownMenu = DropDown()
     private var previousStatusBarHidden = false
+    fileprivate var diet: Diet!
+    fileprivate var dishes = [Dish]()
+    let fetchingQueue = DispatchQueue.global(qos: .utility)
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showRecipe" {
+            
+            if let destinationVc = segue.destination as? RecipeViewController {
+                recipeSender = destinationVc
+            }
+        }
+    }
+    
+    let networkService = NetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViewFlowLayout()
         setupView()
         setupDropDownMenu()
+        
+        networkService.dietServiceDelegate = self
+        networkService.getDiet()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,6 +127,10 @@ class DietViewController: UIViewController {
         
         dropDownMenu.selectionAction = { [weak self] (index,item) in
             guard let unwrappedSelf = self else { print("Could not set button title. Self is nil."); return }
+            if let unwrppedDiet = unwrappedSelf.diet, let week = unwrppedDiet.weeks.first {
+                unwrappedSelf.dishes = week.days[index].dishes
+                unwrappedSelf.dishesCollectionView.reloadData()
+            }
             unwrappedSelf.animateButtonArrowRotation(rotationAngle: CGFloat(Double.pi * 2))
             unwrappedSelf.weekdaysDropDownButton.setTitle(item, for: .normal)
         }
@@ -121,7 +146,7 @@ class DietViewController: UIViewController {
 extension DietViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return dishes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -135,10 +160,54 @@ extension DietViewController: UICollectionViewDataSource {
             cell.hide()
             return cell
         }
-    
         cell.open()
         
+        if dishes.isEmpty {
+            return cell
+        }
+        
+        let dish = dishes[indexPath.row]
+        
+        cell.showRecipeButtonPressed = { [weak self] in
+            guard let unwrappedSelf = self else { return }
+            unwrappedSelf.performSegue(withIdentifier: "showRecipe", sender: self)
+            unwrappedSelf.recipeSender?.recieve(recipe: "", dishName: dish.name)
+        }
+        
+        fetchingQueue.async {
+            request(dish.imagePath, method: .get).responseImage { (response) in
+                guard let image = response.result.value else {
+                    print("Image for dish  - \(dish.name) is NIL")
+                    return
+                }
+                DispatchQueue.main.async {
+                    cell.dishImageView.image = image
+                }
+            }
+        }
+    
+        cell.dishNameLabel.text = dish.name
+        cell.proteinsAmountLabel.text = "\(dish.nutritionValue.protein)"
+        cell.carbsAmountLabel.text = "\(dish.nutritionValue.carbs)"
+        cell.fatsAmountLabel.text = "\(dish.nutritionValue.fats)"
+        cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories)"
+        
         return cell
+    }
+}
+
+extension DietViewController: DietNetworkServiceDelegate {
+    
+    func dietNetworkServiceDidGet(_ diet: Diet) {
+        self.diet = diet
+        if let dishes = diet.weeks.first?.days.first?.dishes {
+            self.dishes = dishes
+            dishesCollectionView.reloadData()
+        }
+    }
+    
+    func fetchingEndedWithError(_ error: Error) {
+        
     }
 }
 

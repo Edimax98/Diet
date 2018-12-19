@@ -196,6 +196,7 @@
                         <outlet property="weekDaySelectionView" destination="FT0-6t-8ag" id="Erq-I2-25r"/>
                         <outlet property="weekdaysDropDownButton" destination="WZf-PU-prq" id="c6S-6N-c76"/>
                         <segue destination="N7B-6q-DOV" kind="show" identifier="showSubOffer" id="mQY-Rz-Z4I"/>
+                        <segue destination="yQQ-Qh-aPF" kind="show" identifier="showRecipe" id="8jU-uT-CFa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7F3-NW-0BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -209,6 +210,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRl-49-wQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4839" y="-494"/>
+        </scene>
+        <!--Recipe View Controller-->
+        <scene sceneID="g1V-ZV-tEq">
+            <objects>
+                <viewController id="yQQ-Qh-aPF" customClass="RecipeViewController" customModule="Diet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kn7-C1-HOo"/>
+                        <viewControllerLayoutGuide type="bottom" id="KMJ-AT-UY3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OuG-MA-13x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvU-bv-AFP">
+                                <rect key="frame" x="0.0" y="20" width="375" height="780"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KT-XG-j8w">
+                                        <rect key="frame" x="16" y="20" width="343" height="28"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
+                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAC-Ob-klG">
+                                        <rect key="frame" x="16" y="69" width="343" height="642"/>
+                                        <mutableString key="text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Ut enim ad minim ]e cillum dolore eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eillum dolore eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</mutableString>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
+                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfd-No-EJw">
+                                        <rect key="frame" x="21" y="727" width="338" height="50"/>
+                                        <color key="backgroundColor" red="0.98431372549019602" green="0.50588235294117645" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="NHm-Vw-ldz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="agreedWithTestButtonPressed:" destination="Pb5-AJ-tzc" eventType="touchUpInside" id="XgM-z4-syL"/>
+                                            <action selector="closeButtonPressed:" destination="yQQ-Qh-aPF" eventType="touchUpInside" id="vmu-h9-Jf0"/>
+                                            <action selector="getDietsButtonPressed:" destination="EfX-av-hwn" eventType="touchUpInside" id="YRT-0n-Mh7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kAC-Ob-klG" firstAttribute="top" secondItem="6KT-XG-j8w" secondAttribute="bottom" constant="21" id="NFC-l1-gkU"/>
+                                    <constraint firstItem="6KT-XG-j8w" firstAttribute="top" secondItem="gvU-bv-AFP" secondAttribute="top" constant="20" id="ee4-l2-ZNr"/>
+                                    <constraint firstItem="kfd-No-EJw" firstAttribute="top" secondItem="kAC-Ob-klG" secondAttribute="bottom" constant="14" id="mUg-vQ-OFI"/>
+                                    <constraint firstAttribute="bottom" secondItem="kfd-No-EJw" secondAttribute="bottom" constant="13" id="r8d-sq-PUQ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gvU-bv-AFP" firstAttribute="top" secondItem="Kn7-C1-HOo" secondAttribute="bottom" id="1Um-3X-GsY"/>
+                            <constraint firstItem="gvU-bv-AFP" firstAttribute="leading" secondItem="OuG-MA-13x" secondAttribute="leading" id="8GK-g4-oCq"/>
+                            <constraint firstItem="6KT-XG-j8w" firstAttribute="leading" secondItem="OuG-MA-13x" secondAttribute="leading" constant="16" id="VRl-T6-krT"/>
+                            <constraint firstAttribute="trailing" secondItem="gvU-bv-AFP" secondAttribute="trailing" id="W0Y-wz-ULi"/>
+                            <constraint firstAttribute="trailing" secondItem="6KT-XG-j8w" secondAttribute="trailing" constant="16" id="Yho-bn-Gfn"/>
+                            <constraint firstItem="kfd-No-EJw" firstAttribute="leading" secondItem="OuG-MA-13x" secondAttribute="leading" constant="21" id="ZUt-a1-E4d"/>
+                            <constraint firstAttribute="trailing" secondItem="kfd-No-EJw" secondAttribute="trailing" constant="16" id="ZsF-dt-as0"/>
+                            <constraint firstItem="kAC-Ob-klG" firstAttribute="leading" secondItem="OuG-MA-13x" secondAttribute="leading" constant="16" id="bnD-Bt-LUh"/>
+                            <constraint firstAttribute="trailing" secondItem="kAC-Ob-klG" secondAttribute="trailing" constant="16" id="cxA-ts-maX"/>
+                            <constraint firstAttribute="bottom" secondItem="gvU-bv-AFP" secondAttribute="bottom" id="ytn-EJ-vrZ"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="800"/>
+                    <connections>
+                        <outlet property="closeButton" destination="kfd-No-EJw" id="pJG-Ez-8k4"/>
+                        <outlet property="dishNameLabel" destination="6KT-XG-j8w" id="67T-KY-KMs"/>
+                        <outlet property="recipeLabel" destination="kAC-Ob-klG" id="XNc-rU-yeX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVF-Xh-Djl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5095" y="211"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">

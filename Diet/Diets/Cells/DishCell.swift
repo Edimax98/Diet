@@ -8,13 +8,23 @@
 
 import UIKit
 
+protocol ActionHandler: class {
+    
+    func showRecipe()
+}
+
 class DishCell: UICollectionViewCell {
     
     @IBOutlet weak var proteinsAmountLabel: UILabel!
     @IBOutlet weak var dishNameLabel: UILabel!
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var showRecipeButton: UIButton!
+    @IBOutlet weak var fatsAmountLabel: UILabel!
+    @IBOutlet weak var caloriesAmountLabel: UILabel!
+    @IBOutlet weak var carbsAmountLabel: UILabel!
     
+    weak var handler: ActionHandler?
+    var showRecipeButtonPressed: (() -> Void)?
     fileprivate let cellCornerRadius: CGFloat = 32
     
     lazy var lockImageView: UIImageView = {
@@ -82,6 +92,7 @@ class DishCell: UICollectionViewCell {
     }
     
     @IBAction func showRecipeButtonPressed(_ sender: Any) {
-        
+        showRecipeButtonPressed?()
+        //handler?.showRecipe()
     }
 }
