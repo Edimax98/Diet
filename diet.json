@@ -1,302 +1,387 @@
 {
-  "Diet": {
-    "type": "super fit",
-    "weeks": [
-      {
-        "totalCalories": 1050,
-        "totalProtein": 41,
-        "totalCarbs": 34,
-        "totalFats": 50,
-        "days": [
-          [
+    "Diet": {
+        "type": "Super fit",
+        "weeks": [
             {
-              "name": "oatmeal with milk and banana",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
-              "calories": 370,
-              "protein": 13,
-              "carbs": 0,
-              "fats": 7,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
-                  "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
-                  "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
-                }
-              ]
-            },
-            {
-              "name": "a teaspoon of peanut butter, 3 rye loaves and one apple",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
-              "calories": 230,
-              "protein": 6,
-              "carbs": 0,
-              "fats": 8,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
-                  "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
-                }
-              ]
-            },
-            {
-              "name": "chicken breast with pasta and vegetables",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/pasta.jpg",
-              "calories": 350,
-              "protein": 31,
-              "carbs": 0,
-              "fats": 5,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Finely chop carrots, onions and celery and send them to the pan. Stir and fry for 7-9 minutes until golden brown. While the vegetables are fried, chop the chicken fillet, chop the tomato and pepper, chop the garlic and parsley.",
-                  "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfS2a_1xaQ2POLWkxaoKovAf21LSGqUeHoBnnww6S2axJsbicDxg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Add to the already roasted vegetables the remaining ingredients. The resulting mixture simmer for 15-20 minutes, until the meat is cooked.At this time, boil the pasta, and boil them so that they are slightly not digestion. That is, pasta must be elastic. By the way, this state of pasta in cooking is called: al dente.Boiled pasta mix with meat and vegetables and lay out on a plate. To taste you can add greens and cheese.",
-                  "images": "http://recept4you.ru/wp-content/uploads/2017/8/recept-makarony-po-flotski-s-kurinym-farshem_1.jpg"
-                }
-              ]
-            },
-            {
-              "name": "100 grams of low-fat cottage cheese.",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/tvorog.jpg",
-              "calories": 100,
-              "protein": 20,
-              "carbs": 0,
-              "fats": 0
+                "totalCalories": 1050,
+                "totalProtein": 41,
+                "totalCarbs": 34,
+                "totalFats": 50,
+                "days": [
+                    [
+                        {
+                            "name": "Oatmeal with milk and banana",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
+                            "calories": 370,
+                            "protein": 13,
+                            "carbs": 0,
+                            "fats": 7,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
+                                    "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
+                                    "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "A teaspoon of peanut butter, 3 rye loaves and one apple",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
+                            "calories": 230,
+                            "protein": 6,
+                            "carbs": 0,
+                            "fats": 8,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
+                                    "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Chicken breast with pasta and vegetables",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/pasta.jpg",
+                            "calories": 350,
+                            "protein": 31,
+                            "carbs": 0,
+                            "fats": 5,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Finely chop carrots, onions and celery and send them to the pan. Stir and fry for 7-9 minutes until golden brown. While the vegetables are fried, chop the chicken fillet, chop the tomato and pepper, chop the garlic and parsley.",
+                                    "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfS2a_1xaQ2POLWkxaoKovAf21LSGqUeHoBnnww6S2axJsbicDxg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Add to the already roasted vegetables the remaining ingredients. The resulting mixture simmer for 15-20 minutes, until the meat is cooked.At this time, boil the pasta, and boil them so that they are slightly not digestion. That is, pasta must be elastic. By the way, this state of pasta in cooking is called: al dente.Boiled pasta mix with meat and vegetables and lay out on a plate. To taste you can add greens and cheese.",
+                                    "images": "http://recept4you.ru/wp-content/uploads/2017/8/recept-makarony-po-flotski-s-kurinym-farshem_1.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "100 grams of low-fat cottage cheese.",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/tvorog.jpg",
+                            "calories": 100,
+                            "protein": 20,
+                            "carbs": 0,
+                            "fats": 0
+                        }
+                    ],
+                    [
+                        {
+                            "name": " A glass of skimmed milk (200 ml); Boiled soft-boiled egg; Grapefruit (100 g);A slice of rye bread (20 g); Butter (10 g).",
+                            "image": "https://www.1obl.ru/upload/resize_cache/iblock/f6d/827_465_2/deputat_gosdumy_podnyal_vopros_neobosnovannykh_natsenok_na_moloko_i_khleb_v_torgovykh_setyakh.jpg",
+                            "calories": 250,
+                            "protein": 15,
+                            "carbs": 0,
+                            "fats": 6,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Bread contains almost all the nutrients needed to support the body. These are carbohydrates, vegetable protein, fiber, fats, biotin, vitamins from group B, as well as a wide range of trace elements and minerals.",
+                                    "images": ""
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Milk contains: lactose, caseins, milk fat (unsaturated and saturated fatty acids, lecithin, cholesterol, kefalin, ergosterol), lactoalbumin and lactoglobulin, a large number of micro and macro elements, all the necessary vitamins, as well as biotin and choline. Milk contains calcium, iron, copper, iodine, cobalt, phosphorus, zinc and magnesium,",
+                                    "images": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Tea or coffee",
+                            "image": "https://www.coffeemanich.ru/upload/iblock/135/13559b09b72d86272b1b812becb708ba.jpg",
+                            "calories": 223,
+                            "protein": 40,
+                            "carbs": 0,
+                            "fats": 10,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Coffee contains serotonin, which is often called the hormone of happiness. Two cups a day will be enough to prevent depression, and one cup will just cheer you up!",
+                                    "images": "https://images1.cosmopolitan.ru/upload/attach/c87/c87f12f5c2ead017c0ed9602088b3992.jpg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Scientists estimate that tea leaves contain about three hundred ingredients, including proteins, fats, more than 10 types of vitamins, as well as tea phenol, theine and lipid sugars. Therefore, tea nourishes the body, regulates physiological processes and has a general health effect. Tea is especially useful to people of middle and old age.",
+                                    "images": "http://new-variant.ru/wp-content/uploads/2015/03/%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9-%D1%87%D0%B0%D0%B9-%D0%BF%D0%BE%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%82%D0%B2%D1%80%D0%B0%D1%82%D0%B8%D1%82%D1%8C-%D0%B4%D0%B8%D0%B0%D0%B1%D0%B5%D1%82.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Boiled vegetables (200 g); Meat low-fat varieties (80 g); Green salad; Fresh fruit (100 g); Unsweetened tea (1000 ml).",
+                            "image": "https://world-card.ru/images/interesnoe/kuhny/Estonia/myaso_otvarnoe_s_ovoshchami.jpg",
+                            "calories": 400,
+                            "protein": 250,
+                            "carbs": 50,
+                            "fats": 100,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "boil vegetables to taste",
+                                    "images": "https://www.maggi.ru/data/images/recept/img564x436/recept_5109_i4vm.jpg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Add to vegetables 80 grams of any non-fat meat and transfer it all with lettuce leaves",
+                                    "images": "http://womanwiki.ru/s/images/thumb/f/fd/Beef102.JPG/350px-Beef102.JPG"
+                                },
+                                {
+                                    "name": "Step 3",
+                                    "description": "Prepare your tea without sugar and for tea we eat 4 slices of apple",
+                                    "images": "https://images.wallpaperscraft.ru/image/chay_frukty_belyy_fon_korica_79070_3840x2400.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Cottage cheese or cheese (5 g); Rye Bread (20 g); Butter (5 g); Skim milk 30 ml",
+                            "image": "http://yakutia.info/uploads/images/18/05/QLlutDs5SJ.jpg",
+                            "calories": 100,
+                            "protein": 20,
+                            "carbs": 15,
+                            "fats": 41,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Milk and cottage cheese are very rich in calcium, which promotes the development and strengthening of bones.",
+                                    "images": ""
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "",
+                                    "images": ""
+                                }
+                            ]
+                        },{
+                            "name": "Vegetables (200 g); Fresh salad (200 g); Fruit (100 g); Lean meat (80 g); Tea or coffee (100 ml).",
+                            "image": "https://ah-vkusno.ru/wp-content/uploads/2018/01/FOTO-1-18-350x260.jpg",
+                            "calories": 300,
+                            "protein": 100,
+                            "carbs": 100,
+                            "fats": 90,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Fry vegetables in vegetable oil, add a couple of leaves of lettuce",
+                                    "images": "https://img.povar.ru/uploads/dc/a0/a7/cf/ovoshi_jarenie_na_skovorode-134116.JPG"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Boil 80 grams of non-fat meat and add it to vegetables",
+                                    "images": ""
+                                },
+                                {
+                                    "name": "Step 3",
+                                    "description": "drink freshly brewed tea or coffee",
+                                    "images": "https://teapoetry.com/wp-content/uploads/2016/06/inserto-tea-coffee-domenico-ceramika-konskie.jpg"
+                                }
+                            ]
+                        }],
+                    [
+                        {
+                            "name": "A slice of rye bread or 2 diet breads, 100 ml of kefir (ryazhenka, yogurt, yogurt) or 40 g of cottage cheese",
+                            "image": "http://www.calorizator.ru/sites/default/files/imagecache/product_512/product/bread-92.jpg",
+                            "calories": 100,
+                            "protein": 20,
+                            "carbs": 0,
+                            "fats": 15,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "First, they are nutritious, and the feeling of fullness comes much faster.Secondly, the chemical composition of bread contains the following trace elements: calcium, phosphorus, potassium, iron, sodium, magnesium. In addition, the loaves are saturated with vitamins such as, PP, B2, E. Replenishing the body with essential proteins, carbohydrates, mineral compounds, rye bread adds strength and energy to man. The protein contained in bread is easily digestible for the body, and carbohydrates are slow.",
+                                    "images": ""
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "name": "1 fruit (apple, orange, pear, peach)",
+                            "image": "http://static.skyeng.ru/image/3e84eefce429f4b28cc3130b8ffbcdd8.jpg",
+                            "calories": 100,
+                            "protein": 10,
+                            "carbs": 0,
+                            "fats": 10,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Fruits are rich in various vitamins that are good for the body",
+                                    "images": ""
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "name": "100 g of chicken or 130 g of fish",
+                            "image": "http://receptveka.ru/images/r/ovkuse.com/img/xles3TL4.jpg",
+                            "calories": 200,
+                            "protein": 13,
+                            "carbs": 0,
+                            "fats": 4,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Boil chicken or fish until ready and add leaf salad to them",
+                                    "images": ""
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "name": "1 boiled corn cob",
+                            "image": "https://www.eat-me.ru/wp-content/uploads/2017/08/kukuruza-pochatki.jpg",
+                            "calories": 143,
+                            "protein": 20,
+                            "carbs": 6,
+                            "fats": 17,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Boil 200 ml of water and then put a cob there and boil it for two hours",
+                                    "images": ""
+                                }
+                                
+                            ]
+                        },
+                        {
+                            "name": "meal for thursday",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
+                            "calories": 370,
+                            "protein": 13,
+                            "carbs": 0,
+                            "fats": 7,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
+                                    "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
+                                    "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "name": "meal for friday",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
+                            "calories": 370,
+                            "protein": 13,
+                            "carbs": 0,
+                            "fats": 7,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
+                                    "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
+                                    "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "meal 2 friday",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
+                            "calories": 230,
+                            "protein": 6,
+                            "carbs": 0,
+                            "fats": 8,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
+                                    "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "name": "meal for saturday",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
+                            "calories": 370,
+                            "protein": 13,
+                            "carbs": 0,
+                            "fats": 7,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
+                                    "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
+                                    "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "meal 2 saturday",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
+                            "calories": 230,
+                            "protein": 6,
+                            "carbs": 0,
+                            "fats": 8,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
+                                    "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "name": "meal for sunday",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
+                            "calories": 370,
+                            "protein": 13,
+                            "carbs": 0,
+                            "fats": 7,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
+                                    "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
+                                },
+                                {
+                                    "name": "Step 2",
+                                    "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
+                                    "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "meal 2 sundat",
+                            "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
+                            "calories": 230,
+                            "protein": 6,
+                            "carbs": 0,
+                            "fats": 8,
+                            "reciept": [
+                                {
+                                    "name": "Step 1",
+                                    "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
+                                    "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
+                                }
+                            ]
+                        }
+                    ]
+                ]
             }
-          ],
-          [
-            {
-              "name": "meal for tuesday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
-              "calories": 370,
-              "protein": 13,
-              "carbs": 0,
-              "fats": 7,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
-                  "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
-                  "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
-                }
-              ]
-            },
-            {
-              "name": "meal 2 tuesday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
-              "calories": 230,
-              "protein": 6,
-              "carbs": 0,
-              "fats": 8,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
-                  "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
-                }
-              ]
-            }
-          ],
-          [
-            
-            {
-              "name": "meal for wednesday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
-              "calories": 370,
-              "protein": 13,
-              "carbs": 0,
-              "fats": 7,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
-                  "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
-                  "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
-                }
-              ]
-            },
-            {
-              "name": "meal 2 wednesday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
-              "calories": 230,
-              "protein": 6,
-              "carbs": 0,
-              "fats": 8,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
-                  "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
-                }
-              ]
-            }
-            ],
-            [
-            
-            {
-              "name": "meal for thursday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
-              "calories": 370,
-              "protein": 13,
-              "carbs": 0,
-              "fats": 7,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
-                  "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
-                  "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
-                }
-              ]
-            },
-            {
-              "name": "meal 2 thursday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
-              "calories": 230,
-              "protein": 6,
-              "carbs": 0,
-              "fats": 8,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
-                  "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
-                }
-              ]
-            }
-            ],
-            [
-            
-            {
-              "name": "meal for friday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
-              "calories": 370,
-              "protein": 13,
-              "carbs": 0,
-              "fats": 7,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
-                  "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
-                  "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
-                }
-              ]
-            },
-            {
-              "name": "meal 2 friday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
-              "calories": 230,
-              "protein": 6,
-              "carbs": 0,
-              "fats": 8,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
-                  "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
-                }
-              ]
-            }
-            ],
-            
-            [{
-              "name": "meal for saturday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
-              "calories": 370,
-              "protein": 13,
-              "carbs": 0,
-              "fats": 7,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
-                  "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
-                  "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
-                }
-              ]
-            },
-            {
-              "name": "meal 2 saturday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
-              "calories": 230,
-              "protein": 6,
-              "carbs": 0,
-              "fats": 8,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
-                  "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
-                }
-              ]
-            }],
-            [{
-              "name": "meal for sunday",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/ovsyanka.jpg",
-              "calories": 370,
-              "protein": 13,
-              "carbs": 0,
-              "fats": 7,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "Pour 150 ml of milk into a saucepan, bring it to a boil and add 60 grams of dried cereal",
-                  "images": "http://lifestyleladies.ru/upload/information_system_14/1/5/2/item_15234/information_items_15234.jpg"
-                },
-                {
-                  "name": "step2",
-                  "description": "Reduce the heat and boil the porridge for 5 minutes, not forgetting to stir. As soon as 5 minutes have passed, turn off the fire, cover the pan with a lid and leave in this form for 8-10 minutes.Put the finished porridge in a plate, add chopped bananas and cinnamon, and start to have breakfast",
-                  "images": "http://fit-and-eat.ru/wp-content/uploads/2015/08/kasha_s_bananom-e1438782875155.jpg"
-                }
-              ]
-            },
-            {
-              "name": "meal 2 sundat",
-              "image": "https://fitnessguides.ru/wp-content/uploads/2014/06/araxis.jpg",
-              "calories": 230,
-              "protein": 6,
-              "carbs": 0,
-              "fats": 8,
-              "reciept": [
-                {
-                  "name": "step1",
-                  "description": "During breakfast, when your porridge is infused, spread the loaves with peanut butter, wrap in foil, or place a container. At work or school just get the resulting sandwiches and have a snack",
-                  "images": "http://www.racionika.ru/u/article_file/305/shutterstock_307548974.jpg"
-                }
-              ]
-            }]
         ]
-      }
-    ]
-  }
+    }
 }

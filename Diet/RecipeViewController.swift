@@ -10,7 +10,7 @@ import UIKit
 
 protocol RecipeReciver: class {
     
-    func recieve(recipe: String, dishName: String)
+    func recieve(recipe: [RecieptSteps], dishName: String)
 }
 
 class RecipeViewController: UIViewController {
@@ -31,8 +31,10 @@ class RecipeViewController: UIViewController {
 
 extension RecipeViewController: RecipeReciver {
     
-    func recieve(recipe: String, dishName: String) {
+    func recieve(recipe: [RecieptSteps], dishName: String) {
+        
         dishNameLabel.text = dishName
-        //recipeLabel.text = recipe
+        let recipeDescription = recipe.reduce("") { str, step in  str + "\n\n" + step.name + "\n\n" + step.description }
+        recipeLabel.text = recipeDescription
     }
 }

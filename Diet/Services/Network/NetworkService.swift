@@ -12,7 +12,6 @@ import SwiftyJSON
 
 class NetworkService {
     
-    weak var recipeServiceDelegate: RecipeNetworkServiceDelegate?
     weak var dietServiceDelegate: DietNetworkServiceDelegate?
     
     init() {}
@@ -39,7 +38,11 @@ extension NetworkService: DietNetworkService {
                                                                                                     Dish.init(name: jsonDish["name"].stringValue, imagePath: jsonDish["image"].stringValue,
                                                                                                               nutritionValue: NutritionalValue.init(
                                                                                                                 calories: jsonDish["calories"].doubleValue, protein: jsonDish["protein"].doubleValue,
-                                                                                                                carbs: jsonDish["carbs"].doubleValue, fats: jsonDish["fats"].doubleValue))
+                                                                                                                carbs: jsonDish["carbs"].doubleValue, fats: jsonDish["fats"].doubleValue),
+                                                                                                                recipe: jsonDish["reciept"].array?.map { jsonRecipe -> RecieptSteps in
+                                                                                                                RecieptSteps.init(name: jsonDish["name"].stringValue,
+                                                                                                                                  description: jsonRecipe["description"].stringValue,
+                                                                                                                                  imagePaths: [jsonRecipe["images"].first?.0 ?? ""]) } ?? [])
             } ?? [])}
 
         guard let unwrappedDays = days else { print("days are nil after being parsed"); return }
@@ -82,13 +85,5 @@ extension NetworkService: DietNetworkService {
         //            }
         //            print(weeks ?? "NIL")
         //        }
-    }
-}
-
-// MARK: - RecipeNetworkService
-extension NetworkService: RecipeNetworkService {
-    
-    func getRecipe() {
-        
     }
 }

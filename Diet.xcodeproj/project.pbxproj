@@ -54,7 +54,6 @@
 		A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E69C5521CA434F001649DD /* DietNetworkService.swift */; };
 		A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83872170F7370088F8FE /* NetworkService.swift */; };
 		A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */; };
-		A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */; };
 		A5EA838E2170F8830088F8FE /* RecieptSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838D2170F8830088F8FE /* RecieptSteps.swift */; };
 		A5EF446521CA60B9009B4635 /* diet.json in Resources */ = {isa = PBXBuildFile; fileRef = A5EF446421CA60B9009B4635 /* diet.json */; };
 		A5EF446721CA96D5009B4635 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF446621CA96D5009B4635 /* RecipeViewController.swift */; };
@@ -111,7 +110,6 @@
 		A5E69C5521CA434F001649DD /* DietNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietNetworkService.swift; sourceTree = "<group>"; };
 		A5EA83872170F7370088F8FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingErroHandler.swift; sourceTree = "<group>"; };
-		A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkService.swift; sourceTree = "<group>"; };
 		A5EA838D2170F8830088F8FE /* RecieptSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptSteps.swift; sourceTree = "<group>"; };
 		A5EF446421CA60B9009B4635 /* diet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diet.json; sourceTree = "<group>"; };
 		A5EF446621CA96D5009B4635 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -353,7 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				A5EA83872170F7370088F8FE /* NetworkService.swift */,
-				A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */,
 				A5E69C5521CA434F001649DD /* DietNetworkService.swift */,
 			);
 			path = Network;
@@ -506,7 +503,6 @@
 				A589FB0221C7AFAC0035E80D /* NutritionValue.swift in Sources */,
 				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
 				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
-				A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
 				A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */,
 				A589FAFD21C7ACF80035E80D /* Dish.swift in Sources */,

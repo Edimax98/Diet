@@ -31,6 +31,7 @@ class SubscriptionOfferViewController: UIViewController {
     fileprivate let disclaimerMessage = "Payment will be charged to your iTunes Account at confirmation of purchase. Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. Subscription auto-renewal may be turned off by going to the Account Settings after purchase. Any unused portion of a free trial will be forfeited when you purchase a subscription.".localized
     fileprivate let allAccessMessage = "All access".localized
     fileprivate let freeTrialMessage = "3 days FREE".localized
+    fileprivate let subscriptionDuration = " per week".localized
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -49,9 +50,11 @@ class SubscriptionOfferViewController: UIViewController {
         
         arcView.layer.masksToBounds = false
         arcView.layer.shadowColor = UIColor.lightGray.cgColor
-        arcView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        arcView.layer.shadowOffset = CGSize(width: 1, height: 1)
         arcView.layer.shadowOpacity = 0.5
+        arcView.layer.shadowRadius = 16
         arcView.layer.shadowPath = path.cgPath
+        cardView.dropShadow(opacity: 0.3, offSet: CGSize(width: 1, height: 1), radius: 16)
     }
     
     private func fillLables() {
@@ -59,7 +62,9 @@ class SubscriptionOfferViewController: UIViewController {
     
         if UserDefaults.standard.bool(forKey: "isTrialExpired") {
             self.trialLabel.text = allAccessMessage
-            self.priceLabel.text = trialExpiredMessage + option.formattedPrice + " per week"
+            self.priceLabel.text = trialExpiredMessage + option.formattedPrice + subscriptionDuration
+        } else {
+            self.priceLabel.text = trialAvailableMessage + option.formattedPrice + subscriptionDuration
         }
         self.trialTermsLabel.text = disclaimerMessage
     }
@@ -74,8 +79,6 @@ class SubscriptionOfferViewController: UIViewController {
         termsAndServiceButton.makeCornerRadius(termsAndServiceButton.frame.height / 2)
         privacyPolicyButton.makeCornerRadius(privacyPolicyButton.frame.height / 2)
         cardView.makeCornerRadius(32)
-        cardView.dropShadow(opacity: 0.3, offSet: CGSize(width: 1, height: 1), radius: 16)
-        arcView.dropShadow(opacity: 0.3, offSet: CGSize(width: 1, height: 1), radius: 16)
         
         fillLables()
     }

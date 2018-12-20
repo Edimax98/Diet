@@ -13,4 +13,5 @@ struct Dish {
     var name: String
     var imagePath: String
     var nutritionValue: NutritionalValue
+    var recipe: [RecieptSteps]
 }

@@ -25,7 +25,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    fileprivate var accessStatus = AccessStatus.available
+    fileprivate var accessStatus = AccessStatus.denied
     
     weak var recipeSender: RecipeReciver?
     let dropDownMenu = DropDown()
@@ -84,6 +84,7 @@ class DietViewController: UIViewController {
         dietBackImageView.clipsToBounds = true
         
         dishesCollectionView.dataSource = self
+        dishesCollectionView.delegate = self
         dishesCollectionView.register(UINib(nibName: "DishCell", bundle: nil), forCellWithReuseIdentifier: DishCell.identifier)
         
         weekDaySelectionView.layer.cornerRadius = viewCornerRadius
@@ -171,12 +172,17 @@ extension DietViewController: UICollectionViewDataSource {
         cell.showRecipeButtonPressed = { [weak self] in
             guard let unwrappedSelf = self else { return }
             unwrappedSelf.performSegue(withIdentifier: "showRecipe", sender: self)
-            unwrappedSelf.recipeSender?.recieve(recipe: "", dishName: dish.name)
+            unwrappedSelf.recipeSender?.recieve(recipe: dish.recipe, dishName: dish.name)
         }
         
         fetchingQueue.async {
             request(dish.imagePath, method: .get).responseImage { (response) in
                 guard let image = response.result.value else {
+                    
+                    DispatchQueue.main.async {
+                        cell.dishImageView.image = UIImage(named: "no_food")
+                    }
+                    
                     print("Image for dish  - \(dish.name) is NIL")
                     return
                 }
@@ -193,6 +199,16 @@ extension DietViewController: UICollectionViewDataSource {
         cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories)"
         
         return cell
+    }
+}
+
+extension DietViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if accessStatus == .denied {
+            performSegue(withIdentifier: "showSubOffer", sender: self)
+        }
     }
 }
 
