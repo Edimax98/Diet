@@ -12,7 +12,11 @@
 		<key>Alamofire.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>0</integer>
+=======
+			<integer>1</integer>
+>>>>>>> dev
 		</dict>
 		<key>AlamofireImage.xcscheme</key>
 		<dict>
@@ -22,7 +26,11 @@
 		<key>AlamofireImage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>1</integer>
+=======
+			<integer>2</integer>
+>>>>>>> dev
 		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
@@ -32,7 +40,11 @@
 		<key>Bolts.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>2</integer>
+=======
+			<integer>3</integer>
+>>>>>>> dev
 		</dict>
 		<key>DropDown.xcscheme</key>
 		<dict>
@@ -42,7 +54,11 @@
 		<key>DropDown.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>3</integer>
+=======
+			<integer>4</integer>
+>>>>>>> dev
 		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
@@ -52,7 +68,11 @@
 		<key>FBSDKCoreKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>5</integer>
+=======
+			<integer>6</integer>
+>>>>>>> dev
 		</dict>
 		<key>FacebookCore.xcscheme</key>
 		<dict>
@@ -62,7 +82,11 @@
 		<key>FacebookCore.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>4</integer>
+=======
+			<integer>5</integer>
+>>>>>>> dev
 		</dict>
 		<key>Pods-Diet.xcscheme</key>
 		<dict>
@@ -72,7 +96,11 @@
 		<key>Pods-Diet.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>7</integer>
+=======
+			<integer>8</integer>
+>>>>>>> dev
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
@@ -82,7 +110,11 @@
 		<key>SwiftyJSON.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>8</integer>
+=======
+			<integer>9</integer>
+>>>>>>> dev
 		</dict>
 		<key>paper-onboarding.xcscheme</key>
 		<dict>
@@ -92,7 +124,11 @@
 		<key>paper-onboarding.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>6</integer>
+=======
+			<integer>7</integer>
+>>>>>>> dev
 		</dict>
 	</dict>
 </dict>

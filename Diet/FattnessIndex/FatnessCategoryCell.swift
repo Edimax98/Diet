@@ -12,7 +12,6 @@ class FatnessCategoryCell: UICollectionViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var holderView: UIView!
     
     static var identifier = "FatnessCategoryCell"
     

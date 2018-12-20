@@ -68,7 +68,7 @@ class WelcomePageViewController: UIViewController {
     }
 
     @IBAction func skipButtonPressed(_ sender: Any) {
-        
+        UserDefaults.standard.set(true, forKey: "wereWelcomePagesShown")
     }
 }
 
