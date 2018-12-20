@@ -23,8 +23,7 @@ class TestPageViewController: UIPageViewController {
     fileprivate weak var loadingAlert: UIAlertController!
     fileprivate var fullScreenAd: FBInterstitialAd!
     fileprivate var adLoadingTimoutTimer: Timer!
-    var adView: FBAdView!
-    
+
     let genderSelectionPage = GenderSelectorViewController.controllerInStoryboard(UIStoryboard(name: "GenderSelectorViewController", bundle: nil))
     let ageSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let currentWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
@@ -45,18 +44,14 @@ class TestPageViewController: UIPageViewController {
     required init?(coder: NSCoder) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
-        SwiftyAd.shared.showBanner(from: UIViewController())
-        SwiftyAd.shared.delegate = self
-    
         fillPages()
         fillViewData()
-    
         setViewControllers([testPages.first!], direction: .forward, animated: true, completion: nil)
-    
+        
         resultsVc.repeatTest = {
             self.scrollToViewController(index: 0)
         }
@@ -90,22 +85,18 @@ class TestPageViewController: UIPageViewController {
         currentWeightSelectionPage.testViewData = currentWeightSelectionPageData
         goalWeightSelectionPage.testViewData = goalWeightSelectionPageData
         heightSelectionPage.testViewData = heigthSelectionPageData
-       
+        
         let _ = ageSelectionPage.view
         let _ = heightSelectionPage.view
         let _ = goalWeightSelectionPage.view
         let _ = currentWeightSelectionPage.view
         
-        SwiftyAd.shared.showBanner(from: ageSelectionPage)
-        SwiftyAd.shared.showBanner(from: goalWeightSelectionPage)
-                
         handleBackButtonPressing()
         handleNextButtonPressing()
         heightSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
     }
     
     fileprivate func loadFullScreenAd() {
-        
         fullScreenAd = FBInterstitialAd(placementID: "317759862160517_317760262160477")
         fullScreenAd.load()
         fullScreenAd.delegate = self
@@ -263,18 +254,6 @@ extension TestPageViewController: UIPageViewControllerDataSource {
             return nextTestPage
         }
         return UIViewController()
-    }
-}
-
-extension TestPageViewController: SwiftyAdDelegate {
-    
-    func swiftyAdDidFailedToLoad(_ swiftyAd: SwiftyAd) {
-        
-        genderSelectionPage.shouldHideBanner = true
-        ageSelectionPage.shouldHideBanner = true
-        currentWeightSelectionPage.shouldHideBanner = true
-        goalWeightSelectionPage.shouldHideBanner = true
-        heightSelectionPage.shouldHideBanner = true
     }
 }
 

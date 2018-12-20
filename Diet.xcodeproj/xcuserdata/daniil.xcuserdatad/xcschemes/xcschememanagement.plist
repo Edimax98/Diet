@@ -12,9 +12,6 @@
 		<key>Diet.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>9</integer>
-=======
 			<integer>0</integer>
 		</dict>
 	</dict>
@@ -24,7 +21,6 @@
 		<dict>
 			<key>primary</key>
 			<true/>
->>>>>>> dev
 		</dict>
 	</dict>
 </dict>

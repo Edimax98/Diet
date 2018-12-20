@@ -36,9 +36,6 @@
 		A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC53F216CF65100B20CE9 /* Main.storyboard */; };
 		A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58CC542216CF65200B20CE9 /* Assets.xcassets */; };
 		A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC544216CF65200B20CE9 /* LaunchScreen.storyboard */; };
-<<<<<<< HEAD
-		A5A0C7A621BE662500C9035C /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7A521BE662500C9035C /* Enviroment.swift */; };
-=======
 		A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7A721BE7D2800C9035C /* UPCarouselFlowLayout.swift */; };
 		A5A0C7AA21BE96A300C9035C /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7A921BE96A300C9035C /* Subscription.swift */; };
 		A5A0C7AD21BE977B00C9035C /* SubscriptionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7AC21BE977B00C9035C /* SubscriptionNetworkService.swift */; };
@@ -47,28 +44,19 @@
 		A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */; };
 		A5A1182721C29008003843A1 /* SubscriptionOffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A1182621C29008003843A1 /* SubscriptionOffer.storyboard */; };
 		A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */; };
->>>>>>> dev
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
 		A5B02C66217A241200A9E3A4 /* GenderSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */; };
 		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
 		A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */; };
-		A5DE70D021C1418B00BBA0D7 /* SwiftyAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE70CF21C1418B00BBA0D7 /* SwiftyAd.swift */; };
 		A5E0C330216F95170045975E /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C32F216F95170045975E /* StringExtentions.swift */; };
-<<<<<<< HEAD
-		A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83872170F7370088F8FE /* NetworkService.swift */; };
-		A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */; };
-		A5EA838C2170F81C0088F8FE /* RecipeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */; };
-		A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838D2170F8830088F8FE /* Recipe.swift */; };
-=======
 		A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E69C5521CA434F001649DD /* DietNetworkService.swift */; };
 		A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83872170F7370088F8FE /* NetworkService.swift */; };
 		A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */; };
 		A5EA838E2170F8830088F8FE /* RecieptSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838D2170F8830088F8FE /* RecieptSteps.swift */; };
 		A5EF446521CA60B9009B4635 /* diet.json in Resources */ = {isa = PBXBuildFile; fileRef = A5EF446421CA60B9009B4635 /* diet.json */; };
 		A5EF446721CA96D5009B4635 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF446621CA96D5009B4635 /* RecipeViewController.swift */; };
->>>>>>> dev
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,9 +92,6 @@
 		A58CC542216CF65200B20CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A58CC545216CF65200B20CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A58CC547216CF65200B20CE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		A5A0C7A521BE662500C9035C /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
-=======
 		A5A0C7A721BE7D2800C9035C /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
 		A5A0C7A921BE96A300C9035C /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		A5A0C7AC21BE977B00C9035C /* SubscriptionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionNetworkService.swift; sourceTree = "<group>"; };
@@ -115,28 +100,19 @@
 		A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
 		A5A1182621C29008003843A1 /* SubscriptionOffer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SubscriptionOffer.storyboard; sourceTree = "<group>"; };
 		A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOfferViewController.swift; sourceTree = "<group>"; };
->>>>>>> dev
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
 		A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
 		A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtentions.swift; sourceTree = "<group>"; };
-		A5DE70CF21C1418B00BBA0D7 /* SwiftyAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyAd.swift; sourceTree = "<group>"; };
 		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		A5EA83872170F7370088F8FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingErroHandler.swift; sourceTree = "<group>"; };
-		A5EA838B2170F81C0088F8FE /* RecipeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNetworkService.swift; sourceTree = "<group>"; };
-		A5EA838D2170F8830088F8FE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-=======
 		A5E69C5521CA434F001649DD /* DietNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietNetworkService.swift; sourceTree = "<group>"; };
 		A5EA83872170F7370088F8FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingErroHandler.swift; sourceTree = "<group>"; };
 		A5EA838D2170F8830088F8FE /* RecieptSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptSteps.swift; sourceTree = "<group>"; };
 		A5EF446421CA60B9009B4635 /* diet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diet.json; sourceTree = "<group>"; };
 		A5EF446621CA96D5009B4635 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
->>>>>>> dev
 		B4615E85CA74F815C113661A /* Pods-Diet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,7 +179,6 @@
 		A548E9CC21776D6D00FC62EE /* Singletones */ = {
 			isa = PBXGroup;
 			children = (
-				A5A0C7A521BE662500C9035C /* Enviroment.swift */,
 				A57C7B0121764278008DA476 /* Network.swift */,
 			);
 			path = Singletones;
@@ -238,8 +213,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		A589FAFE21C7AD980035E80D /* Diet */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +225,6 @@
 			path = Diet;
 			sourceTree = "<group>";
 		};
->>>>>>> dev
 		A58CC52F216CF65100B20CE9 = {
 			isa = PBXGroup;
 			children = (
@@ -275,14 +247,11 @@
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				A58CC547216CF65200B20CE9 /* Info.plist */,
-=======
 				A5A0C7AB21BE96CD00C9035C /* Subscription */,
->>>>>>> dev
 				A548E9D9217787A800FC62EE /* Appearance */,
 				A548E9CC21776D6D00FC62EE /* Singletones */,
 				A5E0C331216F951E0045975E /* Extensions */,
+				A58CC547216CF65200B20CE9 /* Info.plist */,
 				A58CC54D216CF69400B20CE9 /* Application */,
 				A53B1B4821B58A860036AD00 /* FattnessIndex */,
 				A5662AC221BAA3C000DCD511 /* Diets */,
@@ -291,14 +260,10 @@
 				A5A1DD23217E26360099A1BD /* TestResults */,
 				A5EA83902170F8C80088F8FE /* Services */,
 				A5EA838F2170F8C00088F8FE /* Models */,
-				A50250D12178C84800F674B3 /* TestPage */,
-<<<<<<< HEAD
 				A58CC54E216CF6A500B20CE9 /* Assets */,
-				A5DE70CF21C1418B00BBA0D7 /* SwiftyAd.swift */,
-=======
+				A50250D12178C84800F674B3 /* TestPage */,
 				A5A1182A21C2AA8E003843A1 /* SubscriptionOffer */,
 				A5EF446621CA96D5009B4635 /* RecipeViewController.swift */,
->>>>>>> dev
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -321,8 +286,6 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		A5A0C7AB21BE96CD00C9035C /* Subscription */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,7 +307,6 @@
 			path = SubscriptionOffer;
 			sourceTree = "<group>";
 		};
->>>>>>> dev
 		A5A1DD23217E26360099A1BD /* TestResults */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,18 +418,12 @@
 			files = (
 				A50250CC2178B84B00F674B3 /* SelectingViewController.storyboard in Resources */,
 				A5B02C66217A241200A9E3A4 /* GenderSelectorViewController.storyboard in Resources */,
-<<<<<<< HEAD
-=======
 				A5A1182721C29008003843A1 /* SubscriptionOffer.storyboard in Resources */,
->>>>>>> dev
 				A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */,
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
 				A5662AC621BAA3DB00DCD511 /* DishCell.xib in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
-<<<<<<< HEAD
-=======
 				A5EF446521CA60B9009B4635 /* diet.json in Resources */,
->>>>>>> dev
 				A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,38 +500,21 @@
 				A51CC74E21BFD75100FFCFD5 /* VisualEffectBlur.swift in Sources */,
 				A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */,
 				A51F6EA221B96933000CE5D0 /* DietViewController.swift in Sources */,
-<<<<<<< HEAD
-=======
 				A589FB0221C7AFAC0035E80D /* NutritionValue.swift in Sources */,
->>>>>>> dev
 				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
 				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
-<<<<<<< HEAD
-=======
 				A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */,
 				A589FAFD21C7ACF80035E80D /* Dish.swift in Sources */,
->>>>>>> dev
 				A57C7B0221764278008DA476 /* Network.swift in Sources */,
 				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
 				A50250CE2178BCFC00F674B3 /* SelectingViewController.swift in Sources */,
 				A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */,
-<<<<<<< HEAD
-				A5DE70D021C1418B00BBA0D7 /* SwiftyAd.swift in Sources */,
-=======
->>>>>>> dev
 				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
 				A5A0C7AF21BE979100C9035C /* Session.swift in Sources */,
 				A5A0C7B121BE97BE00C9035C /* PaidSubscription.swift in Sources */,
 				A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */,
 				A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */,
-<<<<<<< HEAD
-				A5EA838E2170F8830088F8FE /* Recipe.swift in Sources */,
-				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
-				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
-				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
-				A5A0C7A621BE662500C9035C /* Enviroment.swift in Sources */,
-=======
 				A5EA838E2170F8830088F8FE /* RecieptSteps.swift in Sources */,
 				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
 				A589FB0421C7B2AB0035E80D /* Diet.swift in Sources */,
@@ -586,7 +525,6 @@
 				A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */,
 				A5A0C7AD21BE977B00C9035C /* SubscriptionNetworkService.swift in Sources */,
 				A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */,
->>>>>>> dev
 				A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */,
 				A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */,
 				A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */,

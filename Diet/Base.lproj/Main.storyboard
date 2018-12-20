@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KVe-yI-r7Z">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
->>>>>>> dev
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-<<<<<<< HEAD
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-    </dependencies>
-    <scenes>
-=======
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -300,7 +290,6 @@
             </objects>
             <point key="canvasLocation" x="5318" y="193"/>
         </scene>
->>>>>>> dev
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">
             <objects>
@@ -629,8 +618,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-<<<<<<< HEAD
-=======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-vj-ZPj">
                                 <rect key="frame" x="16" y="594" width="343" height="60"/>
                                 <color key="backgroundColor" red="0.01176470588" green="0.8980392157" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -646,7 +633,6 @@
                                     <action selector="getDietsButtonPressed:" destination="EfX-av-hwn" eventType="touchUpInside" id="Zpn-mx-09C"/>
                                 </connections>
                             </button>
->>>>>>> dev
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlG-3Y-jXL" customClass="AnimatedLabel" customModule="Diet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="106" width="375" height="53"/>
                                 <color key="backgroundColor" red="1" green="0.84313725490196079" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
@@ -685,20 +671,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-<<<<<<< HEAD
-                            <constraint firstItem="h9i-zx-Trz" firstAttribute="trailing" secondItem="Ij1-4L-IH1" secondAttribute="trailing" constant="16" id="1ZZ-Ql-3bp"/>
-                            <constraint firstItem="Ij1-4L-IH1" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" constant="16" id="BCu-99-XOv"/>
-                            <constraint firstItem="QVU-vL-wa0" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" id="I32-4t-Tkk"/>
-                            <constraint firstItem="QVU-vL-wa0" firstAttribute="top" secondItem="DlG-3Y-jXL" secondAttribute="bottom" constant="26" id="Oeu-81-COg"/>
-                            <constraint firstItem="wEj-jv-gu0" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" id="Swq-Cr-jcL"/>
-                            <constraint firstItem="DlG-3Y-jXL" firstAttribute="leading" secondItem="h9i-zx-Trz" secondAttribute="leading" id="ZA2-LQ-EuP"/>
-                            <constraint firstItem="DlG-3Y-jXL" firstAttribute="top" secondItem="Ij1-4L-IH1" secondAttribute="bottom" constant="22" id="Zoj-Do-xKZ"/>
-                            <constraint firstItem="wEj-jv-gu0" firstAttribute="trailing" secondItem="h9i-zx-Trz" secondAttribute="trailing" id="cMn-og-f3r"/>
-                            <constraint firstItem="QVU-vL-wa0" firstAttribute="trailing" secondItem="h9i-zx-Trz" secondAttribute="trailing" id="eWm-bt-zse"/>
-                            <constraint firstItem="DlG-3Y-jXL" firstAttribute="trailing" secondItem="h9i-zx-Trz" secondAttribute="trailing" id="gec-sV-q6l"/>
-                            <constraint firstItem="h9i-zx-Trz" firstAttribute="bottom" secondItem="QVU-vL-wa0" secondAttribute="bottom" constant="73" id="h2H-aP-KUe"/>
-                            <constraint firstItem="Ij1-4L-IH1" firstAttribute="top" secondItem="h9i-zx-Trz" secondAttribute="top" constant="13" id="ka7-yB-Kpo"/>
-=======
                             <constraint firstAttribute="trailing" secondItem="Ij1-4L-IH1" secondAttribute="trailing" constant="16" id="1ZZ-Ql-3bp"/>
                             <constraint firstAttribute="trailing" secondItem="LxY-vj-ZPj" secondAttribute="trailing" constant="16" id="2Nx-M0-nrS"/>
                             <constraint firstItem="Ij1-4L-IH1" firstAttribute="leading" secondItem="VAj-c2-f6g" secondAttribute="leading" constant="16" id="BCu-99-XOv"/>
@@ -714,7 +686,6 @@
                             <constraint firstItem="QVU-vL-wa0" firstAttribute="trailing" secondItem="VAj-c2-f6g" secondAttribute="trailing" id="eWm-bt-zse"/>
                             <constraint firstItem="DlG-3Y-jXL" firstAttribute="trailing" secondItem="VAj-c2-f6g" secondAttribute="trailing" id="gec-sV-q6l"/>
                             <constraint firstItem="Ij1-4L-IH1" firstAttribute="top" secondItem="shI-6G-pcj" secondAttribute="bottom" constant="13" id="ka7-yB-Kpo"/>
->>>>>>> dev
                             <constraint firstItem="wEj-jv-gu0" firstAttribute="top" secondItem="Ij1-4L-IH1" secondAttribute="bottom" constant="71" id="uGr-qj-DJL"/>
                         </constraints>
                     </view>
@@ -722,6 +693,7 @@
                         <outlet property="arrowView" destination="wEj-jv-gu0" id="3QN-tb-hwK"/>
                         <outlet property="fatnessCategoriesCollectionView" destination="QVU-vL-wa0" id="xw8-KD-x6U"/>
                         <outlet property="fatnessIndexLabel" destination="DlG-3Y-jXL" id="iwX-OP-rPG"/>
+                        <outlet property="getDietsButton" destination="LxY-vj-ZPj" id="eCm-9w-BI5"/>
                         <outlet property="leftArrow" destination="VUT-RG-ms5" id="2VB-R5-bsE"/>
                         <outlet property="rightArrow" destination="d19-gb-JUd" id="IN9-Vf-QIE"/>
                         <segue destination="i4V-AC-jU3" kind="presentation" identifier="showDiets" id="cUo-mn-ltA"/>
@@ -744,11 +716,8 @@
     <resources>
         <image name="arrow_left" width="11" height="20"/>
         <image name="arrow_right" width="11" height="20"/>
-<<<<<<< HEAD
-=======
         <image name="back" width="1600" height="1067"/>
         <image name="btnarrow" width="34" height="20"/>
->>>>>>> dev
         <image name="diet" width="409.60000610351562" height="409.60000610351562"/>
         <image name="heart-beat" width="409.60000610351562" height="409.60000610351562"/>
         <image name="timer" width="409.60000610351562" height="409.60000610351562"/>
