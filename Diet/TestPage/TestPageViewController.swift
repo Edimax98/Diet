@@ -127,7 +127,7 @@ class TestPageViewController: UIPageViewController {
         goalWeightSelectionPage.nextButtonPressed = { index in
             
             if self.testResult.currentWeight <= self.goalWeightSelectionPageData.pickerData[index] {
-                let alert = UIAlertController(title: "Error", message: "You cant set goal bigger then your current weight", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error".localized, message: "You cant set goal bigger then your current weight".localized, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)

@@ -25,7 +25,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    fileprivate var accessStatus = AccessStatus.denied
+    var accessStatus = AccessStatus.denied
     
     weak var recipeSender: RecipeReciver?
     let dropDownMenu = DropDown()

@@ -56,6 +56,16 @@ class FatnessIndexViewContoller: UIViewController {
         moveArrowsToStartPosition()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDiets" {
+            
+            if let destinationVc = segue.destination as? DietViewController {
+                destinationVc.accessIsAvailable()
+            }
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

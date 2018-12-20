@@ -26,6 +26,8 @@
 		A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC321BAA3DB00DCD511 /* DishCell.swift */; };
 		A5662AC621BAA3DB00DCD511 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5662AC421BAA3DB00DCD511 /* DishCell.xib */; };
 		A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */; };
+		A57C146221CBE7EF00B810BE /* Localized.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C146421CBE7EF00B810BE /* Localized.strings */; };
+		A57C146621CBEA4500B810BE /* GenderSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57C146821CBEA4500B810BE /* GenderSelectorViewController.storyboard */; };
 		A57C7B0221764278008DA476 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C7B0121764278008DA476 /* Network.swift */; };
 		A589FAFD21C7ACF80035E80D /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FAFC21C7ACF80035E80D /* Dish.swift */; };
 		A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FAFF21C7AF8D0035E80D /* DietWeek.swift */; };
@@ -42,10 +44,8 @@
 		A5A0C7AF21BE979100C9035C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7AE21BE979100C9035C /* Session.swift */; };
 		A5A0C7B121BE97BE00C9035C /* PaidSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B021BE97BE00C9035C /* PaidSubscription.swift */; };
 		A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */; };
-		A5A1182721C29008003843A1 /* SubscriptionOffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A1182621C29008003843A1 /* SubscriptionOffer.storyboard */; };
 		A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */; };
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
-		A5B02C66217A241200A9E3A4 /* GenderSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */; };
 		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
@@ -80,6 +80,9 @@
 		A5662AC321BAA3DB00DCD511 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		A5662AC421BAA3DB00DCD511 /* DishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishCell.xib; sourceTree = "<group>"; };
 		A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		A57C145B21CBE5E600B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		A57C146321CBE7EF00B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localized.strings; sourceTree = "<group>"; };
+		A57C146721CBEA4500B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
 		A57C7B0121764278008DA476 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A589FAFC21C7ACF80035E80D /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		A589FAFF21C7AF8D0035E80D /* DietWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietWeek.swift; sourceTree = "<group>"; };
@@ -98,10 +101,8 @@
 		A5A0C7AE21BE979100C9035C /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A5A0C7B021BE97BE00C9035C /* PaidSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidSubscription.swift; sourceTree = "<group>"; };
 		A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
-		A5A1182621C29008003843A1 /* SubscriptionOffer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SubscriptionOffer.storyboard; sourceTree = "<group>"; };
 		A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOfferViewController.swift; sourceTree = "<group>"; };
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
-		A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
@@ -158,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				A50250CB2178B84B00F674B3 /* SelectingViewController.storyboard */,
-				A5B02C65217A241200A9E3A4 /* GenderSelectorViewController.storyboard */,
+				A57C146821CBEA4500B810BE /* GenderSelectorViewController.storyboard */,
 				A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */,
 				A50250CD2178BCFC00F674B3 /* SelectingViewController.swift */,
 				A50250CF2178C79D00F674B3 /* TestPageViewController.swift */,
@@ -264,6 +265,7 @@
 				A50250D12178C84800F674B3 /* TestPage */,
 				A5A1182A21C2AA8E003843A1 /* SubscriptionOffer */,
 				A5EF446621CA96D5009B4635 /* RecipeViewController.swift */,
+				A57C146421CBE7EF00B810BE /* Localized.strings */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -301,7 +303,6 @@
 		A5A1182A21C2AA8E003843A1 /* SubscriptionOffer */ = {
 			isa = PBXGroup;
 			children = (
-				A5A1182621C29008003843A1 /* SubscriptionOffer.storyboard */,
 				A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */,
 			);
 			path = SubscriptionOffer;
@@ -417,8 +418,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50250CC2178B84B00F674B3 /* SelectingViewController.storyboard in Resources */,
-				A5B02C66217A241200A9E3A4 /* GenderSelectorViewController.storyboard in Resources */,
-				A5A1182721C29008003843A1 /* SubscriptionOffer.storyboard in Resources */,
+				A57C146621CBEA4500B810BE /* GenderSelectorViewController.storyboard in Resources */,
+				A57C146221CBE7EF00B810BE /* Localized.strings in Resources */,
 				A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */,
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
 				A5662AC621BAA3DB00DCD511 /* DishCell.xib in Resources */,
@@ -534,10 +535,27 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A57C146421CBE7EF00B810BE /* Localized.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A57C146321CBE7EF00B810BE /* ru */,
+			);
+			name = Localized.strings;
+			sourceTree = "<group>";
+		};
+		A57C146821CBEA4500B810BE /* GenderSelectorViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A57C146721CBEA4500B810BE /* ru */,
+			);
+			name = GenderSelectorViewController.storyboard;
+			sourceTree = "<group>";
+		};
 		A58CC53F216CF65100B20CE9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A58CC540216CF65100B20CE9 /* Base */,
+				A57C145B21CBE5E600B810BE /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -557,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -618,6 +637,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

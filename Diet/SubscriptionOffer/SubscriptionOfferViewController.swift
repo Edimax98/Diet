@@ -57,6 +57,17 @@ class SubscriptionOfferViewController: UIViewController {
         cardView.dropShadow(opacity: 0.3, offSet: CGSize(width: 1, height: 1), radius: 16)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDiets" {
+            
+            if let destinationVc = segue.destination as? DietViewController, SubscriptionService.shared.currentSubscription != nil {
+                destinationVc.accessStatus = .available
+            }
+        }
+    }
+    
+    
     private func fillLables() {
         guard let option = SubscriptionService.shared.options?.first else { return }
     
@@ -140,6 +151,7 @@ class SubscriptionOfferViewController: UIViewController {
     }
     
     @IBAction func skipButtonPressed(_ sender: Any) {
+        
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
@@ -162,9 +174,10 @@ class SubscriptionOfferViewController: UIViewController {
         
         if SubscriptionService.shared.currentSubscription != nil {
             performSegue(withIdentifier: "showDiets", sender: self)
-        } else {
-            showErrorAlert(for: .noActiveSubscription)
         }
+        //else {
+         //   showErrorAlert(for: .noActiveSubscription)
+       // }
     }
     
     @objc func handlePurchaseSuccessfull(notification: Notification) {
