@@ -9,6 +9,8 @@
 import Foundation
 
 struct Diet {
+    var name: String
+    var description: String
     var type: String
     var weeks: [DietWeek]
 }

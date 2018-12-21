@@ -19,7 +19,7 @@ class FacebookEventsEviroment {
     
     var enviroment: Enviroment {
         get {
-            return .test
+            return .production
         }
     }
     

@@ -30,14 +30,14 @@ class TestPageViewController: UIPageViewController {
     let goalWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let heightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     
-    let ageSelectionPageData = TestViewData(title: "Select your age".localized,
+    let ageSelectionPageData = TestViewData(title: "Укажите возраст".localized,
                                             iconName: "heart-beat", pickerData: (10,99))
-    let currentWeightSelectionPageData = TestViewData(title: "Select your weight".localized,
-                                                      iconName: "weight-scale", pickerData: (50,150), unit: "kg".localized)
-    let goalWeightSelectionPageData = TestViewData(title: "How much do you want to lose in weight".localized,
-                                                   iconName: "diet", pickerData: (1,100), unit: "kg".localized)
-    let heigthSelectionPageData = TestViewData(title: "Select your height".localized,
-                                         iconName: "timer", pickerData: (140,200), unit: "cm.".localized)
+    let currentWeightSelectionPageData = TestViewData(title: "Укажите вес".localized,
+                                                      iconName: "weight-scale", pickerData: (50,150), unit: "кг".localized)
+    let goalWeightSelectionPageData = TestViewData(title: "Сколько вы хотите сбросить?".localized,
+                                                   iconName: "diet", pickerData: (1,100), unit: "кг".localized)
+    let heigthSelectionPageData = TestViewData(title: "Укажите рост".localized,
+                                         iconName: "timer", pickerData: (140,200), unit: "см.".localized)
     
     let resultsVc = TestResultsViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil), identifier: "TestResultsViewController")
 
@@ -51,6 +51,9 @@ class TestPageViewController: UIPageViewController {
         fillPages()
         fillViewData()
         setViewControllers([testPages.first!], direction: .forward, animated: true, completion: nil)
+        
+        SwiftyAd.shared.showBanner(from: UIViewController())
+        SwiftyAd.shared.delegate = self
         
         resultsVc.repeatTest = {
             self.scrollToViewController(index: 0)
@@ -93,7 +96,7 @@ class TestPageViewController: UIPageViewController {
         
         handleBackButtonPressing()
         handleNextButtonPressing()
-        heightSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
+        heightSelectionPage.nextButton.setTitle("Завершить".localized, for: .normal)
     }
     
     fileprivate func loadFullScreenAd() {
@@ -256,6 +259,20 @@ extension TestPageViewController: UIPageViewControllerDataSource {
         return UIViewController()
     }
 }
+
+extension TestPageViewController: SwiftyAdDelegate {
+    
+    func swiftyAdDidFailedToLoad(_ swiftyAd: SwiftyAd) {
+        
+        genderSelectionPage.shouldHideBanner = true
+        ageSelectionPage.shouldHideBanner = true
+        currentWeightSelectionPage.shouldHideBanner = true
+        goalWeightSelectionPage.shouldHideBanner = true
+        heightSelectionPage.shouldHideBanner = true
+    }
+}
+
+
 
 extension TestPageViewController: FBInterstitialAdDelegate {
     

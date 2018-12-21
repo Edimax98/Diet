@@ -10,8 +10,8 @@ import UIKit
 import FBAudienceNetwork
 
 enum Gender: String {
-    case male = "Male"
-    case female = "Female"
+    case male = "Мужчина"
+    case female = "Женщина"
     case undefined = "Undefined"
 }
 
@@ -30,7 +30,7 @@ class GenderSelectorViewController: UIViewController {
     @IBOutlet weak var adBannerView: UIView!
     @IBOutlet weak var adBannerHeight: NSLayoutConstraint!
 
-    var adView: FBAdView!
+    var shouldHideBanner = false
     var indexForProgressView: Float = 0.2
     
     var nextButtonPressed: (() -> Void)?
@@ -52,10 +52,6 @@ class GenderSelectorViewController: UIViewController {
         maleGenderView.layer.cornerRadius = maleGenderView.frame.height / 2
         femaleGenderView.layer.cornerRadius = femaleGenderView.frame.height / 2
         
-        adView = FBAdView(placementID: "317759862160517_317760728827097", adSize: kFBAdSizeHeight50Banner, rootViewController: self)
-        adView.delegate = self
-        adView.loadAd()
-        
         applyShadow(on: containerTitleView.layer)
         applyShadow(on: triangleView.layer)
         applyShadow(on: maleGenderView.layer)
@@ -65,6 +61,15 @@ class GenderSelectorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         progressView.setProgress(indexForProgressView, animated: true)
+        
+        if shouldHideBanner {
+            adBannerHeight.constant = 0.0
+            view.updateConstraints()
+        }
+        
+        if let ad = SwiftyAd.shared.bannerViewAd {
+            adBannerView.addSubview(ad)
+        }
     }
     
     fileprivate func applyShadow(on layer: CALayer) {
@@ -93,26 +98,5 @@ class GenderSelectorViewController: UIViewController {
             maleButtonSelectionIndicator.isHidden = true
             femaleButtonSelectionIndicator.isHidden = false
         }
-    }
-}
-
-extension GenderSelectorViewController: FBAdViewDelegate {
-    
-    func adViewDidLoad(_ adView: FBAdView) {
-        if adBannerView != nil {
-            adView.frame = CGRect(x: 0, y: 20, width: adBannerView.frame.width, height: adBannerView.frame.height - 20)
-            adBannerView.addSubview(adView)
-        } else if adBannerView != nil {
-            adView.removeFromSuperview()
-            adBannerHeight.constant = 0.0
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func adView(_ adView: FBAdView, didFailWithError error: Error) {
-        print(error)
-        self.adView.removeFromSuperview()
-        adBannerHeight.constant = 0.0
-        self.view.layoutIfNeeded()
     }
 }

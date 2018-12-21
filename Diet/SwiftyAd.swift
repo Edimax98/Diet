@@ -2,7 +2,7 @@
 //  SwiftyAd.swift
 //  Diet
 //
-//  Created by Даниил on 12/12/2018.
+//  Created by Даниил on 21/12/2018.
 //  Copyright © 2018 Даниил. All rights reserved.
 //
 

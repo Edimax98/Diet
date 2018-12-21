@@ -9,6 +9,7 @@
 import Foundation
 
 struct NutritionalValue {
+    
     var calories: Double
     var protein: Double
     var carbs: Double

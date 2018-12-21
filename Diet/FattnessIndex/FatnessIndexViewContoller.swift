@@ -43,11 +43,11 @@ class FatnessIndexViewContoller: UIViewController {
         getDietsButton.layer.cornerRadius = getDietsButton.frame.height / 2
         getDietsButton.layer.masksToBounds = true
         
-        fatnessCategories.append(FatnessCategory(icon: "underweight", title: "Underweight".localized, backgroundColor: underWeightCategoryColor, categoryName: .underweight))
-        fatnessCategories.append(FatnessCategory(icon: "normal", title: "Normal weight".localized, backgroundColor: normalWeightCategoryColor, categoryName: .normal))
-        fatnessCategories.append(FatnessCategory(icon: "excess", title: "Excess obesity".localized, backgroundColor: excessWeightCategoryColor, categoryName: .excessObesity))
-        fatnessCategories.append(FatnessCategory(icon: "obesity", title: "Obesity".localized, backgroundColor: obesityCategoryColor, categoryName: .obesity))
-        fatnessCategories.append(FatnessCategory(icon: "severe", title: "Severe obesity".localized, backgroundColor: severObesityCategoryColor, categoryName: .severeObesity))
+        fatnessCategories.append(FatnessCategory(icon: "underweight", title: "Недостаток веса".localized, backgroundColor: underWeightCategoryColor, categoryName: .underweight))
+        fatnessCategories.append(FatnessCategory(icon: "normal", title: "Норма".localized, backgroundColor: normalWeightCategoryColor, categoryName: .normal))
+        fatnessCategories.append(FatnessCategory(icon: "excess", title: "Излишний вес".localized, backgroundColor: excessWeightCategoryColor, categoryName: .excessObesity))
+        fatnessCategories.append(FatnessCategory(icon: "obesity", title: "Ожирение".localized, backgroundColor: obesityCategoryColor, categoryName: .obesity))
+        fatnessCategories.append(FatnessCategory(icon: "severe", title: "Сильное ожирение".localized, backgroundColor: severObesityCategoryColor, categoryName: .severeObesity))
         
         fatnessCategoriesCollectionView.register(UINib(nibName: "FatnessCategoryCell", bundle: nil), forCellWithReuseIdentifier: FatnessCategoryCell.identifier)
     }

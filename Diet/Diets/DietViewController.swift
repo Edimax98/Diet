@@ -25,7 +25,11 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    var accessStatus = AccessStatus.denied
+    var accessStatus = AccessStatus.available
+    fileprivate let dropMenuItems = ["Понедельник".localized,"Вторник".localized,
+                                     "Среда".localized,"Четверг".localized,
+                                     "Пятница".localized,"Суббота".localized,
+                                     "Воскресенье".localized]
     
     weak var recipeSender: RecipeReciver?
     let dropDownMenu = DropDown()
@@ -74,8 +78,8 @@ class DietViewController: UIViewController {
     
     fileprivate func setupView() {
         
-        dietDescriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        dietNameLabel.text = "Diet name"
+        dietDescriptionLabel.text = "..."
+        dietNameLabel.text = "..."
         
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
@@ -115,7 +119,7 @@ class DietViewController: UIViewController {
         dropDownButtonContainerView.layer.cornerRadius = dropDownButtonContainerView.frame.height / 2
         dropDownButtonContainerView.layer.masksToBounds = true
         
-        dropDownMenu.dataSource = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+        dropDownMenu.dataSource = dropMenuItems
         dropDownMenu.cornerRadius = dropDownButtonContainerView.frame.height / 2
         dropDownMenu.anchorView = dropDownButtonContainerView
         dropDownMenu.direction = .bottom
@@ -193,10 +197,10 @@ extension DietViewController: UICollectionViewDataSource {
         }
     
         cell.dishNameLabel.text = dish.name
-        cell.proteinsAmountLabel.text = "\(dish.nutritionValue.protein)"
-        cell.carbsAmountLabel.text = "\(dish.nutritionValue.carbs)"
-        cell.fatsAmountLabel.text = "\(dish.nutritionValue.fats)"
-        cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories)"
+        cell.proteinsAmountLabel.text = "\(dish.nutritionValue.protein) г."
+        cell.carbsAmountLabel.text = "\(dish.nutritionValue.carbs) г."
+        cell.fatsAmountLabel.text = "\(dish.nutritionValue.fats) г."
+        cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories) кКал."
         
         return cell
     }
@@ -215,10 +219,16 @@ extension DietViewController: UICollectionViewDelegate {
 extension DietViewController: DietNetworkServiceDelegate {
     
     func dietNetworkServiceDidGet(_ diet: Diet) {
-        self.diet = diet
-        if let dishes = diet.weeks.first?.days.first?.dishes {
-            self.dishes = dishes
-            dishesCollectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            
+          self.dietNameLabel.text = diet.name
+            self.dietDescriptionLabel.text = diet.description
+            self.diet = diet
+            if let dishes = diet.weeks.first?.days.first?.dishes {
+                self.dishes = dishes
+                self.dishesCollectionView.reloadData()
+            }
         }
     }
     

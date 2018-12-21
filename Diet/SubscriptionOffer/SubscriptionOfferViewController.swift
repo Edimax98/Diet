@@ -24,14 +24,17 @@ class SubscriptionOfferViewController: UIViewController {
     @IBOutlet weak var trialTermsLabel: UILabel!
     @IBOutlet weak var termsAndServiceButton: UIButton!
     @IBOutlet weak var privacyPolicyButton: UIButton!
+    @IBOutlet weak var healthyTitleLabel: UILabel!
+    @IBOutlet weak var stayFitTitleLabel: UILabel!
+    @IBOutlet weak var changesTitleLabel: UILabel!
+    @IBOutlet weak var noAdsTitleLabel: UILabel!
     
-    
-    fileprivate let trialExpiredMessage = "Your trial period has expired. Subscription price - ".localized
-    fileprivate let trialAvailableMessage = "3 days trial. Subscription price - ".localized
+    fileprivate let trialExpiredMessage = "Ваш пробный период окончен. Цена подписки - ".localized
+    fileprivate let trialAvailableMessage = "3 дня пробный период. Цена подписки - ".localized
     fileprivate let disclaimerMessage = "Payment will be charged to your iTunes Account at confirmation of purchase. Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. Subscription auto-renewal may be turned off by going to the Account Settings after purchase. Any unused portion of a free trial will be forfeited when you purchase a subscription.".localized
     fileprivate let allAccessMessage = "All access".localized
     fileprivate let freeTrialMessage = "3 days FREE".localized
-    fileprivate let subscriptionDuration = " per week".localized
+    fileprivate let subscriptionDuration = " в неделю".localized
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -60,7 +63,6 @@ class SubscriptionOfferViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showDiets" {
-            
             if let destinationVc = segue.destination as? DietViewController, SubscriptionService.shared.currentSubscription != nil {
                 destinationVc.accessStatus = .available
             }
@@ -69,6 +71,7 @@ class SubscriptionOfferViewController: UIViewController {
     
     
     private func fillLables() {
+        
         guard let option = SubscriptionService.shared.options?.first else { return }
     
         if UserDefaults.standard.bool(forKey: "isTrialExpired") {
@@ -77,11 +80,10 @@ class SubscriptionOfferViewController: UIViewController {
         } else {
             self.priceLabel.text = trialAvailableMessage + option.formattedPrice + subscriptionDuration
         }
-        self.trialTermsLabel.text = disclaimerMessage
     }
     
     private func setupView() {
-        
+    
         arcView.makeCornerRadius(arcView.frame.height / 2)
         restoreButton.makeCornerRadius(restoreButton.frame.height / 2)
         skipButton.makeCornerRadius(restoreButton.frame.height / 2)
@@ -175,9 +177,9 @@ class SubscriptionOfferViewController: UIViewController {
         if SubscriptionService.shared.currentSubscription != nil {
             performSegue(withIdentifier: "showDiets", sender: self)
         }
-        //else {
-         //   showErrorAlert(for: .noActiveSubscription)
-       // }
+        else {
+            showErrorAlert(for: .noActiveSubscription)
+        }
     }
     
     @objc func handlePurchaseSuccessfull(notification: Notification) {

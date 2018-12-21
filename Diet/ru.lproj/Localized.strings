@@ -16,11 +16,13 @@
 
 // Subscription offer
 "All access" = "Полный доступ";
-"3 days for FREE" = "3 дня БЕСПЛАТНО";
-"Payment will be charged to your iTunes Account at confirmation of purchase. Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. Subscription auto-renewal may be turned off by going to the Account Settings after purchase. Any unused portion of a free trial will be forfeited when you purchase a subscription." = "Расчет будет произведен по вашему iTunes аккаунту при подтверждении покупки. Если подписка не отменена она автоматически возобновляется в течение 24 часов до окончания текущего периода. Возобновление подписки может быть отменено в настройках аккаунта после покупки. Неиспользованная часть бесплатной пробной версии будет аннулирована после покупки подписки.";
+"3 days FREE" = "3 дня БЕСПЛАТНО";
 "Your trial period has expired. Subscription price - " = "Ваш пробный период истек. Цена подписки - ";
 "3 days trial. Subscription price - " = "3 дня пробный период. Цена подписки - ";
-"The best indie authors" = "Лучшие инди исполнители";
+"Only healthy food" = "Только здоровая пища";
+"Helps you stay fit" = "Помогает поддерживать фигуру";
+"Noticeable changes after first month" = "Заметные изменения после первого месяца";
+"Get full access to diets with paid version" = "Получите полный доступ к диетам с платной версией";
 "No Ads" = "Без рекламы";
 " per week" = " в неделю";
 "skip" = "отмена";
@@ -49,3 +51,20 @@
 "cm." = "см.";
 "Error" = "Ошибка";
 "You cant set goal bigger then your current weight" = "Вы не можете сбросить вес больше вашего текущего";
+
+
+// Sub offer
+"Monday" = "Понедельник =";
+"Tuesday" = "Вторник";
+"Wednesday" = "Среда";
+"Thursday" = "Четверг";
+"Friday" = "Пятница";
+"Saturday" = "Суббота";
+"Sunday" = "Воскресенье";
+
+
+"Underweight" = "Недостаток веса";
+"Normal weight" = "Норма";
+"Excess obesity" = "Излишний вес";
+"Obesity" = "Ожирение";
+"Severe obesity" = "Сильное ожирение";

@@ -195,21 +195,13 @@
                         <outlet property="scrollView" destination="AZn-3s-enK" id="kTD-aS-DLy"/>
                         <outlet property="weekDaySelectionView" destination="FT0-6t-8ag" id="Erq-I2-25r"/>
                         <outlet property="weekdaysDropDownButton" destination="WZf-PU-prq" id="c6S-6N-c76"/>
-                        <segue destination="N7B-6q-DOV" kind="show" identifier="showSubOffer" id="mQY-Rz-Z4I"/>
                         <segue destination="yQQ-Qh-aPF" kind="show" identifier="showRecipe" id="8jU-uT-CFa"/>
+                        <segue destination="ApJ-XQ-DlK" kind="show" identifier="showSubOffer" id="Jlf-Dv-Hrh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7F3-NW-0BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4231" y="212"/>
-        </scene>
-        <!--SubscriptionOffer-->
-        <scene sceneID="tPP-VI-5Xd">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="N7B-6q-DOV" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eRl-49-wQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4839" y="-494"/>
         </scene>
         <!--Recipe View Controller-->
         <scene sceneID="g1V-ZV-tEq">
@@ -303,11 +295,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVz-92-fjL">
-                                <rect key="frame" x="313" y="20" width="46" height="30"/>
+                                <rect key="frame" x="277" y="20" width="82" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="YOT-oc-OjO"/>
                                 </constraints>
-                                <state key="normal" title="Skip">
+                                <state key="normal" title="пропустить">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -325,7 +317,7 @@
                             <constraint firstAttribute="trailing" secondItem="YVz-92-fjL" secondAttribute="trailing" constant="16" id="Kqy-og-dqh"/>
                             <constraint firstItem="6ll-SS-D3S" firstAttribute="trailing" secondItem="8IF-lM-ghg" secondAttribute="trailing" id="bbK-p0-N9U"/>
                             <constraint firstItem="6ll-SS-D3S" firstAttribute="leading" secondItem="8IF-lM-ghg" secondAttribute="leading" id="kW8-FK-MVA"/>
-                            <constraint firstItem="YVz-92-fjL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8IF-lM-ghg" secondAttribute="leading" constant="313" id="spI-FL-i02"/>
+                            <constraint firstItem="YVz-92-fjL" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8IF-lM-ghg" secondAttribute="leading" constant="313" id="spI-FL-i02"/>
                             <constraint firstItem="YVz-92-fjL" firstAttribute="top" secondItem="c7K-dZ-UUS" secondAttribute="bottom" id="wr3-ea-I53"/>
                             <constraint firstItem="6ll-SS-D3S" firstAttribute="top" secondItem="c7K-dZ-UUS" secondAttribute="bottom" id="ygp-lz-OYZ"/>
                             <constraint firstItem="6ll-SS-D3S" firstAttribute="bottom" secondItem="z3Y-zs-u4T" secondAttribute="top" id="yn7-qh-0BF"/>
@@ -697,7 +689,7 @@
                         <outlet property="leftArrow" destination="VUT-RG-ms5" id="2VB-R5-bsE"/>
                         <outlet property="rightArrow" destination="d19-gb-JUd" id="IN9-Vf-QIE"/>
                         <segue destination="i4V-AC-jU3" kind="presentation" identifier="showDiets" id="cUo-mn-ltA"/>
-                        <segue destination="sT0-4T-J0S" kind="show" identifier="showSubOffer" id="deW-1i-4ui"/>
+                        <segue destination="ApJ-XQ-DlK" kind="show" identifier="showSubOffer" id="u5S-Pp-989"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8h-Qf-Ly5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -705,12 +697,12 @@
             <point key="canvasLocation" x="3326" y="99"/>
         </scene>
         <!--SubscriptionOffer-->
-        <scene sceneID="oND-Pv-tqF">
+        <scene sceneID="Aup-Eq-vzi">
             <objects>
-                <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="sT0-4T-J0S" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XdN-VR-vax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="ApJ-XQ-DlK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YC1-hR-6dU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3930" y="-483"/>
+            <point key="canvasLocation" x="3985" y="-461"/>
         </scene>
     </scenes>
     <resources>
@@ -723,4 +715,7 @@
         <image name="timer" width="409.60000610351562" height="409.60000610351562"/>
         <image name="weight-scale" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Jlf-Dv-Hrh"/>
+    </inferredMetricsTieBreakers>
 </document>
