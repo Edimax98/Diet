@@ -11,9 +11,6 @@
 /* Class = "UIButton"; normalTitle = "Show recipe"; ObjectID = "N3B-ml-iPd"; */
 "N3B-ml-iPd.normalTitle" = "Открыть рецепт";
 
-/* Class = "UILabel"; text = "0g."; ObjectID = "TUT-lX-PJx"; */
-"TUT-lX-PJx.text" = "0g.";
-
 /* Class = "UILabel"; text = "Pro."; ObjectID = "cYA-me-lnI"; */
 "cYA-me-lnI.text" = "Белки";
 
@@ -23,8 +20,3 @@
 /* Class = "UILabel"; text = "Fats"; ObjectID = "jAf-3K-hDM"; */
 "jAf-3K-hDM.text" = "Жиры";
 
-/* Class = "UILabel"; text = "0g."; ObjectID = "y4O-dC-mTP"; */
-"y4O-dC-mTP.text" = "0g.";
-
-/* Class = "UILabel"; text = "0g."; ObjectID = "yQz-Di-D8X"; */
-"yQz-Di-D8X.text" = "0g.";

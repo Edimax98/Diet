@@ -24,12 +24,11 @@
 		A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D52177783800FC62EE /* WelcomePageViewController.swift */; };
 		A548E9D8217787A100FC62EE /* DefaultActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D7217787A100FC62EE /* DefaultActionButton.swift */; };
 		A556C12521CD0EE0000317E4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A556C12421CD0EE0000317E4 /* StoreKit.framework */; };
-		A556C12621CD10C3000317E4 /* SubscriptionOffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A556C12821CD10C3000317E4 /* SubscriptionOffer.storyboard */; };
 		A556C12D21CD1EE7000317E4 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A556C12F21CD1EE7000317E4 /* DishCell.xib */; };
 		A556C13521CD2E01000317E4 /* SwiftyAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556C13421CD2E01000317E4 /* SwiftyAd.swift */; };
 		A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC321BAA3DB00DCD511 /* DishCell.swift */; };
 		A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */; };
-		A57C146221CBE7EF00B810BE /* Localized.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C146421CBE7EF00B810BE /* Localized.strings */; };
+		A57C146221CBE7EF00B810BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C146421CBE7EF00B810BE /* Localizable.strings */; };
 		A57C146621CBEA4500B810BE /* GenderSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57C146821CBEA4500B810BE /* GenderSelectorViewController.storyboard */; };
 		A589FAFD21C7ACF80035E80D /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FAFC21C7ACF80035E80D /* Dish.swift */; };
 		A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FAFF21C7AF8D0035E80D /* DietWeek.swift */; };
@@ -50,6 +49,7 @@
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */; };
+		A5D4F22E21D0FDCF002195C5 /* SubscriptionOffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D4F23021D0FDCF002195C5 /* SubscriptionOffer.storyboard */; };
 		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
 		A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */; };
 		A5E0C330216F95170045975E /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0C32F216F95170045975E /* StringExtentions.swift */; };
@@ -79,7 +79,6 @@
 		A548E9D52177783800FC62EE /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		A548E9D7217787A100FC62EE /* DefaultActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultActionButton.swift; sourceTree = "<group>"; };
 		A556C12421CD0EE0000317E4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		A556C12721CD10C3000317E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscriptionOffer.storyboard; sourceTree = "<group>"; };
 		A556C12E21CD1EE7000317E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DishCell.xib; sourceTree = "<group>"; };
 		A556C13121CD1EEA000317E4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DishCell.strings; sourceTree = "<group>"; };
 		A556C13221CD22CA000317E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
@@ -87,8 +86,7 @@
 		A556C13421CD2E01000317E4 /* SwiftyAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyAd.swift; sourceTree = "<group>"; };
 		A5662AC321BAA3DB00DCD511 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		A57C145B21CBE5E600B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		A57C146321CBE7EF00B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localized.strings; sourceTree = "<group>"; };
+		A57C146321CBE7EF00B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; usesTabs = 0; };
 		A589FAFC21C7ACF80035E80D /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		A589FAFF21C7AF8D0035E80D /* DietWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietWeek.swift; sourceTree = "<group>"; };
 		A589FB0121C7AFAC0035E80D /* NutritionValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionValue.swift; sourceTree = "<group>"; };
@@ -110,6 +108,8 @@
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
+		A5D4F22F21D0FDCF002195C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscriptionOffer.storyboard; sourceTree = "<group>"; };
+		A5D4F23221D10B7B002195C5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
 		A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtentions.swift; sourceTree = "<group>"; };
 		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 				A50250D12178C84800F674B3 /* TestPage */,
 				A5A1182A21C2AA8E003843A1 /* SubscriptionOffer */,
 				A5EF446621CA96D5009B4635 /* RecipeViewController.swift */,
-				A57C146421CBE7EF00B810BE /* Localized.strings */,
+				A57C146421CBE7EF00B810BE /* Localizable.strings */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 		A5A1182A21C2AA8E003843A1 /* SubscriptionOffer */ = {
 			isa = PBXGroup;
 			children = (
-				A556C12821CD10C3000317E4 /* SubscriptionOffer.storyboard */,
+				A5D4F23021D0FDCF002195C5 /* SubscriptionOffer.storyboard */,
 				A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */,
 			);
 			path = SubscriptionOffer;
@@ -423,11 +423,11 @@
 			files = (
 				A50250CC2178B84B00F674B3 /* SelectingViewController.storyboard in Resources */,
 				A57C146621CBEA4500B810BE /* GenderSelectorViewController.storyboard in Resources */,
-				A57C146221CBE7EF00B810BE /* Localized.strings in Resources */,
+				A57C146221CBE7EF00B810BE /* Localizable.strings in Resources */,
 				A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */,
 				A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */,
 				A556C12D21CD1EE7000317E4 /* DishCell.xib in Resources */,
-				A556C12621CD10C3000317E4 /* SubscriptionOffer.storyboard in Resources */,
+				A5D4F22E21D0FDCF002195C5 /* SubscriptionOffer.storyboard in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
 				A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */,
 			);
@@ -539,15 +539,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A556C12821CD10C3000317E4 /* SubscriptionOffer.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A556C12721CD10C3000317E4 /* Base */,
-			);
-			name = SubscriptionOffer.storyboard;
-			path = ../../../../.Trash;
-			sourceTree = "<group>";
-		};
 		A556C12F21CD1EE7000317E4 /* DishCell.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -557,12 +548,12 @@
 			name = DishCell.xib;
 			sourceTree = "<group>";
 		};
-		A57C146421CBE7EF00B810BE /* Localized.strings */ = {
+		A57C146421CBE7EF00B810BE /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A57C146321CBE7EF00B810BE /* ru */,
 			);
-			name = Localized.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		A57C146821CBEA4500B810BE /* GenderSelectorViewController.storyboard */ = {
@@ -578,7 +569,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				A58CC540216CF65100B20CE9 /* Base */,
-				A57C145B21CBE5E600B810BE /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -589,6 +579,16 @@
 				A58CC545216CF65200B20CE9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A5D4F23021D0FDCF002195C5 /* SubscriptionOffer.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5D4F22F21D0FDCF002195C5 /* Base */,
+				A5D4F23221D10B7B002195C5 /* ru */,
+			);
+			name = SubscriptionOffer.storyboard;
+			path = ../../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

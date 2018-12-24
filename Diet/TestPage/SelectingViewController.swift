@@ -106,6 +106,7 @@ class SelectingViewController: UIViewController {
         containerOfTitlesView.layer.shadowOpacity = 0.25
         containerOfTitlesView.layer.shadowRadius = 1
         containerOfTitlesView.layer.masksToBounds = false
+        nextButton.setTitle("Next".localized, for: .normal)
     }
 }
 

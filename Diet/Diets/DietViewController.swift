@@ -25,12 +25,14 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    var accessStatus = AccessStatus.denied
-    fileprivate let dropMenuItems = ["Понедельник".localized,"Вторник".localized,
-                                     "Среда".localized,"Четверг".localized,
-                                     "Пятница".localized,"Суббота".localized,
-                                     "Воскресенье".localized]
+    var accessStatus = AccessStatus.available
+    fileprivate let dropMenuItems = ["Monday".localized,"Tuesday".localized,
+                                     "Wednesday".localized,"Thursday".localized,
+                                     "Friday".localized,"Saturday".localized,
+                                     "Sunday".localized]
     
+    let gramMeasure = "g.".localized
+    let caloriesMesure = "kCal".localized
     weak var recipeSender: RecipeReciver?
     let dropDownMenu = DropDown()
     private var previousStatusBarHidden = false
@@ -197,10 +199,10 @@ extension DietViewController: UICollectionViewDataSource {
         }
     
         cell.dishNameLabel.text = dish.name
-        cell.proteinsAmountLabel.text = "\(dish.nutritionValue.protein) г."
-        cell.carbsAmountLabel.text = "\(dish.nutritionValue.carbs) г."
-        cell.fatsAmountLabel.text = "\(dish.nutritionValue.fats) г."
-        cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories) кКал."
+        cell.proteinsAmountLabel.text = "\(dish.nutritionValue.protein)" + gramMeasure
+        cell.carbsAmountLabel.text = "\(dish.nutritionValue.carbs)" + gramMeasure
+        cell.fatsAmountLabel.text = "\(dish.nutritionValue.fats)" + gramMeasure
+        cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories)" + caloriesMesure
         
         return cell
     }

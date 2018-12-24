@@ -280,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVF-Xh-Djl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5318" y="193"/>
+            <point key="canvasLocation" x="5074" y="211"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">
@@ -702,7 +702,7 @@
                 <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="ApJ-XQ-DlK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YC1-hR-6dU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3985" y="-461"/>
+            <point key="canvasLocation" x="4868" y="-640"/>
         </scene>
     </scenes>
     <resources>

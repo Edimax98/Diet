@@ -6,14 +6,6 @@
   Copyright © 2018 Даниил. All rights reserved.
 */
 
-// Main view
-"Not playing" = "Не играет";
-"Customise your Preferences" = "Настройте ваши предпочтения";
-"Playlists for today" = "Плейлисты на сегодня";
-"New Releases" = "Новые релизы";
-"Popular Songs" = "Популярные песни";
-"Play the moment" = "Слушай каждое мгновение";
-
 // Subscription offer
 "All access" = "Полный доступ";
 "3 days FREE" = "3 дня БЕСПЛАТНО";
@@ -44,24 +36,28 @@
 
 // Test pages
 "Select your age" = "Укажите ваш возраст";
-"Select your weight" = "Укажиье ваш вес";
+"Select your weight" = "Укажите ваш вес";
 "kg" = "кг";
 "How much do you want to lose in weight" = "Сколько вы хотите сбросить";
 "Select your height" = "Укажите ваш рост";
 "cm." = "см.";
 "Error" = "Ошибка";
+"Male" = "Мужчина";
+"Female" = "Женщина";
 "You cant set goal bigger then your current weight" = "Вы не можете сбросить вес больше вашего текущего";
-
+"Next" = "Дальше";
+"Finish" = "Завершить";
 
 // Sub offer
-"Monday" = "Понедельник =";
+"Monday" = "Понедельник";
 "Tuesday" = "Вторник";
 "Wednesday" = "Среда";
 "Thursday" = "Четверг";
 "Friday" = "Пятница";
 "Saturday" = "Суббота";
 "Sunday" = "Воскресенье";
-
+"kCal." = "кКал.";
+"g." = "г.";
 
 "Underweight" = "Недостаток веса";
 "Normal weight" = "Норма";

@@ -123,10 +123,10 @@ extension TestResultsViewController: TestResultOutput {
     
     func testCompleted(with result: TestResult) {
         self.results = result
-        goalWeightTitleLabel.text = "\(result.goalWeight)" + " кг."
-        currentWeightTitleLable.text = "\(result.currentWeight)" + " кг."
-        timeTitleLabel.text = "\(result.height)" + " см."
+        goalWeightTitleLabel.text = "\(result.goalWeight) " + "kg".localized
+        currentWeightTitleLable.text = "\(result.currentWeight) " + "kg".localized
+        timeTitleLabel.text = "\(result.height) " + "cm.".localized
         ageTitleLabel.text = "\(result.age)"
-        genderTitleLabel.text = result.gender.rawValue
+        genderTitleLabel.text = result.gender.description
     }
 }

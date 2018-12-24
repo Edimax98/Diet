@@ -19,29 +19,29 @@ class WelcomePageViewController: UIViewController {
     
     fileprivate let items = [
         OnboardingItemInfo(informationImage: UIImage(named: "slim")!,
-                           title: "Индекс ожирения".localized,
-                           description: "Узнайте ваш индекс ожирения. Наше приложение  точно вычислит индекс ожирения для вас".localized,
+                           title: "Obesity index".localized,
+                           description: "Find out your obesity index. Our app precisely calculates index just for you!".localized,
                            pageIcon: UIImage(named: "stretch")!,
                            color: UIColor(red: 0.40, green: 0.56, blue: 0.71, alpha: 1.00),
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: WelcomePageViewController.titleFont, descriptionFont: WelcomePageViewController.descriptionFont),
         
         OnboardingItemInfo(informationImage: UIImage(named: "recipe")!,
-                           title: "Тест".localized,
-                           description: "Пройдите простой тест и мы сделаем все необходимое, чтобы помочь вам в подборе диет".localized,
+                           title: "Test".localized,
+                           description: "Take a simple test and we will do our best to help you with diets.".localized,
                            pageIcon: UIImage(named: "clipboard")!,
                            color: UIColor(red: 0.40, green: 0.69, blue: 0.71, alpha: 1.00),
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: WelcomePageViewController.titleFont, descriptionFont: WelcomePageViewController.descriptionFont),
         
         OnboardingItemInfo(informationImage: UIImage(named: "chat")!,
-                           title: "Статистика".localized,
-                           description: "Получите свои параметры после прохождения теста".localized,
+                           title: "Stats".localized,
+                           description: "Get statistics of your parameters during your diet.".localized,
                            pageIcon: UIImage(named: "chat_mini")!,
                            color: UIColor(red: 0.61, green: 0.56, blue: 0.74, alpha: 1.00),
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: WelcomePageViewController.titleFont, descriptionFont: WelcomePageViewController.descriptionFont),
         
         OnboardingItemInfo(informationImage: UIImage(named: "diet")!,
-                           title: "Результат".localized,
-                           description: "С нашей помощью вы можете быстро сбросить лишний вес. Начинайте прямо сейчас!".localized,
+                           title: "Result".localized,
+                           description: "With our help you can rapidly lose weight. Get started right now!".localized,
                            pageIcon: UIImage(named: "ruler")!,
                            color: UIColor(red: 1, green: 126 / 255, blue: 121/255, alpha: 1.00),
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: WelcomePageViewController.titleFont, descriptionFont: WelcomePageViewController.descriptionFont)
@@ -51,6 +51,7 @@ class WelcomePageViewController: UIViewController {
         super.viewDidLoad()
         setupPaperOnboardingView()
         view.bringSubviewToFront(skipButton)
+        skipButton.setTitle("skip".localized, for: .normal)
     }
     
     private func setupPaperOnboardingView() {

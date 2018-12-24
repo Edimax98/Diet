@@ -10,9 +10,22 @@ import UIKit
 import FBAudienceNetwork
 
 enum Gender: String {
-    case male = "Мужчина"
-    case female = "Женщина"
-    case undefined = "Undefined"
+    case male
+    case female
+    case undefined
+    
+    var description: String {
+        get {
+            switch self {
+            case .male:
+                return "Male".localized
+            case .female:
+                return "Female".localized
+            case .undefined:
+                return "Undefined".localized
+            }
+        }
+    }
 }
 
 class GenderSelectorViewController: UIViewController {
