@@ -25,7 +25,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    var accessStatus = AccessStatus.available
+    var accessStatus = AccessStatus.denied
     fileprivate let dropMenuItems = ["Понедельник".localized,"Вторник".localized,
                                      "Среда".localized,"Четверг".localized,
                                      "Пятница".localized,"Суббота".localized,
