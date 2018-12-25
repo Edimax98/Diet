@@ -25,7 +25,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    var accessStatus = AccessStatus.available
+    var accessStatus = AccessStatus.denied
     fileprivate let dropMenuItems = ["Monday".localized,"Tuesday".localized,
                                      "Wednesday".localized,"Thursday".localized,
                                      "Friday".localized,"Saturday".localized,
@@ -38,7 +38,8 @@ class DietViewController: UIViewController {
     private var previousStatusBarHidden = false
     fileprivate var diet: Diet!
     fileprivate var dishes = [Dish]()
-    let fetchingQueue = DispatchQueue.global(qos: .utility)
+    fileprivate let fetchingQueue = DispatchQueue.global(qos: .utility)
+    fileprivate let cashedImage = NSCache<AnyObject, AnyObject>()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -124,7 +125,7 @@ class DietViewController: UIViewController {
         dropDownMenu.dataSource = dropMenuItems
         dropDownMenu.cornerRadius = dropDownButtonContainerView.frame.height / 2
         dropDownMenu.anchorView = dropDownButtonContainerView
-        dropDownMenu.direction = .bottom
+        dropDownMenu.direction = .any
         dropDownMenu.bottomOffset = CGPoint(x: 0.0, y: dropDownButtonContainerView.frame.height + 5)
         
         dropDownMenu.cancelAction = { [weak self] in
@@ -181,29 +182,35 @@ extension DietViewController: UICollectionViewDataSource {
             unwrappedSelf.recipeSender?.recieve(recipe: dish.recipe, dishName: dish.name)
         }
         
-        fetchingQueue.async {
-            request(dish.imagePath, method: .get).responseImage { (response) in
-                guard let image = response.result.value else {
-                    
-                    DispatchQueue.main.async {
-                        cell.dishImageView.image = UIImage(named: "no_food")
-                    }
-                    
-                    print("Image for dish  - \(dish.name) is NIL")
-                    return
-                }
-                DispatchQueue.main.async {
-                    cell.dishImageView.image = image
-                }
-            }
-        }
-    
         cell.dishNameLabel.text = dish.name
         cell.proteinsAmountLabel.text = "\(dish.nutritionValue.protein)" + gramMeasure
         cell.carbsAmountLabel.text = "\(dish.nutritionValue.carbs)" + gramMeasure
         cell.fatsAmountLabel.text = "\(dish.nutritionValue.fats)" + gramMeasure
         cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories)" + caloriesMesure
         
+        
+        cell.dishImageView.image = nil
+        if let imageFromCache = cashedImage.object(forKey: dish.imagePath as AnyObject) as? UIImage {
+            cell.dishImageView.image = imageFromCache
+            return cell
+        }
+        
+        fetchingQueue.async {
+            request(dish.imagePath, method: .get).responseImage { (response) in
+                guard let image = response.result.value else {
+                    DispatchQueue.main.async {
+                        cell.dishImageView.image = UIImage(named: "no_food")
+                    }
+                    print("Image for dish  - \(dish.name) is NIL")
+                    return
+                }
+                DispatchQueue.main.async {
+                    cell.dishImageView.image = image
+                    self.cashedImage.setObject(image, forKey: dish.imagePath as AnyObject)
+                }
+            }
+        }
+
         return cell
     }
 }

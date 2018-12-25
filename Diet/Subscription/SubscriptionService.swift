@@ -54,7 +54,6 @@ class SubscriptionService: NSObject {
                     strongSelf.currentSessionId = result.id
                     strongSelf.currentSubscription = result.currentSubscription
                     strongSelf.isEligibleForTrial = result.isEligibleForTrial
-                    print("CURRENT", result.currentSubscription ?? "NIL")
                     completion?(true,false)
                 case .failure(let error):
                     print("Receipt Upload Failed: \(error)")

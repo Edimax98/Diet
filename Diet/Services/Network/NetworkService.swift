@@ -23,11 +23,13 @@ extension NetworkService: DietNetworkService {
     func getDiet() {
         
         let queue = DispatchQueue.global(qos: .utility)
-        request("http://dietsforbuddies.com/api/getDiets.php", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
+        let parameters = DietApi.allDiets.parameters
+        
+        request(DietApi.baseUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .response(queue: queue, responseSerializer: DataRequest.jsonResponseSerializer()) { [weak self] response in
-                
+            
                 guard let unwrappedSelf = self else { print("self is nil"); return }
-                
+            
                 guard let responseValue = response.result.value else {
                     print("Diet raw json is nil")
                     return
