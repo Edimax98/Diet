@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol ActionHandler: class {
-    
-    func showRecipe()
-}
-
 class DishCell: UICollectionViewCell {
     
     @IBOutlet weak var proteinsAmountLabel: UILabel!
@@ -23,7 +18,6 @@ class DishCell: UICollectionViewCell {
     @IBOutlet weak var caloriesAmountLabel: UILabel!
     @IBOutlet weak var carbsAmountLabel: UILabel!
     
-    weak var handler: ActionHandler?
     var showRecipeButtonPressed: (() -> Void)?
     fileprivate let cellCornerRadius: CGFloat = 32
     
@@ -93,6 +87,5 @@ class DishCell: UICollectionViewCell {
     
     @IBAction func showRecipeButtonPressed(_ sender: Any) {
         showRecipeButtonPressed?()
-        //handler?.showRecipe()
     }
 }

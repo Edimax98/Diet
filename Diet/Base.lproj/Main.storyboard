@@ -195,13 +195,13 @@
                         <outlet property="scrollView" destination="AZn-3s-enK" id="kTD-aS-DLy"/>
                         <outlet property="weekDaySelectionView" destination="FT0-6t-8ag" id="Erq-I2-25r"/>
                         <outlet property="weekdaysDropDownButton" destination="WZf-PU-prq" id="c6S-6N-c76"/>
-                        <segue destination="yQQ-Qh-aPF" kind="show" identifier="showRecipe" id="8jU-uT-CFa"/>
                         <segue destination="ApJ-XQ-DlK" kind="show" identifier="showSubOffer" id="Jlf-Dv-Hrh"/>
+                        <segue destination="yQQ-Qh-aPF" kind="presentation" identifier="showRecipe" id="wEl-Yb-JYs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7F3-NW-0BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4231" y="212"/>
+            <point key="canvasLocation" x="4159" y="211"/>
         </scene>
         <!--Recipe View Controller-->
         <scene sceneID="g1V-ZV-tEq">
@@ -280,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVF-Xh-Djl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5074" y="211"/>
+            <point key="canvasLocation" x="5257" y="142"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">
@@ -702,7 +702,7 @@
                 <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="ApJ-XQ-DlK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YC1-hR-6dU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4868" y="-640"/>
+            <point key="canvasLocation" x="4748" y="-355"/>
         </scene>
     </scenes>
     <resources>

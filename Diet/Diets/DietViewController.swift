@@ -25,7 +25,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    var accessStatus = AccessStatus.denied
+    var accessStatus = AccessStatus.available
     fileprivate let dropMenuItems = ["Monday".localized,"Tuesday".localized,
                                      "Wednesday".localized,"Thursday".localized,
                                      "Friday".localized,"Saturday".localized,
@@ -48,7 +48,6 @@ class DietViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showRecipe" {
-            
             if let destinationVc = segue.destination as? RecipeViewController {
                 recipeSender = destinationVc
             }
@@ -178,7 +177,7 @@ extension DietViewController: UICollectionViewDataSource {
         
         cell.showRecipeButtonPressed = { [weak self] in
             guard let unwrappedSelf = self else { return }
-            unwrappedSelf.performSegue(withIdentifier: "showRecipe", sender: self)
+            unwrappedSelf.performSegue(withIdentifier: "showRecipe", sender: cell)
             unwrappedSelf.recipeSender?.recieve(recipe: dish.recipe, dishName: dish.name)
         }
         
@@ -230,8 +229,7 @@ extension DietViewController: DietNetworkServiceDelegate {
     func dietNetworkServiceDidGet(_ diet: Diet) {
         
         DispatchQueue.main.async {
-            
-          self.dietNameLabel.text = diet.name
+            self.dietNameLabel.text = diet.name
             self.dietDescriptionLabel.text = diet.description
             self.diet = diet
             if let dishes = diet.weeks.first?.days.first?.dishes {

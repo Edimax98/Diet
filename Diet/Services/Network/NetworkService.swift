@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class NetworkService {
@@ -45,7 +46,7 @@ extension NetworkService: DietNetworkService {
                               recipe: jsonDish["reciept"].array?.map { jsonRecipe -> RecieptSteps in
                                 RecieptSteps.init(name: jsonRecipe["name"].stringValue,
                                                   description: jsonRecipe["description"].stringValue,
-                                                  imagePaths: [jsonRecipe["images"].first?.0 ?? ""]) } ?? [])
+                                                  imagePaths: [jsonRecipe["images"].stringValue]) } ?? [])
                     } ?? [])}
                 
                 guard let unwrappedDays = days else { print("days are nil after being parsed"); return }
@@ -56,6 +57,32 @@ extension NetworkService: DietNetworkService {
                 let diet = Diet.init(name: json["title"].stringValue, description: json["description"].stringValue, type: json["type"].stringValue, weeks: [DietWeek.init(nutritionalValue: weekNutritionValue, days: unwrappedDays)])
                 
                 unwrappedSelf.dietServiceDelegate?.dietNetworkServiceDidGet(diet)
+        }
+    }
+}
+
+extension NetworkService: ImageNetworkService {
+    
+    func fetchImages(with paths: [String], completion: @escaping ([String : Image]) -> ()) {
+        
+        var images = [String:Image]()
+        let group = DispatchGroup()
+        
+        for path in paths {
+            group.enter()
+            request(path, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
+                .responseImage { (response) in
+                    guard let image = response.result.value else {
+                        print("Image is NIL")
+                        return
+                    }
+                images[path] = image
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(images)
         }
     }
 }

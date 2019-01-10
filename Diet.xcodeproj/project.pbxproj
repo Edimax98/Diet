@@ -26,10 +26,12 @@
 		A556C12521CD0EE0000317E4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A556C12421CD0EE0000317E4 /* StoreKit.framework */; };
 		A556C12D21CD1EE7000317E4 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A556C12F21CD1EE7000317E4 /* DishCell.xib */; };
 		A556C13521CD2E01000317E4 /* SwiftyAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A556C13421CD2E01000317E4 /* SwiftyAd.swift */; };
+		A5657E0121E647AE00B688CC /* ImageAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5657E0021E647AE00B688CC /* ImageAttachment.swift */; };
 		A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC321BAA3DB00DCD511 /* DishCell.swift */; };
 		A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */; };
 		A57C146221CBE7EF00B810BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C146421CBE7EF00B810BE /* Localizable.strings */; };
 		A57C146621CBEA4500B810BE /* GenderSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57C146821CBEA4500B810BE /* GenderSelectorViewController.storyboard */; };
+		A580F85621E777BE00C0AE66 /* ImageNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A580F85521E777BE00C0AE66 /* ImageNetworkService.swift */; };
 		A589FAFD21C7ACF80035E80D /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FAFC21C7ACF80035E80D /* Dish.swift */; };
 		A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FAFF21C7AF8D0035E80D /* DietWeek.swift */; };
 		A589FB0221C7AFAC0035E80D /* NutritionValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FB0121C7AFAC0035E80D /* NutritionValue.swift */; };
@@ -86,9 +88,12 @@
 		A556C13221CD22CA000317E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
 		A556C13321CD22DB000317E4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/GenderSelectorViewController.strings; sourceTree = "<group>"; };
 		A556C13421CD2E01000317E4 /* SwiftyAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyAd.swift; sourceTree = "<group>"; };
+		A5657E0021E647AE00B688CC /* ImageAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachment.swift; sourceTree = "<group>"; };
 		A5662AC321BAA3DB00DCD511 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		A57C146321CBE7EF00B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; usesTabs = 0; };
+		A580F85521E777BE00C0AE66 /* ImageNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkService.swift; sourceTree = "<group>"; };
+		A580F85821E7AE1A00C0AE66 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
 		A589FAFC21C7ACF80035E80D /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		A589FAFF21C7AF8D0035E80D /* DietWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietWeek.swift; sourceTree = "<group>"; };
 		A589FB0121C7AFAC0035E80D /* NutritionValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionValue.swift; sourceTree = "<group>"; };
@@ -113,7 +118,6 @@
 		A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsEndPoint.swift; sourceTree = "<group>"; };
 		A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		A5D4F22F21D0FDCF002195C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscriptionOffer.storyboard; sourceTree = "<group>"; };
-		A5D4F23221D10B7B002195C5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
 		A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtentions.swift; sourceTree = "<group>"; };
 		A5E0C32F216F95170045975E /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				A50250D42178E79000F674B3 /* TriangleView.swift */,
 				A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */,
 				A51CC74D21BFD75100FFCFD5 /* VisualEffectBlur.swift */,
+				A5657E0021E647AE00B688CC /* ImageAttachment.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 			children = (
 				A5EA83872170F7370088F8FE /* NetworkService.swift */,
 				A5E69C5521CA434F001649DD /* DietNetworkService.swift */,
+				A580F85521E777BE00C0AE66 /* ImageNetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -521,6 +527,8 @@
 				A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */,
 				A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */,
 				A51F6EA221B96933000CE5D0 /* DietViewController.swift in Sources */,
+				A580F85621E777BE00C0AE66 /* ImageNetworkService.swift in Sources */,
+				A5657E0121E647AE00B688CC /* ImageAttachment.swift in Sources */,
 				A589FB0221C7AFAC0035E80D /* NutritionValue.swift in Sources */,
 				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
 				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
@@ -601,7 +609,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5D4F22F21D0FDCF002195C5 /* Base */,
-				A5D4F23221D10B7B002195C5 /* ru */,
+				A580F85821E7AE1A00C0AE66 /* ru */,
 			);
 			name = SubscriptionOffer.storyboard;
 			path = ../../..;

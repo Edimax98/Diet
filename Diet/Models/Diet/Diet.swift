@@ -14,3 +14,4 @@ struct Diet {
     var type: String
     var weeks: [DietWeek]
 }
+

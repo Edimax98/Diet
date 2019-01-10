@@ -33,7 +33,7 @@ class SubscriptionOfferViewController: UIViewController {
     fileprivate let trialAvailableMessage = "3 days trial. Subscription price - ".localized
     fileprivate let disclaimerMessage = "Payment will be charged to your iTunes Account at confirmation of purchase. Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. Subscription auto-renewal may be turned off by going to the Account Settings after purchase. Any unused portion of a free trial will be forfeited when you purchase a subscription.".localized
     fileprivate let allAccessMessage = "All access".localized
-    fileprivate let freeTrialMessage = "3 days FREE".localized
+    fileprivate let freeTrialMessage = "3 days for FREE".localized
     fileprivate let subscriptionDuration = " per week".localized
     
     deinit {
@@ -68,7 +68,6 @@ class SubscriptionOfferViewController: UIViewController {
             }
         }
     }
-    
     
     private func fillLables() {
         

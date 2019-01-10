@@ -7,10 +7,18 @@
 //
 
 import Foundation
+import AlamofireImage
 
 struct RecieptSteps {
     
     var name: String
     var description: String
     var imagePaths: [String]
+    var images = [Image]()
+    
+    init(name: String, description: String, imagePaths: [String]) {
+        self.name = name
+        self.description = description
+        self.imagePaths = imagePaths
+    }
 }
