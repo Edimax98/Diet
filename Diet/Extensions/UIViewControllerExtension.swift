@@ -21,6 +21,21 @@ extension UIViewController {
     class func controllerInStoryboard(_ storyboard: UIStoryboard) -> Self {
         return instantiateControllerInStoryboard(storyboard, identifier: nameOfClass)
     }
+    
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func remove() {
+        
+        guard parent != nil else { return }
+        
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
 }
 
 extension UIAlertController {

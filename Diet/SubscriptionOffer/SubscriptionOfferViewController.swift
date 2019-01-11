@@ -15,19 +15,13 @@ class SubscriptionOfferViewController: UIViewController {
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var startSubscriptionButton: UIButton!
-    @IBOutlet weak var startButtonContainerView: UIView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var offset: NSLayoutConstraint!
     @IBOutlet weak var offsetFromTop: NSLayoutConstraint!
-    @IBOutlet weak var trialLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var trialTermsLabel: UILabel!
     @IBOutlet weak var termsAndServiceButton: UIButton!
     @IBOutlet weak var privacyPolicyButton: UIButton!
-    @IBOutlet weak var healthyTitleLabel: UILabel!
-    @IBOutlet weak var stayFitTitleLabel: UILabel!
-    @IBOutlet weak var changesTitleLabel: UILabel!
-    @IBOutlet weak var noAdsTitleLabel: UILabel!
     
     fileprivate let trialExpiredMessage = "Your trial period has expired. Subscription price - ".localized
     fileprivate let trialAvailableMessage = "3 days trial. Subscription price - ".localized
@@ -35,6 +29,8 @@ class SubscriptionOfferViewController: UIViewController {
     fileprivate let allAccessMessage = "All access".localized
     fileprivate let freeTrialMessage = "3 days for FREE".localized
     fileprivate let subscriptionDuration = " per week".localized
+    
+    var loadingVc = LoadingViewController()
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -44,6 +40,12 @@ class SubscriptionOfferViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         addObservers()
+
+        
+        if SubscriptionService.shared.options == nil {
+            add(loadingVc)
+            loadingVc.timeoutHandler = self
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -74,7 +76,6 @@ class SubscriptionOfferViewController: UIViewController {
         guard let option = SubscriptionService.shared.options?.first else { return }
     
         if UserDefaults.standard.bool(forKey: "isTrialExpired") {
-            self.trialLabel.text = allAccessMessage
             self.priceLabel.text = trialExpiredMessage + option.formattedPrice + subscriptionDuration
         } else {
             self.priceLabel.text = trialAvailableMessage + option.formattedPrice + subscriptionDuration
@@ -87,7 +88,6 @@ class SubscriptionOfferViewController: UIViewController {
         restoreButton.makeCornerRadius(restoreButton.frame.height / 2)
         skipButton.makeCornerRadius(restoreButton.frame.height / 2)
         startSubscriptionButton.makeCornerRadius(startSubscriptionButton.frame.height / 2)
-        startButtonContainerView.makeCornerRadius(startButtonContainerView.frame.height / 2)
         termsAndServiceButton.makeCornerRadius(termsAndServiceButton.frame.height / 2)
         privacyPolicyButton.makeCornerRadius(privacyPolicyButton.frame.height / 2)
         cardView.makeCornerRadius(32)
@@ -190,6 +190,8 @@ class SubscriptionOfferViewController: UIViewController {
     
     @objc func handleOptionsLoaded(notification: Notification) {
 
+        loadingVc.remove()
+        
         guard let _ = SubscriptionService.shared.options?.first else {
             showErrorAlert(for: .internalError)
             return
@@ -199,5 +201,18 @@ class SubscriptionOfferViewController: UIViewController {
     
     @objc func handlePurchaseFailed() {
         showErrorAlert(for: .purchaseFailed)
+    }
+}
+
+extension SubscriptionOfferViewController: LoadingTimeoutHandler {
+    
+    func didTimeoutOccured() {
+
+        if SubscriptionService.shared.options == nil {
+            let alert = UIAlertController(title: "Could not load data".localized, message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

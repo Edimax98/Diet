@@ -22,22 +22,22 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     
     let networkService = NetworkService()
+    fileprivate var recipe = [RecieptSteps]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userTapped))
+        view.addGestureRecognizer(tapGesture)
+        recipeLabel.text = "..."
         closeButton.makeCornerRadius(closeButton.frame.height / 2)
     }
     
-    @IBAction func closeButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-}
-
-extension RecipeViewController: RecipeReciver {
-    
-    func recieve(recipe: [RecieptSteps], dishName: String) {
+    fileprivate func loadAndFillRecipe(with steps: [RecieptSteps]) {
         
-        dishNameLabel.text = dishName
+        let loadingVc = LoadingViewController()
+        loadingVc.timeoutHandler = self
+        add(loadingVc)
+        
         let stepNameParagraphStyle = NSMutableParagraphStyle()
         stepNameParagraphStyle.alignment = .center
         stepNameParagraphStyle.paragraphSpacing = 10
@@ -51,28 +51,62 @@ extension RecipeViewController: RecipeReciver {
         stepDescriptionParagraphStyle.paragraphSpacing = 10
         
         let recipeAttributedString = NSMutableAttributedString()
+        let gr = DispatchGroup()
         
-        for step in recipe {
-            
+        for step in steps {
+            gr.enter()
             let stepNameAttributedString = NSAttributedString(string: step.name + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepNameParagraphStyle])
             let stepDescrAttributedString = NSAttributedString(string: step.description + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepDescriptionParagraphStyle])
-
-            recipeAttributedString.append(stepNameAttributedString)
-            recipeAttributedString.append(stepDescrAttributedString)
-            let textAttachmentWithImage = ImageAttachment()
-
             networkService.fetchImages(with: step.imagePaths) { (images) in
-                guard let image = images[step.imagePaths.first ?? ""] else { return }
+                guard let image = images[step.imagePaths.first ?? ""] else {
+                    gr.leave()
+                    return
+                }
+                recipeAttributedString.append(stepNameAttributedString)
+                recipeAttributedString.append(stepDescrAttributedString)
+                let textAttachmentWithImage = ImageAttachment()
                 textAttachmentWithImage.image = image
                 let imageAttributedString = NSAttributedString(attachment: textAttachmentWithImage)
                 recipeAttributedString.append(imageAttributedString)
                 recipeAttributedString.append(NSAttributedString(string: "\n", attributes: [NSAttributedString.Key.paragraphStyle: emptyParagraphStyle]))
+                gr.leave()
             }
         }
         
-        self.recipeLabel.attributedText = recipeAttributedString
+        gr.notify(queue: .main) {
+            loadingVc.remove()
+            self.recipeLabel.attributedText = recipeAttributedString
+        }
+    }
+    
+    
+    @objc func userTapped() {
+        //loadAndFillRecipe(with: recipe)
+    }
+    
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 
-        //let recipeDescription = recipe.reduce("") { str, step in  str + step.name + step.description }
-        //recipeLabel.text = recipeDescription
+extension RecipeViewController: RecipeReciver {
+    
+    func recieve(recipe: [RecieptSteps], dishName: String) {
+        dishNameLabel.text = dishName
+        loadAndFillRecipe(with: recipe)
+    }
+}
+
+extension RecipeViewController: LoadingTimeoutHandler {
+    
+    func didTimeoutOccured() {
+        
+        let timeoutMessageParagraphStyle = NSMutableParagraphStyle()
+        timeoutMessageParagraphStyle.alignment = .center
+        timeoutMessageParagraphStyle.paragraphSpacingBefore = 100
+        
+        let timeoutHappendMessage = NSAttributedString(string: "Could not load data.".localized, attributes: [NSAttributedString.Key.paragraphStyle : timeoutMessageParagraphStyle])
+        
+        recipeLabel.attributedText = timeoutHappendMessage
     }
 }

@@ -67,6 +67,7 @@ extension NetworkService: ImageNetworkService {
         
         var images = [String:Image]()
         let group = DispatchGroup()
+        let semaphore = DispatchSemaphore(value: 1)
         
         for path in paths {
             group.enter()
@@ -74,11 +75,15 @@ extension NetworkService: ImageNetworkService {
                 .responseImage { (response) in
                     guard let image = response.result.value else {
                         print("Image is NIL")
+                        semaphore.signal()
+                        group.leave()
                         return
                     }
                 images[path] = image
+                semaphore.signal()
                 group.leave()
             }
+            semaphore.wait()
         }
         
         group.notify(queue: .main) {

@@ -22,6 +22,7 @@
 "START" = "НАЧАТЬ";
 "Terms of Service" = "Условия Обслуживания";
 "Privacy Policy" = "Политика конфиденциальности";
+"Could not load data" = "Невозможно загрузить данные";
 
 //Welcome screen
 "Obesity index" = "Индекс ожирения";

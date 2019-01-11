@@ -38,6 +38,7 @@
 		A589FB0421C7B2AB0035E80D /* Diet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FB0321C7B2AB0035E80D /* Diet.swift */; };
 		A589FB0621C7D74B0035E80D /* FacebookEventsEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FB0521C7D74B0035E80D /* FacebookEventsEnviroment.swift */; };
 		A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53B216CF65100B20CE9 /* AppDelegate.swift */; };
+		A58CC54021E89DFB00361EA9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */; };
 		A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC53F216CF65100B20CE9 /* Main.storyboard */; };
 		A58CC543216CF65200B20CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58CC542216CF65200B20CE9 /* Assets.xcassets */; };
 		A58CC546216CF65200B20CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC544216CF65200B20CE9 /* LaunchScreen.storyboard */; };
@@ -93,7 +94,6 @@
 		A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		A57C146321CBE7EF00B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; usesTabs = 0; };
 		A580F85521E777BE00C0AE66 /* ImageNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkService.swift; sourceTree = "<group>"; };
-		A580F85821E7AE1A00C0AE66 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
 		A589FAFC21C7ACF80035E80D /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		A589FAFF21C7AF8D0035E80D /* DietWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietWeek.swift; sourceTree = "<group>"; };
 		A589FB0121C7AFAC0035E80D /* NutritionValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionValue.swift; sourceTree = "<group>"; };
@@ -101,6 +101,8 @@
 		A589FB0521C7D74B0035E80D /* FacebookEventsEnviroment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookEventsEnviroment.swift; sourceTree = "<group>"; };
 		A58CC538216CF65100B20CE9 /* Diet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58CC53B216CF65100B20CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A58CC53E21E89D7900361EA9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
+		A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A58CC540216CF65100B20CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A58CC542216CF65200B20CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A58CC545216CF65200B20CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				A556C13421CD2E01000317E4 /* SwiftyAd.swift */,
+				A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */,
 				A5A0C7AB21BE96CD00C9035C /* Subscription */,
 				A548E9D9217787A800FC62EE /* Appearance */,
 				A5E0C331216F951E0045975E /* Extensions */,
@@ -267,14 +270,22 @@
 				A5A1DD23217E26360099A1BD /* TestResults */,
 				A5EA83902170F8C80088F8FE /* Services */,
 				A5EA838F2170F8C00088F8FE /* Models */,
-				A58CC54E216CF6A500B20CE9 /* Assets */,
 				A50250D12178C84800F674B3 /* TestPage */,
 				A5A1182A21C2AA8E003843A1 /* SubscriptionOffer */,
-				A5EF446621CA96D5009B4635 /* RecipeViewController.swift */,
-				A57C146421CBE7EF00B810BE /* Localizable.strings */,
+				A58CC53A21E89B8C00361EA9 /* Recipes */,
 				A5B2D35421D22EE700378F54 /* EndPoints */,
+				A58CC54E216CF6A500B20CE9 /* Assets */,
+				A57C146421CBE7EF00B810BE /* Localizable.strings */,
 			);
 			path = Diet;
+			sourceTree = "<group>";
+		};
+		A58CC53A21E89B8C00361EA9 /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				A5EF446621CA96D5009B4635 /* RecipeViewController.swift */,
+			);
+			path = Recipes;
 			sourceTree = "<group>";
 		};
 		A58CC54D216CF69400B20CE9 /* Application */ = {
@@ -545,6 +556,7 @@
 				A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */,
 				A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */,
 				A5EA838E2170F8830088F8FE /* RecieptSteps.swift in Sources */,
+				A58CC54021E89DFB00361EA9 /* LoadingViewController.swift in Sources */,
 				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
 				A589FB0421C7B2AB0035E80D /* Diet.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
@@ -609,7 +621,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5D4F22F21D0FDCF002195C5 /* Base */,
-				A580F85821E7AE1A00C0AE66 /* ru */,
+				A58CC53E21E89D7900361EA9 /* ru */,
 			);
 			name = SubscriptionOffer.storyboard;
 			path = ../../..;
