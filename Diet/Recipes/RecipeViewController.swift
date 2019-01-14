@@ -54,11 +54,14 @@ class RecipeViewController: UIViewController {
         let gr = DispatchGroup()
         
         for step in steps {
-            gr.enter()
+            
             let stepNameAttributedString = NSAttributedString(string: step.name + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepNameParagraphStyle])
             let stepDescrAttributedString = NSAttributedString(string: step.description + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepDescriptionParagraphStyle])
+            gr.enter()
             networkService.fetchImages(with: step.imagePaths) { (images) in
+                
                 guard let image = images[step.imagePaths.first ?? ""] else {
+                    loadingVc.remove()
                     gr.leave()
                     return
                 }
@@ -81,7 +84,6 @@ class RecipeViewController: UIViewController {
     
     
     @objc func userTapped() {
-        //loadAndFillRecipe(with: recipe)
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {

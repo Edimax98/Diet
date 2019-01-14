@@ -78,6 +78,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55Y-RV-NRn">
                                                 <rect key="frame" x="304" y="20" width="19" height="20"/>
                                                 <color key="backgroundColor" red="0.41258156299999998" green="0.73043006659999998" blue="0.97649747129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="19" id="wc6-Vm-ZE5"/>
+                                                </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Evc-QZ-8vG">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
@@ -100,7 +103,6 @@
                                             <constraint firstItem="Evc-QZ-8vG" firstAttribute="leading" secondItem="CbI-Vl-euo" secondAttribute="leading" id="Ka2-Qn-NmR"/>
                                             <constraint firstItem="Evc-QZ-8vG" firstAttribute="top" secondItem="CbI-Vl-euo" secondAttribute="top" id="LPA-aO-THV"/>
                                             <constraint firstAttribute="bottom" secondItem="Evc-QZ-8vG" secondAttribute="bottom" id="MpN-V5-Xxj"/>
-                                            <constraint firstItem="55Y-RV-NRn" firstAttribute="leading" secondItem="CbI-Vl-euo" secondAttribute="leading" constant="304" id="Wqr-yJ-x54"/>
                                             <constraint firstAttribute="trailing" secondItem="Evc-QZ-8vG" secondAttribute="trailing" id="ec6-BE-Ykl"/>
                                             <constraint firstAttribute="height" constant="60" id="hDV-TY-68p"/>
                                             <constraint firstAttribute="trailing" secondItem="55Y-RV-NRn" secondAttribute="trailing" constant="20" id="q4P-6a-NpG"/>

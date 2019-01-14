@@ -656,7 +656,6 @@
                                     <constraint firstAttribute="trailing" secondItem="d19-gb-JUd" secondAttribute="trailing" constant="8" id="VlM-CL-xqg"/>
                                     <constraint firstAttribute="bottom" secondItem="VUT-RG-ms5" secondAttribute="bottom" constant="15" id="gKK-zI-LJI"/>
                                     <constraint firstAttribute="bottom" secondItem="d19-gb-JUd" secondAttribute="bottom" constant="15" id="pRl-Wl-ibb"/>
-                                    <constraint firstItem="d19-gb-JUd" firstAttribute="leading" secondItem="VUT-RG-ms5" secondAttribute="trailing" constant="339" id="uwf-5c-ifY"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -715,6 +714,6 @@
         <image name="weight-scale" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jlf-Dv-Hrh"/>
+        <segue reference="u5S-Pp-989"/>
     </inferredMetricsTieBreakers>
 </document>

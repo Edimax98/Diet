@@ -297,6 +297,10 @@ extension TestPageViewController: FBInterstitialAdDelegate {
                 print("Error  - ", error.localizedDescription)
                 self.present(self.resultsVc, animated: true, completion: nil)
             }
+        } else {
+            self.adLoadingTimoutTimer.invalidate()
+            print("Error  - ", error.localizedDescription)
+            self.present(self.resultsVc, animated: true, completion: nil)
         }
     }
 }
