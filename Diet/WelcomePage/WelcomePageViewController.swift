@@ -69,6 +69,7 @@ class WelcomePageViewController: UIViewController {
     }
 
     @IBAction func skipButtonPressed(_ sender: Any) {
+        EventManager.sendCustomEvent(with: "Welcome screen was skiped")
         UserDefaults.standard.set(true, forKey: "wereWelcomePagesShown")
     }
 }

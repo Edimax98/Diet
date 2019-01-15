@@ -69,9 +69,9 @@ class LaunchManager {
     
     func launchWithSubscriptionValidation() {
         
-        SubscriptionService.shared.loadSubscriptionOptions()
         prepareForLaunch()
-    
+        SubscriptionService.shared.loadSubscriptionOptions()
+        
         guard SubscriptionService.shared.hasReceiptData else {
             handler?.accessIsDenied()
             return

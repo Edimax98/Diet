@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBAudienceNetwork
 
 protocol PageSelectionHandler: class {
     
@@ -24,10 +23,6 @@ class SelectingViewController: UIViewController {
     @IBOutlet weak var triangleView: Triangle!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
-  //  @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak var adHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var adBannerView: UIView!
     @IBOutlet weak var nextButtonWidthConstraint: NSLayoutConstraint!
     
     var prevIndexForProgressView: Float = 0.0
@@ -59,15 +54,6 @@ class SelectingViewController: UIViewController {
         
         UIView.animate(withDuration: 0.3) {
             self.nextButton.transform = CGAffineTransform.identity
-        }
-        
-        if shouldHideBanner {
-            adHeight.constant = 0.0
-            view.updateConstraints()
-        }
-        
-        if let ad = SwiftyAd.shared.bannerViewAd {
-            adBannerView.addSubview(ad)
         }
         
         progressView.setProgress(indexForProgressView, animated: true)

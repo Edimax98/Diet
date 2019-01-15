@@ -46,6 +46,7 @@ class SubscriptionOfferViewController: UIViewController {
             add(loadingVc)
             loadingVc.timeoutHandler = self
         }
+        EventManager.sendCustomEvent(with: "Subscription offer was opened")
     }
     
     override func viewDidLayoutSubviews() {
@@ -144,18 +145,23 @@ class SubscriptionOfferViewController: UIViewController {
     }
     
     @IBAction func purchaseButtonPressed(_ sender: Any) {
+        
         guard let option = SubscriptionService.shared.options?.first else {
             showErrorAlert(for: .purchaseFailed)
             return
         }
+        add(loadingVc)
         SubscriptionService.shared.purchase(subscription: option)
     }
     
     @IBAction func skipButtonPressed(_ sender: Any) {
+        EventManager.sendCustomEvent(with: "Subscription offer was skiped")
         performSegue(withIdentifier: "showDiets", sender: self)
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
+        EventManager.sendCustomEvent(with: "User tried to restore subscription")
+        add(loadingVc)
         SubscriptionService.shared.restorePurchases()
     }
     
@@ -172,6 +178,8 @@ class SubscriptionOfferViewController: UIViewController {
     }
     
     @objc func handleRestoreSuccessfull(notification: Notification) {
+        
+        loadingVc.remove()
         
         if SubscriptionService.shared.currentSubscription != nil {
             performSegue(withIdentifier: "showDiets", sender: self)

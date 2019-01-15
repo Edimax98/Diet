@@ -114,7 +114,7 @@
                                             <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qNf-B7-ged">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DishCell" id="qNf-B7-ged">
                                                 <rect key="frame" x="10" y="23" width="280" height="400"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -195,8 +195,8 @@
                         <outlet property="scrollView" destination="AZn-3s-enK" id="kTD-aS-DLy"/>
                         <outlet property="weekDaySelectionView" destination="FT0-6t-8ag" id="Erq-I2-25r"/>
                         <outlet property="weekdaysDropDownButton" destination="WZf-PU-prq" id="c6S-6N-c76"/>
-                        <segue destination="ApJ-XQ-DlK" kind="show" identifier="showSubOffer" id="Jlf-Dv-Hrh"/>
                         <segue destination="yQQ-Qh-aPF" kind="presentation" identifier="showRecipe" id="wEl-Yb-JYs"/>
+                        <segue destination="ApJ-XQ-DlK" kind="presentation" identifier="showSubOffer" id="VC5-1c-jfe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7F3-NW-0BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -224,8 +224,8 @@
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAC-Ob-klG">
-                                        <rect key="frame" x="16" y="69" width="343" height="629"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAC-Ob-klG">
+                                        <rect key="frame" x="16" y="69" width="343" height="21"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -249,7 +249,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="kAC-Ob-klG" secondAttribute="bottom" constant="82" id="N5g-8o-qP0"/>
+                                    <constraint firstAttribute="bottom" secondItem="kAC-Ob-klG" secondAttribute="bottom" constant="682" id="N5g-8o-qP0"/>
                                     <constraint firstItem="kAC-Ob-klG" firstAttribute="top" secondItem="6KT-XG-j8w" secondAttribute="bottom" constant="21" id="NFC-l1-gkU"/>
                                     <constraint firstItem="6KT-XG-j8w" firstAttribute="top" secondItem="gvU-bv-AFP" secondAttribute="top" constant="20" id="ee4-l2-ZNr"/>
                                 </constraints>
@@ -279,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVF-Xh-Djl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4980" y="156.52173913043478"/>
+            <point key="canvasLocation" x="4988" y="158"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">
@@ -598,7 +598,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="v4H-YA-fsN" customClass="FatnessCategoryCell" customModule="Diet" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FatnessCategoryCell" id="v4H-YA-fsN" customClass="FatnessCategoryCell" customModule="Diet" customModuleProvider="target">
                                         <rect key="frame" x="50" y="8" width="275" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -700,7 +700,7 @@
                 <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="ApJ-XQ-DlK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YC1-hR-6dU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4748" y="-355"/>
+            <point key="canvasLocation" x="4802" y="-352"/>
         </scene>
     </scenes>
     <resources>
@@ -714,6 +714,6 @@
         <image name="weight-scale" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u5S-Pp-989"/>
+        <segue reference="VC5-1c-jfe"/>
     </inferredMetricsTieBreakers>
 </document>

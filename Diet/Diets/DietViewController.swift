@@ -10,6 +10,7 @@ import UIKit
 import DropDown
 import Alamofire
 import AlamofireImage
+import AppsFlyerLib
 
 class DietViewController: UIViewController {
     
@@ -25,7 +26,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    var accessStatus = AccessStatus.denied
+    var accessStatus = AccessStatus.available
     fileprivate let dropMenuItems = ["Monday".localized,"Tuesday".localized,
                                      "Wednesday".localized,"Thursday".localized,
                                      "Friday".localized,"Saturday".localized,
@@ -40,7 +41,9 @@ class DietViewController: UIViewController {
     fileprivate var dishes = [Dish]()
     fileprivate let fetchingQueue = DispatchQueue.global(qos: .utility)
     fileprivate let cashedImage = NSCache<AnyObject, AnyObject>()
-    
+    let networkService = NetworkService()
+    let loadingVc = LoadingViewController()
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -54,7 +57,6 @@ class DietViewController: UIViewController {
         }
     }
     
-    let networkService = NetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,7 @@ class DietViewController: UIViewController {
         
         networkService.dietServiceDelegate = self
         networkService.getDiet()
+        add(loadingVc)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -144,7 +147,6 @@ class DietViewController: UIViewController {
     }
     
     @IBAction func showWeekdaysButtonPressed(_ sender: Any) {
-        
         animateButtonArrowRotation(rotationAngle:  CGFloat(Double.pi))
         dropDownMenu.show()
     }
@@ -177,6 +179,7 @@ extension DietViewController: UICollectionViewDataSource {
         
         cell.showRecipeButtonPressed = { [weak self] in
             guard let unwrappedSelf = self else { return }
+            EventManager.sendCustomEvent(with: "Recipe was opened")
             unwrappedSelf.performSegue(withIdentifier: "showRecipe", sender: cell)
             unwrappedSelf.recipeSender?.recieve(recipe: dish.recipe, dishName: dish.name)
         }
@@ -209,7 +212,6 @@ extension DietViewController: UICollectionViewDataSource {
                 }
             }
         }
-
         return cell
     }
 }
@@ -228,7 +230,11 @@ extension DietViewController: DietNetworkServiceDelegate {
     
     func dietNetworkServiceDidGet(_ diet: Diet) {
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let self = self else { return }
+            
+            self.loadingVc.remove()
             self.dietNameLabel.text = diet.name
             self.dietDescriptionLabel.text = diet.description
             self.diet = diet

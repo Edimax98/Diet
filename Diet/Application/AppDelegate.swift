@@ -10,6 +10,8 @@ import UIKit
 import StoreKit
 import FBSDKCoreKit
 import FacebookCore
+import AppsFlyerLib
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +19,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var launchManager: LaunchManager?
     
+    // MARK: Notifications
+    
+    private func setupLocalNotifications() {
+        
+        var dateComponents = DateComponents()
+        
+        // monday
+        dateComponents.weekday = 2
+        dateComponents.hour = 12
+        dateComponents.minute = 0
+        dateComponents.timeZone = TimeZone.current
+        
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "New recipes!".localized
+        notificationContent.body = "Check out new recipes".localized
+        notificationContent.badge = 1
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString,
+                                            content: notificationContent, trigger: trigger)
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if error != nil {
+                
+            }
+        }
+    }
+    
+    // MARK: App life cycle
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        setupLocalNotifications()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (isAllowed, error) in
+            
+        }
         
         SKPaymentQueue.default().add(self)
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -26,6 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchManager?.launchWithSubscriptionValidation()
         launchManager?.prepareForLaunch()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
+        AppsFlyerTracker.shared().appleAppID = "1445711141"
+        AppsFlyerTracker.shared().isDebug = true
+        
         return true
     }
     
@@ -37,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppEventsLogger.activate(application)
+        AppsFlyerTracker.shared()?.trackAppLaunch()
     }
 }
 
@@ -69,6 +114,7 @@ extension AppDelegate: SKPaymentTransactionObserver {
     }
     
     func handlePurchasingState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        UIViewController.removeTopPresented()
         print("User is attempting to purchase product id: \(transaction.payment.productIdentifier)")
     }
     
@@ -77,17 +123,11 @@ extension AppDelegate: SKPaymentTransactionObserver {
         SubscriptionService.shared.loadSubscriptionOptions()
         SubscriptionService.shared.optionsLoaded = { option in
             if SubscriptionService.shared.isEligibleForTrial && SubscriptionService.shared.currentSubscription != nil {
-                FBSDKAppEvents.logEvent(FBSDKAppEventNameInitiatedCheckout,
-                                        parameters: [FBSDKAppEventParameterNameContentType: "3 days trial",
-                                                     FBSDKAppEventParameterNameContentID: option.product.productIdentifier,
-                                                     FBSDKAppEventParameterNameDescription: FacebookEventsEviroment.shared.enviroment.rawValue])
-                
+                AppsFlyerTracker.shared()?.trackEvent(AFEventStartTrial, withValues: ["trial_method": "3 days trial"])
             }
             if SubscriptionService.shared.isEligibleForTrial == false {
-                FBSDKAppEvents.logPurchase(option.priceWithoutCurrency, currency: option.currencyCode,
-                                           parameters: [FBSDKAppEventParameterNameContentType: "Weekly subscription",
-                                                        FBSDKAppEventParameterNameContentID: option.product.productIdentifier,
-                                                        FBSDKAppEventParameterNameDescription: FacebookEventsEviroment.shared.enviroment.rawValue])
+                AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamRevenue: option.priceWithoutCurrency, AFEventParamCurrency: option.currencyCode])
+                AppsFlyerTracker.shared()
             }
         }
     }
@@ -133,12 +173,14 @@ extension AppDelegate: SKPaymentTransactionObserver {
     }
     
     func handleFailedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        UIViewController.removeTopPresented()
         print("Purchase failed for product id: \(transaction.payment.productIdentifier)")
         queue.finishTransaction(transaction)
         NotificationCenter.default.post(name: SubscriptionService.purchaseFailedNotification, object: nil)
     }
     
     func handleDeferredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        UIViewController.removeTopPresented()
         print("Purchase deferred for product id: \(transaction.payment.productIdentifier)")
         queue.finishTransaction(transaction)
     }

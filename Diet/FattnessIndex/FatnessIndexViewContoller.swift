@@ -50,6 +50,8 @@ class FatnessIndexViewContoller: UIViewController {
         fatnessCategories.append(FatnessCategory(icon: "severe", title: "Severe obesity".localized, backgroundColor: severObesityCategoryColor, categoryName: .severeObesity))
         
         fatnessCategoriesCollectionView.register(UINib(nibName: "FatnessCategoryCell", bundle: nil), forCellWithReuseIdentifier: FatnessCategoryCell.identifier)
+        
+        EventManager.sendCustomEvent(with: "Obesity index was calculated")
     }
     
     override func viewDidLayoutSubviews() {

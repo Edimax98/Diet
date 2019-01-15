@@ -22,6 +22,12 @@ class TestResultsViewController: UIViewController {
     var repeatTest: (() -> Void)?
     var results: TestResult?
     
+    deinit {
+    
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         takeTestAgainButton.layer.borderWidth = 1
@@ -29,6 +35,7 @@ class TestResultsViewController: UIViewController {
         takeTestAgainButton.layer.cornerRadius = takeTestAgainButton.frame.height / 2
         agreedWithTestButton.layer.cornerRadius = agreedWithTestButton.frame.height / 2
         applyShadow(on: takeTestAgainButton.layer)
+        EventManager.sendCustomEvent(with: "Test was passed")
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

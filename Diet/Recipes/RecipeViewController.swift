@@ -82,7 +82,6 @@ class RecipeViewController: UIViewController {
         }
     }
     
-    
     @objc func userTapped() {
     }
     

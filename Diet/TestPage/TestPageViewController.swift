@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBAudienceNetwork
 
 protocol TestResultOutput: class {
     
@@ -20,9 +19,6 @@ class TestPageViewController: UIPageViewController {
     var testViewData = [TestViewData]()
     var testResult = TestResult()
     weak var testOutput: TestResultOutput?
-    fileprivate weak var loadingAlert: UIAlertController!
-    fileprivate var fullScreenAd: FBInterstitialAd!
-    fileprivate var adLoadingTimoutTimer: Timer!
 
     let genderSelectionPage = GenderSelectorViewController.controllerInStoryboard(UIStoryboard(name: "GenderSelectorViewController", bundle: nil))
     let ageSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
@@ -40,7 +36,7 @@ class TestPageViewController: UIPageViewController {
                                          iconName: "timer", pickerData: (140,200), unit: "cm.".localized)
     
     let resultsVc = TestResultsViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil), identifier: "TestResultsViewController")
-
+    
     required init?(coder: NSCoder) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
@@ -51,9 +47,6 @@ class TestPageViewController: UIPageViewController {
         fillPages()
         fillViewData()
         setViewControllers([testPages.first!], direction: .forward, animated: true, completion: nil)
-        
-        SwiftyAd.shared.showBanner(from: UIViewController())
-        SwiftyAd.shared.delegate = self
         
         resultsVc.repeatTest = {
             self.scrollToViewController(index: 0)
@@ -98,36 +91,25 @@ class TestPageViewController: UIPageViewController {
         handleNextButtonPressing()
         heightSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
     }
-    
-    fileprivate func loadFullScreenAd() {
-        fullScreenAd = FBInterstitialAd(placementID: "317759862160517_317760262160477")
-        fullScreenAd.load()
-        fullScreenAd.delegate = self
-        loadingAlert = UIAlertController.displayLoadingAlert(on: self)
-        if loadingAlert != nil {
-            present(loadingAlert, animated: true, completion: nil)
-        }
-        adLoadingTimoutTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(handleTimeout), userInfo: nil, repeats: false)
-    }
-    
+
     fileprivate func handleNextButtonPressing() {
         
-        genderSelectionPage.genderSelected = { gender in
+        genderSelectionPage.genderSelected = { [unowned self] gender in
             self.testResult.gender = gender
             self.scrollToNextViewController()
         }
         
-        ageSelectionPage.nextButtonPressed = { index in
+        ageSelectionPage.nextButtonPressed = { [unowned self] index in
             self.scrollToNextViewController()
             self.testResult.age = self.ageSelectionPageData.pickerData[index]
         }
         
-        currentWeightSelectionPage.nextButtonPressed = { index in
+        currentWeightSelectionPage.nextButtonPressed = { [unowned self] index in
             self.scrollToNextViewController()
             self.testResult.currentWeight = self.currentWeightSelectionPageData.pickerData[index]
         }
         
-        goalWeightSelectionPage.nextButtonPressed = { index in
+        goalWeightSelectionPage.nextButtonPressed = { [unowned self] index in
             
             if self.testResult.currentWeight <= self.goalWeightSelectionPageData.pickerData[index] {
                 let alert = UIAlertController(title: "Error".localized, message: "You cant set goal bigger then your current weight".localized, preferredStyle: .alert)
@@ -140,12 +122,12 @@ class TestPageViewController: UIPageViewController {
             }
         }
         
-        heightSelectionPage.nextButtonPressed = { index in
+        heightSelectionPage.nextButtonPressed = { [unowned self] index in
             self.testResult.height = self.heigthSelectionPageData.pickerData[index]
             self.testOutput = self.resultsVc
             let _ = self.resultsVc.view
             self.testOutput?.testCompleted(with: self.testResult)
-            self.loadFullScreenAd()
+            self.present(self.resultsVc, animated: true)
         }
     }
     
@@ -199,12 +181,6 @@ class TestPageViewController: UIPageViewController {
             scrollToViewController(viewController: previousViewContoller, direction: .reverse)
         }
     }
-    
-    @objc func handleTimeout() {
-        if loadingAlert != nil {
-            self.loadingAlert.dismiss(animated: true)
-        }
-    }
 }
 
 // MARK: - UIPageViewControllerDataSource
@@ -220,8 +196,6 @@ extension TestPageViewController: UIPageViewControllerDataSource {
         if let previousTestPage = testPages[previousIndex] as? SelectingViewController {
             let progress = Float(((previousIndex + 1) * 100 / testPages.count)) / 100
             let prevProgress = Float(((previousIndex) * 100 / testPages.count)) / 100
-            //previousTestPage.progressView.progres = progress
-            //previousTestPage.prevIndexForProgressView = prevProgress
             previousTestPage.progressView.progress = prevProgress
             previousTestPage.indexForProgressView = progress
             return previousTestPage
@@ -229,7 +203,6 @@ extension TestPageViewController: UIPageViewControllerDataSource {
         
         if let previousTestPage = testPages[previousIndex] as? GenderSelectorViewController {
             let progress = Float(((previousIndex + 1) * 100 / testPages.count)) / 100
-           // let prevProgress = Float(((previousIndex) * 100 / testPages.count)) / 100
             previousTestPage.indexForProgressView = progress
             return previousTestPage
         }
@@ -257,50 +230,5 @@ extension TestPageViewController: UIPageViewControllerDataSource {
             return nextTestPage
         }
         return UIViewController()
-    }
-}
-
-extension TestPageViewController: SwiftyAdDelegate {
-    
-    func swiftyAdDidFailedToLoad(_ swiftyAd: SwiftyAd) {
-        
-        genderSelectionPage.shouldHideBanner = true
-        ageSelectionPage.shouldHideBanner = true
-        currentWeightSelectionPage.shouldHideBanner = true
-        goalWeightSelectionPage.shouldHideBanner = true
-        heightSelectionPage.shouldHideBanner = true
-    }
-}
-
-
-
-extension TestPageViewController: FBInterstitialAdDelegate {
-    
-    func interstitialAdDidClose(_ interstitialAd: FBInterstitialAd) {
-        self.present(self.resultsVc, animated: true, completion: nil)
-    }
-    
-    func interstitialAdDidLoad(_ interstitialAd: FBInterstitialAd) {
-        
-        guard loadingAlert != nil else { adLoadingTimoutTimer.invalidate(); return }
-        loadingAlert.dismiss(animated: true) {
-            self.adLoadingTimoutTimer.invalidate()
-            interstitialAd.show(fromRootViewController: self)
-        }
-    }
-    
-    func interstitialAd(_ interstitialAd: FBInterstitialAd, didFailWithError error: Error) {
-        
-        if loadingAlert != nil {
-            loadingAlert.dismiss(animated: true) {
-                self.adLoadingTimoutTimer.invalidate()
-                print("Error  - ", error.localizedDescription)
-                self.present(self.resultsVc, animated: true, completion: nil)
-            }
-        } else {
-            self.adLoadingTimoutTimer.invalidate()
-            print("Error  - ", error.localizedDescription)
-            self.present(self.resultsVc, animated: true, completion: nil)
-        }
     }
 }

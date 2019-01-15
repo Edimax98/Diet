@@ -1,7 +1,8 @@
 PODS:
-  - Alamofire (4.7.3)
-  - AlamofireImage (3.3.1):
-    - Alamofire (~> 4.5)
+  - Alamofire (4.8.0)
+  - AlamofireImage (3.5.0):
+    - Alamofire (~> 4.8)
+  - AppsFlyerFramework (4.8.11)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -9,21 +10,20 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - DropDown (2.3.12)
-  - FacebookCore (0.3.2):
-    - Bolts (~> 1.8)
-    - FBSDKCoreKit (~> 4.35)
-  - FBAudienceNetwork (5.0.2)
-  - FBSDKCoreKit (4.36.0):
-    - Bolts (~> 1.7)
+  - FacebookCore (0.5.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.37)
+  - FBSDKCoreKit (4.39.1):
+    - Bolts (~> 1.9)
   - paper-onboarding (5.0.0)
-  - SwiftyJSON (4.1.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage
+  - AppsFlyerFramework
   - DropDown
   - FacebookCore
-  - FBAudienceNetwork (~> 5.0.1)
   - paper-onboarding
   - SwiftyJSON (~> 4.0)
 
@@ -31,25 +31,25 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - AppsFlyerFramework
     - Bolts
     - DropDown
     - FacebookCore
-    - FBAudienceNetwork
     - FBSDKCoreKit
     - paper-onboarding
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  AppsFlyerFramework: 7da8740f23e8d32f02f3afbfee6a9085885fd8bf
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DropDown: 0bcc278799ec11a3d34ce1aac9367fbbaf5423d9
-  FacebookCore: fe93222bb70346730ef33b061d493e9e7a7cb1f5
-  FBAudienceNetwork: 2fd6739135cc15b3260c4d25b6cc7d414afdb2e8
-  FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
+  FacebookCore: 74288d0add931d361b1596beae787ab72c438249
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
   paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 2c0ec1d1d3c347fae26a7710e14f9cc655ded5ab
+PODFILE CHECKSUM: fad4db6757483b8084640ed8717ca69cab1980f6
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBAudienceNetwork
 
 enum Gender: String {
     case male
@@ -40,8 +39,6 @@ class GenderSelectorViewController: UIViewController {
     @IBOutlet weak var femaleGenderView: UIView!
     @IBOutlet weak var maleButtonSelectionIndicator: UIView!
     @IBOutlet weak var femaleButtonSelectionIndicator: UIView!
-    @IBOutlet weak var adBannerView: UIView!
-    @IBOutlet weak var adBannerHeight: NSLayoutConstraint!
 
     var shouldHideBanner = false
     var indexForProgressView: Float = 0.2
@@ -74,15 +71,6 @@ class GenderSelectorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         progressView.setProgress(indexForProgressView, animated: true)
-        
-        if shouldHideBanner {
-            adBannerHeight.constant = 0.0
-            view.updateConstraints()
-        }
-        
-        if let ad = SwiftyAd.shared.bannerViewAd {
-            adBannerView.addSubview(ad)
-        }
     }
     
     fileprivate func applyShadow(on layer: CALayer) {

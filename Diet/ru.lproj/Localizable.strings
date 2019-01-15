@@ -6,6 +6,10 @@
   Copyright © 2018 Даниил. All rights reserved.
 */
 
+// Notifications
+"New recipes!" = "Новые рецепты";
+"Check out new recipes" = "Посмотрите новые рецепты";
+
 // Subscription offer
 "All access" = "Полный доступ";
 "3 days for FREE" = "3 дня БЕСПЛАТНО";
