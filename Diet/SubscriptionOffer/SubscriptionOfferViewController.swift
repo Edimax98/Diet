@@ -11,20 +11,21 @@ import SafariServices
 
 class SubscriptionOfferViewController: UIViewController {
 
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceContainerView: UIView!
     @IBOutlet weak var arcView: UIView!
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var startSubscriptionButton: UIButton!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var offset: NSLayoutConstraint!
     @IBOutlet weak var offsetFromTop: NSLayoutConstraint!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var trialStatusLabel: UILabel!
     @IBOutlet weak var trialTermsLabel: UILabel!
     @IBOutlet weak var termsAndServiceButton: UIButton!
     @IBOutlet weak var privacyPolicyButton: UIButton!
     
-    fileprivate let trialExpiredMessage = "Your trial period has expired. Subscription price - ".localized
-    fileprivate let trialAvailableMessage = "3 days free trial. Subscription price after free trial - ".localized
+    fileprivate let trialExpiredMessage = "Your trial period has expired.".localized
+    fileprivate let trialAvailableMessage = "Free period available".localized
     fileprivate let disclaimerMessage = "Payment will be charged to your iTunes Account at confirmation of purchase. Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. Subscription auto-renewal may be turned off by going to the Account Settings after purchase. Any unused portion of a free trial will be forfeited when you purchase a subscription.".localized
     fileprivate let allAccessMessage = "All access".localized
     fileprivate let freeTrialMessage = "3 days for FREE".localized
@@ -74,12 +75,14 @@ class SubscriptionOfferViewController: UIViewController {
     
     private func fillLables() {
         
-        guard let option = SubscriptionService.shared.options?.first else { return }
+        guard let option = SubscriptionService.shared.options?.first else { print("Cant fill labels, options are nil"); return }
     
+        priceLabel.text = option.formattedPrice + subscriptionDuration + " after 3 days".localized
+        
         if UserDefaults.standard.bool(forKey: "isTrialExpired") {
-            self.priceLabel.text = trialExpiredMessage + option.formattedPrice + subscriptionDuration
+            self.trialStatusLabel.text = trialExpiredMessage
         } else {
-            self.priceLabel.text = trialAvailableMessage + option.formattedPrice + subscriptionDuration
+            self.trialStatusLabel.text = trialAvailableMessage
         }
     }
     
@@ -88,11 +91,12 @@ class SubscriptionOfferViewController: UIViewController {
         arcView.makeCornerRadius(arcView.frame.height / 2)
         restoreButton.makeCornerRadius(restoreButton.frame.height / 2)
         skipButton.makeCornerRadius(restoreButton.frame.height / 2)
-        startSubscriptionButton.makeCornerRadius(startSubscriptionButton.frame.height / 2)
+        priceContainerView.makeCornerRadius(priceContainerView.frame.height / 2)
         termsAndServiceButton.makeCornerRadius(termsAndServiceButton.frame.height / 2)
         privacyPolicyButton.makeCornerRadius(privacyPolicyButton.frame.height / 2)
         cardView.makeCornerRadius(32)
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(purchaseButtonPressed(_:)))
+        priceContainerView.addGestureRecognizer(tapGesture)
         fillLables()
     }
     
@@ -144,7 +148,7 @@ class SubscriptionOfferViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func purchaseButtonPressed(_ sender: Any) {
+    @objc func purchaseButtonPressed(_ sender: Any) {
         
         guard let option = SubscriptionService.shared.options?.first else {
             showErrorAlert(for: .purchaseFailed)
