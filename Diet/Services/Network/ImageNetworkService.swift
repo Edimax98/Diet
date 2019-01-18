@@ -9,6 +9,14 @@
 import Foundation
 import AlamofireImage
 
-protocol ImageNetworkService {
-    func fetchImages(with paths: [String], completion: @escaping ([String: Image]) -> ())
+enum RequestResult<T> {
+    case success(result: T)
+    case failure(error: Error)
+}
+
+protocol ImageNetworkService: class {
+    
+    var errorHandler: FetchincErrorHandler? { get set }
+    
+    func fetchImages(with paths: [String], completion: @escaping (RequestResult<[String:Image]>) -> ())
 }

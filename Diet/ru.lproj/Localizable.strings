@@ -56,7 +56,16 @@
 "Next" = "Дальше";
 "Finish" = "Завершить";
 
-// Sub offer
+// Obesity index screen
+"Underweight" = "Недостаток веса";
+"Normal weight" = "Норма";
+"Excess obesity" = "Излишний вес";
+"Obesity" = "Ожирение";
+"Severe obesity" = "Сильное ожирение";
+
+// Diets screen
+"Your meal plan" = "Ваш рацион";
+"Choose one of the days to see all dishes" = "Выберите один из дней, чтобы увидеть блюда";
 "Monday" = "Понедельник";
 "Tuesday" = "Вторник";
 "Wednesday" = "Среда";
@@ -67,8 +76,6 @@
 "kCal." = "кКал.";
 "g." = "г.";
 
-"Underweight" = "Недостаток веса";
-"Normal weight" = "Норма";
-"Excess obesity" = "Излишний вес";
-"Obesity" = "Ожирение";
-"Severe obesity" = "Сильное ожирение";
+// Recipe screen
+"No recipe" = "Нет рецепта";
+"An error occured" = "Произошла ошибка";

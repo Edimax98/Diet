@@ -22,18 +22,34 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     
     let networkService = NetworkService()
-    fileprivate var recipe = [RecieptSteps]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userTapped))
-        view.addGestureRecognizer(tapGesture)
         recipeLabel.text = "..."
         closeButton.makeCornerRadius(closeButton.frame.height / 2)
     }
     
+    fileprivate func setImagesForRecipe(_ recipe: [RecieptSteps], _ images: [String: Image]) -> [RecieptSteps] {
+        
+        let imagePaths = recipe.map { $0.imagePaths.first! }
+        var resultRecipe = recipe
+        
+        var i = 0
+        while imagePaths.count - 1 >= i {
+            if images.keys.contains(where: { (url) -> Bool in imagePaths[i] == url }) {
+                resultRecipe[i].images.append(images[imagePaths[i]]!)
+            }
+            i += 1
+        }
+        return resultRecipe
+    }
+    
     fileprivate func loadAndFillRecipe(with steps: [RecieptSteps]) {
         
+        if steps.isEmpty {
+            recipeLabel.text = "No recipe".localized
+            return
+        }
         let loadingVc = LoadingViewController()
         loadingVc.timeoutHandler = self
         add(loadingVc)
@@ -51,38 +67,44 @@ class RecipeViewController: UIViewController {
         stepDescriptionParagraphStyle.paragraphSpacing = 10
         
         let recipeAttributedString = NSMutableAttributedString()
-        let gr = DispatchGroup()
         
-        for step in steps {
+        let imagePaths = steps.filter { $0.imagePaths.first! != "" }.map { $0.imagePaths.first! }
+        
+        networkService.fetchImages(with: imagePaths) { [weak self] (response) in
             
-            let stepNameAttributedString = NSAttributedString(string: step.name + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepNameParagraphStyle])
-            let stepDescrAttributedString = NSAttributedString(string: step.description + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepDescriptionParagraphStyle])
-            gr.enter()
-            networkService.fetchImages(with: step.imagePaths) { (images) in
+            loadingVc.remove()
+            var images = [String:Image]()
+            
+            guard let unwrappedSelf = self else { return }
+            
+            switch response {
+            case .success(let result):
+                images = result
                 
-                guard let image = images[step.imagePaths.first ?? ""] else {
-                    loadingVc.remove()
-                    gr.leave()
-                    return
+                let recipeWithImages = unwrappedSelf.setImagesForRecipe(steps, images)
+                
+                for step in recipeWithImages {
+                    
+                    let stepNameAttributedString = NSAttributedString(string: step.name + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepNameParagraphStyle])
+                    let stepDescrAttributedString = NSAttributedString(string: step.description + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepDescriptionParagraphStyle])
+                    
+                    recipeAttributedString.append(stepNameAttributedString)
+                    recipeAttributedString.append(stepDescrAttributedString)
+                    
+                    if !step.images.isEmpty {
+                        let textAttachmentWithImage = ImageAttachment()
+                        textAttachmentWithImage.image = step.images[0]
+                        let imageAttributedString = NSAttributedString(attachment: textAttachmentWithImage)
+                        recipeAttributedString.append(imageAttributedString)
+                    }
+                    
+                    recipeAttributedString.append(NSAttributedString(string: "\n", attributes: [NSAttributedString.Key.paragraphStyle: emptyParagraphStyle]))
+                    unwrappedSelf.recipeLabel.attributedText = recipeAttributedString
                 }
-                recipeAttributedString.append(stepNameAttributedString)
-                recipeAttributedString.append(stepDescrAttributedString)
-                let textAttachmentWithImage = ImageAttachment()
-                textAttachmentWithImage.image = image
-                let imageAttributedString = NSAttributedString(attachment: textAttachmentWithImage)
-                recipeAttributedString.append(imageAttributedString)
-                recipeAttributedString.append(NSAttributedString(string: "\n", attributes: [NSAttributedString.Key.paragraphStyle: emptyParagraphStyle]))
-                gr.leave()
+            case .failure(_):
+                unwrappedSelf.recipeLabel.text = "An error occured".localized
             }
         }
-        
-        gr.notify(queue: .main) {
-            loadingVc.remove()
-            self.recipeLabel.attributedText = recipeAttributedString
-        }
-    }
-    
-    @objc func userTapped() {
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {

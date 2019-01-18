@@ -192,6 +192,8 @@
                         <outlet property="dietNameLabel" destination="dbb-Cu-1Xf" id="zXo-g7-H7n"/>
                         <outlet property="dishesCollectionView" destination="07h-Uo-Jva" id="0vn-65-xtp"/>
                         <outlet property="dropDownButtonContainerView" destination="iIt-mq-Q5i" id="JAe-Ay-PUv"/>
+                        <outlet property="mealPlanDescriptionLabel" destination="NxQ-CS-7kO" id="ahN-fs-c7F"/>
+                        <outlet property="mealPlanLabel" destination="a2G-cq-cEj" id="pme-Uk-MJm"/>
                         <outlet property="scrollView" destination="AZn-3s-enK" id="kTD-aS-DLy"/>
                         <outlet property="weekDaySelectionView" destination="FT0-6t-8ag" id="Erq-I2-25r"/>
                         <outlet property="weekdaysDropDownButton" destination="WZf-PU-prq" id="c6S-6N-c76"/>
@@ -249,7 +251,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="kAC-Ob-klG" secondAttribute="bottom" constant="682" id="N5g-8o-qP0"/>
+                                    <constraint firstAttribute="bottom" secondItem="kAC-Ob-klG" secondAttribute="bottom" constant="100" id="N5g-8o-qP0"/>
                                     <constraint firstItem="kAC-Ob-klG" firstAttribute="top" secondItem="6KT-XG-j8w" secondAttribute="bottom" constant="21" id="NFC-l1-gkU"/>
                                     <constraint firstItem="6KT-XG-j8w" firstAttribute="top" secondItem="gvU-bv-AFP" secondAttribute="top" constant="20" id="ee4-l2-ZNr"/>
                                 </constraints>

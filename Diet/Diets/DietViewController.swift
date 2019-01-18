@@ -24,6 +24,8 @@ class DietViewController: UIViewController {
     @IBOutlet weak var weekDaySelectionView: UIView!
     @IBOutlet weak var dietDescriptionView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mealPlanLabel: UILabel!
+    @IBOutlet weak var mealPlanDescriptionLabel: UILabel!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
     var accessStatus = AccessStatus.denied
@@ -56,7 +58,6 @@ class DietViewController: UIViewController {
             }
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +101,9 @@ class DietViewController: UIViewController {
         weekDaySelectionView.layer.masksToBounds = true
         dietDescriptionView.layer.cornerRadius = viewCornerRadius
         dietDescriptionView.layer.masksToBounds = true
+        
+        mealPlanLabel.text = "Your meal plan".localized
+        mealPlanDescriptionLabel.text = "Choose one of the days to see all dishes".localized
     }
     
     fileprivate func setupCollectionViewFlowLayout() {

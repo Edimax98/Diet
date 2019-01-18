@@ -14,7 +14,9 @@ import SwiftyJSON
 class NetworkService {
     
     weak var dietServiceDelegate: DietNetworkServiceDelegate?
-    
+    weak var errorHandler: FetchincErrorHandler?
+    fileprivate let downloader = ImageDownloader(configuration: .default, downloadPrioritization: .fifo, maximumActiveDownloads: 5, imageCache: nil)
+
     init() {}
 }
 
@@ -28,9 +30,9 @@ extension NetworkService: DietNetworkService {
         
         request(DietApi.baseUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .response(queue: queue, responseSerializer: DataRequest.jsonResponseSerializer()) { [weak self] response in
-            
+                
                 guard let unwrappedSelf = self else { print("self is nil"); return }
-            
+                
                 guard let responseValue = response.result.value else {
                     print("Diet raw json is nil")
                     return
@@ -62,32 +64,33 @@ extension NetworkService: DietNetworkService {
 }
 
 extension NetworkService: ImageNetworkService {
-    
-    func fetchImages(with paths: [String], completion: @escaping ([String : Image]) -> ()) {
+    func fetchImages(with paths: [String], completion: @escaping (RequestResult<[String : Image]>) -> ()) {
         
         var images = [String:Image]()
         let group = DispatchGroup()
-        let semaphore = DispatchSemaphore(value: 1)
         
         for path in paths {
+            
+            guard let url = URL(string: path) else { return }
+            let urlRequest = URLRequest(url: url)
             group.enter()
-            request(path, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
-                .responseImage { (response) in
-                    guard let image = response.result.value else {
-                        print("Image is NIL")
-                        semaphore.signal()
+            
+            downloader.download(urlRequest) { [weak self] (response) in
+                
+                switch response.result {
+                case .success(_):
+                    if let image = response.result.value {
+                        images[path] = image
                         group.leave()
-                        return
                     }
-                images[path] = image
-                semaphore.signal()
-                group.leave()
+                case .failure(let error):
+                    completion(.failure(error: error))
+                }
             }
-            semaphore.wait()
         }
         
         group.notify(queue: .main) {
-            completion(images)
+            completion(.success(result: images))
         }
     }
 }
