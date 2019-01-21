@@ -70,15 +70,7 @@ class DietViewController: UIViewController {
         add(loadingVc)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if accessStatus == .denied {
-            weekdaysDropDownButton.isEnabled = false
-        }
-    }
-    
     fileprivate func showContent() {
-        weekdaysDropDownButton.isEnabled = true
         dishesCollectionView.reloadData()
     }
     
@@ -102,6 +94,7 @@ class DietViewController: UIViewController {
         dietDescriptionView.layer.cornerRadius = viewCornerRadius
         dietDescriptionView.layer.masksToBounds = true
         
+        weekdaysDropDownButton.setTitle("Monday".localized, for: .normal)
         mealPlanLabel.text = "Your meal plan".localized
         mealPlanDescriptionLabel.text = "Choose one of the days to see all dishes".localized
     }
@@ -151,6 +144,12 @@ class DietViewController: UIViewController {
     }
     
     @IBAction func showWeekdaysButtonPressed(_ sender: Any) {
+        
+        guard accessStatus == .available else {
+            performSegue(withIdentifier: "showSubOffer", sender: self)
+            return
+        }
+        
         animateButtonArrowRotation(rotationAngle:  CGFloat(Double.pi))
         dropDownMenu.show()
     }

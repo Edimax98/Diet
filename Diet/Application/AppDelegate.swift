@@ -37,8 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationContent.badge = 1
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString,
+        let request = UNNotificationRequest(identifier: "NEW_DIET",
                                             content: notificationContent, trigger: trigger)
         
         let notificationCenter = UNUserNotificationCenter.current()
@@ -53,9 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        setupLocalNotifications()
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (isAllowed, error) in
-            
+            if isAllowed {
+                self.setupLocalNotifications()
+            } else {
+                print("Permission has not been granted")
+            }
         }
         
         SKPaymentQueue.default().add(self)

@@ -75,7 +75,7 @@ extension NetworkService: ImageNetworkService {
             let urlRequest = URLRequest(url: url)
             group.enter()
             
-            downloader.download(urlRequest) { [weak self] (response) in
+            downloader.download(urlRequest) { (response) in
                 
                 switch response.result {
                 case .success(_):
