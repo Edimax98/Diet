@@ -23,6 +23,7 @@ struct Subscription {
     var formattedPrice: String
     var currencyCode: String
     var priceWithoutCurrency: Double
+    var expirationReason: ExpirationReason?
     
     init(product: SKProduct) {
         

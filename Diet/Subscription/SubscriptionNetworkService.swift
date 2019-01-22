@@ -72,9 +72,12 @@ class SubscriptionNetworkService {
                 guard let json = JSON(responseValue).dictionaryObject else { completion(.failure(.internalError)); return }
                 let status = JSON(responseValue)["status"].intValue
                 guard let recieptStatus = RecieptStatus(rawValue: status) else { completion(.failure(.internalError)); return }
-                
                 let session = Session(receiptData: data, parsedReceipt: json)
                 self.sessions[session.id] = session
+                
+                if JSON(responseValue)["latest_expired_receipt_info"]["is_trial_period"] == "true" {
+                    EventManager.subscriptionExpired(with: "TEST EVENT. User has canceled trial.")
+                }
                 
                 if recieptStatus == .correctStatus {
                     completion(.success(session))
