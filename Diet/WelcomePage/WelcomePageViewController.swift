@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import paper_onboarding
 
 class WelcomePageViewController: UIViewController {
     
+    @IBOutlet weak var nextButtomBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var paperOnboardingView: PaperOnboarding!
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     fileprivate static let titleFont = UIFont(name: "Helvetica-Bold", size: 36.0) ?? UIFont.boldSystemFont(ofSize: 36.0)
     fileprivate static let descriptionFont = UIFont(name: "Helvetica-Regular", size: 25.0) ?? UIFont.systemFont(ofSize: 14.0)
@@ -45,17 +45,22 @@ class WelcomePageViewController: UIViewController {
                            pageIcon: UIImage(named: "ruler")!,
                            color: UIColor(red: 1, green: 126 / 255, blue: 121/255, alpha: 1.00),
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: WelcomePageViewController.titleFont, descriptionFont: WelcomePageViewController.descriptionFont)
-        ]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPaperOnboardingView()
-        view.bringSubviewToFront(skipButton)
-        skipButton.setTitle("skip".localized, for: .normal)
     }
     
     private func setupPaperOnboardingView() {
+        
         paperOnboardingView.dataSource = self
+        paperOnboardingView.delegate = self
+        
+        view.bringSubviewToFront(nextButton)
+        nextButton.setTitle("NEXT".localized, for: .normal)
+        nextButton.layer.cornerRadius = nextButton.frame.height / 2
+        
         for attribute: NSLayoutConstraint.Attribute in [.left, .right, .top, .bottom] {
             let constraint = NSLayoutConstraint(item: paperOnboardingView,
                                                 attribute: attribute,
@@ -67,10 +72,41 @@ class WelcomePageViewController: UIViewController {
             view.addConstraint(constraint)
         }
     }
+    
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        
+        if paperOnboardingView.currentIndex + 1 <= items.count - 1 {
+            paperOnboardingView.currentIndex(paperOnboardingView.currentIndex + 1, animated: true)
+        } else {
+            EventManager.sendCustomEvent(with: "Welcome screen was skipped")
+            UserDefaults.standard.set(true, forKey: "wereWelcomePagesShown")
+            performSegue(withIdentifier: "showTest", sender: self)
+        }
+    }
+}
 
-    @IBAction func skipButtonPressed(_ sender: Any) {
-        EventManager.sendCustomEvent(with: "Welcome screen was skiped")
-        UserDefaults.standard.set(true, forKey: "wereWelcomePagesShown")
+extension WelcomePageViewController: PaperOnboardingDelegate {
+    
+    func onboardingWillTransitonTo(index: Int) {
+        
+        if index == items.count - 1 {
+           nextButton.setTitle("FINISH".localized, for: .normal)
+        } else {
+           nextButton.setTitle("NEXT".localized, for: .normal)
+         }
+
+        nextButtomBottomConstraint.constant = nextButton.frame.height
+        nextButton.alpha = 0
+        view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.8,
+                       delay: 0,
+                       options: .curveEaseOut, animations: {
+                        self.nextButtomBottomConstraint.constant = 87
+                        self.nextButton.alpha = 0
+                        self.nextButton.alpha = 1
+                        self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }
 
@@ -85,4 +121,3 @@ extension WelcomePageViewController: PaperOnboardingDataSource {
         return items.count
     }
 }
-

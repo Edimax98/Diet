@@ -8,6 +8,5 @@ target 'Diet' do
     pod 'SwiftyJSON', '~> 4.0'
     pod 'AlamofireImage'
     pod 'DropDown'
-    pod 'paper-onboarding'
     pod 'AppsFlyerFramework'
 end

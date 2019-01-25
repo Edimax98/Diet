@@ -17,10 +17,6 @@ class LoadingViewController: UIViewController {
     
     weak var timeoutHandler: LoadingTimeoutHandler?
     
-    deinit {
-        
-    }
-    
     lazy var spinnerContainer: UIView = {
         let view = UIView(frame: CGRect(x: self.view.frame.width / 2 - 50, y: self.view.frame.height / 2 - 50, width: 100, height: 100))
         view.layer.cornerRadius = 20

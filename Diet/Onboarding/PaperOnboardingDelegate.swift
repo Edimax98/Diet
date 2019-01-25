@@ -19,7 +19,7 @@ public protocol PaperOnboardingDelegate {
 
      - parameter index: An curretn index item
      */
-    func onboardingWillTransitonToIndex(_ index: Int)
+    func onboardingWillTransitonTo(index: Int)
 
     /**
      Tells the delegate that the paperOnbording will try to transition to a screen after the last
@@ -50,7 +50,7 @@ public protocol PaperOnboardingDelegate {
 
 // This extension will make the delegate method optional
 public extension PaperOnboardingDelegate {
-    func onboardingWillTransitonToIndex(_: Int) {}
+    func onboardingWillTransitonTo(index: Int) {}
     func onboardingDidTransitonToIndex(_: Int) {}
     func onboardingWillTransitonToLeaving() {}
     func onboardingConfigurationItem(_: OnboardingContentViewItem, index _: Int) {}

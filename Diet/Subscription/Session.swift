@@ -43,7 +43,9 @@ struct Session {
 
     public var currentSubscription: PaidSubscription? {
         let activeSubscriptions = paidSubscriptions.filter { $0.isActive && $0.purchaseDate >= SubscriptionNetworkService.shared.simulatedStartDate }
+        
         var current = activeSubscriptions.last
+        
         paidSubscriptions.forEach {
             if $0.isTrial == true {
                 current?.isEligibleForTrial = false
@@ -68,7 +70,6 @@ struct Session {
         id = UUID().uuidString
         self.receiptData = receiptData
         self.parsedReceipt = parsedReceipt
-        print(JSON(parsedReceipt))
         if let purchases = JSON(parsedReceipt)["latest_receipt_info"].array {
             var subscriptions = [PaidSubscription]()
             for purchase in purchases {
@@ -76,9 +77,6 @@ struct Session {
                                                         purchaseDateString: purchase["purchase_date"].stringValue,
                                                         expiresDateString: purchase["expires_date"].stringValue,
                                                         isTrial: purchase["is_trial_period"].stringValue)
-                
-                //if let reason = JSON(parsedReceipt)["latest_receipt_info"]
-                
                 subscriptions.append(paidSubscription)
             }
             paidSubscriptions = subscriptions

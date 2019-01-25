@@ -35,7 +35,7 @@ class DietViewController: UIViewController {
                                      "Sunday".localized]
     
     let gramMeasure = "g.".localized
-    let caloriesMesure = "kCal".localized
+    let caloriesMesure = "kCal.".localized
     weak var recipeSender: RecipeReciver?
     let dropDownMenu = DropDown()
     private var previousStatusBarHidden = false

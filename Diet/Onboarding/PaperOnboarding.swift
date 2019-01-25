@@ -36,14 +36,14 @@ public struct OnboardingItemInfo {
 open class PaperOnboarding: UIView {
 
     ///  The object that acts as the data source of the  PaperOnboardingDataSource.
-    @IBOutlet weak open var dataSource: AnyObject? {
+    weak open var dataSource: AnyObject? {
         didSet {
             commonInit()
         }
     }
 
     /// The object that acts as the delegate of the PaperOnboarding. PaperOnboardingDelegate protocol
-    @IBOutlet weak open var delegate: AnyObject?
+    weak open var delegate: AnyObject?
 
     /// current index item
     open fileprivate(set) var currentIndex: Int = 0
@@ -89,7 +89,7 @@ public extension PaperOnboarding {
      */
     func currentIndex(_ index: Int, animated: Bool) {
         if 0 ..< itemsCount ~= index {
-            (delegate as? PaperOnboardingDelegate)?.onboardingWillTransitonToIndex(index)
+            (delegate as? PaperOnboardingDelegate)?.onboardingWillTransitonTo(index: index)
             currentIndex = index
             CATransaction.begin()
 
@@ -149,7 +149,7 @@ extension PaperOnboarding {
         let index = pageItem.tag - 1
         guard index != currentIndex else { return }
         currentIndex(index, animated: true)
-        (delegate as? PaperOnboardingDelegate)?.onboardingWillTransitonToIndex(index)
+        (delegate as? PaperOnboardingDelegate)?.onboardingDidTransitonToIndex(index)
     }
 
     fileprivate func createPageView() -> PageView {

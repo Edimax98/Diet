@@ -10,6 +10,7 @@ import Foundation
 import AppsFlyerLib
 
 class EventManager {
+    
     static func sendCustomEvent(with name: String) {
         AppsFlyerTracker.shared()?.trackEvent(name, withValues: [:])
     }

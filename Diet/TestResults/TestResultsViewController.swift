@@ -22,12 +22,6 @@ class TestResultsViewController: UIViewController {
     var repeatTest: (() -> Void)?
     var results: TestResult?
     
-    deinit {
-    
-        
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         takeTestAgainButton.layer.borderWidth = 1
@@ -120,9 +114,8 @@ class TestResultsViewController: UIViewController {
     }
     
     @IBAction func takeTestAgainButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true) {
-            self.repeatTest?()
-        }
+        self.repeatTest?()
+        performSegue(withIdentifier: "backToTest", sender: self)
     }
 }
 

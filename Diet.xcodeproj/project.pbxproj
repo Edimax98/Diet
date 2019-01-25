@@ -24,6 +24,18 @@
 		A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548E9D52177783800FC62EE /* WelcomePageViewController.swift */; };
 		A556C12521CD0EE0000317E4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A556C12421CD0EE0000317E4 /* StoreKit.framework */; };
 		A556C12D21CD1EE7000317E4 /* DishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A556C12F21CD1EE7000317E4 /* DishCell.xib */; };
+		A55BFF9021FA0AFD00D4364F /* PageViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8421FA0AFC00D4364F /* PageViewItem.swift */; };
+		A55BFF9121FA0AFD00D4364F /* Configuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8521FA0AFC00D4364F /* Configuring.swift */; };
+		A55BFF9221FA0AFD00D4364F /* GestureControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8621FA0AFC00D4364F /* GestureControl.swift */; };
+		A55BFF9321FA0AFD00D4364F /* ConstraintsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8721FA0AFC00D4364F /* ConstraintsHelper.swift */; };
+		A55BFF9421FA0AFD00D4364F /* FillAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8821FA0AFC00D4364F /* FillAnimationView.swift */; };
+		A55BFF9521FA0AFD00D4364F /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8921FA0AFC00D4364F /* PageContainer.swift */; };
+		A55BFF9621FA0AFD00D4364F /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8A21FA0AFC00D4364F /* PageView.swift */; };
+		A55BFF9721FA0AFD00D4364F /* OnboardingContantViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8B21FA0AFC00D4364F /* OnboardingContantViewItem.swift */; };
+		A55BFF9821FA0AFD00D4364F /* OnboardingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8C21FA0AFC00D4364F /* OnboardingContentView.swift */; };
+		A55BFF9921FA0AFD00D4364F /* PaperOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8D21FA0AFD00D4364F /* PaperOnboarding.swift */; };
+		A55BFF9A21FA0AFD00D4364F /* PaperOnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8E21FA0AFD00D4364F /* PaperOnboardingDataSource.swift */; };
+		A55BFF9B21FA0AFD00D4364F /* PaperOnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8F21FA0AFD00D4364F /* PaperOnboardingDelegate.swift */; };
 		A5657E0121E647AE00B688CC /* ImageAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5657E0021E647AE00B688CC /* ImageAttachment.swift */; };
 		A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC321BAA3DB00DCD511 /* DishCell.swift */; };
 		A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */; };
@@ -86,6 +98,19 @@
 		A556C13121CD1EEA000317E4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DishCell.strings; sourceTree = "<group>"; };
 		A556C13221CD22CA000317E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GenderSelectorViewController.storyboard; sourceTree = "<group>"; };
 		A556C13321CD22DB000317E4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/GenderSelectorViewController.strings; sourceTree = "<group>"; };
+		A55BFF8221F9C68900D4364F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		A55BFF8421FA0AFC00D4364F /* PageViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewItem.swift; sourceTree = "<group>"; };
+		A55BFF8521FA0AFC00D4364F /* Configuring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuring.swift; sourceTree = "<group>"; };
+		A55BFF8621FA0AFC00D4364F /* GestureControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureControl.swift; sourceTree = "<group>"; };
+		A55BFF8721FA0AFC00D4364F /* ConstraintsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsHelper.swift; sourceTree = "<group>"; };
+		A55BFF8821FA0AFC00D4364F /* FillAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillAnimationView.swift; sourceTree = "<group>"; };
+		A55BFF8921FA0AFC00D4364F /* PageContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
+		A55BFF8A21FA0AFC00D4364F /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		A55BFF8B21FA0AFC00D4364F /* OnboardingContantViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingContantViewItem.swift; sourceTree = "<group>"; };
+		A55BFF8C21FA0AFC00D4364F /* OnboardingContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingContentView.swift; sourceTree = "<group>"; };
+		A55BFF8D21FA0AFD00D4364F /* PaperOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboarding.swift; sourceTree = "<group>"; };
+		A55BFF8E21FA0AFD00D4364F /* PaperOnboardingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDataSource.swift; sourceTree = "<group>"; };
+		A55BFF8F21FA0AFD00D4364F /* PaperOnboardingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDelegate.swift; sourceTree = "<group>"; };
 		A5657E0021E647AE00B688CC /* ImageAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachment.swift; sourceTree = "<group>"; };
 		A5662AC321BAA3DB00DCD511 /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -202,6 +227,25 @@
 			path = Appearance;
 			sourceTree = "<group>";
 		};
+		A55BFF8321FA0AE600D4364F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A55BFF8521FA0AFC00D4364F /* Configuring.swift */,
+				A55BFF8721FA0AFC00D4364F /* ConstraintsHelper.swift */,
+				A55BFF8821FA0AFC00D4364F /* FillAnimationView.swift */,
+				A55BFF8621FA0AFC00D4364F /* GestureControl.swift */,
+				A55BFF8B21FA0AFC00D4364F /* OnboardingContantViewItem.swift */,
+				A55BFF8C21FA0AFC00D4364F /* OnboardingContentView.swift */,
+				A55BFF8921FA0AFC00D4364F /* PageContainer.swift */,
+				A55BFF8A21FA0AFC00D4364F /* PageView.swift */,
+				A55BFF8421FA0AFC00D4364F /* PageViewItem.swift */,
+				A55BFF8D21FA0AFD00D4364F /* PaperOnboarding.swift */,
+				A55BFF8E21FA0AFD00D4364F /* PaperOnboardingDataSource.swift */,
+				A55BFF8F21FA0AFD00D4364F /* PaperOnboardingDelegate.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		A5662AC221BAA3C000DCD511 /* Diets */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +297,7 @@
 		A58CC53A216CF65100B20CE9 /* Diet */ = {
 			isa = PBXGroup;
 			children = (
+				A55BFF8321FA0AE600D4364F /* Onboarding */,
 				A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */,
 				A5AE5D9A21ECE3510029E9CD /* EventManager.swift */,
 				A5A0C7AB21BE96CD00C9035C /* Subscription */,
@@ -496,7 +541,6 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -507,7 +551,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -526,10 +569,13 @@
 				A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */,
 				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
 				A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */,
+				A55BFF9921FA0AFD00D4364F /* PaperOnboarding.swift in Sources */,
 				A50250D32178CB7200F674B3 /* TestViewData.swift in Sources */,
 				A548E9D22177744200FC62EE /* UIViewControllerExtension.swift in Sources */,
+				A55BFF9121FA0AFD00D4364F /* Configuring.swift in Sources */,
 				A5A0C7AA21BE96A300C9035C /* Subscription.swift in Sources */,
 				A51CC75021BFFFC000FFCFD5 /* LaunchManager.swift in Sources */,
+				A55BFF9321FA0AFD00D4364F /* ConstraintsHelper.swift in Sources */,
 				A51CC74E21BFD75100FFCFD5 /* VisualEffectBlur.swift in Sources */,
 				A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */,
 				A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */,
@@ -537,10 +583,12 @@
 				A580F85621E777BE00C0AE66 /* ImageNetworkService.swift in Sources */,
 				A5657E0121E647AE00B688CC /* ImageAttachment.swift in Sources */,
 				A589FB0221C7AFAC0035E80D /* NutritionValue.swift in Sources */,
+				A55BFF9721FA0AFD00D4364F /* OnboardingContantViewItem.swift in Sources */,
 				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
 				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
 				A5AE5D9B21ECE3510029E9CD /* EventManager.swift in Sources */,
+				A55BFF9421FA0AFD00D4364F /* FillAnimationView.swift in Sources */,
 				A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */,
 				A589FAFD21C7ACF80035E80D /* Dish.swift in Sources */,
 				A5E0C330216F95170045975E /* StringExtentions.swift in Sources */,
@@ -551,19 +599,26 @@
 				A5A0C7AF21BE979100C9035C /* Session.swift in Sources */,
 				A5A0C7B121BE97BE00C9035C /* PaidSubscription.swift in Sources */,
 				A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */,
+				A55BFF9821FA0AFD00D4364F /* OnboardingContentView.swift in Sources */,
 				A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */,
 				A5EA838E2170F8830088F8FE /* RecieptSteps.swift in Sources */,
+				A55BFF9A21FA0AFD00D4364F /* PaperOnboardingDataSource.swift in Sources */,
 				A58CC54021E89DFB00361EA9 /* LoadingViewController.swift in Sources */,
 				A548E9D62177783800FC62EE /* WelcomePageViewController.swift in Sources */,
+				A55BFF9021FA0AFD00D4364F /* PageViewItem.swift in Sources */,
 				A589FB0421C7B2AB0035E80D /* Diet.swift in Sources */,
+				A55BFF9221FA0AFD00D4364F /* GestureControl.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
 				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
+				A55BFF9521FA0AFD00D4364F /* PageContainer.swift in Sources */,
 				A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */,
 				A5EF446721CA96D5009B4635 /* RecipeViewController.swift in Sources */,
 				A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */,
 				A5A0C7AD21BE977B00C9035C /* SubscriptionNetworkService.swift in Sources */,
 				A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */,
 				A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */,
+				A55BFF9621FA0AFD00D4364F /* PageView.swift in Sources */,
+				A55BFF9B21FA0AFD00D4364F /* PaperOnboardingDelegate.swift in Sources */,
 				A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +656,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A58CC540216CF65100B20CE9 /* Base */,
+				A55BFF8221F9C68900D4364F /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

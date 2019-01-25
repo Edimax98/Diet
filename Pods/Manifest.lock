@@ -15,7 +15,6 @@ PODS:
     - FBSDKCoreKit (~> 4.37)
   - FBSDKCoreKit (4.39.1):
     - Bolts (~> 1.9)
-  - paper-onboarding (5.0.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -24,7 +23,6 @@ DEPENDENCIES:
   - AppsFlyerFramework
   - DropDown
   - FacebookCore
-  - paper-onboarding
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -36,7 +34,6 @@ SPEC REPOS:
     - DropDown
     - FacebookCore
     - FBSDKCoreKit
-    - paper-onboarding
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -47,9 +44,8 @@ SPEC CHECKSUMS:
   DropDown: 0bcc278799ec11a3d34ce1aac9367fbbaf5423d9
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
-  paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: fad4db6757483b8084640ed8717ca69cab1980f6
+PODFILE CHECKSUM: 4e6ec3459479da8c97f40f792f0f50822bb2eef7
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.2

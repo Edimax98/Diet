@@ -129,7 +129,6 @@ extension AppDelegate: SKPaymentTransactionObserver {
             }
             if SubscriptionService.shared.isEligibleForTrial == false {
                 AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamRevenue: option.priceWithoutCurrency, AFEventParamCurrency: option.currencyCode])
-                AppsFlyerTracker.shared()
             }
         }
     }
@@ -161,13 +160,17 @@ extension AppDelegate: SKPaymentTransactionObserver {
         SubscriptionService.shared.uploadReceipt { (success, shouldRetry) in
             if success {
                 DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: SubscriptionService.restoreSuccessfulNotification, object: nil)
+                    if SubscriptionService.shared.currentSubscription != nil {
+                        NotificationCenter.default.post(name: SubscriptionService.restoreSuccessfulNotification, object: nil)
+                    }
                 }
             } else if shouldRetry {
                 SubscriptionService.shared.uploadReceipt { (success, _) in
                     guard success else { return }
                     DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: SubscriptionService.restoreSuccessfulNotification, object: nil)
+                        if SubscriptionService.shared.currentSubscription != nil {
+                            NotificationCenter.default.post(name: SubscriptionService.restoreSuccessfulNotification, object: nil)
+                        }
                     }
                 }
             }
