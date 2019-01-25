@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 protocol ContentAccessHandler: class {
 
     func accessIsDenied()
@@ -52,8 +51,6 @@ class LaunchManager {
 
     func showSubscriptionOffer() {
         
-        let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        mainWindow.rootViewController?.present(subOfferVc, animated: true, completion: nil)
     }
     
     func prepareForLaunch() {

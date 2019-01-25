@@ -12,12 +12,15 @@ import FBSDKCoreKit
 import FacebookCore
 import AppsFlyerLib
 import UserNotifications
+import MerchantKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+        
     var window: UIWindow?
     var launchManager: LaunchManager?
+    var merchant: Merchant!
+    private let itcAccountSecret = "41b8fe92dbd9448ab3e06f3507b01371"
     
     // MARK: Notifications
     
@@ -49,8 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: App life cycle
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        merchant = Merchant(storage: KeychainPurchaseStorage(serviceName: "Diet"), delegate: self)
+        merchant.register([ProductDatabase.weeklySubscription])
+        merchant.setup()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (isAllowed, error) in
             if isAllowed {
@@ -60,13 +67,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        SKPaymentQueue.default().add(self)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        launchManager = LaunchManager(window: window!)
-        launchManager?.launchWithSubscriptionValidation()
-        launchManager?.prepareForLaunch()
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+        subOfferVc.products.append(ProductDatabase.weeklySubscription)
+        subOfferVc.merchant = merchant
+        window?.rootViewController = subOfferVc
+    
+        //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
         AppsFlyerTracker.shared().appleAppID = "1445711141"
@@ -87,17 +96,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-extension AppDelegate: SKPaymentTransactionObserver {
+extension AppDelegate: MerchantDelegate {
     
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+    func merchant(_ merchant: Merchant, validate request: ReceiptValidationRequest, completion: @escaping (Result<Receipt>) -> Void) {
         
+        let validator = ServerReceiptValidator(request: request, sharedSecret: itcAccountSecret)
+        
+        validator.onCompletion = { result in
+            
+            switch result {
+            case .succeeded(let reciept):
+                print(reciept.debugDescription)
+                
+                for entry in reciept.entries(forProductIdentifier: ProductDatabase.weeklySubscription.identifier) {
+                    
+                }
+            case .failed(_):
+                return
+            }
+            
+            completion(result)
+        }
+        
+        validator.start()
+    }
+    
+    func merchant(_ merchant: Merchant, didChangeStatesFor products: Set<Product>) {
+        
+        guard let subscription = products.first else { return }
+        
+        switch merchant.state(for: subscription) {
+        case .unknown:
+            break
+        case .notPurchased:
+            break
+        case .isPurchased(_):
+            break
+        }
+    }
+}
+
+extension AppDelegate: SKPaymentTransactionObserver {
+
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+
         if queue.transactions.isEmpty {
             NotificationCenter.default.post(name: SubscriptionService.nothingToRestoreNotification, object: nil)
         }
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
+
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchasing:
@@ -114,25 +163,25 @@ extension AppDelegate: SKPaymentTransactionObserver {
             }
         }
     }
-    
+
     func handlePurchasingState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         UIViewController.removeTopPresented()
         print("User is attempting to purchase product id: \(transaction.payment.productIdentifier)")
     }
-    
+
     fileprivate func logEvents() {
-        
-        SubscriptionService.shared.loadSubscriptionOptions()
-        SubscriptionService.shared.optionsLoaded = { option in
-            if SubscriptionService.shared.isEligibleForTrial && SubscriptionService.shared.currentSubscription != nil {
-                AppsFlyerTracker.shared()?.trackEvent(AFEventStartTrial, withValues: ["trial_method": "3 days trial"])
-            }
-            if SubscriptionService.shared.isEligibleForTrial == false {
-                AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamRevenue: option.priceWithoutCurrency, AFEventParamCurrency: option.currencyCode])
-            }
-        }
+
+//        SubscriptionService.shared.loadSubscriptionOptions()
+//        SubscriptionService.shared.optionsLoaded = { option in
+//            if SubscriptionService.shared.isEligibleForTrial && SubscriptionService.shared.currentSubscription != nil {
+//                AppsFlyerTracker.shared()?.trackEvent(AFEventStartTrial, withValues: ["trial_method": "3 days trial"])
+//            }
+//            if SubscriptionService.shared.isEligibleForTrial == false {
+//                AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamRevenue: option.priceWithoutCurrency, AFEventParamCurrency: option.currencyCode])
+//            }
+//        }
     }
-    
+
     func handlePurchasedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         print("User purchased product id: \(transaction.payment.productIdentifier)")
         queue.finishTransaction(transaction)
@@ -153,7 +202,7 @@ extension AppDelegate: SKPaymentTransactionObserver {
             }
         }
     }
-    
+
     func handleRestoredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         print("Purchase restored for product id: \(transaction.payment.productIdentifier)")
         queue.finishTransaction(transaction)
@@ -176,14 +225,14 @@ extension AppDelegate: SKPaymentTransactionObserver {
             }
         }
     }
-    
+
     func handleFailedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         UIViewController.removeTopPresented()
         print("Purchase failed for product id: \(transaction.payment.productIdentifier)")
         queue.finishTransaction(transaction)
         NotificationCenter.default.post(name: SubscriptionService.purchaseFailedNotification, object: nil)
     }
-    
+
     func handleDeferredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         UIViewController.removeTopPresented()
         print("Purchase deferred for product id: \(transaction.payment.productIdentifier)")

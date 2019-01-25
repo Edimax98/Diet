@@ -60,6 +60,7 @@
 		A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */; };
 		A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */; };
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
+		A5A3685321FB17C700BD03A5 /* ProductDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3685221FB17C700BD03A5 /* ProductDatabase.swift */; };
 		A5AE5D9B21ECE3510029E9CD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE5D9A21ECE3510029E9CD /* EventManager.swift */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5B2D35321D22E9200378F54 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35221D22E9200378F54 /* EndPoint.swift */; };
@@ -137,6 +138,7 @@
 		A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
 		A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOfferViewController.swift; sourceTree = "<group>"; };
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
+		A5A3685221FB17C700BD03A5 /* ProductDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDatabase.swift; sourceTree = "<group>"; };
 		A5AE5D9A21ECE3510029E9CD /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5B2D35221D22E9200378F54 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				A5A0C7AE21BE979100C9035C /* Session.swift */,
 				A5A0C7B021BE97BE00C9035C /* PaidSubscription.swift */,
 				A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */,
+				A5A3685221FB17C700BD03A5 /* ProductDatabase.swift */,
 			);
 			path = Subscription;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/MerchantKit/MerchantKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -550,6 +554,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MerchantKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +614,7 @@
 				A589FB0421C7B2AB0035E80D /* Diet.swift in Sources */,
 				A55BFF9221FA0AFD00D4364F /* GestureControl.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
+				A5A3685321FB17C700BD03A5 /* ProductDatabase.swift in Sources */,
 				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
 				A55BFF9521FA0AFD00D4364F /* PageContainer.swift in Sources */,
 				A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */,

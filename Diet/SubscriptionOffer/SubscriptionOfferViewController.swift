@@ -6,6 +6,7 @@
 //  Copyright © 2018 Даниил. All rights reserved.
 //
 
+import MerchantKit
 import UIKit
 import SafariServices
 
@@ -31,7 +32,9 @@ class SubscriptionOfferViewController: UIViewController {
     fileprivate let freeTrialMessage = "3 days for FREE".localized
     fileprivate let subscriptionDuration = " per week".localized
     
-    var loadingVc = LoadingViewController()
+    var productInterfaceController: ProductInterfaceController!
+    var products = [Product]()
+    var merchant: Merchant!
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -39,14 +42,17 @@ class SubscriptionOfferViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        productInterfaceController = ProductInterfaceController(products: Set(products), with: merchant)
+        productInterfaceController.delegate = self
         setupView()
         addObservers()
-
-        if SubscriptionService.shared.options == nil {
-            add(loadingVc)
-            loadingVc.timeoutHandler = self
-        }
+    
         EventManager.sendCustomEvent(with: "Subscription offer was opened")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        productInterfaceController.fetchDataIfNecessary()
     }
     
     override func viewDidLayoutSubviews() {
@@ -148,13 +154,16 @@ class SubscriptionOfferViewController: UIViewController {
     }
     
     @objc func purchaseButtonPressed(_ sender: Any) {
+
+        let subscription = ProductDatabase.weeklySubscription
+        let state = productInterfaceController.state(for: subscription)
         
-        guard let option = SubscriptionService.shared.options?.first else {
-            showErrorAlert(for: .purchaseFailed)
-            return
+        switch state {
+        case .purchasable(let purchase):
+            productInterfaceController.commit(purchase)
+        default:
+            break
         }
-        add(loadingVc)
-        SubscriptionService.shared.purchase(subscription: option)
     }
     
     @IBAction func skipButtonPressed(_ sender: Any) {
@@ -163,9 +172,10 @@ class SubscriptionOfferViewController: UIViewController {
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
-        EventManager.sendCustomEvent(with: "User tried to restore subscription")
+        productInterfaceController.restorePurchases()
+        //EventManager.sendCustomEvent(with: "User tried to restore subscription")
         //add(loadingVc)
-        SubscriptionService.shared.restorePurchases()
+        //SubscriptionService.shared.restorePurchases()
     }
     
     @IBAction func termsAndServiceButtonPressed(_ sender: Any) {
@@ -200,8 +210,6 @@ class SubscriptionOfferViewController: UIViewController {
     }
     
     @objc func handleOptionsLoaded(notification: Notification) {
-
-        loadingVc.remove()
         
         guard let _ = SubscriptionService.shared.options?.first else {
             showErrorAlert(for: .internalError)
@@ -224,6 +232,82 @@ extension SubscriptionOfferViewController: LoadingTimeoutHandler {
             let okAction = UIAlertAction(title: "OK", style: .default)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+
+extension SubscriptionOfferViewController: ProductInterfaceControllerDelegate {
+    
+    func productInterfaceControllerDidChangeFetchingState(_ controller: ProductInterfaceController) {
+        
+        let loadingVc = LoadingViewController()
+        switch controller.fetchingState {
+        // inactive
+        case .dormant:
+            loadingVc.remove()
+        case .failed(let _):
+            loadingVc.remove()
+        case .loading:
+            break
+            //add(loadingVc)
+        }
+    }
+    
+    func productInterfaceController(_ controller: ProductInterfaceController, didChangeStatesFor products: Set<Product>) {
+        
+        guard let weeklySubscription = products.first else { return }
+        
+//        guard let terms = merchant. , let introductoryOffer = terms.introductoryOffer else { return nil }
+        
+//        let formatter = SubscriptionPeriodFormatter()
+//
+//        switch introductoryOffer {
+//        case .freeTrial(let period):
+//            return "\(formatter.string(from: period)) Free Trial"
+//        default:
+//            break
+//        }
+        let priceFormatter = PriceFormatter()
+        let subscribtionPeriodFormatter = SubscriptionPeriodFormatter()
+        let title: String
+        var detailText = ""
+        
+        let purchaseState = productInterfaceController.state(for: weeklySubscription)
+        switch purchaseState {
+        case .unknown:
+            showErrorAlert(for: .internalError)
+        case .purchased(let info, let metadata):
+            break
+        case .purchasable(let purchase):
+            if #available(iOS 11.2, *) {
+                detailText = priceFormatter.string(from: purchase.price) + "/" + subscribtionPeriodFormatter.string(from: purchase.subscriptionTerms!.duration.period)
+            } else {
+        }
+        case .purchasing(let purchase):
+            break
+        case .purchaseUnavailable:
+            showErrorAlert(for: .internalError)
+        }
+        priceLabel.text = detailText
+    }
+    
+    func productInterfaceController(_ controller: ProductInterfaceController, didCommit purchase: Purchase, with result: ProductInterfaceController.CommitPurchaseResult) {
+        
+        switch result {
+        case .succeeded:
+            print("SUCCESSFUL")
+        case .failed(_, let _):
+            break
+        }
+    }
+    
+    func productInterfaceController(_ controller: ProductInterfaceController, didRestorePurchasesWith result: ProductInterfaceController.RestorePurchasesResult) {
+        
+        switch result {
+        case .succeeded(let product):
+            print("suc")
+        case .failed(let error):
+            print(error.localizedDescription)
         }
     }
 }
