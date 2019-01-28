@@ -65,6 +65,7 @@
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5B2D35321D22E9200378F54 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35221D22E9200378F54 /* EndPoint.swift */; };
 		A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */; };
+		A5C0871121FF0C4000B9D724 /* Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5C0870F21FF0C4000B9D724 /* Test.xcdatamodeld */; };
 		A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */; };
 		A5D4F22E21D0FDCF002195C5 /* SubscriptionOffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D4F23021D0FDCF002195C5 /* SubscriptionOffer.storyboard */; };
 		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
@@ -143,6 +144,7 @@
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5B2D35221D22E9200378F54 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsEndPoint.swift; sourceTree = "<group>"; };
+		A5C0871021FF0C4000B9D724 /* TestResult.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestResult.xcdatamodel; sourceTree = "<group>"; };
 		A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		A5D4F22F21D0FDCF002195C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscriptionOffer.storyboard; sourceTree = "<group>"; };
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				A5B2D35421D22EE700378F54 /* EndPoints */,
 				A58CC54E216CF6A500B20CE9 /* Assets */,
 				A57C146421CBE7EF00B810BE /* Localizable.strings */,
+				A5C0870F21FF0C4000B9D724 /* Test.xcdatamodeld */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */,
 				A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */,
 				A55BFF9621FA0AFD00D4364F /* PageView.swift in Sources */,
+				A5C0871121FF0C4000B9D724 /* Test.xcdatamodeld in Sources */,
 				A55BFF9B21FA0AFD00D4364F /* PaperOnboardingDelegate.swift in Sources */,
 				A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */,
 			);
@@ -868,6 +872,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5C0870F21FF0C4000B9D724 /* Test.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5C0871021FF0C4000B9D724 /* TestResult.xcdatamodel */,
+			);
+			currentVersion = A5C0871021FF0C4000B9D724 /* TestResult.xcdatamodel */;
+			path = Test.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A58CC530216CF65100B20CE9 /* Project object */;
 }

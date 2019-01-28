@@ -28,7 +28,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var mealPlanDescriptionLabel: UILabel!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
-    var accessStatus = AccessStatus.denied
+    var accessStatus = AccessStatus.available
     fileprivate let dropMenuItems = ["Monday".localized,"Tuesday".localized,
                                      "Wednesday".localized,"Thursday".localized,
                                      "Friday".localized,"Saturday".localized,

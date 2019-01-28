@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TestResultsViewController: UIViewController {
 
@@ -20,7 +21,12 @@ class TestResultsViewController: UIViewController {
     @IBOutlet weak var takeTestAgainButton: UIButton!
     
     var repeatTest: (() -> Void)?
-    var results: TestResult?
+    var results: TestResult? {
+        didSet {
+            deleteAllData("Test")
+            save()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +37,16 @@ class TestResultsViewController: UIViewController {
         applyShadow(on: takeTestAgainButton.layer)
         EventManager.sendCustomEvent(with: "Test was passed")
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        guard results == nil else {
+            return
+        }
+        fetchTestResult()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toObesityIndex" {
@@ -53,6 +68,117 @@ class TestResultsViewController: UIViewController {
                 destinationVc.testResults = testResults
                 destinationVc.fatnessIndex = fatnessIndex
             }
+        }
+    }
+    
+    fileprivate func showRetryableErrorAlert(with message: String, retryAction: @escaping () -> Void) {
+        
+        let alert = UIAlertController(title: "Error".localized, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+        let retryAction = UIAlertAction(title: "Try again".localized, style: .default) { (action) in
+            retryAction()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(retryAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteAllData(_ entity:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            showRetryableErrorAlert(with: "Could not save test results".localized, retryAction: save)
+            return
+        }
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                appDelegate.persistentContainer.viewContext.delete(objectData)
+            }
+        } catch let error {
+            print("Detele all data in \(entity) error :", error)
+        }
+    }
+    
+    private func save() {
+        
+        guard let results = self.results else {
+            showRetryableErrorAlert(with: "Could not save test results".localized, retryAction: save)
+            return
+        }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            showRetryableErrorAlert(with: "Could not save test results".localized, retryAction: save)
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+    
+        guard let entity = NSEntityDescription.entity(forEntityName: "Test", in: managedContext) else {
+            showRetryableErrorAlert(with: "Could not save test results".localized, retryAction: save)
+            return
+        }
+        
+        let testResult = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        testResult.setValue(Int16(results.age), forKey: "age")
+        testResult.setValue(results.currentWeight, forKey: "currentWeight")
+        testResult.setValue(results.goalWeight, forKey: "goal")
+        testResult.setValue(results.height, forKey: "height")
+    
+        if results.gender == .female {
+            testResult.setValue(0, forKey: "gender")
+        } else {
+            testResult.setValue(1, forKey: "gender")
+        }
+        testResult.setValue(results.fatnessCategory.rawValue, forKey: "obesityType")
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print(error.localizedDescription)
+            showRetryableErrorAlert(with: "Could not save test results".localized, retryAction: save)
+        }
+    }
+    
+    private func fetchTestResult() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            showRetryableErrorAlert(with: "Could not load test results".localized, retryAction: fetchTestResult)
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Test", in: managedContext)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Test")
+        fetchRequest.entity = entityDescription
+       // fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        
+        do {
+            if let testResultManagedObject = try managedContext.fetch(fetchRequest).last {
+                guard let age = testResultManagedObject.value(forKey: "age")  as? Int,
+                    let height = testResultManagedObject.value(forKey: "height") as? Int,
+                    let gender = testResultManagedObject.value(forKey: "gender") as? Int,
+                    let goal = testResultManagedObject.value(forKey: "goal") as? Int,
+                    let currentWeight = testResultManagedObject.value(forKey: "currentWeight") as? Int,
+                    let obesityType = testResultManagedObject.value(forKey: "obesityType") as? String else {
+                        showRetryableErrorAlert(with: "Could not load test results".localized, retryAction: fetchTestResult)
+                        return
+                }
+                results = TestResult()
+                results?.age = age
+                results?.goalWeight = goal
+                results?.currentWeight = currentWeight
+                results?.height = height
+                results?.fatnessCategory = CategoryName(rawValue: obesityType)!
+                results?.gender = gender == 0 ? .female : .male
+                testCompleted(with: results!)
+            }
+        } catch {
+            showRetryableErrorAlert(with: "Could not load test results".localized, retryAction: fetchTestResult)
         }
     }
     
