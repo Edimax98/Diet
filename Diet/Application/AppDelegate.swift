@@ -12,11 +12,8 @@ import FBSDKCoreKit
 import FacebookCore
 import AppsFlyerLib
 import UserNotifications
-<<<<<<< Updated upstream
 import MerchantKit
-=======
 import CoreData
->>>>>>> Stashed changes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -74,13 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
-        let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        subOfferVc.products.append(ProductDatabase.weeklySubscription)
-        subOfferVc.merchant = merchant
-        window?.rootViewController = subOfferVc
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//
+//        let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+//        subOfferVc.products.append(ProductDatabase.weeklySubscription)
+//        subOfferVc.merchant = merchant
+//        window?.rootViewController = subOfferVc
     
         //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         

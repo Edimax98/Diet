@@ -15,62 +15,107 @@ protocol PageSelectionHandler: class {
 
 class SelectingViewController: UIViewController {
 
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var answersPickerView: UIPickerView!
-    @IBOutlet weak var containerOfTitlesView: UIView!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var triangleView: Triangle!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var nextButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var answersPickerView: UIPickerView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var foodImageView: UIImageView!
+    @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    private let topGradientColor = UIColor(red: 59 / 255, green: 184 / 255, blue: 72 / 255, alpha: 1)
+    private let bottomGradientColor = UIColor(red: 0, green: 158 / 255, blue: 91 / 255, alpha: 1)
     
     var prevIndexForProgressView: Float = 0.0
     var indexForProgressView: Float = 0.0
     var nextButtonPressed: ((Int) -> Void)?
     var backButtonPressed: (() -> Void)?
-    
+    var startPosition: CGFloat = 0
+    var isReversed = false
     var testViewData: TestViewData?
     var shouldHideBanner = false
-    
+    var stepNumber = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         answersPickerView.delegate = self
         answersPickerView.dataSource = self
-        
-        progressView.layer.cornerRadius = 9
-        progressView.clipsToBounds = true
-        progressView.layer.sublayers![1].cornerRadius = 9
-        progressView.subviews[1].clipsToBounds = true
-    
         setupView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        nextButton.isHidden = false
-        nextButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        UIView.animate(withDuration: 0.3) {
-            self.nextButton.transform = CGAffineTransform.identity
+        startPosition = foodImageView.frame.origin.x
+        foodImageView.frame.origin.x = self.view.frame.width
+        stepLabel.alpha = 0
+        titleLabel.alpha = 0
+        nextButton.alpha = 0
+        answersPickerView.alpha = 0
+        backButton.alpha = 0
+        if isReversed == false {
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
+                self?.answersPickerView.alpha = 1
+                self?.stepLabel.alpha = 1
+                self?.titleLabel.alpha = 1
+                self?.nextButton.alpha = 1
+                self?.backButton.alpha = 1
+            }, completion: nil)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: { [weak self] in
+                self?.foodImageView.frame.origin.x = self?.startPosition ?? 0
+            }, completion: nil)
+        } else {
+            self.foodImageView.frame.origin.x = -(self.foodImageView.frame.width)
+            UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
+                self?.answersPickerView.alpha = 1
+                self?.stepLabel.alpha = 1
+                self?.titleLabel.alpha = 1
+                self?.nextButton.alpha = 1
+                self?.backButton.alpha = 1
+                }, completion: nil)
+            
+            UIView.animate(withDuration: 1, delay: 0.2, options: [.curveEaseInOut], animations: { [weak self] in
+                self?.foodImageView.frame.origin.x = self?.startPosition ?? 0
+                }, completion: nil)
         }
-        
-        progressView.setProgress(indexForProgressView, animated: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.foodImageView.frame.origin.x = startPosition
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        let buttonBounds = nextButton.bounds
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            self.nextButton.bounds = CGRect(x: buttonBounds.minX, y: buttonBounds.maxY, width: buttonBounds.width - buttonBounds.width, height: buttonBounds.height - buttonBounds.height)
-        }) { (flag) in
-            self.nextButton.isHidden = true
+        if isReversed == false {
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: { [weak self] in
+                self?.foodImageView.frame.origin.x = -(self?.foodImageView.frame.width ?? 0)
+            }, completion: nil)
         }
-        progressView.setProgress(prevIndexForProgressView, animated: true)
     }
+    
+    fileprivate func applyShadow(on layer: CALayer) {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowOpacity = 0.25
+        layer.shadowRadius = 1
+        layer.masksToBounds = false
+    }
+    
+    fileprivate func setupView() {
+        
+        guard let data = testViewData else { return }
+    
+        view.applyGradient(colours: [topGradientColor,bottomGradientColor])
+        foodImageView.image = UIImage(named: data.iconName)
+        titleLabel.text = data.title
+        stepLabel.text = "Step ".localized + "\(stepNumber)" + " of 5".localized
+        nextButton.layer.cornerRadius = 15
+        applyShadow(on: nextButton.layer)
+        nextButton.setTitle("Next".localized, for: .normal)
+    }
+
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         nextButtonPressed?(answersPickerView.selectedRow(inComponent: 0))
@@ -78,21 +123,15 @@ class SelectingViewController: UIViewController {
     
     @IBAction func backButtonPressed(_ sender: Any) {
         backButtonPressed?()
-    }
     
-    fileprivate func setupView() {
-        
-        guard let data = testViewData else { return }
-        
-        nextButton.layer.cornerRadius = nextButton.frame.height / 2
-        iconImageView.image = UIImage(named: data.iconName)
-        titleLabel.text = data.title
-        containerOfTitlesView.layer.shadowColor = UIColor.lightGray.cgColor
-        containerOfTitlesView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        containerOfTitlesView.layer.shadowOpacity = 0.25
-        containerOfTitlesView.layer.shadowRadius = 1
-        containerOfTitlesView.layer.masksToBounds = false
-        nextButton.setTitle("Next".localized, for: .normal)
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut], animations: { [weak self] in
+            guard let self = self else { return }
+            self.foodImageView.frame.origin.x = self.view.frame.width
+            self.titleLabel.alpha = 0
+            self.stepLabel.alpha = 0
+            self.nextButton.alpha = 0
+            self.backButton.alpha = 0
+        }, completion: nil)
     }
 }
 
@@ -110,13 +149,20 @@ extension SelectingViewController: UIPickerViewDataSource {
 
 extension SelectingViewController: UIPickerViewDelegate {
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         guard let data = testViewData else { return nil }
         
+        var title = "\(data.pickerData[row])"
+        
+        let attributedString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                                              NSAttributedString.Key.font: UIFont(name: "AvenirNext-Medium", size: 20.0) ?? UIFont.systemFont(ofSize: 20)])
+        
         if let unit = data.unit {
-            return "\(data.pickerData[row])" + " " + unit
+            title = "\(data.pickerData[row])" + " " + unit
+            return NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                                  NSAttributedString.Key.font: UIFont(name: "AvenirNext-Medium", size: 20.0) ?? UIFont.systemFont(ofSize: 20)])
         }
-        return "\(data.pickerData[row])"
+        return attributedString
     }
 }
 

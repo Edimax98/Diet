@@ -12,13 +12,18 @@ import CoreData
 class TestResultsViewController: UIViewController {
 
     @IBOutlet weak var genderIconImageView: UIImageView!
-    @IBOutlet weak var genderTitleLabel: UILabel!
-    @IBOutlet weak var currentWeightTitleLable: UILabel!
-    @IBOutlet weak var ageTitleLabel: UILabel!
-    @IBOutlet weak var goalWeightTitleLabel: UILabel!
-    @IBOutlet weak var timeTitleLabel: UILabel!
+    @IBOutlet weak var genderTitleLabel: TestResultLabel!
+    @IBOutlet weak var currentWeightTitleLable: TestResultLabel!
+    @IBOutlet weak var ageTitleLabel: TestResultLabel!
+    @IBOutlet weak var goalWeightTitleLabel: TestResultLabel!
+    @IBOutlet weak var timeTitleLabel: TestResultLabel!
     @IBOutlet weak var agreedWithTestButton: UIButton!
     @IBOutlet weak var takeTestAgainButton: UIButton!
+    @IBOutlet weak var ageTitle: UILabel!
+    @IBOutlet weak var weightTitle: UILabel!
+    @IBOutlet weak var goalTitle: UILabel!
+    @IBOutlet weak var heightTitle: UILabel!
+    @IBOutlet weak var genderTitle: UILabel!
     
     var repeatTest: (() -> Void)?
     var results: TestResult? {
@@ -30,12 +35,23 @@ class TestResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setAlpha(0)
         takeTestAgainButton.layer.borderWidth = 1
         takeTestAgainButton.layer.borderColor = UIColor(red: 227 / 255, green: 227 / 255, blue: 227 / 255, alpha: 1).cgColor
-        takeTestAgainButton.layer.cornerRadius = takeTestAgainButton.frame.height / 2
-        agreedWithTestButton.layer.cornerRadius = agreedWithTestButton.frame.height / 2
+        takeTestAgainButton.layer.cornerRadius = 15
+        agreedWithTestButton.layer.cornerRadius = 15
         applyShadow(on: takeTestAgainButton.layer)
+        applyCustomStyleToLabel(label: ageTitleLabel)
+        applyCustomStyleToLabel(label: goalWeightTitleLabel)
+        applyCustomStyleToLabel(label: timeTitleLabel)
+        applyCustomStyleToLabel(label: currentWeightTitleLable)
         EventManager.sendCustomEvent(with: "Test was passed")
+    }
+    
+    func applyCustomStyleToLabel(label: UILabel) {
+        label.layer.cornerRadius = 15
+        label.layer.borderColor = UIColor(red: 151 / 255, green: 151 / 255, blue: 151 / 255, alpha: 1).cgColor
+        label.layer.borderWidth = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +61,60 @@ class TestResultsViewController: UIViewController {
             return
         }
         fetchTestResult()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.4, delay: 0, options: [], animations: {
+            self.takeTestAgainButton.alpha = 1
+            self.agreedWithTestButton.alpha = 1
+            self.genderIconImageView.alpha = 1
+            self.genderTitleLabel.alpha = 1
+            self.genderTitle.alpha = 1
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+            
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseInOut], animations: {
+            self.ageTitleLabel.alpha = 1
+            self.ageTitle.alpha = 1
+
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0.2, options: [.curveEaseInOut], animations: {
+            self.currentWeightTitleLable.alpha = 1
+            self.weightTitle.alpha = 1
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0.4, options: [.curveEaseInOut], animations: {
+            self.goalWeightTitleLabel.alpha = 1
+            self.goalTitle.alpha = 1
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0.6, options: [.curveEaseInOut], animations: {
+            self.timeTitleLabel.alpha = 1
+            self.heightTitle.alpha = 1
+        }, completion: nil)
+    }
+    
+    private func setAlpha(_ alpha: CGFloat) {
+        
+        timeTitleLabel.alpha = alpha
+        ageTitleLabel.alpha = alpha
+        currentWeightTitleLable.alpha = alpha
+        goalWeightTitleLabel.alpha = alpha
+        heightTitle.alpha = alpha
+        ageTitle.alpha = alpha
+        goalTitle.alpha = alpha
+        weightTitle.alpha = alpha
+        agreedWithTestButton.alpha = alpha
+        takeTestAgainButton.alpha = alpha
+        genderTitleLabel.alpha = alpha
+        genderIconImageView.alpha = alpha
+        genderTitle.alpha = alpha
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -155,7 +225,6 @@ class TestResultsViewController: UIViewController {
         let entityDescription = NSEntityDescription.entity(forEntityName: "Test", in: managedContext)
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Test")
         fetchRequest.entity = entityDescription
-       // fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
         do {
             if let testResultManagedObject = try managedContext.fetch(fetchRequest).last {
@@ -254,5 +323,10 @@ extension TestResultsViewController: TestResultOutput {
         timeTitleLabel.text = "\(result.height) " + "cm.".localized
         ageTitleLabel.text = "\(result.age)"
         genderTitleLabel.text = result.gender.description
+        if result.gender == .male {
+            genderIconImageView.image = UIImage(named: "male_icon")
+        } else {
+            genderIconImageView.image = UIImage(named: "female_icon ")
+        }
     }
 }

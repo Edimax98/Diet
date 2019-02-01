@@ -14,26 +14,28 @@ protocol TestResultOutput: class {
 }
 
 class TestPageViewController: UIPageViewController {
-
+    
     var testPages = [UIViewController]()
     var testViewData = [TestViewData]()
     var testResult = TestResult()
     weak var testOutput: TestResultOutput?
-
+    var currentImagePosition: CGFloat = 0.0
+    
     let genderSelectionPage = GenderSelectorViewController.controllerInStoryboard(UIStoryboard(name: "GenderSelectorViewController", bundle: nil))
     let ageSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let currentWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let goalWeightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
     let heightSelectionPage = SelectingViewController.controllerInStoryboard(UIStoryboard(name: "SelectingViewController", bundle: nil))
+    weak var currentViewController: UIViewController!
     
     let ageSelectionPageData = TestViewData(title: "Select your age".localized,
-                                            iconName: "heart-beat", pickerData: (10,99))
+                                            iconName: "tomato", pickerData: (10,99))
     let currentWeightSelectionPageData = TestViewData(title: "Select your weight".localized,
-                                                      iconName: "weight-scale", pickerData: (50,150), unit: "kg".localized)
+                                                      iconName: "pear", pickerData: (50,150), unit: "kg".localized)
     let goalWeightSelectionPageData = TestViewData(title: "How much do you want to lose in weight".localized,
-                                                   iconName: "diet", pickerData: (1,100), unit: "kg".localized)
+                                                   iconName: "starfruit", pickerData: (1,100), unit: "kg".localized)
     let heigthSelectionPageData = TestViewData(title: "Select your height".localized,
-                                         iconName: "timer", pickerData: (140,200), unit: "cm.".localized)
+                                               iconName: "pomegranade", pickerData: (140,200), unit: "cm.".localized)
     
     let resultsVc = TestResultsViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil), identifier: "TestResultsViewController")
     
@@ -43,6 +45,7 @@ class TestPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
         fillPages()
         fillViewData()
@@ -55,11 +58,14 @@ class TestPageViewController: UIPageViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if let vc = currentViewController as? SelectingViewController {
+            currentImagePosition = vc.foodImageView.frame.origin.x
+        }
         setupSelectionTestPages()
     }
     
     fileprivate func fillViewData() {
-    
+        
         testViewData.append(ageSelectionPageData)
         testViewData.append(currentWeightSelectionPageData)
         testViewData.append(goalWeightSelectionPageData)
@@ -76,7 +82,7 @@ class TestPageViewController: UIPageViewController {
     }
     
     fileprivate func setupSelectionTestPages() {
-
+        
         ageSelectionPage.testViewData = ageSelectionPageData
         currentWeightSelectionPage.testViewData = currentWeightSelectionPageData
         goalWeightSelectionPage.testViewData = goalWeightSelectionPageData
@@ -91,7 +97,7 @@ class TestPageViewController: UIPageViewController {
         handleNextButtonPressing()
         heightSelectionPage.nextButton.setTitle("Finish".localized, for: .normal)
     }
-
+    
     fileprivate func handleNextButtonPressing() {
         
         genderSelectionPage.genderSelected = { [unowned self] gender in
@@ -132,7 +138,7 @@ class TestPageViewController: UIPageViewController {
     }
     
     fileprivate func handleBackButtonPressing() {
-
+        
         ageSelectionPage.backButtonPressed = {
             self.scrollToPreviousViewController()
         }
@@ -187,23 +193,20 @@ class TestPageViewController: UIPageViewController {
 extension TestPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-
+        
         guard let viewControllerIndex = testPages.index(of: viewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
         guard previousIndex >= 0 else { return nil }
         guard testPages.count > previousIndex else { return nil }
+        currentViewController = testPages[viewControllerIndex]
         
         if let previousTestPage = testPages[previousIndex] as? SelectingViewController {
-            let progress = Float(((previousIndex + 1) * 100 / testPages.count)) / 100
-            let prevProgress = Float(((previousIndex) * 100 / testPages.count)) / 100
-            previousTestPage.progressView.progress = prevProgress
-            previousTestPage.indexForProgressView = progress
+            previousTestPage.stepNumber = previousIndex
+            previousTestPage.isReversed = true
             return previousTestPage
         }
         
         if let previousTestPage = testPages[previousIndex] as? GenderSelectorViewController {
-            let progress = Float(((previousIndex + 1) * 100 / testPages.count)) / 100
-            previousTestPage.indexForProgressView = progress
             return previousTestPage
         }
         return UIViewController()
@@ -212,21 +215,18 @@ extension TestPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         guard let viewControllerIndex = testPages.index(of: viewController) else { return nil }
+        currentViewController = testPages[viewControllerIndex]
         let nextIndex = viewControllerIndex + 1
         guard nextIndex < testPages.count else { return nil }
         guard testPages.count > nextIndex else { return nil }
         
         if let nextTestPage = testPages[nextIndex] as? SelectingViewController {
-            let progress = Float(((nextIndex + 1) * 100 / testPages.count)) / 100
-            let prevProgress = Float(((nextIndex) * 100 / testPages.count)) / 100
-            nextTestPage.progressView.progress = prevProgress
-            nextTestPage.indexForProgressView = progress
+            nextTestPage.stepLabel.text = "Step ".localized + "\(nextIndex + 1)" + " of 5".localized
+            nextTestPage.isReversed = false
             return nextTestPage
         }
         
         if let nextTestPage = testPages[nextIndex] as? GenderSelectorViewController {
-            let progress = Float(((nextIndex + 1) * 100 / testPages.count)) / 100
-            nextTestPage.indexForProgressView = progress
             return nextTestPage
         }
         return UIViewController()

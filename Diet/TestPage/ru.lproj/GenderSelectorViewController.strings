@@ -3,7 +3,7 @@
 "Evc-QZ-8vG.normalTitle" = "Мужчина";
 
 /* Class = "UILabel"; text = "Select your gender"; ObjectID = "K6D-L8-1te"; */
-"K6D-L8-1te.text" = "Укажите ваш пол";
+"bAw-YQ-wch.text" = "Укажите ваш пол";
 
 /* Class = "UIButton"; normalTitle = "Female"; ObjectID = "St2-L0-W0I"; */
 "St2-L0-W0I.normalTitle" = "Женщина";
