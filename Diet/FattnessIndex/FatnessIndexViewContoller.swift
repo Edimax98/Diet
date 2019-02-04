@@ -40,7 +40,7 @@ class FatnessIndexViewContoller: UIViewController {
         
         fatnessCategoriesCollectionView.delegate = self
         fatnessCategoriesCollectionView.dataSource = self
-        getDietsButton.layer.cornerRadius = getDietsButton.frame.height / 2
+        getDietsButton.layer.cornerRadius = 15
         getDietsButton.layer.masksToBounds = true
         
         fatnessCategories.append(FatnessCategory(icon: "underweight", title: "Underweight".localized, backgroundColor: underWeightCategoryColor, categoryName: .underweight))

@@ -83,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
         AppsFlyerTracker.shared().appleAppID = "1445711141"
-        AppsFlyerTracker.shared().isDebug = true
         
         return true
     }
@@ -157,18 +156,6 @@ extension AppDelegate: MerchantDelegate {
         let validator = ServerReceiptValidator(request: request, sharedSecret: itcAccountSecret)
         
         validator.onCompletion = { result in
-            
-            switch result {
-            case .succeeded(let reciept):
-                print(reciept.debugDescription)
-                
-                for entry in reciept.entries(forProductIdentifier: ProductDatabase.weeklySubscription.identifier) {
-                    
-                }
-            case .failed(_):
-                return
-            }
-            
             completion(result)
         }
         

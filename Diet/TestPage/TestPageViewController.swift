@@ -43,6 +43,10 @@ class TestPageViewController: UIPageViewController {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -227,6 +231,7 @@ extension TestPageViewController: UIPageViewControllerDataSource {
         }
         
         if let nextTestPage = testPages[nextIndex] as? GenderSelectorViewController {
+            //nextTestPage.isReversed = false
             return nextTestPage
         }
         return UIViewController()

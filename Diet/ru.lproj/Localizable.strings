@@ -57,6 +57,8 @@
 "You cant set goal bigger then your current weight" = "Вы не можете сбросить вес больше вашего текущего";
 "Next" = "Дальше";
 "Finish" = "Завершить";
+"Step " = "Шаг ";
+" of 5" = " из 5";
 
 // Obesity index screen
 "Underweight" = "Недостаток веса";

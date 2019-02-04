@@ -28,7 +28,7 @@ enum Gender: String {
 }
 
 class GenderSelectorViewController: UIViewController {
-
+    
     @IBOutlet weak var genderStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var maleButton: UIButton!
@@ -37,30 +37,57 @@ class GenderSelectorViewController: UIViewController {
     @IBOutlet weak var maleIconImageView: UIImageView!
     @IBOutlet weak var fruitImageView: UIImageView!
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var topLeafImageView: UIImageView!
+    @IBOutlet weak var midHighLeafImageView: UIImageView!
+    @IBOutlet weak var midLowImageView: UIImageView!
+    @IBOutlet weak var bottomLeafImageView: UIImageView!
     
     private let topGradientColor = UIColor(red: 59 / 255, green: 184 / 255, blue: 72 / 255, alpha: 1)
     private let bottomGradientColor = UIColor(red: 0, green: 158 / 255, blue: 91 / 255, alpha: 1)
     
     var nextButtonPressed: (() -> Void)?
     var genderSelected: ((Gender) -> Void)?
-
+    var topLeafPosition: CGFloat = 0
+    var midHighLeafPosition: CGFloat = 0
+    var midLowLeafPosition: CGFloat = 0
+    var bottomLeafPosition: CGFloat = 0
     var leavesImages = [UIImageView]()
     var countOfLeavesImages = 5
     var genderStackViewStartPosition: CGFloat = 0
     var foodImageStartPosition: CGFloat = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.topLeafImageView.frame.origin.x = -(self.topLeafImageView.frame.width)
+        self.midHighLeafImageView.frame.origin.x = -(self.midHighLeafImageView.frame.width)
+        self.midLowImageView.frame.origin.x = -(self.midLowImageView.frame.width)
+        self.bottomLeafImageView.frame.origin.x = -(self.bottomLeafImageView.frame.width)
+        
+        UIView.animate(withDuration: 0.7) { [weak self] in
+            guard let self = self else { return }
+            self.topLeafImageView.frame.origin.x = self.topLeafPosition
+            self.midHighLeafImageView.frame.origin.x = self.midHighLeafPosition
+            self.midLowImageView.frame.origin.x = self.midLowLeafPosition
+            self.bottomLeafImageView.frame.origin.x = self.bottomLeafPosition
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         stepsLabel.alpha = 0
-        
         UIView.animate(withDuration: 0.7, animations: { [weak self] in
             guard let self = self else { return }
+            self.topLeafImageView.frame.origin.x = self.topLeafPosition
+            self.midHighLeafImageView.frame.origin.x = self.midHighLeafPosition
+            self.midLowImageView.frame.origin.x = self.midLowLeafPosition
+            self.bottomLeafImageView.frame.origin.x = self.bottomLeafPosition
             self.genderStackView.frame.origin.x = self.genderStackViewStartPosition
             self.fruitImageView.frame.origin.x = self.foodImageStartPosition
         }) { _ in
@@ -68,20 +95,6 @@ class GenderSelectorViewController: UIViewController {
                 self?.stepsLabel.alpha = 1
             }
         }
-        
-//        UIView.animateKeyframes(withDuration: 0.8, delay: 0, options: [.calculationModeCubic], animations: { [weak self] in
-//            guard let self = self else { return }
-//
-//            var startTime = 0.0
-//            let relativeDuration = 0.1 / 0.8
-//
-//            for leaf in self.leavesImages {
-//                UIView.addKeyframe(withRelativeStartTime: startTime, relativeDuration: relativeDuration, animations: {
-//
-//                })
-//                startTime += 0.1
-//            }
-//        }, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,6 +102,10 @@ class GenderSelectorViewController: UIViewController {
         
         UIView.animate(withDuration: 1) { [weak self] in
             guard let self = self else { return }
+            self.topLeafImageView.frame.origin.x = -(self.topLeafImageView.frame.width)
+            self.midHighLeafImageView.frame.origin.x = -(self.midHighLeafImageView.frame.width)
+            self.midLowImageView.frame.origin.x = -(self.midLowImageView.frame.width)
+            self.bottomLeafImageView.frame.origin.x = -(self.bottomLeafImageView.frame.width)
             self.genderStackView.frame.origin.x = -(self.genderStackView.frame.width)
             self.fruitImageView.frame.origin.x = -(self.fruitImageView.frame.width)
         }
@@ -99,34 +116,27 @@ class GenderSelectorViewController: UIViewController {
     }
     
     private func setupView() {
-
+        
+        topLeafPosition = topLeafImageView.frame.origin.x
+        midHighLeafPosition = midHighLeafImageView.frame.origin.x
+        midLowLeafPosition = midLowImageView.frame.origin.x
+        bottomLeafPosition = bottomLeafImageView.frame.origin.x
         genderStackViewStartPosition = genderStackView.frame.origin.x
         foodImageStartPosition = fruitImageView.frame.origin.x
         femaleButton.layer.cornerRadius = femaleButton.frame.height / 2
         maleButton.layer.cornerRadius = maleButton.frame.height / 2
         view.applyGradient(colours: [topGradientColor, bottomGradientColor])
-    
-//        for _ in 0...countOfLeavesImages {
-//            guard let image = UIImage(named: "leaf") else { return }
-//            leavesImages.append(UIImageView(image: image))
-//        }
-//
-//        var yPosition: CGFloat = 0.0
-//        for leaf in leavesImages {
-//            let randomSize = CGFloat.random(in: (20..<40))
-//            leaf.frame = CGRect(x: 0, y: yPosition, width: randomSize, height: randomSize)
-//            leaf.contentMode = .scaleAspectFit
-//            leaf.backgroundColor = .white
-//            view.addSubview(leaf)
-//            //yPosition += 100
-//        }
     }
     
     @IBAction func maleButtonPressed(_ sender: Any) {
         genderSelected?(.male)
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator.impactOccurred()
     }
     
     @IBAction func femaleButtonPressed(_ sender: Any) {
         genderSelected?(.female)
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator.impactOccurred()
     }
 }

@@ -44,3 +44,16 @@ extension UIView {
     }
 }
 
+extension UIButton {
+    
+    func animateWithPopupStyle() {
+        UIView.animate(withDuration: 0.6,animations: { [weak self] in
+            self?.transform = CGAffineTransform(scaleX: 2, y: 2)
+        }, completion: { _ in
+             UIView.animate(withDuration: 0.6) { [weak self] in
+                self?.transform = CGAffineTransform.identity
+            }
+        })
+    }
+}
+

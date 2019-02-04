@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "your goal"; ObjectID = "1vQ-a6-xfX"; */
-"1vQ-a6-xfX.text" = "ваша цель";
+"Mjt-Gj-u0e.text" = "Ваша цель";
 
 /* Class = "UILabel"; text = "gender"; ObjectID = "2uR-pL-6TI"; */
 "2uR-pL-6TI.text" = "пол";
@@ -12,7 +12,7 @@
 "8CF-Kx-XwQ.normalTitle" = "Ок? Вперед!";
 
 /* Class = "UILabel"; text = "current weight"; ObjectID = "GaH-KK-C7F"; */
-"GaH-KK-C7F.text" = "ваш вес";
+"Xhe-nG-t0l.text" = "Ваш вес";
 
 /* Class = "UILabel"; text = "We have calculated your obesity index"; ObjectID = "Ij1-4L-IH1"; */
 "Ij1-4L-IH1.text" = "Мы подсчитали ваш индекс ожирения";
@@ -33,10 +33,10 @@
 "a2G-cq-cEj.text" = "Ваш рацион питания";
 
 /* Class = "UILabel"; text = "your age"; ObjectID = "eg9-h7-LQP"; */
-"eg9-h7-LQP.text" = "ваш возраст";
+"mFW-3X-xD2.text" = "Ваш возраст";
 
 /* Class = "UILabel"; text = "your height"; ObjectID = "euh-5w-68Y"; */
-"euh-5w-68Y.text" = "ваш рост";
+"92n-Y0-JfP.text" = "Ваш рост";
 
 /* Class = "UIButton"; normalTitle = "Close"; ObjectID = "kfd-No-EJw"; */
 "kfd-No-EJw.normalTitle" = "Закрыть";
