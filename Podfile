@@ -9,5 +9,5 @@ target 'Diet' do
     pod 'AlamofireImage'
     pod 'DropDown'
     pod 'AppsFlyerFramework'
-    pod 'MerchantKit'
+    pod 'SwiftyStoreKit'
 end

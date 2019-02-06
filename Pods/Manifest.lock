@@ -15,8 +15,8 @@ PODS:
     - FBSDKCoreKit (~> 4.37)
   - FBSDKCoreKit (4.40.0):
     - Bolts (~> 1.9)
-  - MerchantKit (0.6.0)
   - SwiftyJSON (4.2.0)
+  - SwiftyStoreKit (0.14.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -24,8 +24,8 @@ DEPENDENCIES:
   - AppsFlyerFramework
   - DropDown
   - FacebookCore
-  - MerchantKit
   - SwiftyJSON (~> 4.0)
+  - SwiftyStoreKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -36,8 +36,8 @@ SPEC REPOS:
     - DropDown
     - FacebookCore
     - FBSDKCoreKit
-    - MerchantKit
     - SwiftyJSON
+    - SwiftyStoreKit
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -47,9 +47,9 @@ SPEC CHECKSUMS:
   DropDown: 0bcc278799ec11a3d34ce1aac9367fbbaf5423d9
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
-  MerchantKit: f989a305dd9139a7c4435481b8fb91737a11420d
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyStoreKit: cc399645796b094022fb650c148a0aed25995873
 
-PODFILE CHECKSUM: 4329c402eda899c8ac947db5b52acabd5fbe8e0d
+PODFILE CHECKSUM: d70015417d76458700f8a6460d20e59180d166df
 
 COCOAPODS: 1.5.2

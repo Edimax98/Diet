@@ -61,23 +61,6 @@ class GenderSelectorViewController: UIViewController {
         setupView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.topLeafImageView.frame.origin.x = -(self.topLeafImageView.frame.width)
-        self.midHighLeafImageView.frame.origin.x = -(self.midHighLeafImageView.frame.width)
-        self.midLowImageView.frame.origin.x = -(self.midLowImageView.frame.width)
-        self.bottomLeafImageView.frame.origin.x = -(self.bottomLeafImageView.frame.width)
-        
-        UIView.animate(withDuration: 0.7) { [weak self] in
-            guard let self = self else { return }
-            self.topLeafImageView.frame.origin.x = self.topLeafPosition
-            self.midHighLeafImageView.frame.origin.x = self.midHighLeafPosition
-            self.midLowImageView.frame.origin.x = self.midLowLeafPosition
-            self.bottomLeafImageView.frame.origin.x = self.bottomLeafPosition
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

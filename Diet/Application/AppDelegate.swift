@@ -7,20 +7,24 @@
 //
 
 import UIKit
-import StoreKit
+import SwiftyStoreKit
 import FBSDKCoreKit
 import FacebookCore
 import AppsFlyerLib
 import UserNotifications
-import MerchantKit
 import CoreData
+
+enum ProductId: String {
+    
+    case popular = "com.sfbtech.diets.sub.week.allaccess"
+    case cheap = "com.sfbtech.diets.sub.month.allaccess"
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-        
+    
     var window: UIWindow?
     var launchManager: LaunchManager?
-    var merchant: Merchant!
     private let itcAccountSecret = "41b8fe92dbd9448ab3e06f3507b01371"
     
     // MARK: Notifications
@@ -41,8 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationContent.badge = 1
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: "NEW_DIET",
-                                            content: notificationContent, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "NEW_DIET", content: notificationContent, trigger: trigger)
         
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.add(request) { (error) in
@@ -52,16 +55,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func verifyReceipt() {
+        
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { (result) in
+            
+            switch result {
+            case .success(let receipt):
+                
+                let verificationResult = SwiftyStoreKit.verifySubscriptions(productIds: [ProductId.popular.rawValue, ProductId.cheap.rawValue], inReceipt: receipt)
+                
+                switch verificationResult {
+                case .purchased(let items):
+                    let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+                    dietVc.accessStatus = .available
+                    self.window?.rootViewController = dietVc
+                case .expired(let items):
+                    break
+                case .notPurchased:
+                    break
+                }
+                
+                print(receipt)
+            case .error(let error):
+                print("Error during reciipt validation ", error)
+            }
+        }
+    }
+    
+    func setupIAP() {
+        
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    
+                    if purchase.needsFinishTransaction {
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                    print("\(purchase.transaction.transactionState.debugDescription): \(purchase.productId)")
+                case .failed, .purchasing, .deferred:
+                    break
+                }
+            }
+        }
+    }
+    
     // MARK: App life cycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
+        
         let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         print(paths[0])
         
-        merchant = Merchant(storage: KeychainPurchaseStorage(serviceName: "Diet"), delegate: self)
-        merchant.register([ProductDatabase.weeklySubscription])
-        merchant.setup()
+        setupIAP()
+        verifyReceipt()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (isAllowed, error) in
             if isAllowed {
@@ -71,14 +120,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.makeKeyAndVisible()
-//
-//        let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-//        subOfferVc.products.append(ProductDatabase.weeklySubscription)
-//        subOfferVc.merchant = merchant
-//        window?.rootViewController = subOfferVc
-    
+        //let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+        //window = UIWindow(frame: UIScreen.main.bounds)
+        //window?.makeKeyAndVisible()
+        //window?.rootViewController = subOfferVc
+        //
+        //        subOfferVc.products.append(ProductDatabase.weeklySubscription)
+        //        subOfferVc.merchant = merchant
+        //        window?.rootViewController = subOfferVc
+        
         //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
@@ -105,26 +155,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
         let container = NSPersistentContainer(name: "Test")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -147,137 +180,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-}
-
-extension AppDelegate: MerchantDelegate {
-    
-    func merchant(_ merchant: Merchant, validate request: ReceiptValidationRequest, completion: @escaping (Result<Receipt>) -> Void) {
-        
-        let validator = ServerReceiptValidator(request: request, sharedSecret: itcAccountSecret)
-        
-        validator.onCompletion = { result in
-            completion(result)
-        }
-        
-        validator.start()
-    }
-    
-    func merchant(_ merchant: Merchant, didChangeStatesFor products: Set<Product>) {
-        
-        guard let subscription = products.first else { return }
-        
-        switch merchant.state(for: subscription) {
-        case .unknown:
-            break
-        case .notPurchased:
-            break
-        case .isPurchased(_):
-            break
-        }
-    }
-}
-
-extension AppDelegate: SKPaymentTransactionObserver {
-
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-
-        if queue.transactions.isEmpty {
-            NotificationCenter.default.post(name: SubscriptionService.nothingToRestoreNotification, object: nil)
-        }
-    }
-
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-
-        for transaction in transactions {
-            switch transaction.transactionState {
-            case .purchasing:
-                handlePurchasingState(for: transaction, in: queue)
-            case .purchased:
-                handlePurchasedState(for: transaction, in: queue)
-            case .restored:
-                handleRestoredState(for: transaction, in: queue)
-            case .failed:
-                print(transaction.error?.localizedDescription ?? "")
-                handleFailedState(for: transaction, in: queue)
-            case .deferred:
-                handleDeferredState(for: transaction, in: queue)
-            }
-        }
-    }
-
-    func handlePurchasingState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        UIViewController.removeTopPresented()
-        print("User is attempting to purchase product id: \(transaction.payment.productIdentifier)")
-    }
-
     fileprivate func logEvents() {
-
-//        SubscriptionService.shared.loadSubscriptionOptions()
-//        SubscriptionService.shared.optionsLoaded = { option in
-//            if SubscriptionService.shared.isEligibleForTrial && SubscriptionService.shared.currentSubscription != nil {
-//                AppsFlyerTracker.shared()?.trackEvent(AFEventStartTrial, withValues: ["trial_method": "3 days trial"])
-//            }
-//            if SubscriptionService.shared.isEligibleForTrial == false {
-//                AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamRevenue: option.priceWithoutCurrency, AFEventParamCurrency: option.currencyCode])
-//            }
-//        }
+        
+        //        SubscriptionService.shared.loadSubscriptionOptions()
+        //        SubscriptionService.shared.optionsLoaded = { option in
+        //            if SubscriptionService.shared.isEligibleForTrial && SubscriptionService.shared.currentSubscription != nil {
+        //                AppsFlyerTracker.shared()?.trackEvent(AFEventStartTrial, withValues: ["trial_method": "3 days trial"])
+        //            }
+        //            if SubscriptionService.shared.isEligibleForTrial == false {
+        //                AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamRevenue: option.priceWithoutCurrency, AFEventParamCurrency: option.currencyCode])
+        //            }
+        //        }
     }
-
-    func handlePurchasedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        print("User purchased product id: \(transaction.payment.productIdentifier)")
-        queue.finishTransaction(transaction)
-        SubscriptionService.shared.uploadReceipt { (success, shouldRetry) in
-            if success {
-                self.logEvents()
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: SubscriptionService.purchaseSuccessfulNotification, object: nil)
-                }
-            } else if shouldRetry {
-                SubscriptionService.shared.uploadReceipt { (success, _) in
-                    guard success else { return }
-                    self.logEvents()
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: SubscriptionService.purchaseSuccessfulNotification, object: nil)
-                    }
-                }
-            }
-        }
-    }
-
-    func handleRestoredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        print("Purchase restored for product id: \(transaction.payment.productIdentifier)")
-        queue.finishTransaction(transaction)
-        SubscriptionService.shared.uploadReceipt { (success, shouldRetry) in
-            if success {
-                DispatchQueue.main.async {
-                    if SubscriptionService.shared.currentSubscription != nil {
-                        NotificationCenter.default.post(name: SubscriptionService.restoreSuccessfulNotification, object: nil)
-                    }
-                }
-            } else if shouldRetry {
-                SubscriptionService.shared.uploadReceipt { (success, _) in
-                    guard success else { return }
-                    DispatchQueue.main.async {
-                        if SubscriptionService.shared.currentSubscription != nil {
-                            NotificationCenter.default.post(name: SubscriptionService.restoreSuccessfulNotification, object: nil)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    func handleFailedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        UIViewController.removeTopPresented()
-        print("Purchase failed for product id: \(transaction.payment.productIdentifier)")
-        queue.finishTransaction(transaction)
-        NotificationCenter.default.post(name: SubscriptionService.purchaseFailedNotification, object: nil)
-    }
-
-    func handleDeferredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
-        UIViewController.removeTopPresented()
-        print("Purchase deferred for product id: \(transaction.payment.productIdentifier)")
-        queue.finishTransaction(transaction)
-    }
+    
 }
 

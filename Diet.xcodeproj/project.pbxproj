@@ -62,7 +62,6 @@
 		A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */; };
 		A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */; };
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
-		A5A3685321FB17C700BD03A5 /* ProductDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3685221FB17C700BD03A5 /* ProductDatabase.swift */; };
 		A5AE5D9B21ECE3510029E9CD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE5D9A21ECE3510029E9CD /* EventManager.swift */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5B2D35321D22E9200378F54 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35221D22E9200378F54 /* EndPoint.swift */; };
@@ -77,6 +76,7 @@
 		A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83872170F7370088F8FE /* NetworkService.swift */; };
 		A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */; };
 		A5EA838E2170F8830088F8FE /* RecieptSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA838D2170F8830088F8FE /* RecieptSteps.swift */; };
+		A5EE1880220AED7400C00157 /* SKProductExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EE187F220AED7400C00157 /* SKProductExtension.swift */; };
 		A5EF446721CA96D5009B4635 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF446621CA96D5009B4635 /* RecipeViewController.swift */; };
 		A5F86BF4220478B200B5AF26 /* TestResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F86BF3220478B200B5AF26 /* TestResultLabel.swift */; };
 /* End PBXBuildFile section */
@@ -143,7 +143,6 @@
 		A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
 		A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOfferViewController.swift; sourceTree = "<group>"; };
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
-		A5A3685221FB17C700BD03A5 /* ProductDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDatabase.swift; sourceTree = "<group>"; };
 		A5AE5D9A21ECE3510029E9CD /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5B2D35221D22E9200378F54 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -159,6 +158,7 @@
 		A5EA83872170F7370088F8FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A5EA83892170F78D0088F8FE /* FetchingErroHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingErroHandler.swift; sourceTree = "<group>"; };
 		A5EA838D2170F8830088F8FE /* RecieptSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptSteps.swift; sourceTree = "<group>"; };
+		A5EE187F220AED7400C00157 /* SKProductExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKProductExtension.swift; sourceTree = "<group>"; };
 		A5EF446621CA96D5009B4635 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		A5F86BF3220478B200B5AF26 /* TestResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultLabel.swift; sourceTree = "<group>"; };
 		B4615E85CA74F815C113661A /* Pods-Diet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diet/Pods-Diet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -369,7 +369,6 @@
 				A5A0C7AE21BE979100C9035C /* Session.swift */,
 				A5A0C7B021BE97BE00C9035C /* PaidSubscription.swift */,
 				A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */,
-				A5A3685221FB17C700BD03A5 /* ProductDatabase.swift */,
 			);
 			path = Subscription;
 			sourceTree = "<group>";
@@ -417,6 +416,7 @@
 				A5D858BF21AF055A008A5A2D /* DoubleExtentions.swift */,
 				A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */,
 				A54DC0D32204466100D7EEE9 /* CGFloatExtention.swift */,
+				A5EE187F220AED7400C00157 /* SKProductExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -563,8 +563,8 @@
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/MerchantKit/MerchantKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -574,8 +574,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MerchantKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -623,6 +623,7 @@
 				A5662AC521BAA3DB00DCD511 /* DishCell.swift in Sources */,
 				A5EA838A2170F78D0088F8FE /* FetchingErroHandler.swift in Sources */,
 				A5B2D35321D22E9200378F54 /* EndPoint.swift in Sources */,
+				A5EE1880220AED7400C00157 /* SKProductExtension.swift in Sources */,
 				A5A0C7AF21BE979100C9035C /* Session.swift in Sources */,
 				A5A0C7B121BE97BE00C9035C /* PaidSubscription.swift in Sources */,
 				A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */,
@@ -637,7 +638,6 @@
 				A589FB0421C7B2AB0035E80D /* Diet.swift in Sources */,
 				A55BFF9221FA0AFD00D4364F /* GestureControl.swift in Sources */,
 				A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */,
-				A5A3685321FB17C700BD03A5 /* ProductDatabase.swift in Sources */,
 				A50250D52178E79000F674B3 /* TriangleView.swift in Sources */,
 				A55BFF9521FA0AFD00D4364F /* PageContainer.swift in Sources */,
 				A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */,
