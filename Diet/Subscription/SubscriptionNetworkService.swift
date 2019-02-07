@@ -27,6 +27,7 @@ enum SubscriptionServiceError {
     case noActiveSubscription
     case wrongEnviroment
     case purchaseFailed
+    case restoreFailed
     case other(Error)
 }
 

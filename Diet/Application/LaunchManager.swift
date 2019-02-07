@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyStoreKit
+
 protocol ContentAccessHandler: class {
 
     func accessIsDenied()
@@ -27,64 +29,44 @@ class LaunchManager {
         self.mainWindow = window
     }
     
-    private func uploadRecieptSucceeded() {
+    func verifyReceipt() {
+
+        let loadingVC = LoadingViewController()
+        loadingVC.view.backgroundColor = .lightGray
+        mainWindow.rootViewController = loadingVC
         
-        guard SubscriptionService.shared.currentSubscription != nil else {
-            handler?.accessIsDenied()
-            return
-        }
-        handler?.accessIsAvailable()
-    }
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] (result) in
+            
+            guard let self = self else { return }
     
-    private func reuploadReciept() {
-        
-        SubscriptionService.shared.uploadReceipt { [weak self] (success, _) in
-    
-            guard let unwrappedSelf = self else { return }
-            if success {
-                unwrappedSelf.uploadRecieptSucceeded()
-            } else {
-                unwrappedSelf.handler?.accessIsDenied()
+            switch result {
+            case .success(let receipt):
+                
+                let verificationResult = SwiftyStoreKit.verifySubscriptions(productIds: [ProductId.popular.rawValue, ProductId.cheap.rawValue], inReceipt: receipt)
+                switch verificationResult {
+                case .purchased:
+                    let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+                    dietVc.accessStatus = .available
+                    self.mainWindow.rootViewController = dietVc
+                default:
+                    let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+                    self.mainWindow.rootViewController = subOfferVc
+                }
+            case .error(let error):
+                print("Error during reciipt validation ", error)
+                let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+                self.mainWindow.rootViewController = subOfferVc
             }
         }
-    }
-
-    func showSubscriptionOffer() {
-        
     }
     
     func prepareForLaunch() {
-        
-        guard UserDefaults.standard.bool(forKey: "wereWelcomePagesShown") == false else {
-            let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-            handler = dietVc
-            mainWindow.rootViewController = dietVc
-            return
-        }
-        mainWindow.rootViewController = WelcomePageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-    }
-    
-    func launchWithSubscriptionValidation() {
-        
-        prepareForLaunch()
-        SubscriptionService.shared.loadSubscriptionOptions()
-        
-        guard SubscriptionService.shared.hasReceiptData else {
-            handler?.accessIsDenied()
-            return
-        }
-        
-        SubscriptionService.shared.uploadReceipt { [weak self]  (success,shouldRetry) in
-            
-            guard let unwrappedSelf = self else { return }
-            
-            if success {
-                unwrappedSelf.uploadRecieptSucceeded()
-            } else if shouldRetry {
-                unwrappedSelf.reuploadReciept()
-            } else if !shouldRetry {
-                unwrappedSelf.handler?.accessIsDenied()
-            }
+        if UserDefaults.standard.bool(forKey: "wereWelcomePagesShown") {
+            verifyReceipt()
+        } else {
+            let welcomeVc = WelcomePageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+            mainWindow.rootViewController = welcomeVc
         }
     }
 }

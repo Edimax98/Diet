@@ -8,28 +8,19 @@
 
 import UIKit
 import DropDown
-import Alamofire
-import AlamofireImage
-import AppsFlyerLib
 
 class DietViewController: UIViewController {
     
     @IBOutlet weak var dietBackImageView: UIImageView!
     @IBOutlet weak var dietNameLabel: UILabel!
     @IBOutlet weak var dietDescriptionLabel: UILabel!
-    @IBOutlet weak var weekdaysDropDownButton: UIButton!
-    @IBOutlet weak var dropDownButtonContainerView: UIView!
-    @IBOutlet weak var buttonArrowImageView: UIImageView!
-    @IBOutlet weak var dishesCollectionView: UICollectionView!
-    @IBOutlet weak var weekDaySelectionView: UIView!
     @IBOutlet weak var dietDescriptionView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var mealPlanLabel: UILabel!
-    @IBOutlet weak var mealPlanDescriptionLabel: UILabel!
+    @IBOutlet weak var rationsTableView: UITableView!
     
     fileprivate let viewCornerRadius: CGFloat = 32.0
     var accessStatus = AccessStatus.available
-    fileprivate let dropMenuItems = ["Monday".localized,"Tuesday".localized,
+    fileprivate let daysOfWeek = ["Monday".localized,"Tuesday".localized,
                                      "Wednesday".localized,"Thursday".localized,
                                      "Friday".localized,"Saturday".localized,
                                      "Sunday".localized]
@@ -61,9 +52,7 @@ class DietViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionViewFlowLayout()
         setupView()
-        setupDropDownMenu()
         
         networkService.dietServiceDelegate = self
         networkService.getDiet()
@@ -71,7 +60,7 @@ class DietViewController: UIViewController {
     }
     
     fileprivate func showContent() {
-        dishesCollectionView.reloadData()
+
     }
     
     fileprivate func setupView() {
@@ -85,147 +74,72 @@ class DietViewController: UIViewController {
         dietBackImageView.contentMode = .scaleAspectFill
         dietBackImageView.clipsToBounds = true
         
-        dishesCollectionView.dataSource = self
-        dishesCollectionView.delegate = self
-        dishesCollectionView.register(UINib(nibName: "DishCell", bundle: nil), forCellWithReuseIdentifier: DishCell.identifier)
+        rationsTableView.separatorStyle = .none
+        rationsTableView.dataSource = self
+        rationsTableView.delegate = self
+        rationsTableView.register(UINib(nibName: "WeekRationCell", bundle: nil), forCellReuseIdentifier: WeekRationCell.identifier)
         
-        weekDaySelectionView.layer.cornerRadius = viewCornerRadius
-        weekDaySelectionView.layer.masksToBounds = true
         dietDescriptionView.layer.cornerRadius = viewCornerRadius
         dietDescriptionView.layer.masksToBounds = true
-        
-        weekdaysDropDownButton.setTitle("Monday".localized, for: .normal)
-        mealPlanLabel.text = "Your meal plan".localized
-        mealPlanDescriptionLabel.text = "Choose one of the days to see all dishes".localized
-    }
-    
-    fileprivate func setupCollectionViewFlowLayout() {
-        let layout = dishesCollectionView.collectionViewLayout as! UPCarouselFlowLayout
-        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.fixed(spacing: 10)
-        layout.sideItemScale = 0.9
     }
     
     override func viewDidLayoutSubviews() {
         dietDescriptionView.dropShadow(offSet: CGSize(width: 1, height: 1), radius: 16)
-        weekDaySelectionView.dropShadow(offSet: CGSize(width: 1, height: 1), radius: 16)
-    }
-    
-    fileprivate func animateButtonArrowRotation(rotationAngle: CGFloat) {
-        UIView.animate(withDuration: 0.2) {
-            self.buttonArrowImageView.transform = CGAffineTransform(rotationAngle: rotationAngle)
-        }
-    }
-    
-    fileprivate func setupDropDownMenu() {
-        
-        dropDownButtonContainerView.layer.cornerRadius = dropDownButtonContainerView.frame.height / 2
-        dropDownButtonContainerView.layer.masksToBounds = true
-        
-        dropDownMenu.dataSource = dropMenuItems
-        dropDownMenu.cornerRadius = dropDownButtonContainerView.frame.height / 2
-        dropDownMenu.anchorView = dropDownButtonContainerView
-        dropDownMenu.direction = .any
-        dropDownMenu.bottomOffset = CGPoint(x: 0.0, y: dropDownButtonContainerView.frame.height + 5)
-        
-        dropDownMenu.cancelAction = { [weak self] in
-            guard let unwrappedSelf = self else { print("Could not animate. Self is nil."); return }
-            unwrappedSelf.animateButtonArrowRotation(rotationAngle: CGFloat(Double.pi * 2))
-        }
-        
-        dropDownMenu.selectionAction = { [weak self] (index,item) in
-            guard let unwrappedSelf = self else { print("Could not set button title. Self is nil."); return }
-            if let unwrppedDiet = unwrappedSelf.diet, let week = unwrppedDiet.weeks.first {
-                unwrappedSelf.dishes = week.days[index].dishes
-                unwrappedSelf.dishesCollectionView.reloadData()
-            }
-            unwrappedSelf.animateButtonArrowRotation(rotationAngle: CGFloat(Double.pi * 2))
-            unwrappedSelf.weekdaysDropDownButton.setTitle(item, for: .normal)
-        }
-    }
-    
-    @IBAction func showWeekdaysButtonPressed(_ sender: Any) {
-        
-        guard accessStatus == .available else {
-            performSegue(withIdentifier: "showSubOffer", sender: self)
-            return
-        }
-        
-        animateButtonArrowRotation(rotationAngle:  CGFloat(Double.pi))
-        dropDownMenu.show()
     }
 }
 
-extension DietViewController: UICollectionViewDataSource {
+extension DietViewController: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dishes.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return daysOfWeek.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return daysOfWeek[section]
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCell.identifier, for: indexPath) as? DishCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeekRationCell.identifier, for: indexPath) as? WeekRationCell else {
             print("Could not deque cell")
-            return UICollectionViewCell()
+            return UITableViewCell()
         }
         
-        if accessStatus == .denied {
-            cell.hide()
-            return cell
-        }
-        cell.open()
+//        if dishes.isEmpty {
+//            return cell
+//        }
         
-        if dishes.isEmpty {
-            return cell
-        }
-        
-        let dish = dishes[indexPath.row]
-        
-        cell.showRecipeButtonPressed = { [weak self] in
-            guard let unwrappedSelf = self else { return }
-            EventManager.sendCustomEvent(with: "Recipe was opened")
-            unwrappedSelf.performSegue(withIdentifier: "showRecipe", sender: cell)
-            unwrappedSelf.recipeSender?.recieve(recipe: dish.recipe, dishName: dish.name)
-        }
-        
-        cell.dishNameLabel.text = dish.name
-        cell.proteinsAmountLabel.text = "\(dish.nutritionValue.protein)" + gramMeasure
-        cell.carbsAmountLabel.text = "\(dish.nutritionValue.carbs)" + gramMeasure
-        cell.fatsAmountLabel.text = "\(dish.nutritionValue.fats)" + gramMeasure
-        cell.caloriesAmountLabel.text = "\(dish.nutritionValue.calories)" + caloriesMesure
-        
-        
-        cell.dishImageView.image = nil
-        if let imageFromCache = cashedImage.object(forKey: dish.imagePath as AnyObject) as? UIImage {
-            cell.dishImageView.image = imageFromCache
-            return cell
-        }
-        
-        fetchingQueue.async {
-            request(dish.imagePath, method: .get).responseImage { (response) in
-                guard let image = response.result.value else {
-                    DispatchQueue.main.async {
-                        cell.dishImageView.image = UIImage(named: "no_food")
-                    }
-                    print("Image for dish  - \(dish.name) is NIL")
-                    return
-                }
-                DispatchQueue.main.async {
-                    cell.dishImageView.image = image
-                    self.cashedImage.setObject(image, forKey: dish.imagePath as AnyObject)
-                }
-            }
+        if let unwrppedDiet = diet, let week = unwrppedDiet.weeks.first {
+            dishes = week.days[indexPath.section].dishes
+            cell.weekDishes = dishes
         }
         return cell
     }
 }
 
-extension DietViewController: UICollectionViewDelegate {
+extension DietViewController: UITableViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if accessStatus == .denied {
-            performSegue(withIdentifier: "showSubOffer", sender: self)
-        }
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        let label = UILabel(frame: CGRect(x: 20, y: view.frame.midY - 15, width: view.frame.width - 40, height: 30))
+        view.addSubview(label)
+        label.font = UIFont(name: "AvenirNext-DemiBold", size: 20)!
+        label.text = daysOfWeek[section]
+        view.backgroundColor = .white
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
     }
 }
 
@@ -243,7 +157,7 @@ extension DietViewController: DietNetworkServiceDelegate {
             self.diet = diet
             if let dishes = diet.weeks.first?.days.first?.dishes {
                 self.dishes = dishes
-                self.dishesCollectionView.reloadData()
+                self.rationsTableView.reloadData()
             }
         }
     }

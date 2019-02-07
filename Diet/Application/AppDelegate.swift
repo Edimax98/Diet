@@ -55,34 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func verifyReceipt() {
-        
-        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
-        SwiftyStoreKit.verifyReceipt(using: appleValidator) { (result) in
-            
-            switch result {
-            case .success(let receipt):
-                
-                let verificationResult = SwiftyStoreKit.verifySubscriptions(productIds: [ProductId.popular.rawValue, ProductId.cheap.rawValue], inReceipt: receipt)
-                
-                switch verificationResult {
-                case .purchased(let items):
-                    let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-                    dietVc.accessStatus = .available
-                    self.window?.rootViewController = dietVc
-                case .expired(let items):
-                    break
-                case .notPurchased:
-                    break
-                }
-                
-                print(receipt)
-            case .error(let error):
-                print("Error during reciipt validation ", error)
-            }
-        }
-    }
-    
     func setupIAP() {
         
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
@@ -106,11 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
         let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         print(paths[0])
-        
-        setupIAP()
-        verifyReceipt()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (isAllowed, error) in
             if isAllowed {
@@ -120,17 +92,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        //let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        //window = UIWindow(frame: UIScreen.main.bounds)
-        //window?.makeKeyAndVisible()
-        //window?.rootViewController = subOfferVc
-        //
-        //        subOfferVc.products.append(ProductDatabase.weeklySubscription)
-        //        subOfferVc.merchant = merchant
-        //        window?.rootViewController = subOfferVc
+        setupIAP()
+//        launchManager = LaunchManager(window: window!)
+//        launchManager?.prepareForLaunch()
+        
+//        let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+        let offer = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+        window?.rootViewController = offer
         
         //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
         AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
         AppsFlyerTracker.shared().appleAppID = "1445711141"
         

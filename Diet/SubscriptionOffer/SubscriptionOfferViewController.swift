@@ -37,14 +37,9 @@ class SubscriptionOfferViewController: UIViewController {
     fileprivate let freeTrialMessage = "3 days for FREE".localized
     fileprivate let subscriptionDuration = " per week".localized
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        addObservers()
         EventManager.sendCustomEvent(with: "Subscription offer was opened")
         let loadingVc = LoadingViewController()
         add(loadingVc
@@ -67,7 +62,7 @@ class SubscriptionOfferViewController: UIViewController {
                 print("Invalid product identifier: \(invalidProductId)")
             }
             else {
-                print("Error: \(result.error)")
+                print("Error: \(String(describing: result.error))")
             }
             
             guard let cheapProduct = result.retrievedProducts.filter({ product in product.productIdentifier == ProductId.cheap.rawValue }).first else { return }
@@ -79,13 +74,7 @@ class SubscriptionOfferViewController: UIViewController {
             } else {
                 self.cheapPlanLabel.text = cheapProduct.localizedPrice! + " per ".localized + "7 days".localized + " after " + "1 week".localized
             }
-            
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -131,28 +120,6 @@ class SubscriptionOfferViewController: UIViewController {
         discountLabel.layer.borderColor = UIColor(red: 0, green: 169 / 255, blue: 97 / 255, alpha: 1).cgColor
     }
     
-    private func addObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleRestoreSuccessfull(notification:)),
-                                               name: SubscriptionService.restoreSuccessfulNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handlePurchaseSuccessfull(notification:)),
-                                               name: SubscriptionService.purchaseSuccessfulNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleOptionsLoaded(notification:)),
-                                               name: SubscriptionService.optionsLoadedNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handlePurchaseFailed),
-                                               name: SubscriptionService.purchaseFailedNotification,
-                                               object: nil)
-    }
-    
     private func showErrorAlert(for error: SubscriptionServiceError) {
         let title: String
         let message: String
@@ -171,6 +138,9 @@ class SubscriptionOfferViewController: UIViewController {
         case .purchaseFailed:
             title = "Purchase failed".localized
             message = "Purchase transaction failed. Try again"
+        case .restoreFailed:
+            title = "Error".localized
+            message = "Could not restore purchases".localized
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -193,8 +163,15 @@ class SubscriptionOfferViewController: UIViewController {
 
         SwiftyStoreKit.purchaseProduct(productId, atomically: true) { result in
             
+            switch result {
+            case .success(let purchase):
+                break
+            case .error(let error):
+                print(error)
+            }
+            
             if case .success(let purchase) = result {
-                // Deliver content from server, then:
+
                 if purchase.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
@@ -215,12 +192,12 @@ class SubscriptionOfferViewController: UIViewController {
                                 print("THIS IS TRIAL")
                             }
                             print("Product is valid until \(expiryDate)")
-                        case .expired(let expiryDate, let receiptItems):
+                            self.performSegue(withIdentifier: "showDiets", sender: self)
+                        case .expired(let expiryDate):
                             print("Product is expired since \(expiryDate)")
                         case .notPurchased:
                             print("This product has never been purchased")
                         }
-                        
                     } else {
                         self.showErrorAlert(for: .internalError)
                     }
@@ -247,10 +224,34 @@ class SubscriptionOfferViewController: UIViewController {
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
-        //productInterfaceController.restorePurchases()
+        
         //EventManager.sendCustomEvent(with: "User tried to restore subscription")
-        //add(loadingVc)
-        //SubscriptionService.shared.restorePurchases()
+        let loadingVc = LoadingViewController()
+        add(loadingVc)
+        
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] (result) in
+            loadingVc.remove()
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let receipt):
+                
+                let verificationResult = SwiftyStoreKit.verifySubscriptions(productIds: [ProductId.popular.rawValue, ProductId.cheap.rawValue], inReceipt: receipt)
+                
+                switch verificationResult {
+                case .purchased:
+                    self.performSegue(withIdentifier: "showDiets", sender: self)
+                case .notPurchased:
+                    self.showErrorAlert(for: .restoreFailed)
+                case .expired:
+                    self.showErrorAlert(for: .noActiveSubscription)
+                }
+            case .error(let error):
+                print("Error during reciept validation for resore: ", error.localizedDescription)
+                self.showErrorAlert(for: .restoreFailed)
+            }
+        }
     }
     
     @IBAction func termsAndServiceButtonPressed(_ sender: Any) {
@@ -263,36 +264,5 @@ class SubscriptionOfferViewController: UIViewController {
         guard let url = URL(string: "https://sfbtech.org/policy") else { return }
         let webView = SFSafariViewController(url: url)
         present(webView, animated: true, completion: nil)
-    }
-    
-    @objc func handleRestoreSuccessfull(notification: Notification) {
-        
-        //loadingVc.remove()
-        
-        if SubscriptionService.shared.currentSubscription != nil {
-            performSegue(withIdentifier: "showDiets", sender: self)
-        }
-        else {
-            showErrorAlert(for: .noActiveSubscription)
-        }
-    }
-    
-    @objc func handlePurchaseSuccessfull(notification: Notification) {
-        
-        if let _ = SubscriptionService.shared.currentSubscription {
-            performSegue(withIdentifier: "showDiets", sender: self)
-        }
-    }
-    
-    @objc func handleOptionsLoaded(notification: Notification) {
-        
-        guard let _ = SubscriptionService.shared.options?.first else {
-            showErrorAlert(for: .internalError)
-            return
-        }
-    }
-    
-    @objc func handlePurchaseFailed() {
-        showErrorAlert(for: .purchaseFailed)
     }
 }
