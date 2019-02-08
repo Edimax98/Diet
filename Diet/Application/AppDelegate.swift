@@ -96,9 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        launchManager = LaunchManager(window: window!)
 //        launchManager?.prepareForLaunch()
         
-//        let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-        let offer = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        window?.rootViewController = offer
+        let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+//        let offer = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+        window?.rootViewController = dietVc
         
         //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"

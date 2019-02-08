@@ -12,124 +12,124 @@ import AlamofireImage
 
 protocol RecipeReciver: class {
     
-    func recieve(recipe: [RecieptSteps], dishName: String)
+    func recieve(dish: Dish)
 }
 
 class RecipeViewController: UIViewController {
     
-    @IBOutlet weak var dishNameLabel: UILabel!
-    @IBOutlet weak var recipeLabel: UILabel!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var recipeTableView: UITableView!
+    
+    lazy var dishImageView: UIImageView = {
+        let imageView = UIImageView(image: nil)
+        imageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        view.addSubview(imageView)
+        return imageView
+    }()
+    
+    lazy var closeButton: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 10, y: self.view.frame.height - 70, width: view.frame.width - 20, height: 50))
+        btn.setTitle("Close".localized, for: .normal)
+        btn.backgroundColor = UIColor(red: 251 / 255, green: 129 / 255, blue: 95 / 255, alpha: 1)
+        view.addSubview(btn)
+        return btn
+    }()
     
     let networkService = NetworkService()
+    var steps = [RecieptSteps]()
+    fileprivate let cachedImage = NSCache<AnyObject, AnyObject>()
+    fileprivate let fetchingQueue = DispatchQueue.global(qos: .utility)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeLabel.text = "..."
-        closeButton.makeCornerRadius(closeButton.frame.height / 2)
+        recipeTableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 70, right: 0)
+        recipeTableView.register(UINib(nibName: "StepCell", bundle: nil), forCellReuseIdentifier: StepCell.identifier)
+        recipeTableView.separatorStyle = .none
+        recipeTableView.dataSource = self
+        recipeTableView.delegate = self
+        closeButton.addTarget(self, action: #selector(closeButtonPressed), for: .touchUpInside)
+        closeButton.makeCornerRadius(10)
     }
     
-    fileprivate func setImagesForRecipe(_ recipe: [RecieptSteps], _ images: [String: Image]) -> [RecieptSteps] {
-        
-        let imagePaths = recipe.map { $0.imagePaths.first! }
-        var resultRecipe = recipe
-        
-        var i = 0
-        while imagePaths.count - 1 >= i {
-            if images.keys.contains(where: { (url) -> Bool in imagePaths[i] == url }) {
-                resultRecipe[i].images.append(images[imagePaths[i]]!)
-            }
-            i += 1
-        }
-        return resultRecipe
-    }
-    
-    fileprivate func loadAndFillRecipe(with steps: [RecieptSteps]) {
-        
-        if steps.isEmpty {
-            recipeLabel.text = "No recipe".localized
-            return
-        }
-        let loadingVc = LoadingViewController()
-        loadingVc.timeoutHandler = self
-        add(loadingVc)
-        
-        let stepNameParagraphStyle = NSMutableParagraphStyle()
-        stepNameParagraphStyle.alignment = .center
-        stepNameParagraphStyle.paragraphSpacing = 10
-        stepNameParagraphStyle.paragraphSpacingBefore = 25
-        
-        let emptyParagraphStyle = NSMutableParagraphStyle()
-        emptyParagraphStyle.paragraphSpacing = 10.0
-        
-        let stepDescriptionParagraphStyle = NSMutableParagraphStyle()
-        stepDescriptionParagraphStyle.alignment = .left
-        stepDescriptionParagraphStyle.paragraphSpacing = 10
-        
-        let recipeAttributedString = NSMutableAttributedString()
-        
-        let imagePaths = steps.filter { $0.imagePaths.first! != "" }.map { $0.imagePaths.first! }
-        
-        networkService.fetchImages(with: imagePaths) { [weak self] (response) in
-            
-            loadingVc.remove()
-            var images = [String:Image]()
-            
-            guard let unwrappedSelf = self else { return }
-            
-            switch response {
-            case .success(let result):
-                images = result
-                
-                let recipeWithImages = unwrappedSelf.setImagesForRecipe(steps, images)
-                
-                for step in recipeWithImages {
-                    
-                    let stepNameAttributedString = NSAttributedString(string: step.name + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepNameParagraphStyle])
-                    let stepDescrAttributedString = NSAttributedString(string: step.description + "\n", attributes: [NSAttributedString.Key.paragraphStyle: stepDescriptionParagraphStyle])
-                    
-                    recipeAttributedString.append(stepNameAttributedString)
-                    recipeAttributedString.append(stepDescrAttributedString)
-                    
-                    if !step.images.isEmpty {
-                        let textAttachmentWithImage = ImageAttachment()
-                        textAttachmentWithImage.image = step.images[0]
-                        let imageAttributedString = NSAttributedString(attachment: textAttachmentWithImage)
-                        recipeAttributedString.append(imageAttributedString)
-                    }
-                    
-                    recipeAttributedString.append(NSAttributedString(string: "\n", attributes: [NSAttributedString.Key.paragraphStyle: emptyParagraphStyle]))
-                    unwrappedSelf.recipeLabel.attributedText = recipeAttributedString
-                }
-            case .failure(_):
-                unwrappedSelf.recipeLabel.text = "An error occured".localized
-            }
-        }
-    }
-    
-    @IBAction func closeButtonPressed(_ sender: Any) {
+    @objc func closeButtonPressed() {
         dismiss(animated: true, completion: nil)
     }
 }
 
+extension RecipeViewController: UITableViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let y = 300 - (scrollView.contentOffset.y + 300)
+        let height = min(max(y,0), 350)
+        dishImageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: height)
+    }
+}
+
+extension RecipeViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return steps.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StepCell.identifier, for: indexPath) as? StepCell else {
+            return UITableViewCell()
+        }
+        let step = steps[indexPath.row]
+        
+        cell.stepNameLabel.text = step.name
+        cell.stepDescriptionLabel.text = step.description
+        
+        guard let imagePath = step.imagePaths.first else { return cell }
+        
+        fetchingQueue.async {
+            request(imagePath).responseImage { (response) in
+                guard let image = response.result.value else {
+                    print("Image for dish  - \(step.name) is NIL")
+                    return
+                }
+                DispatchQueue.main.async {
+                    cell.stepImageView.image = image
+                    self.cachedImage.setObject(image, forKey: imagePath as AnyObject)
+                }
+            }
+        }
+        
+        return cell
+    }
+}
+
+extension RecipeViewController: UIScrollViewDelegate {
+
+}
+
 extension RecipeViewController: RecipeReciver {
     
-    func recieve(recipe: [RecieptSteps], dishName: String) {
-        dishNameLabel.text = dishName
-        loadAndFillRecipe(with: recipe)
+    func recieve(dish: Dish) {
+        steps = dish.recipe
+        request(dish.imagePath).responseImage { response in
+            if let image = response.result.value {
+                DispatchQueue.main.async { [weak self] in
+                    self?.dishImageView.image = image
+                }
+            }
+        }
     }
 }
 
 extension RecipeViewController: LoadingTimeoutHandler {
     
     func didTimeoutOccured() {
-        
-        let timeoutMessageParagraphStyle = NSMutableParagraphStyle()
-        timeoutMessageParagraphStyle.alignment = .center
-        timeoutMessageParagraphStyle.paragraphSpacingBefore = 100
-        
-        let timeoutHappendMessage = NSAttributedString(string: "Could not load data.".localized, attributes: [NSAttributedString.Key.paragraphStyle : timeoutMessageParagraphStyle])
-        
-        recipeLabel.attributedText = timeoutHappendMessage
+//
+//        let timeoutMessageParagraphStyle = NSMutableParagraphStyle()
+//        timeoutMessageParagraphStyle.alignment = .center
+//        timeoutMessageParagraphStyle.paragraphSpacingBefore = 100
+//
+//        let timeoutHappendMessage = NSAttributedString(string: "Could not load data.".localized, attributes: [NSAttributedString.Key.paragraphStyle : timeoutMessageParagraphStyle])
+//
+//        recipeLabel.attributedText = timeoutHappendMessage
     }
 }

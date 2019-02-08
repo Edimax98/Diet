@@ -33,7 +33,7 @@ extension DietApi: EndPointType {
     var parameters: [String : Any] {
         switch self {
         case .allDiets:
-            return ["lang": Locale.current.languageCode ?? ""]
+            return ["lang": Locale.current.languageCode ?? "", "type":"power"]
         }
     }
 }

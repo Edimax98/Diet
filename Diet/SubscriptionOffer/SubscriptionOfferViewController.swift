@@ -163,13 +163,6 @@ class SubscriptionOfferViewController: UIViewController {
 
         SwiftyStoreKit.purchaseProduct(productId, atomically: true) { result in
             
-            switch result {
-            case .success(let purchase):
-                break
-            case .error(let error):
-                print(error)
-            }
-            
             if case .success(let purchase) = result {
 
                 if purchase.needsFinishTransaction {

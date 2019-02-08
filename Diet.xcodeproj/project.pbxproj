@@ -37,6 +37,8 @@
 		A55BFF9921FA0AFD00D4364F /* PaperOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8D21FA0AFD00D4364F /* PaperOnboarding.swift */; };
 		A55BFF9A21FA0AFD00D4364F /* PaperOnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8E21FA0AFD00D4364F /* PaperOnboardingDataSource.swift */; };
 		A55BFF9B21FA0AFD00D4364F /* PaperOnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BFF8F21FA0AFD00D4364F /* PaperOnboardingDelegate.swift */; };
+		A55E85AC220DC29E007714E3 /* StepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E85AA220DC29E007714E3 /* StepCell.swift */; };
+		A55E85AD220DC29E007714E3 /* StepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A55E85AB220DC29E007714E3 /* StepCell.xib */; };
 		A5657E0121E647AE00B688CC /* ImageAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5657E0021E647AE00B688CC /* ImageAttachment.swift */; };
 		A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */; };
 		A57C146221CBE7EF00B810BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C146421CBE7EF00B810BE /* Localizable.strings */; };
@@ -117,6 +119,8 @@
 		A55BFF8D21FA0AFD00D4364F /* PaperOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboarding.swift; sourceTree = "<group>"; };
 		A55BFF8E21FA0AFD00D4364F /* PaperOnboardingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDataSource.swift; sourceTree = "<group>"; };
 		A55BFF8F21FA0AFD00D4364F /* PaperOnboardingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDelegate.swift; sourceTree = "<group>"; };
+		A55E85AA220DC29E007714E3 /* StepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCell.swift; sourceTree = "<group>"; };
+		A55E85AB220DC29E007714E3 /* StepCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepCell.xib; sourceTree = "<group>"; };
 		A5657E0021E647AE00B688CC /* ImageAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachment.swift; sourceTree = "<group>"; };
 		A5662AC821BAB79100DCD511 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		A57C146321CBE7EF00B810BE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; usesTabs = 0; };
@@ -261,6 +265,15 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		A55E85AE220DC2A6007714E3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A55E85AA220DC29E007714E3 /* StepCell.swift */,
+				A55E85AB220DC29E007714E3 /* StepCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A5662AC221BAA3C000DCD511 /* Diets */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				A5EF446621CA96D5009B4635 /* RecipeViewController.swift */,
+				A55E85AE220DC2A6007714E3 /* Cells */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -532,6 +546,7 @@
 				A597BE60220C669500389207 /* DishCell.xib in Resources */,
 				A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */,
 				A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */,
+				A55E85AD220DC29E007714E3 /* StepCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +622,7 @@
 				A5A0C7AA21BE96A300C9035C /* Subscription.swift in Sources */,
 				A51CC75021BFFFC000FFCFD5 /* LaunchManager.swift in Sources */,
 				A55BFF9321FA0AFD00D4364F /* ConstraintsHelper.swift in Sources */,
+				A55E85AC220DC29E007714E3 /* StepCell.swift in Sources */,
 				A51CC74E21BFD75100FFCFD5 /* VisualEffectBlur.swift in Sources */,
 				A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */,
 				A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */,
