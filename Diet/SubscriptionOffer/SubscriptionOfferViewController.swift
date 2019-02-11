@@ -36,6 +36,10 @@ class SubscriptionOfferViewController: UIViewController {
     fileprivate let allAccessMessage = "All access".localized
     fileprivate let freeTrialMessage = "3 days for FREE".localized
     fileprivate let subscriptionDuration = " per week".localized
+    fileprivate let perText = " per ".localized
+    fileprivate let afterText = " after ".localized
+    fileprivate let weekDurationText = "7 days".localized
+    fileprivate let threeDaysDurationText = "3 days".localized
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +53,11 @@ class SubscriptionOfferViewController: UIViewController {
             guard let popularProduct = result.retrievedProducts.filter({ product in product.productIdentifier == ProductId.popular.rawValue }).first else { return }
             
             if #available(iOS 11.2, *), let period = popularProduct.subscriptionPeriod, let trial = popularProduct.introductoryPrice?.subscriptionPeriod {
-                let subscriptionPeriodText = period.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits)
-                let trialPeriodText = trial.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits)
-                self.popularPlanPriceLabel.text = popularProduct.localizedPrice! + " per ".localized + subscriptionPeriodText + " after " + "3 days".localized
+                let subscriptionPeriodText = period.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
+                let trialPeriodText = trial.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
+                self.popularPlanPriceLabel.text = popularProduct.localizedPrice! + self.perText + subscriptionPeriodText + self.afterText + self.threeDaysDurationText
             } else {
-                self.popularPlanPriceLabel.text =  popularProduct.localizedPrice! + " per ".localized + "7 days".localized + " after " + "3 days".localized
+                self.popularPlanPriceLabel.text =  popularProduct.localizedPrice! + self.perText + self.weekDurationText + self.afterText + self.threeDaysDurationText
             }
             
             let priceString = popularProduct.localizedPrice!
@@ -68,11 +72,11 @@ class SubscriptionOfferViewController: UIViewController {
             guard let cheapProduct = result.retrievedProducts.filter({ product in product.productIdentifier == ProductId.cheap.rawValue }).first else { return }
             
             if #available(iOS 11.2, *), let period = cheapProduct.subscriptionPeriod, let trial = cheapProduct.introductoryPrice?.subscriptionPeriod {
-                let subscriptionPeriodText = period.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits)
-                let trialPeriodText = trial.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits)
-                self.cheapPlanLabel.text = cheapProduct.localizedPrice! + " per ".localized + subscriptionPeriodText + " after " + trialPeriodText
+                let subscriptionPeriodText = period.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
+                let trialPeriodText = trial.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
+                self.cheapPlanLabel.text = cheapProduct.localizedPrice! + self.perText + subscriptionPeriodText + self.afterText + trialPeriodText
             } else {
-                self.cheapPlanLabel.text = cheapProduct.localizedPrice! + " per ".localized + "7 days".localized + " after " + "1 week".localized
+                self.cheapPlanLabel.text = cheapProduct.localizedPrice! + self.perText + self.weekDurationText + self.afterText + "1 week".localized
             }
         }
     }

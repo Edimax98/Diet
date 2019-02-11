@@ -23,10 +23,10 @@ class NetworkService {
 // MARK: - DietNetworkService
 extension NetworkService: DietNetworkService {
     
-    func getDiet() {
+    func getDiet(_ type: DietType) {
         
         let queue = DispatchQueue.global(qos: .utility)
-        let parameters = DietApi.allDiets.parameters
+        let parameters = DietApi.diet(type: type).parameters
         
         request(DietApi.baseUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .response(queue: queue, responseSerializer: DataRequest.jsonResponseSerializer()) { [weak self] response in

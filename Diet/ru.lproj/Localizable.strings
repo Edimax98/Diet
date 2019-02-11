@@ -28,6 +28,12 @@
 "Privacy Policy" = "Политика конфиденциальности";
 "Could not load data" = "Невозможно загрузить данные";
 " after 3 days" = " после 3 дней";
+" per " = " в ";
+" after " = " после ";
+"7 days" = "7 дней";
+"3 days" = "3 дней";
+"1 week" = "1 недели";
+"1 month" = "1 месяц";
 
 //Welcome screen
 "Obesity index" = "Индекс ожирения";
@@ -77,9 +83,8 @@
 "Friday" = "Пятница";
 "Saturday" = "Суббота";
 "Sunday" = "Воскресенье";
-" kCal." = " кКал.";
+" kCal." = " ККал.";
 "g." = "г.";
 
 // Recipe screen
-"No recipe" = "Нет рецепта";
-"An error occured" = "Произошла ошибка";
+"Close" = "Закрыть";

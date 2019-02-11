@@ -16,6 +16,8 @@
 		A51CC74E21BFD75100FFCFD5 /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CC74D21BFD75100FFCFD5 /* VisualEffectBlur.swift */; };
 		A51CC75021BFFFC000FFCFD5 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CC74F21BFFFC000FFCFD5 /* LaunchManager.swift */; };
 		A51F6EA221B96933000CE5D0 /* DietViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F6EA121B96933000CE5D0 /* DietViewController.swift */; };
+		A53698D82211CB8F00612697 /* DishNameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53698D72211CB8F00612697 /* DishNameHeaderView.swift */; };
+		A53698DA2211CBB100612697 /* DishNameHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53698D92211CBB100612697 /* DishNameHeaderView.xib */; };
 		A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53B1B4621B58A770036AD00 /* FatnessIndexViewContoller.swift */; };
 		A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53B1B4921B58ED50036AD00 /* FatnessCategoryCell.swift */; };
 		A53B1B4C21B58ED50036AD00 /* FatnessCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53B1B4A21B58ED50036AD00 /* FatnessCategoryCell.xib */; };
@@ -71,6 +73,7 @@
 		A5B2D35321D22E9200378F54 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35221D22E9200378F54 /* EndPoint.swift */; };
 		A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */; };
 		A5C0871121FF0C4000B9D724 /* Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5C0870F21FF0C4000B9D724 /* Test.xcdatamodeld */; };
+		A5C25CC622116FBD004E0BC3 /* DietType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C25CC522116FBD004E0BC3 /* DietType.swift */; };
 		A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */; };
 		A5D4F22E21D0FDCF002195C5 /* SubscriptionOffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D4F23021D0FDCF002195C5 /* SubscriptionOffer.storyboard */; };
 		A5D858BE21AEE69D008A5A2D /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D858BD21AEE69D008A5A2D /* TestResult.swift */; };
@@ -96,6 +99,8 @@
 		A51CC74D21BFD75100FFCFD5 /* VisualEffectBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
 		A51CC74F21BFFFC000FFCFD5 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		A51F6EA121B96933000CE5D0 /* DietViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietViewController.swift; sourceTree = "<group>"; };
+		A53698D72211CB8F00612697 /* DishNameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishNameHeaderView.swift; sourceTree = "<group>"; };
+		A53698D92211CBB100612697 /* DishNameHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishNameHeaderView.xib; sourceTree = "<group>"; };
 		A53B1B4621B58A770036AD00 /* FatnessIndexViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatnessIndexViewContoller.swift; sourceTree = "<group>"; };
 		A53B1B4921B58ED50036AD00 /* FatnessCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatnessCategoryCell.swift; sourceTree = "<group>"; };
 		A53B1B4A21B58ED50036AD00 /* FatnessCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FatnessCategoryCell.xib; sourceTree = "<group>"; };
@@ -132,7 +137,6 @@
 		A589FB0521C7D74B0035E80D /* FacebookEventsEnviroment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookEventsEnviroment.swift; sourceTree = "<group>"; };
 		A58CC538216CF65100B20CE9 /* Diet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58CC53B216CF65100B20CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A58CC53E21E89D7900361EA9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
 		A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A58CC540216CF65100B20CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A58CC542216CF65200B20CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 		A5B2D35221D22E9200378F54 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsEndPoint.swift; sourceTree = "<group>"; };
 		A5C0871021FF0C4000B9D724 /* TestResult.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestResult.xcdatamodel; sourceTree = "<group>"; };
+		A5C25CC522116FBD004E0BC3 /* DietType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietType.swift; sourceTree = "<group>"; };
+		A5C25CD422119E20004E0BC3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
 		A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 		A5D4F22F21D0FDCF002195C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SubscriptionOffer.storyboard; sourceTree = "<group>"; };
 		A5D858BD21AEE69D008A5A2D /* TestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
@@ -270,6 +276,8 @@
 			children = (
 				A55E85AA220DC29E007714E3 /* StepCell.swift */,
 				A55E85AB220DC29E007714E3 /* StepCell.xib */,
+				A53698D72211CB8F00612697 /* DishNameHeaderView.swift */,
+				A53698D92211CBB100612697 /* DishNameHeaderView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 				A589FAFF21C7AF8D0035E80D /* DietWeek.swift */,
 				A589FB0121C7AFAC0035E80D /* NutritionValue.swift */,
 				A589FB0321C7B2AB0035E80D /* Diet.swift */,
+				A5C25CC522116FBD004E0BC3 /* DietType.swift */,
 			);
 			path = Diet;
 			sourceTree = "<group>";
@@ -536,6 +545,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53698DA2211CBB100612697 /* DishNameHeaderView.xib in Resources */,
 				A597BE6A220C7F7100389207 /* WeekRationCell.xib in Resources */,
 				A50250CC2178B84B00F674B3 /* SelectingViewController.storyboard in Resources */,
 				A57C146621CBEA4500B810BE /* GenderSelectorViewController.storyboard in Resources */,
@@ -627,6 +637,7 @@
 				A5A0C7A821BE7D2800C9035C /* UPCarouselFlowLayout.swift in Sources */,
 				A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */,
 				A54DC0D42204466100D7EEE9 /* CGFloatExtention.swift in Sources */,
+				A5C25CC622116FBD004E0BC3 /* DietType.swift in Sources */,
 				A51F6EA221B96933000CE5D0 /* DietViewController.swift in Sources */,
 				A580F85621E777BE00C0AE66 /* ImageNetworkService.swift in Sources */,
 				A5657E0121E647AE00B688CC /* ImageAttachment.swift in Sources */,
@@ -635,6 +646,7 @@
 				A50250D02178C79D00F674B3 /* TestPageViewController.swift in Sources */,
 				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
+				A53698D82211CB8F00612697 /* DishNameHeaderView.swift in Sources */,
 				A5AE5D9B21ECE3510029E9CD /* EventManager.swift in Sources */,
 				A55BFF9421FA0AFD00D4364F /* FillAnimationView.swift in Sources */,
 				A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */,
@@ -717,7 +729,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5D4F22F21D0FDCF002195C5 /* Base */,
-				A58CC53E21E89D7900361EA9 /* ru */,
+				A5C25CD422119E20004E0BC3 /* ru */,
 			);
 			name = SubscriptionOffer.storyboard;
 			path = ../../..;

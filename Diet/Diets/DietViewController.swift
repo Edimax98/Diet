@@ -33,7 +33,11 @@ class DietViewController: UIViewController {
     weak var recipeSender: RecipeReciver?
     let dropDownMenu = DropDown()
     private var previousStatusBarHidden = false
-    fileprivate var diet: Diet!
+    fileprivate var diet: Diet! {
+        didSet {
+            dietDescriptionView.layoutIfNeeded()
+        }
+    }
     fileprivate var dishes = [Dish]()
     fileprivate let fetchingQueue = DispatchQueue.global(qos: .utility)
     let networkService = NetworkService()
@@ -66,7 +70,7 @@ class DietViewController: UIViewController {
         setupView()
         
         networkService.dietServiceDelegate = self
-        networkService.getDiet()
+        networkService.getDiet(.power)
         add(loadingVc)
     }
     
@@ -91,18 +95,13 @@ class DietViewController: UIViewController {
         rationsTableView.register(UINib(nibName: "WeekRationCell", bundle: nil), forCellReuseIdentifier: WeekRationCell.identifier)
         tableHeightConstraint.constant = self.view.frame.height
         rationsTableView.isScrollEnabled = false
-        dietDescriptionView.makeCornerRadius(15)
         scrollView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
-
-        dietDescriptionView.layer.shadowColor = UIColor.black.cgColor
-        dietDescriptionView.layer.shadowOpacity = 1
-        dietDescriptionView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        dietDescriptionView.layer.shadowRadius = 7
-        dietDescriptionView.layer.shadowPath = UIBezierPath(rect: dietDescriptionView.bounds).cgPath
-       // dietDescriptionView.layer.shouldRasterize = false
+        super.viewDidLayoutSubviews()
+        dietDescriptionView.dropShadow(color: .lightGray, opacity: 0.6, offSet: CGSize(width: 2, height: 1), radius: 8, scale: true)
+        dietDescriptionView.layer.cornerRadius = 15
     }
 }
 

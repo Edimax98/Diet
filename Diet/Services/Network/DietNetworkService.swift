@@ -16,5 +16,5 @@ protocol DietNetworkServiceDelegate: FetchincErrorHandler {
 protocol DietNetworkService {
     
     var dietServiceDelegate: DietNetworkServiceDelegate? { get set }
-    func getDiet()
+    func getDiet(_ type: DietType)
 }

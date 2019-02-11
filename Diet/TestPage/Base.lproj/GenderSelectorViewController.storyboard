@@ -144,12 +144,12 @@
                             <constraint firstItem="tYb-ug-wBw" firstAttribute="top" secondItem="ufJ-WP-1Qf" secondAttribute="top" constant="103" id="6gM-KK-j2l"/>
                             <constraint firstAttribute="trailing" secondItem="RzJ-0k-qH4" secondAttribute="trailing" constant="-110" id="9Zj-lf-p2Q"/>
                             <constraint firstItem="7P3-n2-xlF" firstAttribute="centerX" secondItem="ufJ-WP-1Qf" secondAttribute="centerX" id="AAJ-sa-PoJ"/>
-                            <constraint firstItem="TUP-rq-Oe9" firstAttribute="top" secondItem="7P3-n2-xlF" secondAttribute="bottom" constant="24.5" id="Ewz-qi-psD"/>
                             <constraint firstItem="RzJ-0k-qH4" firstAttribute="top" secondItem="7P3-n2-xlF" secondAttribute="bottom" priority="999" constant="46.5" id="GJt-cQ-Ntf"/>
                             <constraint firstItem="Chf-6g-dIg" firstAttribute="leading" secondItem="ufJ-WP-1Qf" secondAttribute="leading" constant="43" id="Hn3-o7-bWU"/>
                             <constraint firstItem="ufJ-WP-1Qf" firstAttribute="bottom" secondItem="hqW-yj-0Rn" secondAttribute="bottom" constant="60" id="IX7-yx-ogx"/>
                             <constraint firstItem="Chf-6g-dIg" firstAttribute="top" secondItem="ufJ-WP-1Qf" secondAttribute="top" constant="30" id="IYr-Yk-6CE"/>
                             <constraint firstItem="hqW-yj-0Rn" firstAttribute="leading" secondItem="ufJ-WP-1Qf" secondAttribute="leading" constant="30" id="JCx-JL-Nci"/>
+                            <constraint firstItem="TUP-rq-Oe9" firstAttribute="top" secondItem="7P3-n2-xlF" secondAttribute="bottom" constant="24.5" id="Kbt-Tr-YCc"/>
                             <constraint firstAttribute="bottom" secondItem="RzJ-0k-qH4" secondAttribute="bottom" constant="-113" id="Mnq-bg-2yb"/>
                             <constraint firstItem="7P3-n2-xlF" firstAttribute="top" secondItem="Chf-6g-dIg" secondAttribute="bottom" constant="50" id="NBW-CX-lga"/>
                             <constraint firstItem="ufJ-WP-1Qf" firstAttribute="trailing" secondItem="Chf-6g-dIg" secondAttribute="trailing" constant="43" id="juV-Rb-OEU"/>

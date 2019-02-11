@@ -22,7 +22,7 @@ enum ProductId: String {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
     var launchManager: LaunchManager?
     private let itcAccountSecret = "41b8fe92dbd9448ab3e06f3507b01371"
@@ -96,9 +96,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        launchManager = LaunchManager(window: window!)
 //        launchManager?.prepareForLaunch()
         
-        let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-//        let offer = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        window?.rootViewController = dietVc
+        let vc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+//        let vc = TestPageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+//        let vc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+        window?.rootViewController = vc
         
         //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"

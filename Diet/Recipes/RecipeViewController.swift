@@ -38,18 +38,27 @@ class RecipeViewController: UIViewController {
     
     let networkService = NetworkService()
     var steps = [RecieptSteps]()
+    var dishName = ""
     fileprivate let cachedImage = NSCache<AnyObject, AnyObject>()
     fileprivate let fetchingQueue = DispatchQueue.global(qos: .utility)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeTableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 70, right: 0)
+        recipeTableView.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 70, right: 0)
         recipeTableView.register(UINib(nibName: "StepCell", bundle: nil), forCellReuseIdentifier: StepCell.identifier)
         recipeTableView.separatorStyle = .none
         recipeTableView.dataSource = self
         recipeTableView.delegate = self
         closeButton.addTarget(self, action: #selector(closeButtonPressed), for: .touchUpInside)
         closeButton.makeCornerRadius(10)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return recipeTableView.contentOffset.y >= 100
     }
     
     @objc func closeButtonPressed() {
@@ -59,7 +68,15 @@ class RecipeViewController: UIViewController {
 
 extension RecipeViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = Bundle.main.loadNibNamed("DishNameHeaderView", owner: self, options: nil)?[0] as? DishNameHeaderView
+        view?.titleLabel.text = dishName
+        return view
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        setNeedsStatusBarAppearanceUpdate()
         
         let y = 300 - (scrollView.contentOffset.y + 300)
         let height = min(max(y,0), 350)
@@ -102,14 +119,11 @@ extension RecipeViewController: UITableViewDataSource {
     }
 }
 
-extension RecipeViewController: UIScrollViewDelegate {
-
-}
-
 extension RecipeViewController: RecipeReciver {
     
     func recieve(dish: Dish) {
         steps = dish.recipe
+        dishName = dish.name
         request(dish.imagePath).responseImage { response in
             if let image = response.result.value {
                 DispatchQueue.main.async { [weak self] in

@@ -37,9 +37,7 @@ class DishCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        layer.cornerRadius = cellCornerRadius
-        dishImageView.clipsToBounds = true 
-        self.contentView.layer.cornerRadius = cellCornerRadius
+        dishImageView.clipsToBounds = true
         self.contentView.layer.masksToBounds = true
         
         lockImageView.frame.size = CGSize(width: 75, height: 75)
@@ -69,12 +67,9 @@ class DishCell: UICollectionViewCell {
     }
     
     fileprivate func setupCellShadow() {
-        
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 1, height: 0.0)
-        layer.shadowRadius = 16
-        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+    
+        dropShadow(color: .lightGray, opacity: 0.3, offSet: CGSize(width: 0.2, height: 0.2), radius: 8, scale: true)
+        layer.cornerRadius = cellCornerRadius
+        contentView.layer.cornerRadius = cellCornerRadius
     }
 }

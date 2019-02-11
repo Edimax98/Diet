@@ -98,14 +98,16 @@ class GenderSelectorViewController: UIViewController {
         }
     }
     
-    private func setupView() {
-        
+    override func viewDidLayoutSubviews() {
+        genderStackViewStartPosition = genderStackView.frame.origin.x
         topLeafPosition = topLeafImageView.frame.origin.x
         midHighLeafPosition = midHighLeafImageView.frame.origin.x
         midLowLeafPosition = midLowImageView.frame.origin.x
         bottomLeafPosition = bottomLeafImageView.frame.origin.x
-        genderStackViewStartPosition = genderStackView.frame.origin.x
         foodImageStartPosition = fruitImageView.frame.origin.x
+    }
+    
+    private func setupView() {
         femaleButton.layer.cornerRadius = femaleButton.frame.height / 2
         maleButton.layer.cornerRadius = maleButton.frame.height / 2
         view.applyGradient(colours: [topGradientColor, bottomGradientColor])

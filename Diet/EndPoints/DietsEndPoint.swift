@@ -21,7 +21,7 @@ enum LanguageCode {
 }
 
 enum DietApi {
-    case allDiets
+    case diet(type: DietType)
 }
 
 extension DietApi: EndPointType {
@@ -32,8 +32,9 @@ extension DietApi: EndPointType {
     
     var parameters: [String : Any] {
         switch self {
-        case .allDiets:
-            return ["lang": Locale.current.languageCode ?? "", "type":"power"]
+        case .diet(let type):
+           // return ["lang": Locale.current.languageCode ?? "", "type":"power"]
+            return ["lang": "ru", "type": type.description]
         }
     }
 }
