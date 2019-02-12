@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyStoreKit
+import Purchases
 import SafariServices
 
 class SubscriptionOfferViewController: UIViewController {
@@ -40,43 +41,44 @@ class SubscriptionOfferViewController: UIViewController {
     fileprivate let afterText = " after ".localized
     fileprivate let weekDurationText = "7 days".localized
     fileprivate let threeDaysDurationText = "3 days".localized
+    fileprivate var cheapPlan: SKProduct!
+    fileprivate var popularPlan: SKProduct!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         EventManager.sendCustomEvent(with: "Subscription offer was opened")
         let loadingVc = LoadingViewController()
-        add(loadingVc
-        )
+        add(loadingVc)
+        Purchases.shared.delegate = self
+
         SwiftyStoreKit.retrieveProductsInfo([ProductId.popular.rawValue, ProductId.cheap.rawValue]) { result in
             loadingVc.remove()
-            guard let popularProduct = result.retrievedProducts.filter({ product in product.productIdentifier == ProductId.popular.rawValue }).first else { return }
-            
-            if #available(iOS 11.2, *), let period = popularProduct.subscriptionPeriod, let trial = popularProduct.introductoryPrice?.subscriptionPeriod {
+            self.popularPlan = result.retrievedProducts.filter({ product in product.productIdentifier == ProductId.popular.rawValue }).first
+            if #available(iOS 11.2, *), let period = self.popularPlan.subscriptionPeriod, let trial = self.popularPlan.introductoryPrice?.subscriptionPeriod {
                 let subscriptionPeriodText = period.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
                 let trialPeriodText = trial.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
-                self.popularPlanPriceLabel.text = popularProduct.localizedPrice! + self.perText + subscriptionPeriodText + self.afterText + self.threeDaysDurationText
+                self.popularPlanPriceLabel.text = self.popularPlan.localizedPrice! + self.perText + subscriptionPeriodText + self.afterText + self.threeDaysDurationText
             } else {
-                self.popularPlanPriceLabel.text =  popularProduct.localizedPrice! + self.perText + self.weekDurationText + self.afterText + self.threeDaysDurationText
+                self.popularPlanPriceLabel.text =  self.popularPlan.localizedPrice! + self.perText + self.weekDurationText + self.afterText + self.threeDaysDurationText
             }
-            
-            let priceString = popularProduct.localizedPrice!
-            print("Product: \(popularProduct.localizedDescription), price: \(priceString)")
+
+            let priceString = self.popularPlan.localizedPrice!
+            print("Product: \(self.popularPlan.localizedDescription), price: \(priceString)")
             if let invalidProductId = result.invalidProductIDs.first {
                 print("Invalid product identifier: \(invalidProductId)")
             }
             else {
                 print("Error: \(String(describing: result.error))")
             }
-            
-            guard let cheapProduct = result.retrievedProducts.filter({ product in product.productIdentifier == ProductId.cheap.rawValue }).first else { return }
-            
-            if #available(iOS 11.2, *), let period = cheapProduct.subscriptionPeriod, let trial = cheapProduct.introductoryPrice?.subscriptionPeriod {
+
+            self.cheapPlan = result.retrievedProducts.filter({ product in product.productIdentifier == ProductId.cheap.rawValue }).first
+            if #available(iOS 11.2, *), let period = self.cheapPlan.subscriptionPeriod, let trial = self.cheapPlan.introductoryPrice?.subscriptionPeriod {
                 let subscriptionPeriodText = period.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
                 let trialPeriodText = trial.unit.description(capitalizeFirstLetter: false, numberOfUnits: period.numberOfUnits).localized
-                self.cheapPlanLabel.text = cheapProduct.localizedPrice! + self.perText + subscriptionPeriodText + self.afterText + trialPeriodText
+                self.cheapPlanLabel.text = self.cheapPlan.localizedPrice! + self.perText + subscriptionPeriodText + self.afterText + trialPeriodText
             } else {
-                self.cheapPlanLabel.text = cheapProduct.localizedPrice! + self.perText + self.weekDurationText + self.afterText + "1 week".localized
+                self.cheapPlanLabel.text = self.cheapPlan.localizedPrice! + self.perText + self.weekDurationText + self.afterText + "1 week".localized
             }
         }
     }
@@ -141,7 +143,7 @@ class SubscriptionOfferViewController: UIViewController {
         case .wrongEnviroment: return
         case .purchaseFailed:
             title = "Purchase failed".localized
-            message = "Purchase transaction failed. Try again"
+            message = "Purchase transaction failed. Try again".localized
         case .restoreFailed:
             title = "Error".localized
             message = "Could not restore purchases".localized
@@ -155,53 +157,27 @@ class SubscriptionOfferViewController: UIViewController {
     
     @IBAction func purchaseButtonPressed(_ sender: Any) {
         
-        let loadingVc = LoadingViewController()
-        var productId = ""
-        
-        add(loadingVc)
         if pupularPlanButton.isSelected {
-           productId = "com.sfbtech.diets.sub.week.allaccess"
+           makePurhase(product: popularPlan)
         } else {
-            productId = "com.sfbtech.diets.sub.month.allaccess"
+            makePurhase(product: cheapPlan)
         }
+    }
+    
+    fileprivate func makePurhase(product: SKProduct) {
+        
+        let loadingVc = LoadingViewController()
+        add(loadingVc)
 
-        SwiftyStoreKit.purchaseProduct(productId, atomically: true) { result in
-            
-            if case .success(let purchase) = result {
-
-                if purchase.needsFinishTransaction {
-                    SwiftyStoreKit.finishTransaction(purchase.transaction)
-                }
-                
-                let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
-                SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
-                    
-                    if case .success(let receipt) = result {
-                        let purchaseResult = SwiftyStoreKit.verifySubscription(
-                            ofType: .autoRenewable,
-                            productId: productId,
-                            inReceipt: receipt)
-                        
-                        switch purchaseResult {
-                        case .purchased(let expiryDate, let receiptItems):
-                            let filtred = receiptItems.sorted { $0.purchaseDate < $1.purchaseDate }
-                            if let lastPurchase = filtred.last, lastPurchase.isTrialPeriod == true {
-                                print("THIS IS TRIAL")
-                            }
-                            print("Product is valid until \(expiryDate)")
-                            self.performSegue(withIdentifier: "showDiets", sender: self)
-                        case .expired(let expiryDate):
-                            print("Product is expired since \(expiryDate)")
-                        case .notPurchased:
-                            print("This product has never been purchased")
-                        }
-                    } else {
-                        self.showErrorAlert(for: .internalError)
-                    }
-                }
-            } else {
+        Purchases.shared.makePurchase(product) { (transaction, purchaserInfo, error) in
+            if let e = error {
+                print("PURCHASE ERROR: - \(e.localizedDescription)")
                 self.showErrorAlert(for: .purchaseFailed)
+            } else if purchaserInfo?.activeSubscriptions.contains(product.productIdentifier) ?? false {
+                self.performSegue(withIdentifier: "showDiets", sender: self)
             }
+            
+            loadingVc.remove()
         }
     }
     
@@ -226,27 +202,17 @@ class SubscriptionOfferViewController: UIViewController {
         let loadingVc = LoadingViewController()
         add(loadingVc)
         
-        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
-        SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] (result) in
-            loadingVc.remove()
-            guard let self = self else { return }
+        Purchases.shared.restoreTransactions { (purchaserInfo, error) in
             
-            switch result {
-            case .success(let receipt):
-                
-                let verificationResult = SwiftyStoreKit.verifySubscriptions(productIds: [ProductId.popular.rawValue, ProductId.cheap.rawValue], inReceipt: receipt)
-                
-                switch verificationResult {
-                case .purchased:
-                    self.performSegue(withIdentifier: "showDiets", sender: self)
-                case .notPurchased:
-                    self.showErrorAlert(for: .restoreFailed)
-                case .expired:
-                    self.showErrorAlert(for: .noActiveSubscription)
-                }
-            case .error(let error):
-                print("Error during reciept validation for resore: ", error.localizedDescription)
+            loadingVc.remove()
+            if let e = error {
+                print("RESTORE ERROR: - \(e.localizedDescription)")
                 self.showErrorAlert(for: .restoreFailed)
+            } else if purchaserInfo?.activeSubscriptions.contains(ProductId.popular.rawValue) ?? false ||
+                purchaserInfo?.activeSubscriptions.contains(ProductId.cheap.rawValue) ?? false {
+                self.performSegue(withIdentifier: "showDiets", sender: self)
+            } else {
+                self.showErrorAlert(for: .noActiveSubscription)
             }
         }
     }
@@ -261,5 +227,12 @@ class SubscriptionOfferViewController: UIViewController {
         guard let url = URL(string: "https://sfbtech.org/policy") else { return }
         let webView = SFSafariViewController(url: url)
         present(webView, animated: true, completion: nil)
+    }
+}
+
+extension SubscriptionOfferViewController: PurchasesDelegate {
+    
+    func purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: PurchaserInfo) {
+        
     }
 }

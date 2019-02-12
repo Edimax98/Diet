@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B07425CFAAE520A3CBEA3509EAED5AFC"
-               BlueprintName = "MerchantKit"
+               BlueprintIdentifier = "035824E8D943F0C32BDE6A784F51F2AF"
+               BlueprintName = "Purchases"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "MerchantKit.framework">
+               BuildableName = "Purchases.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

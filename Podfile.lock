@@ -15,6 +15,7 @@ PODS:
     - FBSDKCoreKit (~> 4.37)
   - FBSDKCoreKit (4.40.0):
     - Bolts (~> 1.9)
+  - Purchases (2.0.0)
   - SwiftyJSON (4.2.0)
   - SwiftyStoreKit (0.14.2)
 
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - AppsFlyerFramework
   - DropDown
   - FacebookCore
+  - Purchases
   - SwiftyJSON (~> 4.0)
   - SwiftyStoreKit
 
@@ -36,6 +38,7 @@ SPEC REPOS:
     - DropDown
     - FacebookCore
     - FBSDKCoreKit
+    - Purchases
     - SwiftyJSON
     - SwiftyStoreKit
 
@@ -47,9 +50,10 @@ SPEC CHECKSUMS:
   DropDown: 0bcc278799ec11a3d34ce1aac9367fbbaf5423d9
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
+  Purchases: 17496bdab0d0fb678f5f647c4c7039bca3b8263c
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyStoreKit: cc399645796b094022fb650c148a0aed25995873
 
-PODFILE CHECKSUM: d70015417d76458700f8a6460d20e59180d166df
+PODFILE CHECKSUM: 4a0f0b56decd1a5a085b474035b8543a8e6cec17
 
 COCOAPODS: 1.5.2

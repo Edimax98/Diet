@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVF-Xh-Djl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4965.6000000000004" y="97.601199400299862"/>
+            <point key="canvasLocation" x="4966" y="99"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">
@@ -315,7 +315,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55y-b6-LQc" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="329" y="261" width="13" height="40"/>
+                                <rect key="frame" x="319" y="261" width="23" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="E9Y-Q7-yUu"/>
                                 </constraints>
@@ -332,7 +332,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIp-ch-4cu" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="329" y="312" width="13" height="40"/>
+                                <rect key="frame" x="319" y="312" width="23" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="M4x-9l-FMa"/>
                                 </constraints>
@@ -349,7 +349,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iW-sQ-fa3" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="328" y="363" width="13" height="40"/>
+                                <rect key="frame" x="318" y="363" width="23" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fhA-tY-aSb"/>
                                 </constraints>
@@ -366,7 +366,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BI-bZ-0xl" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="329" y="210" width="13" height="40"/>
+                                <rect key="frame" x="319" y="210" width="23" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Whh-dk-hRn"/>
                                 </constraints>

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyStoreKit
+import Purchases
 
 protocol ContentAccessHandler: class {
 
@@ -20,7 +20,7 @@ enum AccessStatus {
     case denied
 }
 
-class LaunchManager {
+class LaunchManager: NSObject {
     
     private let mainWindow: UIWindow
     weak var handler: ContentAccessHandler?
@@ -34,29 +34,25 @@ class LaunchManager {
         let loadingVC = LoadingViewController()
         loadingVC.view.backgroundColor = .lightGray
         mainWindow.rootViewController = loadingVC
-        
-        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
-        SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] (result) in
+        Purchases.shared.delegate = self
+    
+        Purchases.shared.purchaserInfo { [weak self] (info, error) in
             
             guard let self = self else { return }
-    
-            switch result {
-            case .success(let receipt):
-                
-                let verificationResult = SwiftyStoreKit.verifySubscriptions(productIds: [ProductId.popular.rawValue, ProductId.cheap.rawValue], inReceipt: receipt)
-                switch verificationResult {
-                case .purchased:
-                    let dietVc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-                    dietVc.accessStatus = .available
-                    self.mainWindow.rootViewController = dietVc
-                default:
-                    let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-                    self.mainWindow.rootViewController = subOfferVc
+            
+//            guard error != nil else {
+//                print("Error during sub check - ",error.debugDescription)
+//                self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOfferViewController", bundle: nil))
+//                return
+//            }
+            
+            if let unwrappedInfo = info {
+                if unwrappedInfo.activeSubscriptions.contains(ProductId.cheap.rawValue) ||
+                    unwrappedInfo.activeSubscriptions.contains(ProductId.popular.rawValue) {
+                    self.mainWindow.rootViewController = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+                } else {
+                    self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOfferViewController", bundle: nil))
                 }
-            case .error(let error):
-                print("Error during reciipt validation ", error)
-                let subOfferVc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-                self.mainWindow.rootViewController = subOfferVc
             }
         }
     }
@@ -68,5 +64,12 @@ class LaunchManager {
             let welcomeVc = WelcomePageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
             mainWindow.rootViewController = welcomeVc
         }
+    }
+}
+
+extension LaunchManager: PurchasesDelegate {
+
+    func purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: PurchaserInfo) {
+        
     }
 }

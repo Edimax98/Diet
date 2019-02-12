@@ -7,16 +7,16 @@
 //
 
 import Foundation
-import AppsFlyerLib
 
 class EventManager {
     
     static func sendCustomEvent(with name: String) {
-        AppsFlyerTracker.shared()?.trackEvent(name, withValues: [:])
+        //Amplitude.instance().log
+        //AppsFlyerTracker.shared()?.trackEvent(name, withValues: [:])
     }
     
     static func subscriptionExpired(with reason: String) {
-        AppsFlyerTracker.shared()?.trackEvent("Subscription expired with reason: " + reason, withValues: [:])
+        //AppsFlyerTracker.shared()?.trackEvent("Subscription expired with reason: " + reason, withValues: [:])
     }
 }
 

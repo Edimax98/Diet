@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import SwiftyStoreKit
+//import SwiftyStoreKit
 import FBSDKCoreKit
 import FacebookCore
-import AppsFlyerLib
+import Purchases
 import UserNotifications
 import CoreData
 
 enum ProductId: String {
-    
     case popular = "com.sfbtech.diets.sub.week.allaccess"
     case cheap = "com.sfbtech.diets.sub.month.allaccess"
 }
@@ -56,24 +55,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupIAP() {
-        
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            
-            for purchase in purchases {
-                switch purchase.transaction.transactionState {
-                case .purchased, .restored:
-                    
-                    if purchase.needsFinishTransaction {
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                    print("\(purchase.transaction.transactionState.debugDescription): \(purchase.productId)")
-                case .failed, .purchasing, .deferred:
-                    break
-                }
-            }
-        }
+//
+//        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+//
+//            for purchase in purchases {
+//                switch purchase.transaction.transactionState {
+//                case .purchased, .restored:
+//
+//                    if purchase.needsFinishTransaction {
+//                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+//                    }
+//                    print("\(purchase.transaction.transactionState.debugDescription): \(purchase.productId)")
+//                case .failed, .purchasing, .deferred:
+//                    break
+//                }
+//            }
+//        }
     }
-    
+
     // MARK: App life cycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -91,20 +90,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Permission has not been granted")
             }
         }
-        
+        Purchases.configure(withAPIKey: "KF2bzbXGcfYLysGfIQnsbshOePruacVgF", appUserID: nil)
+        Purchases.debugLogsEnabled = true
         setupIAP()
-//        launchManager = LaunchManager(window: window!)
-//        launchManager?.prepareForLaunch()
+        //launchManager = LaunchManager(window: window!)
+       // launchManager?.prepareForLaunch()
+        window?.rootViewController = LoadingViewController()
+        Purchases.shared.purchaserInfo { [weak self] (info, error) in
+            
+            guard let self = self else { return }
+            
+            //            guard error != nil else {
+            //                print("Error during sub check - ",error.debugDescription)
+            //                self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOfferViewController", bundle: nil))
+            //                return
+            //            }
+            
+            if let unwrappedInfo = info {
+                if unwrappedInfo.activeSubscriptions.contains(ProductId.cheap.rawValue) ||
+                    unwrappedInfo.activeSubscriptions.contains(ProductId.popular.rawValue) {
+                    self.window?.rootViewController = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+                } else {
+                    self.window?.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+                }
+            }
+        }
         
-        let vc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+//        let vc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
 //        let vc = TestPageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
 //        let vc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        window?.rootViewController = vc
+//        window?.rootViewController = vc
         
         //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
-        AppsFlyerTracker.shared().appleAppID = "1445711141"
-        
+
         return true
     }
     
@@ -116,7 +134,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppEventsLogger.activate(application)
-        AppsFlyerTracker.shared()?.trackAppLaunch()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
