@@ -72,6 +72,7 @@
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5B2D35321D22E9200378F54 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35221D22E9200378F54 /* EndPoint.swift */; };
 		A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */; };
+		A5B9E2A822145F4400CBB46C /* ScrollingStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9E2A722145F4400CBB46C /* ScrollingStackController.swift */; };
 		A5C0871121FF0C4000B9D724 /* Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5C0870F21FF0C4000B9D724 /* Test.xcdatamodeld */; };
 		A5C25CC622116FBD004E0BC3 /* DietType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C25CC522116FBD004E0BC3 /* DietType.swift */; };
 		A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */; };
@@ -158,6 +159,7 @@
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5B2D35221D22E9200378F54 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsEndPoint.swift; sourceTree = "<group>"; };
+		A5B9E2A722145F4400CBB46C /* ScrollingStackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingStackController.swift; sourceTree = "<group>"; };
 		A5C0871021FF0C4000B9D724 /* TestResult.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestResult.xcdatamodel; sourceTree = "<group>"; };
 		A5C25CC522116FBD004E0BC3 /* DietType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietType.swift; sourceTree = "<group>"; };
 		A5C25CD422119E20004E0BC3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SubscriptionOffer.strings; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		A548E9D9217787A800FC62EE /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9E2A722145F4400CBB46C /* ScrollingStackController.swift */,
 				A5A0C7A721BE7D2800C9035C /* UPCarouselFlowLayout.swift */,
 				A50250D42178E79000F674B3 /* TriangleView.swift */,
 				A5CE618321B7EC0900A7FFDE /* AnimatedLabel.swift */,
@@ -680,6 +683,7 @@
 				A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */,
 				A5EF446721CA96D5009B4635 /* RecipeViewController.swift in Sources */,
 				A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */,
+				A5B9E2A822145F4400CBB46C /* ScrollingStackController.swift in Sources */,
 				A5A0C7AD21BE977B00C9035C /* SubscriptionNetworkService.swift in Sources */,
 				A5E69C5621CA434F001649DD /* DietNetworkService.swift in Sources */,
 				A5D858C021AF055A008A5A2D /* DoubleExtentions.swift in Sources */,

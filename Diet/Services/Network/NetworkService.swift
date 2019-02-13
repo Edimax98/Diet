@@ -16,8 +16,39 @@ class NetworkService {
     weak var dietServiceDelegate: DietNetworkServiceDelegate?
     weak var errorHandler: FetchincErrorHandler?
     fileprivate let downloader = ImageDownloader(configuration: .default, downloadPrioritization: .fifo, maximumActiveDownloads: 5, imageCache: nil)
-
+    fileprivate let imageBaseUrl = "http://dietsforbuddies.com/"
+    fileprivate let daysOfWeek = ["Monday","Tuesday",
+                                  "Wednesday","Thursday",
+                                  "Friday","Saturday",
+                                  "Sunday"]
     init() {}
+    
+    fileprivate func setDishesImagePaths(for dietDays: inout [DietWeek.Day], dietType: String) {
+        
+        let separator = "/"
+    
+        for i in 0..<dietDays.count {
+            for j in 0..<dietDays[i].dishes.count {
+                let newPath = imageBaseUrl + dietType + separator + daysOfWeek[i] + separator + "dishes\(j + 1)" + separator + "image.jpg"
+                dietDays[i].dishes[j].imagePath = newPath
+            }
+        }
+    }
+    
+    fileprivate func setRecipesImagesPaths(for dietDays: inout [DietWeek.Day], dietType: String) {
+        
+        let separator = "/"
+        
+        for i in 0..<dietDays.count {
+            for j in 0..<dietDays[i].dishes.count {
+                for k in 0..<dietDays[i].dishes[j].recipe.count {
+                    let newPath = imageBaseUrl + dietType + separator + daysOfWeek[i] + separator + "dishes\(j + 1)" + separator + "step\(k + 1).jpg"
+                    dietDays[i].dishes[j].recipe[k].imagePaths[0] = newPath
+                }
+            }
+        }
+        
+    }
 }
 
 // MARK: - DietNetworkService
@@ -51,10 +82,13 @@ extension NetworkService: DietNetworkService {
                                                   imagePaths: [jsonRecipe["images"].stringValue]) } ?? [])
                     } ?? [])}
                 
-                guard let unwrappedDays = days else { print("days are nil after being parsed"); return }
+                guard var unwrappedDays = days else { print("days are nil after being parsed"); return }
                 
                 let jsonWeek = json["weeks"][0]
                 let weekNutritionValue = NutritionalValue.init(calories: jsonWeek["totalCalories"].doubleValue, protein: jsonWeek["totalProtein"].doubleValue, carbs: jsonWeek["totalCarbs"].doubleValue, fats: jsonWeek["totalFats"].doubleValue)
+                
+                self?.setDishesImagePaths(for: &unwrappedDays, dietType: json["type"].stringValue)
+                self?.setRecipesImagesPaths(for: &unwrappedDays, dietType: json["type"].stringValue)
                 
                 let diet = Diet.init(name: json["title"].stringValue, description: json["description"].stringValue, type: json["type"].stringValue, weeks: [DietWeek.init(nutritionalValue: weekNutritionValue, days: unwrappedDays)])
                 

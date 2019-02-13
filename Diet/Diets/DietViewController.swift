@@ -8,6 +8,7 @@
 
 import UIKit
 import DropDown
+import CoreData
 
 class DietViewController: UIViewController {
     
@@ -15,7 +16,7 @@ class DietViewController: UIViewController {
     @IBOutlet weak var dietNameLabel: UILabel!
     @IBOutlet weak var dietDescriptionLabel: UILabel!
     @IBOutlet weak var dietDescriptionView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var topScrollView: UIScrollView!
     @IBOutlet weak var rationsTableView: UITableView!
     @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     
@@ -23,10 +24,11 @@ class DietViewController: UIViewController {
     let scrollViewContentHeight: CGFloat = 1200
     fileprivate let viewCornerRadius: CGFloat = 32.0
     var accessStatus = AccessStatus.available
+    var bodyCategory: CategoryName!
     fileprivate let daysOfWeek = ["Monday".localized,"Tuesday".localized,
-                                     "Wednesday".localized,"Thursday".localized,
-                                     "Friday".localized,"Saturday".localized,
-                                     "Sunday".localized]
+                                  "Wednesday".localized,"Thursday".localized,
+                                  "Friday".localized,"Saturday".localized,
+                                  "Sunday".localized]
     
     let gramMeasure = "g.".localized
     let caloriesMesure = "kCal.".localized
@@ -42,13 +44,13 @@ class DietViewController: UIViewController {
     fileprivate let fetchingQueue = DispatchQueue.global(qos: .utility)
     let networkService = NetworkService()
     let loadingVc = LoadingViewController()
-
+    
     private var visibleRect: CGRect {
         get {
             return CGRect(x: 0.0,
-                          y: scrollView!.contentOffset.y,
-                          width: scrollView!.frame.size.width,
-                          height: scrollView!.frame.size.height)
+                          y: topScrollView!.contentOffset.y,
+                          width: topScrollView!.frame.size.width,
+                          height: topScrollView!.frame.size.height)
         }
     }
     
@@ -70,12 +72,62 @@ class DietViewController: UIViewController {
         setupView()
         
         networkService.dietServiceDelegate = self
-        networkService.getDiet(.power)
+        if let bodyCategory = self.bodyCategory {
+            getDiet(for: bodyCategory)
+        } else {
+            if let categoryFromStorage = fetchCategory() {
+                getDiet(for: categoryFromStorage)
+            } else {
+                networkService.getDiet(.balance)
+            }
+        }
         add(loadingVc)
     }
     
+    fileprivate func getDiet(for bodyCategory: CategoryName) {
+        
+        switch bodyCategory {
+        case .underweight:
+            networkService.getDiet(.power)
+        case .normal:
+            networkService.getDiet(.balance)
+        case .excessObesity:
+            networkService.getDiet(.daily)
+        case .obesity:
+            networkService.getDiet(.fit)
+        case .severeObesity:
+            networkService.getDiet(.superFit)
+        case .undefined:
+            networkService.getDiet(.balance)
+        }
+    }
+    
+    fileprivate func fetchCategory() -> CategoryName? {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Test", in: managedContext)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Test")
+        fetchRequest.entity = entityDescription
+        
+        do {
+            if let testResultManagedObject = try managedContext.fetch(fetchRequest).last {
+                guard let obesityType = testResultManagedObject.value(forKey: "obesityType") as? String else {
+                    return nil
+                }
+                return CategoryName(rawValue: obesityType)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
     fileprivate func showContent() {
-
+        
     }
     
     fileprivate func setupView() {
@@ -84,18 +136,18 @@ class DietViewController: UIViewController {
         dietNameLabel.text = "..."
         
         if #available(iOS 11.0, *) {
-            scrollView.contentInsetAdjustmentBehavior = .never
+            topScrollView.contentInsetAdjustmentBehavior = .never
         }
         dietBackImageView.contentMode = .scaleAspectFill
         dietBackImageView.clipsToBounds = true
-        
+        tableHeightConstraint.constant = self.view.frame.height + 20
         rationsTableView.separatorStyle = .none
         rationsTableView.dataSource = self
         rationsTableView.delegate = self
-        rationsTableView.register(UINib(nibName: "WeekRationCell", bundle: nil), forCellReuseIdentifier: WeekRationCell.identifier)
-        tableHeightConstraint.constant = self.view.frame.height
         rationsTableView.isScrollEnabled = false
-        scrollView.delegate = self
+        topScrollView.bounces = false
+        rationsTableView.register(UINib(nibName: "WeekRationCell", bundle: nil), forCellReuseIdentifier: WeekRationCell.identifier)
+        topScrollView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -114,7 +166,7 @@ extension DietViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return daysOfWeek[section]
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -162,95 +214,13 @@ extension DietViewController: UITableViewDelegate {
 }
 
 extension DietViewController: UIScrollViewDelegate {
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        let contentOffset = scrollView.contentOffset
-//
-//        // This is the visible rect of the parent scroll view
-//        let visibleRect = self.visibleRect
-//        // This is the current offset into parent scroll view
-//        let mainOffsetY = contentOffset.y
-//
-//        let w = scrollView.frame.size.width
-//
-//        rationsTableView.isScrollEnabled = false // disable scrolling so it does not interfere with the parent scroll
-//        let tableRect = rationsTableView.frame // get the ideal rect (occupied space)
-//        // evaluate the visible region in parent
-//        let itemVisibleRect = visibleRect.intersection(tableRect)
-//
-//        if itemVisibleRect.height == 0.0 {
-//            // If not visible the frame of the inner's scroll is canceled
-//            // No cells are rendered until the item became partially visible
-//            rationsTableView.frame = CGRect.zero
-//        } else {
-//            // The item is partially visible
-//            if mainOffsetY > tableRect.minY {
-//                // If during scrolling the inner table/collection has reached the top
-//                // of the parent scrollview it will be pinned on top
-//
-//                // This calculate the offset reached while scrolling the inner scroll
-//                // It's used to adjust the inner table/collection offset in order to
-//                // simulate continous scrolling
-////                scrollView.bounces = false
-//                let innerScrollOffsetY = mainOffsetY - tableRect.minY
-//                // This is the height of the visible region of the inner table/collection
-//                let visibleInnerHeight = rationsTableView.contentSize.height
-//
-//                var innerScrollRect = CGRect.zero
-//                innerScrollRect.origin = CGPoint(x: 0, y: innerScrollOffsetY)
-//                if visibleInnerHeight < visibleRect.size.height {
-//                    // partially visible when pinned on top
-//                    innerScrollRect.size = CGSize(width: w, height: min(visibleInnerHeight,itemVisibleRect.height))
-//                } else {
-//                    // the inner scroll occupy the entire parent scroll's height
-//                    innerScrollRect.size = itemVisibleRect.size
-//                }
-//                rationsTableView.frame = innerScrollRect
-//                // adjust the offset to simulate the scroll
-//                rationsTableView.isScrollEnabled = true
-//                scrollView.bounces = false
-//                rationsTableView.contentOffset = CGPoint(x: 0, y: innerScrollOffsetY + 100)
-//            } else {
-//                // The inner scroll view is partially visible
-//                // Adjust the frame as it needs (at its max it reaches the height of the parent)
-////                /scrollView.bounces = true
-//                let offsetOfInnerY = tableRect.minY - mainOffsetY
-//                let visibileHeight = visibleRect.size.height - offsetOfInnerY
-//
-//                rationsTableView.frame = CGRect(x: 0, y: 0, width: w, height: visibileHeight)
-//                rationsTableView.contentOffset = CGPoint.zero
-//            }
-//        }
-//
-//    }
-//
-//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//
-//        if scrollView === rationsTableView, scrollView.contentOffset.y <= 20 {
-//            let offset = scrollView.frame.height - tableHeightConstraint.constant - 10
-//
-//            self.scrollView.contentOffset.y = offset
-//        }
-//
-//    }
-    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        if scrollView === rationsTableView, scrollView.contentOffset.y <= 20 {
-//            let offset = scrollView.frame.height - tableHeightConstraint.constant - 10
-//
-//            self.scrollView.contentOffset.y = offset
-//        }
-//    }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
-        if scrollView === self.scrollView {
-            self.scrollView.bounces = (scrollView.contentOffset.y <= rationsTableView.frame.minY)
+        if scrollView === self.topScrollView {
+            self.topScrollView.bounces = (scrollView.contentOffset.y <= rationsTableView.frame.minY)
             rationsTableView.isScrollEnabled = (scrollView.contentOffset.y >= rationsTableView.frame.minY)
-        }
-
-        if scrollView === rationsTableView {
+        } else {
             rationsTableView.isScrollEnabled = (scrollView.contentOffset.y > 0)
             rationsTableView.bounces = (scrollView.contentOffset.y != 0)
         }
@@ -272,7 +242,7 @@ extension DietViewController: DietNetworkServiceDelegate {
             if let dishes = diet.weeks.first?.days.first?.dishes {
                 self.dishes = dishes
                 self.rationsTableView.reloadData()
-            
+                
             }
         }
     }

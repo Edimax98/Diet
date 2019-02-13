@@ -34,7 +34,7 @@ extension DietApi: EndPointType {
         switch self {
         case .diet(let type):
            // return ["lang": Locale.current.languageCode ?? "", "type":"power"]
-            return ["lang": "ru", "type": type.description]
+            return ["lang": "ru", "type": type.description.lowercased()]
         }
     }
 }

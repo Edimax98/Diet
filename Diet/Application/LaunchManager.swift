@@ -40,18 +40,18 @@ class LaunchManager: NSObject {
             
             guard let self = self else { return }
             
-//            guard error != nil else {
-//                print("Error during sub check - ",error.debugDescription)
-//                self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOfferViewController", bundle: nil))
-//                return
-//            }
+            guard error != nil else {
+                print("Error during sub check - ",error.debugDescription)
+                self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
+                return
+            }
             
             if let unwrappedInfo = info {
                 if unwrappedInfo.activeSubscriptions.contains(ProductId.cheap.rawValue) ||
                     unwrappedInfo.activeSubscriptions.contains(ProductId.popular.rawValue) {
                     self.mainWindow.rootViewController = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
                 } else {
-                    self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOfferViewController", bundle: nil))
+                    self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
                 }
             }
         }

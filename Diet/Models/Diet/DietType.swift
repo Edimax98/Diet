@@ -8,25 +8,26 @@
 
 import Foundation
 
-enum DietType {
-    case daily
-    case power
-    case superFit
-    case fit
-    case balance
+enum DietType: String {
+    
+    case daily = "Daily"
+    case power = "Power"
+    case superFit = "Superfit"
+    case fit = "Fit"
+    case balance = "Balance"
     
     var description: String {
         switch self {
         case .daily:
-            return "daily"
+            return "Daily"
         case .power:
-            return "power"
+            return "Power"
         case .superFit:
-            return "superfit"
+            return "Superfit"
         case .fit:
-            return "fit"
+            return "Fit"
         case .balance:
-            return "balance"
+            return "Balance"
         }
     }
 }

@@ -64,6 +64,9 @@ class FatnessIndexViewContoller: UIViewController {
             
             if let destinationVc = segue.destination as? DietViewController {
                 destinationVc.accessIsAvailable()
+                if let category = self.testResults?.fatnessCategory {
+                    destinationVc.bodyCategory = category
+                }
             }
         }
     }

@@ -170,6 +170,7 @@ class SubscriptionOfferViewController: UIViewController {
         add(loadingVc)
 
         Purchases.shared.makePurchase(product) { (transaction, purchaserInfo, error) in
+            
             if let e = error {
                 print("PURCHASE ERROR: - \(e.localizedDescription)")
                 self.showErrorAlert(for: .purchaseFailed)

@@ -28,8 +28,22 @@ class TestResultsViewController: UIViewController {
     var repeatTest: (() -> Void)?
     var results: TestResult? {
         didSet {
-            deleteAllData("Test")
-            save()
+            
+            if results != nil {
+                
+                let fatnessIndex = calculateFatIndex(currentWeight: results!.currentWeight, height: results!.height)
+                
+                switch(results!.age) {
+                case (0...25):
+                    results!.fatnessCategory = getFatnessCategoryNameForTeens(index: fatnessIndex)
+                case (26...100):
+                    results!.fatnessCategory = getFatnessCategoryForAdults(index: fatnessIndex)
+                default:
+                    results!.fatnessCategory = CategoryName.undefined
+                }
+                deleteAllData("Test")
+                save()
+            }
         }
     }
     
@@ -122,18 +136,8 @@ class TestResultsViewController: UIViewController {
         if segue.identifier == "toObesityIndex" {
             
             if let destinationVc = segue.destination as? FatnessIndexViewContoller {
-                guard var testResults = self.results else { return }
-                
+                guard let testResults = self.results else { return }
                 let fatnessIndex = calculateFatIndex(currentWeight: testResults.currentWeight, height: testResults.height)
-                
-                switch(testResults.age) {
-                case (0...25):
-                    testResults.fatnessCategory = getFatnessCategoryNameForTeens(index: fatnessIndex)
-                case (26...100):
-                    testResults.fatnessCategory = getFatnessCategoryForAdults(index: fatnessIndex)
-                default:
-                    testResults.fatnessCategory = CategoryName.undefined
-                }
                 
                 destinationVc.testResults = testResults
                 destinationVc.fatnessIndex = fatnessIndex
@@ -204,6 +208,7 @@ class TestResultsViewController: UIViewController {
         } else {
             testResult.setValue(1, forKey: "gender")
         }
+        
         testResult.setValue(results.fatnessCategory.rawValue, forKey: "obesityType")
         
         do {

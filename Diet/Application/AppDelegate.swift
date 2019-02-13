@@ -7,10 +7,10 @@
 //
 
 import UIKit
-//import SwiftyStoreKit
 import FBSDKCoreKit
 import FacebookCore
 import Purchases
+import AppsFlyerLib
 import UserNotifications
 import CoreData
 
@@ -24,10 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var launchManager: LaunchManager?
-    private let itcAccountSecret = "41b8fe92dbd9448ab3e06f3507b01371"
     
     // MARK: Notifications
-    
     private func setupLocalNotifications() {
         
         var dateComponents = DateComponents()
@@ -54,34 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func setupIAP() {
-//
-//        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-//
-//            for purchase in purchases {
-//                switch purchase.transaction.transactionState {
-//                case .purchased, .restored:
-//
-//                    if purchase.needsFinishTransaction {
-//                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-//                    }
-//                    print("\(purchase.transaction.transactionState.debugDescription): \(purchase.productId)")
-//                case .failed, .purchasing, .deferred:
-//                    break
-//                }
-//            }
-//        }
-    }
-
     // MARK: App life cycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        AppsFlyerTracker.shared()?.delegate = self
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
         let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        print(paths[0])
+        print("PATH ",paths[0])
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (isAllowed, error) in
             if isAllowed {
@@ -90,38 +70,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Permission has not been granted")
             }
         }
-        Purchases.configure(withAPIKey: "KF2bzbXGcfYLysGfIQnsbshOePruacVgF", appUserID: nil)
+        
+        Purchases.configure(withAPIKey: "KFbzbXGcfYLysGfIQnsbshOePruacVgF", appUserID: nil)
         Purchases.debugLogsEnabled = true
-        setupIAP()
-        //launchManager = LaunchManager(window: window!)
-       // launchManager?.prepareForLaunch()
-        window?.rootViewController = LoadingViewController()
-        Purchases.shared.purchaserInfo { [weak self] (info, error) in
-            
-            guard let self = self else { return }
-            
-            //            guard error != nil else {
-            //                print("Error during sub check - ",error.debugDescription)
-            //                self.mainWindow.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOfferViewController", bundle: nil))
-            //                return
-            //            }
-            
-            if let unwrappedInfo = info {
-                if unwrappedInfo.activeSubscriptions.contains(ProductId.cheap.rawValue) ||
-                    unwrappedInfo.activeSubscriptions.contains(ProductId.popular.rawValue) {
-                    self.window?.rootViewController = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-                } else {
-                    self.window?.rootViewController = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-                }
-            }
-        }
+        
+        launchManager = LaunchManager(window: window!)
+         launchManager?.prepareForLaunch()
         
 //        let vc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
 //        let vc = TestPageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
 //        let vc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
 //        window?.rootViewController = vc
         
-        //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
+        AppsFlyerTracker.shared().appleAppID = "1445711141"
 
         return true
     }
@@ -160,26 +123,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
-    
-    fileprivate func logEvents() {
-        
-        //        SubscriptionService.shared.loadSubscriptionOptions()
-        //        SubscriptionService.shared.optionsLoaded = { option in
-        //            if SubscriptionService.shared.isEligibleForTrial && SubscriptionService.shared.currentSubscription != nil {
-        //                AppsFlyerTracker.shared()?.trackEvent(AFEventStartTrial, withValues: ["trial_method": "3 days trial"])
-        //            }
-        //            if SubscriptionService.shared.isEligibleForTrial == false {
-        //                AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamRevenue: option.priceWithoutCurrency, AFEventParamCurrency: option.currencyCode])
-        //            }
-        //        }
-    }
-    
 }
 
+extension AppDelegate: AppsFlyerTrackerDelegate {
+    
+    func onConversionDataReceived(_ installData: [AnyHashable : Any]!) {
+        
+        if var data = installData {
+            data["rc_appsflyer_id"] = AppsFlyerTracker.shared().getAppsFlyerUID()
+            Purchases.shared.addAttributionData(data, from: .appsFlyer)
+        }
+    }
+}

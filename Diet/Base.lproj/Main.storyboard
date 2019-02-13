@@ -44,7 +44,7 @@
                                         <rect key="frame" x="0.0" y="260" width="375" height="416"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="416" id="X3u-U1-BxL"/>
+                                            <constraint firstAttribute="height" constant="416" id="odS-iq-2uh"/>
                                         </constraints>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eup-ui-g1l">
@@ -106,8 +106,8 @@
                         <outlet property="dietDescriptionView" destination="Eup-ui-g1l" id="KkG-qK-Uuf"/>
                         <outlet property="dietNameLabel" destination="dbb-Cu-1Xf" id="zXo-g7-H7n"/>
                         <outlet property="rationsTableView" destination="0yi-Jr-CUD" id="lJn-oF-uyr"/>
-                        <outlet property="scrollView" destination="AZn-3s-enK" id="kTD-aS-DLy"/>
-                        <outlet property="tableHeightConstraint" destination="X3u-U1-BxL" id="7DN-36-mFX"/>
+                        <outlet property="tableHeightConstraint" destination="odS-iq-2uh" id="w8i-Uk-Fcw"/>
+                        <outlet property="topScrollView" destination="AZn-3s-enK" id="kTD-aS-DLy"/>
                         <segue destination="yQQ-Qh-aPF" kind="presentation" identifier="showRecipe" id="wEl-Yb-JYs"/>
                         <segue destination="ApJ-XQ-DlK" kind="presentation" identifier="showSubOffer" id="VC5-1c-jfe"/>
                     </connections>
