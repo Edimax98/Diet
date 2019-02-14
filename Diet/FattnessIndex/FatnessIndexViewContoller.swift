@@ -51,7 +51,6 @@ class FatnessIndexViewContoller: UIViewController {
         
         fatnessCategoriesCollectionView.register(UINib(nibName: "FatnessCategoryCell", bundle: nil), forCellWithReuseIdentifier: FatnessCategoryCell.identifier)
         
-        EventManager.sendCustomEvent(with: "Obesity index was calculated")
     }
     
     override func viewDidLayoutSubviews() {

@@ -50,7 +50,6 @@
 		A589FB0021C7AF8D0035E80D /* DietWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FAFF21C7AF8D0035E80D /* DietWeek.swift */; };
 		A589FB0221C7AFAC0035E80D /* NutritionValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FB0121C7AFAC0035E80D /* NutritionValue.swift */; };
 		A589FB0421C7B2AB0035E80D /* Diet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FB0321C7B2AB0035E80D /* Diet.swift */; };
-		A589FB0621C7D74B0035E80D /* FacebookEventsEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589FB0521C7D74B0035E80D /* FacebookEventsEnviroment.swift */; };
 		A58CC53C216CF65100B20CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53B216CF65100B20CE9 /* AppDelegate.swift */; };
 		A58CC54021E89DFB00361EA9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */; };
 		A58CC541216CF65100B20CE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58CC53F216CF65100B20CE9 /* Main.storyboard */; };
@@ -68,7 +67,6 @@
 		A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */; };
 		A5A1182921C2AA88003843A1 /* SubscriptionOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */; };
 		A5A1DD22217E26100099A1BD /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */; };
-		A5AE5D9B21ECE3510029E9CD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE5D9A21ECE3510029E9CD /* EventManager.swift */; };
 		A5B02C68217A29C900A9E3A4 /* GenderSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */; };
 		A5B2D35321D22E9200378F54 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35221D22E9200378F54 /* EndPoint.swift */; };
 		A5B2D35621D22EF900378F54 /* DietsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */; };
@@ -135,7 +133,6 @@
 		A589FAFF21C7AF8D0035E80D /* DietWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietWeek.swift; sourceTree = "<group>"; };
 		A589FB0121C7AFAC0035E80D /* NutritionValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionValue.swift; sourceTree = "<group>"; };
 		A589FB0321C7B2AB0035E80D /* Diet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diet.swift; sourceTree = "<group>"; };
-		A589FB0521C7D74B0035E80D /* FacebookEventsEnviroment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookEventsEnviroment.swift; sourceTree = "<group>"; };
 		A58CC538216CF65100B20CE9 /* Diet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58CC53B216CF65100B20CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +152,6 @@
 		A5A0C7B221BE99B600C9035C /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
 		A5A1182821C2AA88003843A1 /* SubscriptionOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOfferViewController.swift; sourceTree = "<group>"; };
 		A5A1DD21217E26100099A1BD /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
-		A5AE5D9A21ECE3510029E9CD /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		A5B02C67217A29C900A9E3A4 /* GenderSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectorViewController.swift; sourceTree = "<group>"; };
 		A5B2D35221D22E9200378F54 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A5B2D35521D22EF900378F54 /* DietsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsEndPoint.swift; sourceTree = "<group>"; };
@@ -341,7 +337,6 @@
 			children = (
 				A55BFF8321FA0AE600D4364F /* Onboarding */,
 				A58CC53F21E89DFB00361EA9 /* LoadingViewController.swift */,
-				A5AE5D9A21ECE3510029E9CD /* EventManager.swift */,
 				A5A0C7AB21BE96CD00C9035C /* Subscription */,
 				A548E9D9217787A800FC62EE /* Appearance */,
 				A5E0C331216F951E0045975E /* Extensions */,
@@ -455,7 +450,6 @@
 		A5EA838F2170F8C00088F8FE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A589FB0521C7D74B0035E80D /* FacebookEventsEnviroment.swift */,
 				A589FAFE21C7AD980035E80D /* Diet */,
 				A50250D22178CB7200F674B3 /* TestViewData.swift */,
 				A5D858BD21AEE69D008A5A2D /* TestResult.swift */,
@@ -626,7 +620,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5CE618421B7EC0900A7FFDE /* AnimatedLabel.swift in Sources */,
-				A589FB0621C7D74B0035E80D /* FacebookEventsEnviroment.swift in Sources */,
 				A53B1B4B21B58ED50036AD00 /* FatnessCategoryCell.swift in Sources */,
 				A5EA83882170F7370088F8FE /* NetworkService.swift in Sources */,
 				A5662AC921BAB79100DCD511 /* UIViewExtensions.swift in Sources */,
@@ -652,7 +645,6 @@
 				A53B1B4721B58A770036AD00 /* FatnessIndexViewContoller.swift in Sources */,
 				A548E9D42177767900FC62EE /* NSObjectExtension.swift in Sources */,
 				A53698D82211CB8F00612697 /* DishNameHeaderView.swift in Sources */,
-				A5AE5D9B21ECE3510029E9CD /* EventManager.swift in Sources */,
 				A55BFF9421FA0AFD00D4364F /* FillAnimationView.swift in Sources */,
 				A5A0C7B321BE99B600C9035C /* SubscriptionService.swift in Sources */,
 				A589FAFD21C7ACF80035E80D /* Dish.swift in Sources */,

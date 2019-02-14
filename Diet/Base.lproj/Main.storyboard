@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7F3-NW-0BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4120.8000000000002" y="98.50074962518741"/>
+            <point key="canvasLocation" x="3954" y="99"/>
         </scene>
         <!--Recipe View Controller-->
         <scene sceneID="g1V-ZV-tEq">
@@ -149,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVF-Xh-Djl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4966" y="99"/>
+            <point key="canvasLocation" x="4692" y="99"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="LYA-6U-RDY">
@@ -214,7 +214,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRS-9o-3kg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="99"/>
+            <point key="canvasLocation" x="1774" y="99"/>
         </scene>
         <!--Test Results View Controller-->
         <scene sceneID="ZsZ-L8-Gii">
@@ -315,7 +315,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55y-b6-LQc" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="319" y="261" width="23" height="40"/>
+                                <rect key="frame" x="329" y="261" width="13" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="E9Y-Q7-yUu"/>
                                 </constraints>
@@ -332,7 +332,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIp-ch-4cu" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="319" y="312" width="23" height="40"/>
+                                <rect key="frame" x="329" y="312" width="13" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="M4x-9l-FMa"/>
                                 </constraints>
@@ -349,7 +349,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iW-sQ-fa3" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="318" y="363" width="23" height="40"/>
+                                <rect key="frame" x="328" y="363" width="13" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fhA-tY-aSb"/>
                                 </constraints>
@@ -366,7 +366,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BI-bZ-0xl" customClass="TestResultLabel" customModule="Diet" customModuleProvider="target">
-                                <rect key="frame" x="319" y="210" width="23" height="40"/>
+                                <rect key="frame" x="329" y="210" width="13" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Whh-dk-hRn"/>
                                 </constraints>
@@ -554,7 +554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8h-Qf-Ly5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3326" y="99"/>
+            <point key="canvasLocation" x="3242" y="99"/>
         </scene>
         <!--SubscriptionOffer-->
         <scene sceneID="Aup-Eq-vzi">
@@ -562,7 +562,7 @@
                 <viewControllerPlaceholder storyboardName="SubscriptionOffer" id="ApJ-XQ-DlK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YC1-hR-6dU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4692" y="-383"/>
+            <point key="canvasLocation" x="4505" y="-390"/>
         </scene>
     </scenes>
     <resources>
@@ -571,6 +571,7 @@
         <image name="back" width="1600" height="1067"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gew-Uh-8SZ"/>
         <segue reference="VC5-1c-jfe"/>
         <segue reference="WEO-OK-Fkt"/>
     </inferredMetricsTieBreakers>

@@ -55,7 +55,11 @@ class DietViewController: UIViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,15 +76,16 @@ class DietViewController: UIViewController {
         setupView()
         
         networkService.dietServiceDelegate = self
-        if let bodyCategory = self.bodyCategory {
-            getDiet(for: bodyCategory)
-        } else {
-            if let categoryFromStorage = fetchCategory() {
-                getDiet(for: categoryFromStorage)
-            } else {
-                networkService.getDiet(.balance)
-            }
-        }
+        networkService.getDiet(.balance)
+//        if let bodyCategory = self.bodyCategory {
+//            getDiet(for: bodyCategory)
+//        } else {
+//            if let categoryFromStorage = fetchCategory() {
+//                getDiet(for: categoryFromStorage)
+//            } else {
+//                networkService.getDiet(.balance)
+//            }
+//        }
         add(loadingVc)
     }
     

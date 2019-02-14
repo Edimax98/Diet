@@ -74,17 +74,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Purchases.configure(withAPIKey: "KFbzbXGcfYLysGfIQnsbshOePruacVgF", appUserID: nil)
         Purchases.debugLogsEnabled = true
         
-        launchManager = LaunchManager(window: window!)
-         launchManager?.prepareForLaunch()
+//         launchManager = LaunchManager(window: window!)
+//         launchManager?.prepareForLaunch()
         
 //        let vc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-//        let vc = TestPageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+        let vc = TestPageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
 //        let vc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-//        window?.rootViewController = vc
+        window?.rootViewController = vc
         
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
-        AppsFlyerTracker.shared().appleAppID = "1445711141"
+//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
+//        AppsFlyerTracker.shared().appleAppID = "1445711141"
 
         return true
     }

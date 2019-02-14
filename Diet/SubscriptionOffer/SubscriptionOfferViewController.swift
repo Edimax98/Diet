@@ -47,7 +47,6 @@ class SubscriptionOfferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        EventManager.sendCustomEvent(with: "Subscription offer was opened")
         let loadingVc = LoadingViewController()
         add(loadingVc)
         Purchases.shared.delegate = self

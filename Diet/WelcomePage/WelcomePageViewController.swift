@@ -78,7 +78,6 @@ class WelcomePageViewController: UIViewController {
         if paperOnboardingView.currentIndex + 1 <= items.count - 1 {
             paperOnboardingView.currentIndex(paperOnboardingView.currentIndex + 1, animated: true)
         } else {
-            EventManager.sendCustomEvent(with: "Welcome screen was skipped")
             UserDefaults.standard.set(true, forKey: "wereWelcomePagesShown")
             performSegue(withIdentifier: "showTest", sender: self)
         }

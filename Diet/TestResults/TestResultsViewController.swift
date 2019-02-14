@@ -59,7 +59,6 @@ class TestResultsViewController: UIViewController {
         applyCustomStyleToLabel(label: goalWeightTitleLabel)
         applyCustomStyleToLabel(label: timeTitleLabel)
         applyCustomStyleToLabel(label: currentWeightTitleLable)
-        EventManager.sendCustomEvent(with: "Test was passed")
     }
     
     func applyCustomStyleToLabel(label: UILabel) {
