@@ -76,16 +76,18 @@ class DietViewController: UIViewController {
         setupView()
         
         networkService.dietServiceDelegate = self
-        networkService.getDiet(.balance)
-//        if let bodyCategory = self.bodyCategory {
-//            getDiet(for: bodyCategory)
-//        } else {
-//            if let categoryFromStorage = fetchCategory() {
-//                getDiet(for: categoryFromStorage)
-//            } else {
-//                networkService.getDiet(.balance)
-//            }
-//        }
+        EventManager.sendEvent(with: "Diet screen opened")
+        
+        if let bodyCategory = self.bodyCategory {
+            getDiet(for: bodyCategory)
+        } else {
+            if let categoryFromStorage = fetchCategory() {
+                getDiet(for: categoryFromStorage)
+            } else {
+                networkService.getDiet(.balance)
+            }
+        }
+        
         add(loadingVc)
     }
     

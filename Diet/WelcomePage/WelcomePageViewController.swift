@@ -80,6 +80,7 @@ class WelcomePageViewController: UIViewController {
         } else {
             UserDefaults.standard.set(true, forKey: "wereWelcomePagesShown")
             performSegue(withIdentifier: "showTest", sender: self)
+            EventManager.sendEvent(with: "User saw welcome screen")
         }
     }
 }
@@ -90,6 +91,7 @@ extension WelcomePageViewController: PaperOnboardingDelegate {
         
         if index == items.count - 1 {
            nextButton.setTitle("FINISH".localized, for: .normal)
+            
         } else {
            nextButton.setTitle("NEXT".localized, for: .normal)
          }

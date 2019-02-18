@@ -310,6 +310,7 @@ class TestResultsViewController: UIViewController {
     
     @IBAction func agreedWithTestButtonPressed(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "hasUserPassedTest")
+        EventManager.sendEvent(with: "User agreed with test results")
     }
     
     @IBAction func takeTestAgainButtonPressed(_ sender: Any) {

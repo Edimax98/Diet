@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FacebookCore
 import Purchases
+import SwiftyStoreKit
 import AppsFlyerLib
 import UserNotifications
 import CoreData
@@ -56,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        AppsFlyerTracker.shared()?.delegate = self
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
@@ -71,20 +71,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        Purchases.configure(withAPIKey: "KFbzbXGcfYLysGfIQnsbshOePruacVgF", appUserID: nil)
-        Purchases.debugLogsEnabled = true
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                // Unlock content
+                case .failed, .purchasing, .deferred:
+                    break // do nothing
+                }
+            }
+        }
         
-//         launchManager = LaunchManager(window: window!)
-//         launchManager?.prepareForLaunch()
+        Purchases.configure(withAPIKey: "KFbzbXGcfYLysGfIQnsbshOePruacVgF", appUserID: nil)
+        
+         launchManager = LaunchManager(window: window!)
+         launchManager?.prepareForLaunch()
         
 //        let vc = DietViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-        let vc = TestPageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
-//        let vc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil))
-        window?.rootViewController = vc
+//        let vc = TestPageViewController.controllerInStoryboard(UIStoryboard(name: "Main", bundle: nil))
+//        let vc = SubscriptionOfferViewController.controllerInStoryboard(UIStoryboard(name: "SubscriptionOffer", bundle: nil), identifier: "SubscriptionOffer")
+//        window?.rootViewController = vc
         
-//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-//        AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
-//        AppsFlyerTracker.shared().appleAppID = "1445711141"
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        AppsFlyerTracker.shared().appsFlyerDevKey = "RB7d2qzpNfUwBdq4saReqk"
+        AppsFlyerTracker.shared().appleAppID = "1445711141"
+        AppsFlyerTracker.shared().delegate = self
+        AppsFlyerTracker.shared().isDebug = true
 
         return true
     }
@@ -97,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppEventsLogger.activate(application)
+        AppsFlyerTracker.shared().trackAppLaunch()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

@@ -157,28 +157,70 @@ class SubscriptionOfferViewController: UIViewController {
     @IBAction func purchaseButtonPressed(_ sender: Any) {
         
         if pupularPlanButton.isSelected {
-           makePurhase(product: popularPlan)
+           makePurhase(productId: ProductId.popular.rawValue)
         } else {
-            makePurhase(product: cheapPlan)
+            makePurhase(productId: ProductId.cheap.rawValue)
         }
     }
     
-    fileprivate func makePurhase(product: SKProduct) {
+    fileprivate func makePurhase(productId: String) {
         
         let loadingVc = LoadingViewController()
         add(loadingVc)
 
-        Purchases.shared.makePurchase(product) { (transaction, purchaserInfo, error) in
-            
-            if let e = error {
-                print("PURCHASE ERROR: - \(e.localizedDescription)")
-                self.showErrorAlert(for: .purchaseFailed)
-            } else if purchaserInfo?.activeSubscriptions.contains(product.productIdentifier) ?? false {
-                self.performSegue(withIdentifier: "showDiets", sender: self)
-            }
-            
+        SwiftyStoreKit.purchaseProduct(productId, atomically: true) { result in
             loadingVc.remove()
+            
+            if case .success(let purchase) = result {
+                
+                if purchase.needsFinishTransaction {
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
+                }
+                
+                let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "41b8fe92dbd9448ab3e06f3507b01371")
+                SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
+                    
+                    if case .success(let receipt) = result {
+                        let purchaseResult = SwiftyStoreKit.verifySubscription(
+                            ofType: .autoRenewable,
+                            productId: productId,
+                            inReceipt: receipt)
+                        
+                        switch purchaseResult {
+                        case .purchased(let expiryDate, let receiptItems):
+                            
+                            let isTrialPeriod = receiptItems.filter { $0.isTrialPeriod == false }.count == 0
+                            
+                            if isTrialPeriod == true {
+                                EventManager.sendEvent(with: "Trial has been started")
+                            }
+                            
+                            print("Product is valid until \(expiryDate)")
+                            self.performSegue(withIdentifier: "showDiets", sender: self)
+                        case .expired(let expiryDate):
+                            print("Product is expired since \(expiryDate)")
+                        case .notPurchased:
+                            print("This product has never been purchased")
+                        }
+                    } else {
+                        self.showErrorAlert(for: .internalError)
+                    }
+                }
+            } else {
+                // non success
+            }
         }
+//        Purchases.shared.makePurchase(product) { (transaction, purchaserInfo, error) in
+//
+//            if let e = error {
+//                print("PURCHASE ERROR: - \(e.localizedDescription)")
+//                self.showErrorAlert(for: .purchaseFailed)
+//            } else if purchaserInfo?.activeSubscriptions.contains(product.productIdentifier) ?? false {
+//                self.performSegue(withIdentifier: "showDiets", sender: self)
+//            }
+//
+//            loadingVc.remove()
+//        }
     }
     
     @IBAction func selectCheapPlanButtonPressed(_ sender: Any) {

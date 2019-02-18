@@ -38,7 +38,6 @@ class FatnessIndexViewContoller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fatnessCategoriesCollectionView.delegate = self
         fatnessCategoriesCollectionView.dataSource = self
         getDietsButton.layer.cornerRadius = 15
         getDietsButton.layer.masksToBounds = true
@@ -62,7 +61,7 @@ class FatnessIndexViewContoller: UIViewController {
         if segue.identifier == "showDiets" {
             
             if let destinationVc = segue.destination as? DietViewController {
-                destinationVc.accessIsAvailable()
+                destinationVc.accessStatus = .available
                 if let category = self.testResults?.fatnessCategory {
                     destinationVc.bodyCategory = category
                 }
@@ -126,10 +125,6 @@ class FatnessIndexViewContoller: UIViewController {
             performSegue(withIdentifier: "showDiets", sender: self)
         }
     }
-}
-
-extension FatnessIndexViewContoller: UICollectionViewDelegate {
-    
 }
 
 extension FatnessIndexViewContoller: UICollectionViewDataSource {
